@@ -1,78 +1,27 @@
 openapi: 3.0.0
 servers:
-  - url: //rnge.com.br:8091/v2
+  - url: 'https://rnge.com.br:8091/v2'
     description: Produção
-  - url: //10.10.1.239:8091/v2
+  - url: 'https://10.10.1.239:8091/v2'
     description: Sandbox
 info:
-  description: |
-    Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token 
-    in most resources except POST v2/login which uses username@tenant:senha. The response is almost always in JSON 
-    format; some resources return other formats like XML or PDF.
-
-    # DEFINITIONS
-
-    **Tenant\:** it’s the customer’s account (eg:amazon). The tenant may have one or more companies (eg:stores).
-
-    **User\:** Each user belongs to a tenant and has a globally unique user_id. The username is unique inside a tenant 
-    (eg:jeff@amazon is different from jeff@mystore). He or she can have login access to one or more companies.
-
-    # PATTERNS
-
-    All GET must support at least the parameters "filter", "sort" and "range" in the following format:
-
-     | Parameter  | Format | URL Query                                            | Resulting SELECT          |
-     |------------|--------|------------------------------------------------------|---------------------------|
-     | filter     |  JSON  | GET v2/resources?filter={"store":34,"inativo":true}  | ... WHERE store = 34      |
-     | sort       |  CSV   | GET v2/resources?sort=["name","ASC"]                 | ... ORDER BY name, asc    |
-     | range      |  CSV   | GET v2/resources?range=[0,9]                         | ... OFFSET 0 LIMIT 10     |
-
-    # TOOLS
-
-    The examples in this document use the curl command-line tool. It’s available on Linux via apt-get or similar.
-    Windows version\: https://curl.haxx.se/windows/
-
-    We use the jq command line tool for JSON formatting. It’s available on Linux via apt-get or similar.
-    Windows version\: https://stedolan.github.io/jq/download/
-
-     # Changes from v1
-
-     | Action          | v1 request                                      | v2request                             |
-     |-----------------|-------------------------------------------------|---------------------------------------|
-     | Get list        | GET /pesqpedido/                                | GET v2/orders                         |
-     | Get one record  | GET /consultapedido/123                         | GET v2/orders/123                     |
-     | Get many        | -                                               | GET v2/orders?filter={ids:[123,456]}  |
-     | Update a record | POST /pedido/ -d {“numped”:123, id_pessoa:9876} | PUT v2/orders/123 -d {id_pessoa:9876} |
-     | Create a record | POST /pedido/ -d {id_pessoa:9876}               | POST v2/orders -d {id_pessoa:9876}    |
-     | Delete a record | -                                               | DELETE v2/orders/123                  |
-     
-
-     | Other actions   | v1 request                                      | v2 request                                     |
-     |-----------------|-------------------------------------------------|------------------------------------------------|
-     | Cancel an order | POST /cancelapedido/123                         | POST v2/orders/123/cancel                      |
-     | Change status   | POST /mudastatus/123 -d {status:510}            | POST v2/orders/123/status -d {status:510}      |
-     | Create invoice  | POST /geranota/123                              | POST v2/orders/123/invoice                     |
-     | Insert an item  | POST /pedidoitem/123 -d {idprod:5, qcom:1}      | POST v2/orders/123/items -d {idprod:5, qcom:1} |
-
+  description: "Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token \nin most resources except POST v2/login which uses username@tenant:senha. The response is almost always in JSON \nformat; some resources return other formats like XML or PDF.\n\n# DEFINITIONS\n\n**Tenant\\:** it’s the customer’s account (eg:amazon). The tenant may have one or more companies (eg:stores).\n\n**User\\:** Each user belongs to a tenant and has a globally unique user_id. The username is unique inside a tenant \n(eg:jeff@amazon is different from jeff@mystore). He or she can have login access to one or more companies.\n\n# PATTERNS\n\nAll GET must support at least the parameters \"filter\", \"sort\" and \"range\" in the following format:\n\n | Parameter  | Format | URL Query                                            | Resulting SELECT          |\n |------------|--------|------------------------------------------------------|---------------------------|\n | filter     |  JSON  | GET v2/resources?filter={\"store\":34,\"inativo\":true}  | ... WHERE store = 34      |\n | sort       |  CSV   | GET v2/resources?sort=[\"name\",\"ASC\"]                 | ... ORDER BY name, asc    |\n | range      |  CSV   | GET v2/resources?range=[0,9]                         | ... OFFSET 0 LIMIT 10     |\n\n# TOOLS\n\nThe examples in this document use the curl command-line tool. It’s available on Linux via apt-get or similar.\nWindows version\\: https://curl.haxx.se/windows/\n\nWe use the jq command line tool for JSON formatting. It’s available on Linux via apt-get or similar.\nWindows version\\: https://stedolan.github.io/jq/download/\n\n # Changes from v1\n\n | Action          | v1 request                                      | v2request                             |\n |-----------------|-------------------------------------------------|---------------------------------------|\n | Get list        | GET /pesqpedido/                                | GET v2/orders                         |\n | Get one record  | GET /consultapedido/123                         | GET v2/orders/123                     |\n | Get many        | -                                               | GET v2/orders?filter={ids:[123,456]}  |\n | Update a record | POST /pedido/ -d {“numped”:123, id_pessoa:9876} | PUT v2/orders/123 -d {id_pessoa:9876} |\n | Create a record | POST /pedido/ -d {id_pessoa:9876}               | POST v2/orders -d {id_pessoa:9876}    |\n | Delete a record | -                                               | DELETE v2/orders/123                  |\n \n\n | Other actions   | v1 request                                      | v2 request                                     |\n |-----------------|-------------------------------------------------|------------------------------------------------|\n | Cancel an order | POST /cancelapedido/123                         | POST v2/orders/123/cancel                      |\n | Change status   | POST /mudastatus/123 -d {status:510}            | POST v2/orders/123/status -d {status:510}      |\n | Create invoice  | POST /geranota/123                              | POST v2/orders/123/invoice                     |\n | Insert an item  | POST /pedidoitem/123 -d {idprod:5, qcom:1}      | POST v2/orders/123/items -d {idprod:5, qcom:1} |\n"
   version: 2.0.0
   title: API do RNGE 4
-  termsOfService: "https://rednaxel.com/termos-de-uso"
+  termsOfService: 'https://rednaxel.com/termos-de-uso'
   contact:
     name: Suporte
     email: suporte@rednaxel.com
-    url: https://suporte.rednaxel.com
+    url: 'https://suporte.rednaxel.com'
   x-logo:
-    url: "https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png"
+    url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
 tags:
   - name: Login
     description: |
       This is the first step in order to use API.
   - name: Images
-    description: |
-      This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. 
-      **Warning\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All 
-      images must have more than 1 Kb and less than 1 Mb.
+    description: "This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. \n**Warning\\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All \nimages must have more than 1 Kb and less than 1 Mb.\n"
 paths:
   /login:
     post:
@@ -107,20 +56,18 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/login --user ${user}@${tenant}:${password} | jq .
       responses:
-        "200":
-          description: |
-            The credencials for the API. The third party app must save the fields `user_id` and `token` in order to use in all calls. 
-            In this  documentation this fields will be quoted as ID:token for now on.
+        '200':
+          description: "The credencials for the API. The third party app must save the fields `user_id` and `token` in order to use in all calls. \nIn this  documentation this fields will be quoted as ID:token for now on.\n"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Login"
-        "400":
+                $ref: '#/components/schemas/Login'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /cashiers:
     get:
       tags:
@@ -146,18 +93,18 @@ paths:
             curl -s -X GET https://rnge.com.br:8091/v2/cashiers --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/cashiers?filter={"num_serie":"1002","id_empresa":5623}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Array of POS
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Cashiers"
-        "400":
+                $ref: '#/components/schemas/Cashiers'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Cashiers
@@ -168,21 +115,21 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/cashiers --user ${user_id}:${token} -d payload.json | jq .
       requestBody:
-        $ref: "#/components/requestBodies/CashiersPost"
+        $ref: '#/components/requestBodies/CashiersPost'
       responses:
-        "200":
-          description: Success!
+        '200':
+          description: 'Success!'
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CashierResp"
-        "400":
+                $ref: '#/components/schemas/CashierResp'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /cashiers/{pdv_id}:
+                $ref: '#/components/schemas/Erro'
+  '/cashiers/{pdv_id}':
     get:
       tags:
         - Cashiers
@@ -198,18 +145,18 @@ paths:
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/cashiers/${pdv_id}" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: POS info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Cashier"
-        "400":
+                $ref: '#/components/schemas/Cashier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Cashiers
@@ -220,20 +167,20 @@ paths:
           source: |
             curl -s -X PUT https://rnge.com.br:8091/v2/cashiers/1554 --user ${user_id}:${token} -d payload.json | jq .
       requestBody:
-        $ref: "#/components/requestBodies/CashiersPut"
+        $ref: '#/components/requestBodies/CashiersPut'
       responses:
-        "200":
-          description: Success!
+        '200':
+          description: 'Success!'
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CashierResp"
-        "400":
+                $ref: '#/components/schemas/CashierResp'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     delete:
       tags:
         - Cashiers
@@ -250,19 +197,19 @@ paths:
           source: |
             curl -s -X DELETE https://rnge.com.br:8091/v2/cashiers/1778 --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Info about deleted POS
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Cashier"
-        "400":
+                $ref: '#/components/schemas/Cashier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /images/produto/{code}:
+                $ref: '#/components/schemas/Erro'
+  '/images/produto/{code}':
     post:
       tags:
         - Images
@@ -279,19 +226,19 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/images/produto/10373 --user ${user_id}:${token} --data-urlencode imagem@file.jpg | jq .
       responses:
-        "200":
+        '200':
           description: URL on the cloud
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Images"
-        "400":
+                $ref: '#/components/schemas/Images'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /images/produto/{code}/{position}:
+                $ref: '#/components/schemas/Erro'
+  '/images/produto/{code}/{position}':
     post:
       tags:
         - Images
@@ -313,19 +260,19 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/images/produto/10373/1 --user ${user_id}:${token} --data-urlencode imagem@file.jpg | jq .
       responses:
-        "200":
+        '200':
           description: URL on the cloud
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImagesPos"
-        "400":
+                $ref: '#/components/schemas/ImagesPos'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /images/logo/{company}:
+                $ref: '#/components/schemas/Erro'
+  '/images/logo/{company}':
     post:
       tags:
         - Images
@@ -342,19 +289,19 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/images/logo/0 --user ${user_id}:${token} --data-urlencode imagem@file.png | jq .
       responses:
-        "200":
+        '200':
           description: URL on the cloud
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImagesLogo"
-        "400":
+                $ref: '#/components/schemas/ImagesLogo'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /images/danfe/{root_cnpj}:
+                $ref: '#/components/schemas/Erro'
+  '/images/danfe/{root_cnpj}':
     post:
       tags:
         - Images
@@ -371,19 +318,19 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/images/danfe/5563868 --user ${user_id}:${token} --data-urlencode imagem@file.jpg | jq .
       responses:
-        "200":
+        '200':
           description: URL on the cloud
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImagesDanfe"
-        "400":
+                $ref: '#/components/schemas/ImagesDanfe'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /images/danfe/{root_cnpj}/{company}:
+                $ref: '#/components/schemas/Erro'
+  '/images/danfe/{root_cnpj}/{company}':
     post:
       tags:
         - Images
@@ -405,18 +352,18 @@ paths:
           source: |
             curl -s -X POST https://rnge.com.br:8091/v2/images/danfe/5563868/1596 --user ${user_id}:${token} --data-urlencode imagem@file.jpg | jq .
       responses:
-        "200":
+        '200':
           description: URL on the cloud
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImagesDanfeCo"
-        "400":
+                $ref: '#/components/schemas/ImagesDanfeCo'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /orders:
     get:
       tags:
@@ -437,53 +384,52 @@ paths:
             items:
               type: integer
       responses:
-        "200":
+        '200':
           description: Array of orders
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pedidos"
-        "400":
+                $ref: '#/components/schemas/Pedidos'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/orders" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/orders?filter={"id_empresa":3475,"cnpj_emit":4754268000170}' --user ${user_id}:${token} | jq .
-
     post:
       tags:
         - Orders
       summary: New order
-      description: Creates a new order returning the order's ID
+      description: "Creates a new order returning the order's ID"
       requestBody:
         description: Order to be created
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovoPedido"
+              $ref: '#/components/schemas/NovoPedido'
       responses:
-        "200":
+        '200':
           description: Created order
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pedidos"
-        "400":
+                $ref: '#/components/schemas/Pedidos'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/orders --user ${user_id}:${token} -d payload.json | jq .
-  /orders/{numped}:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders --user ${user_id}:${token} -d payload.json | jq .'
+  '/orders/{numped}':
     put:
       tags:
         - Orders
@@ -502,20 +448,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovoPedido"
+              $ref: '#/components/schemas/NovoPedido'
       responses:
-        "200":
+        '200':
           description: Order modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pedidos"
-        "400":
+                $ref: '#/components/schemas/Pedidos'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     get:
       tags:
         - Orders
@@ -529,22 +475,22 @@ paths:
           required: true
           description: Order number
       responses:
-        "200":
+        '200':
           description: Order data
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pedidos"
-        "400":
+                $ref: '#/components/schemas/Pedidos'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/orders/277519 --user ${user_id}:${token} | jq .
-  /orders/{numped}/cancel:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders/277519 --user ${user_id}:${token} | jq .'
+  '/orders/{numped}/cancel':
     post:
       tags:
         - Orders
@@ -558,22 +504,22 @@ paths:
           required: true
           description: Order number
       responses:
-        "200":
+        '200':
           description: Canceled order
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PedidoCancelado"
-        "400":
+                $ref: '#/components/schemas/PedidoCancelado'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/orders/284231/cancel --user ${user_id}:${token} | jq .
-  /orders/{numped}/items:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders/284231/cancel --user ${user_id}:${token} | jq .'
+  '/orders/{numped}/items':
     post:
       tags:
         - Orders
@@ -592,29 +538,29 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/OrderItems"
+              $ref: '#/components/schemas/OrderItems'
       responses:
-        "200":
+        '200':
           description: Inserted product
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/orders/123456/items --user ${user_id}:${token} -d payload.json | jq .
-  /orders/{numped}/status:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders/123456/items --user ${user_id}:${token} -d payload.json | jq .'
+  '/orders/{numped}/status':
     post:
       tags:
         - Orders
       summary: Order status
-      description: Will change the order's status (demands order number)
+      description: "Will change the order's status (demands order number)"
       parameters:
         - in: path
           name: numped
@@ -628,23 +574,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/OrderStatus"
+              $ref: '#/components/schemas/OrderStatus'
       responses:
-        "200":
-          description: Order's status changed
+        '200':
+          description: "Order's status changed"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/orders/123456/status --user ${user_id}:${token} -d payload.json | jq .
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders/123456/status --user ${user_id}:${token} -d payload.json | jq .'
     get:
       tags:
         - Orders
@@ -662,24 +608,24 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/orders/179925/status" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Possible status list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrderStatusGet"
-        "400":
+                $ref: '#/components/schemas/OrderStatusGet'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /orders/{numped}/sync:
+                $ref: '#/components/schemas/Erro'
+  '/orders/{numped}/sync':
     put:
       tags:
         - Orders
       summary: Order sync
-      description: Order's update (demands order number)
+      description: "Order's update (demands order number)"
       parameters:
         - in: path
           name: numped
@@ -692,19 +638,19 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/orders/179925/sync" --user ${user_id}:${token} | jq .
       responses:
-        "200":
-          description: Flag 'atualizarerp' is false
+        '200':
+          description: "Flag 'atualizarerp' is false"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /orders/{numped}/verify:
+                $ref: '#/components/schemas/Erro'
+  '/orders/{numped}/verify':
     get:
       tags:
         - Orders
@@ -722,18 +668,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/orders/179925/verify" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Information about an order
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrderStatusVerify"
-        "400":
+                $ref: '#/components/schemas/OrderStatusVerify'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /batches:
     post:
       tags:
@@ -741,24 +687,24 @@ paths:
       summary: Batches
       description: Generate batche invoices
       requestBody:
-        $ref: "#/components/requestBodies/BatchesPost"
+        $ref: '#/components/requestBodies/BatchesPost'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/batches" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Receipt number
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BatchesPostResult"
-        "400":
+                $ref: '#/components/schemas/BatchesPostResult'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /companies:
     get:
       tags:
@@ -784,47 +730,47 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/companies" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/companies?filter={"id_empresa":3476}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Company information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Companies"
-        "400":
+                $ref: '#/components/schemas/Companies'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Companies
       summary: New company
-      description: Creates a new company returning the company's ID
+      description: "Creates a new company returning the company's ID"
       requestBody:
         description: Company to be created
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovaEmpresa"
+              $ref: '#/components/schemas/NovaEmpresa'
       responses:
-        "200":
+        '200':
           description: Created company
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Empresa"
-        "400":
+                $ref: '#/components/schemas/Empresa'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/companies --user ${user_id}:${token} -d payload.json | jq .
-  /companies/{idempresa}:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/companies --user ${user_id}:${token} -d payload.json | jq .'
+  '/companies/{idempresa}':
     put:
       tags:
         - Companies
@@ -843,23 +789,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovaEmpresa"
+              $ref: '#/components/schemas/NovaEmpresa'
       responses:
-        "200":
+        '200':
           description: Updated company
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Empresa"
-        "400":
+                $ref: '#/components/schemas/Empresa'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X PUT https://rnge.com.br:8091/v2/companies/176542 --user ${user_id}:${token} -d payload.json | jq .
+          source: 'curl -s -X PUT https://rnge.com.br:8091/v2/companies/176542 --user ${user_id}:${token} -d payload.json | jq .'
     get:
       tags:
         - Companies
@@ -873,21 +819,21 @@ paths:
           required: true
           description: Company ID
       responses:
-        "200":
+        '200':
           description: Company information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CompanyInfo"
-        "400":
+                $ref: '#/components/schemas/CompanyInfo'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X GET https://rnge.com.br:8091/v2/companies/176542 --user ${user_id}:${token} | jq .
+          source: 'curl -s -X GET https://rnge.com.br:8091/v2/companies/176542 --user ${user_id}:${token} | jq .'
   /certificates:
     get:
       tags:
@@ -913,19 +859,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/certificates" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/certificates?filter={"raiz_cnpj":47542680}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Certificate information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Certificates"
-        "400":
+                $ref: '#/components/schemas/Certificates'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /certificates/{raiz_cnpj}:
+                $ref: '#/components/schemas/Erro'
+  '/certificates/{raiz_cnpj}':
     get:
       tags:
         - Certificates
@@ -943,18 +889,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/certificates/47542680" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Certificate information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Certificate"
-        "400":
+                $ref: '#/components/schemas/Certificate'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /contacttypes:
     get:
       tags:
@@ -980,19 +926,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/contacttypes" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/contacttypes?filter={"descricao_tipo":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Contact type information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contacttypes"
-        "400":
+                $ref: '#/components/schemas/Contacttypes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /contacttypes/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/contacttypes/{id}':
     get:
       tags:
         - Contact types
@@ -1010,18 +956,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/contacttypes/1234" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Contact type information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contacttype"
-        "400":
+                $ref: '#/components/schemas/Contacttype'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /slips:
     get:
       tags:
@@ -1047,18 +993,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/slips" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/slips?filter={"chnfe":"43170102505657000136550010011145821111011012","datafim":"2020-01-20","dataini":"2019-12-20","cnpj_emit":4754268000170,"id_empresa":0,"id_pessoa":0,"nome_razao":"test","pdv":0,"numero":0,"total_vnf":0.00,"formas_pagto":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Slip information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Slips"
-        "400":
+                $ref: '#/components/schemas/Slips'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Slips
@@ -1070,52 +1016,52 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovoCupom"
+              $ref: '#/components/schemas/NovoCupom'
       responses:
-        "200":
+        '200':
           description: Recorded slip
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/slips --user ${user_id}:${token} -d payload.json | jq .
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/slips --user ${user_id}:${token} -d payload.json | jq .'
   /slips/reasons:
     post:
       tags:
         - Slips
       summary: Slip update
-      description: Insert extra data in slip's items
+      description: "Insert extra data in slip's items"
       requestBody:
         description: Extra data to be inserted
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NovoItem"
+              $ref: '#/components/schemas/NovoItem'
       responses:
-        "200":
+        '200':
           description: Inserted extra data
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/slips/reasons --user ${user_id}:${token} -d payload.json | jq .
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/slips/reasons --user ${user_id}:${token} -d payload.json | jq .'
   /recharges:
     get:
       tags:
@@ -1127,18 +1073,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/recharges" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Recharges information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Recharges"
-        "400":
+                $ref: '#/components/schemas/Recharges'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customers:
     get:
       tags:
@@ -1164,18 +1110,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/customers" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/customers?filter={"id":3545,"nome":"test","inativos":true,"ids":[0,1,2],"q":"st"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customers"
-        "400":
+                $ref: '#/components/schemas/Customers'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Customers
@@ -1187,24 +1133,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Customer"
+              $ref: '#/components/schemas/Customer'
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/customers --user ${user_id}:${token} -d payload.json | jq .
-  /customers/{id}:
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/customers --user ${user_id}:${token} -d payload.json | jq .'
+  '/customers/{id}':
     get:
       tags:
         - Customers
@@ -1222,18 +1168,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/customers/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customer"
-        "400":
+                $ref: '#/components/schemas/Customer'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Customers
@@ -1252,23 +1198,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Customer"
+              $ref: '#/components/schemas/Customer'
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
       x-code-samples:
         - lang: bash
-          source: curl -s -X POST https://rnge.com.br:8091/v2/customers/123 --user ${user_id}:${token} -d payload.json | jq .
+          source: 'curl -s -X POST https://rnge.com.br:8091/v2/customers/123 --user ${user_id}:${token} -d payload.json | jq .'
     delete:
       tags:
         - Customers
@@ -1286,48 +1232,48 @@ paths:
           source: |
             curl -s -X DELETE "https://rnge.com.br:8091/v2/customers/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customer"
-        "400":
+                $ref: '#/components/schemas/Customer'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customers/import:
     post:
       tags:
         - Customers Import
       summary: Customers import
-      description: Import's customers to the system
+      description: "Import's customers to the system"
       requestBody:
         description: Customer to be imported
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerImport"
+              $ref: '#/components/schemas/CustomerImport'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/customers/import" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customerphones:
     get:
       tags:
@@ -1353,18 +1299,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/customerphones" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/customerphones?filter={"id":1,"id_pessoa":123,"inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Purchase information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerPhones"
-        "400":
+                $ref: '#/components/schemas/CustomerPhones'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customertransactions:
     get:
       tags:
@@ -1390,18 +1336,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/customertransactions" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/customertransactions?filter={"id_pessoa":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer transactions information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerTransactions"
-        "400":
+                $ref: '#/components/schemas/CustomerTransactions'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customeremails:
     get:
       tags:
@@ -1427,18 +1373,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/customeremails" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/customeremails?filter={"id":123,"eh_pessoal":true,"eh_favorito":false,"recebe_danfe":true}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer e-mails information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerEmails"
-        "400":
+                $ref: '#/components/schemas/CustomerEmails'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Customer Emails
@@ -1450,25 +1396,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerEmail"
+              $ref: '#/components/schemas/CustomerEmail'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/customeremails" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /customeremails/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/customeremails/{id}':
     get:
       tags:
         - Customer Emails
@@ -1486,18 +1432,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/customeremails/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer e-mail information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerEmail"
-        "400":
+                $ref: '#/components/schemas/CustomerEmail'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /addresses:
     get:
       tags:
@@ -1523,48 +1469,48 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/addresses" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/addresses?filter={"id":123,"id_pessoa":456,"inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Addresses information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Addresses"
-        "400":
+                $ref: '#/components/schemas/Addresses'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Addresses
       summary: New address
-      description: Creates a new address returning the address's ID
+      description: "Creates a new address returning the address's ID"
       requestBody:
         description: Address to be created
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Address"
+              $ref: '#/components/schemas/Address'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/addresses" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Address ID
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ID"
-        "400":
+                $ref: '#/components/schemas/ID'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /addresses/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/addresses/{id}':
     get:
       tags:
         - Addresses
@@ -1582,18 +1528,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/addresses/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Address information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Address"
-        "400":
+                $ref: '#/components/schemas/Address'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Addresses
@@ -1605,24 +1551,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Address"
+              $ref: '#/components/schemas/Address'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/addresses/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Address ID
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ID"
-        "400":
+                $ref: '#/components/schemas/ID'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     delete:
       tags:
         - Addresses
@@ -1640,18 +1586,18 @@ paths:
           source: |
             curl -s -X DELETE "https://rnge.com.br:8091/v2/addresses/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Address ID
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ID"
-        "400":
+                $ref: '#/components/schemas/ID'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /addresstypes:
     get:
       tags:
@@ -1671,19 +1617,19 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/addresstypes" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Address types
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AddressTypes"
-        "400":
+                $ref: '#/components/schemas/AddressTypes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /addresstypes/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/addresstypes/{id}':
     get:
       tags:
         - Address Types
@@ -1701,18 +1647,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/addresstypes/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Address type info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AddressType"
-        "400":
+                $ref: '#/components/schemas/AddressType'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /phonetypes:
     get:
       tags:
@@ -1732,18 +1678,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/phonetypes" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Phone types
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PhoneTypes"
-        "400":
+                $ref: '#/components/schemas/PhoneTypes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /purchases:
     get:
       tags:
@@ -1769,40 +1715,40 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/purchases" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/purchases?filter={"id_pessoa":12345,"serie":123,"nunmero":4567,"cod_sku":45,"nome_fornec":"teste","dataini":"2020-01-01","datafim":"2020-01-05"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Purchase information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Purchases"
-        "400":
+                $ref: '#/components/schemas/Purchases'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Purchases
       summary: Insert purchase
-      description: Insert invoice's files on the system
+      description: "Insert invoice's files on the system"
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/purchases" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /purchaseitems:
     get:
       tags:
@@ -1828,18 +1774,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/purchaseitems" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/purchaseitems?filter={"id_compra":12345}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Purchase items information
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PurchaseItems"
-        "400":
+                $ref: '#/components/schemas/PurchaseItems'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Purchase Items
@@ -1851,25 +1797,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PurchaseItem"
+              $ref: '#/components/schemas/PurchaseItem'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/purchaseitems" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created purchase item
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PurchaseItem"
-        "400":
+                $ref: '#/components/schemas/PurchaseItem'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /purchaseitems/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/purchaseitems/{id}':
     get:
       tags:
         - Purchase Items
@@ -1887,18 +1833,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/purchaseitems/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Purchase item info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PurchaseItem"
-        "400":
+                $ref: '#/components/schemas/PurchaseItem'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Purchase Items
@@ -1917,24 +1863,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PurchaseItem"
+              $ref: '#/components/schemas/PurchaseItem'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/purchaseitems/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Purchase item modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PurchaseItem"
-        "400":
+                $ref: '#/components/schemas/PurchaseItem'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /carriers:
     get:
       tags:
@@ -1960,18 +1906,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/carriers" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/carriers?filter={"nome_entregador":"teste","inativos":false,"id_empresa":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Carriers list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Carriers"
-        "400":
+                $ref: '#/components/schemas/Carriers'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Carriers
@@ -1983,25 +1929,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Carrier"
+              $ref: '#/components/schemas/Carrier'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/carriers" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created carrier
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Carrier"
-        "400":
+                $ref: '#/components/schemas/Carrier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /carriers/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/carriers/{id}':
     get:
       tags:
         - Carriers
@@ -2019,18 +1965,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/carriers/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Carrier info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Carrier"
-        "400":
+                $ref: '#/components/schemas/Carrier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Carriers
@@ -2049,24 +1995,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Carrier"
+              $ref: '#/components/schemas/Carrier'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/carriers/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Modified carrier
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Carrier"
-        "400":
+                $ref: '#/components/schemas/Carrier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /invoices:
     post:
       tags:
@@ -2078,19 +2024,19 @@ paths:
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/invoices" --user ${user_id}:${token} --data-urlencode xml@invoice.xml | jq .
       responses:
-        "200":
+        '200':
           description: Array of orders numbers
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Invoices"
-        "400":
+                $ref: '#/components/schemas/Invoices'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /invoices/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/invoices/{id}':
     put:
       tags:
         - Invoices
@@ -2102,25 +2048,25 @@ paths:
           schema:
             type: integer
           required: true
-          description: Eletronic invoice's access key (chnfe)
+          description: "Eletronic invoice's access key (chnfe)"
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/invoices/43200105563868000113550200000117011814560946" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /invoices/{id}/events:
+                $ref: '#/components/schemas/Erro'
+  '/invoices/{id}/events':
     post:
       tags:
         - Invoices
@@ -2134,7 +2080,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: Eletronic invoice's access key (chnfe)
+          description: "Eletronic invoice's access key (chnfe)"
       x-code-samples:
         - lang: Bash
           source: |
@@ -2145,51 +2091,51 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GeraEvento"
+              $ref: '#/components/schemas/GeraEvento'
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /invoices/{id}/emails:
+                $ref: '#/components/schemas/Erro'
+  '/invoices/{id}/emails':
     post:
       tags:
         - Invoices
       summary: Sends e-mail
-      description: Sends invoice XML and 'Danfe' (eletronic invoice auxiliary document) PDF by e-mail
+      description: "Sends invoice XML and 'Danfe' (eletronic invoice auxiliary document) PDF by e-mail"
       parameters:
         - in: path
           name: id
           schema:
             type: integer
           required: true
-          description: Eletronic invoice's access key (chnfe)
+          description: "Eletronic invoice's access key (chnfe)"
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/invoices/43180405563868000113657010000015301325665758/emails" --user ${user_id}:${token} | jq .
             curl -s -X POST "https://rnge.com.br:8091/v2/invoices/43180405563868000113657010000015301325665758/emails?para=johndoe@gmail.com" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /emailtemplates:
     get:
       tags:
@@ -2201,18 +2147,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/emailtemplates" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Array of email templates
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EmailTemplates"
-        "400":
+                $ref: '#/components/schemas/EmailTemplates'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Email Templates
@@ -2224,25 +2170,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PostEmailTemplate"
+              $ref: '#/components/schemas/PostEmailTemplate'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/emailtemplates" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Email template created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EmailTemplate"
-        "400":
+                $ref: '#/components/schemas/EmailTemplate'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /emailtemplates/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/emailtemplates/{id}':
     put:
       tags:
         - Email Templates
@@ -2261,24 +2207,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PostEmailTemplate"
+              $ref: '#/components/schemas/PostEmailTemplate'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/emailtemplates/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Email template modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EmailTemplate"
-        "400":
+                $ref: '#/components/schemas/EmailTemplate'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /catalogs:
     get:
       tags:
@@ -2304,18 +2250,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/catalogs" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/catalogs?filter={"inativos":true}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Array of catalogs
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Catalogs"
-        "400":
+                $ref: '#/components/schemas/Catalogs'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Catalogs
@@ -2327,25 +2273,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Catalog"
+              $ref: '#/components/schemas/Catalog'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/catalogs" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Catalog created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Catalog"
-        "400":
+                $ref: '#/components/schemas/Catalog'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /catalogs/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/catalogs/{id}':
     get:
       tags:
         - Catalogs
@@ -2363,18 +2309,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/catalogs/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Catalog info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Catalog"
-        "400":
+                $ref: '#/components/schemas/Catalog'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Catalogs
@@ -2393,24 +2339,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Catalog"
+              $ref: '#/components/schemas/Catalog'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/catalogs/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Catalog modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Catalog"
-        "400":
+                $ref: '#/components/schemas/Catalog'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     delete:
       tags:
         - Catalogs
@@ -2428,24 +2374,24 @@ paths:
           source: |
             curl -s -X DELETE "https://rnge.com.br:8091/v2/catalogs/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Catalog deleted
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Catalog"
-        "400":
+                $ref: '#/components/schemas/Catalog'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /catalogs/{id}/categories:
+                $ref: '#/components/schemas/Erro'
+  '/catalogs/{id}/categories':
     get:
       tags:
         - Catalogs
-      summary: Catalog's categories list
-      description: Returns a list of catalog's categories
+      summary: "Catalog's categories list"
+      description: "Returns a list of catalog's categories"
       parameters:
         - in: path
           name: id
@@ -2458,18 +2404,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/catalogs/123/categories" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Catalog categories list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogCategories"
-        "400":
+                $ref: '#/components/schemas/CatalogCategories'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /categories:
     get:
       tags:
@@ -2495,19 +2441,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/categories" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/categories?filter={"catalog_id":123,"parent_id":546,"q":"test","vinculavel":true,"ids":[789,1011]}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Categories list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Categories"
-        "400":
+                $ref: '#/components/schemas/Categories'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /categories/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/categories/{id}':
     get:
       tags:
         - Categories
@@ -2525,18 +2471,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/categories/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Category info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogCategory"
-        "400":
+                $ref: '#/components/schemas/CatalogCategory'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /categorylinks:
     get:
       tags:
@@ -2562,18 +2508,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/categorylinks" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/categorylinks?filter={"catalog_id":123,"breadcrumb":"test","q":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Category links list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogLinks"
-        "400":
+                $ref: '#/components/schemas/CatalogLinks'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Category Links
@@ -2585,25 +2531,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PostCategoryLink"
+              $ref: '#/components/schemas/PostCategoryLink'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/categorylinks" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Category link created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PostCategoryLink"
-        "400":
+                $ref: '#/components/schemas/PostCategoryLink'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /categorylinks/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/categorylinks/{id}':
     get:
       tags:
         - Category Links
@@ -2621,18 +2567,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/categorylinks/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Category links info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CatalogLink"
-        "400":
+                $ref: '#/components/schemas/CatalogLink'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Category Links
@@ -2651,24 +2597,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PostCategoryLink"
+              $ref: '#/components/schemas/PostCategoryLink'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/categorylinks/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Category link modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PostCategoryLink"
-        "400":
+                $ref: '#/components/schemas/PostCategoryLink'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /contracts:
     get:
       tags:
@@ -2694,19 +2640,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/contracts" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/contracts?filter={"id_pessoa":123,"inativos":true}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Contracts list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contracts"
-        "400":
+                $ref: '#/components/schemas/Contracts'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /contracts/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/contracts/{id}':
     get:
       tags:
         - Contracts
@@ -2724,18 +2670,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/contracts/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Contract info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contract"
-        "400":
+                $ref: '#/components/schemas/Contract'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Contracts
@@ -2754,24 +2700,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Contract"
+              $ref: '#/components/schemas/Contract'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/contracts/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Contract modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Contract"
-        "400":
+                $ref: '#/components/schemas/Contract'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /paymenttypes:
     get:
       tags:
@@ -2797,18 +2743,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/paymenttypes" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/paymenttypes?filter={"inativos":true}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Payment types list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentTypes"
-        "400":
+                $ref: '#/components/schemas/PaymentTypes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /suppliers:
     get:
       tags:
@@ -2834,19 +2780,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/suppliers" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/suppliers?filter={"inativos":true,"nome_fornec":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Suppliers list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Suppliers"
-        "400":
+                $ref: '#/components/schemas/Suppliers'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /suppliers/{id:}:
+                $ref: '#/components/schemas/Erro'
+  '/suppliers/{id:}':
     get:
       tags:
         - Suppliers
@@ -2864,18 +2810,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/suppliers/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Supplier info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Supplier"
-        "400":
+                $ref: '#/components/schemas/Supplier'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /tasks:
     get:
       tags:
@@ -2901,18 +2847,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/tasks" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/tasks?filter={"coluna":1,"user_id":234,"task_id":567}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Tasks list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Tasks"
-        "400":
+                $ref: '#/components/schemas/Tasks'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skus:
     get:
       tags:
@@ -2938,19 +2884,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skus" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skus?filter={"codigo":123,"id_categ":456,"inativos":false,"ncm_vencido":true,"q":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Skus list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Skus"
-        "400":
+                $ref: '#/components/schemas/Skus'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /skus/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/skus/{id}':
     get:
       tags:
         - Skus
@@ -2968,18 +2914,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/skus/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Sku"
-        "400":
+                $ref: '#/components/schemas/Sku'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skuarticles:
     get:
       tags:
@@ -3005,18 +2951,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skuarticles" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skuarticles?filter={"sku_id":123,"codigo_descricao":"test","fornecedor":"abc","marca":"def","id_categ":456,"nivel":789,"categoria":"test","fora_venda":false,"embalagens":false,"referencia":"ghi","ncm":"jkl"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku articles list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkuArticles"
-        "400":
+                $ref: '#/components/schemas/SkuArticles'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skustocks:
     get:
       tags:
@@ -3042,18 +2988,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skustocks" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skustocks?filter={"cod_sku":123,"sku_id":456,"todos":true,"id_predio":789}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku stocks list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkuStocks"
-        "400":
+                $ref: '#/components/schemas/SkuStocks'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skutrends:
     get:
       tags:
@@ -3079,18 +3025,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skustrends" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skustrends?filter={"sku_id":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku trends list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkusTrends"
-        "400":
+                $ref: '#/components/schemas/SkusTrends'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skucurves:
     get:
       tags:
@@ -3116,18 +3062,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skucurves" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skucurves?filter={"cod_sku":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku curvves list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkuCurves"
-        "400":
+                $ref: '#/components/schemas/SkuCurves'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skucmms:
     get:
       tags:
@@ -3153,18 +3099,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skucmms" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skucmms?filter={"sku_id":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku cmms list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkuCmms"
-        "400":
+                $ref: '#/components/schemas/SkuCmms'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /incompleteopenings:
     get:
       tags:
@@ -3176,19 +3122,19 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/incompleteopenings" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Incomplete openings list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/IncompleteOpenings"
-        "400":
+                $ref: '#/components/schemas/IncompleteOpenings'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /incompleteopenings/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/incompleteopenings/{id}':
     get:
       tags:
         - Incomplete Openings
@@ -3206,18 +3152,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/incompleteopenings/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Incomplete openings info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/IncompleteOpening"
-        "400":
+                $ref: '#/components/schemas/IncompleteOpening'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /reasons:
     get:
       tags:
@@ -3243,19 +3189,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/reasons" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/reasons?filter={"tipo":123,"inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Reason created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reasons"
-        "400":
+                $ref: '#/components/schemas/Reasons'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Reasons
@@ -3267,25 +3212,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Reason"
+              $ref: '#/components/schemas/Reason'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/reasons" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Reason created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reason"
-        "400":
+                $ref: '#/components/schemas/Reason'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /reasons/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/reasons/{id}':
     get:
       tags:
         - Reasons
@@ -3303,18 +3248,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/reasons/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Reason info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reason"
-        "400":
+                $ref: '#/components/schemas/Reason'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Reasons
@@ -3333,24 +3278,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Reason"
+              $ref: '#/components/schemas/Reason'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/reasons/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Reason modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reason"
-        "400":
+                $ref: '#/components/schemas/Reason'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /parameters:
     get:
       tags:
@@ -3376,19 +3321,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/parameters" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/parameters?filter={"escopo":"test","tipo_config":"test","nome_param":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Parameter list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Parameters"
-        "400":
+                $ref: '#/components/schemas/Parameters'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /parameters/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/parameters/{id}':
     get:
       tags:
         - Parameters
@@ -3406,18 +3351,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/parameter/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Reason created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Parameter"
-        "400":
+                $ref: '#/components/schemas/Parameter'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Parameters
@@ -3436,24 +3381,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Parameter"
+              $ref: '#/components/schemas/Parameter'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/parameters/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Success message
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OK"
-        "400":
+                $ref: '#/components/schemas/OK'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /barcodes:
     get:
       tags:
@@ -3479,19 +3424,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/barcodes" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/barcodes?filter={"cod_produto":123,"cod_sku":456}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Barcodes list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Barcodes"
-        "400":
+                $ref: '#/components/schemas/Barcodes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /barcodes/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/barcodes/{id}':
     get:
       tags:
         - Barcodes
@@ -3509,18 +3454,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/barcodes/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Barcodes list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Barcode"
-        "400":
+                $ref: '#/components/schemas/Barcode'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /issuers:
     get:
       tags:
@@ -3532,18 +3477,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/issuers" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Issuers list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Issuers"
-        "400":
+                $ref: '#/components/schemas/Issuers'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Issuers
@@ -3555,25 +3500,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Issuer"
+              $ref: '#/components/schemas/Issuer'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/issuers" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created issuer
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Issuer"
-        "400":
+                $ref: '#/components/schemas/Issuer'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /issuers/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/issuers/{id}':
     get:
       tags:
         - Issuers
@@ -3591,18 +3536,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/issuers/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Issuer info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Issuer"
-        "400":
+                $ref: '#/components/schemas/Issuer'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Issuers
@@ -3621,24 +3566,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Issuer"
+              $ref: '#/components/schemas/Issuer'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/issuers/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Modified issuer
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Issuer"
-        "400":
+                $ref: '#/components/schemas/Issuer'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /installmentplans:
     get:
       tags:
@@ -3650,18 +3595,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/installmentplans" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Installment plans list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InstallmentPlans"
-        "400":
+                $ref: '#/components/schemas/InstallmentPlans'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Installment Plans
@@ -3673,25 +3618,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/InstallmentPlan"
+              $ref: '#/components/schemas/InstallmentPlan'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/installmentplans" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created installment plan
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InstallmentPlan"
-        "400":
+                $ref: '#/components/schemas/InstallmentPlan'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /installmentplans/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/installmentplans/{id}':
     get:
       tags:
         - Installment Plans
@@ -3709,18 +3654,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/installmentplans/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Installment plan info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InstallmentPlan"
-        "400":
+                $ref: '#/components/schemas/InstallmentPlan'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Installment Plans
@@ -3739,24 +3684,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/InstallmentPlan"
+              $ref: '#/components/schemas/InstallmentPlan'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/installmentplans/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Installment plan modified
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InstallmentPlan"
-        "400":
+                $ref: '#/components/schemas/InstallmentPlan'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /planpaymentmethods:
     get:
       tags:
@@ -3782,18 +3727,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/planpaymentmethods" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/planpaymentmethods?filter={"id_plano":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Payment plan methods list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentPlanMethods"
-        "400":
+                $ref: '#/components/schemas/PaymentPlanMethods'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Payment Plan Methods
@@ -3805,25 +3750,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PaymentPlanMethod"
+              $ref: '#/components/schemas/PaymentPlanMethod'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/planpaymentmethods" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created payment plan method
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentPlanMethod"
-        "400":
+                $ref: '#/components/schemas/PaymentPlanMethod'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /planpaymentmethods/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/planpaymentmethods/{id}':
     get:
       tags:
         - Payment Plan Methods
@@ -3841,18 +3786,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/planpaymentmethods/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Payment plan method info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentPlanMethod"
-        "400":
+                $ref: '#/components/schemas/PaymentPlanMethod'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Payment Plan Methods
@@ -3871,24 +3816,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PaymentPlanMethod"
+              $ref: '#/components/schemas/PaymentPlanMethod'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/planpaymentmethods/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created payment plan method
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PaymentPlanMethod"
-        "400":
+                $ref: '#/components/schemas/PaymentPlanMethod'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /logs:
     get:
       tags:
@@ -3914,19 +3859,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/logs" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/logs?filter={"user_id":123,"nome_usuario":"test","status_erro":false,"data_chamada":"2020-01-01"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: API logs list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Logs"
-        "400":
+                $ref: '#/components/schemas/Logs'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /logs/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/logs/{id}':
     get:
       tags:
         - Logs
@@ -3944,18 +3889,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/logs/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Log info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Log"
-        "400":
+                $ref: '#/components/schemas/Log'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /helppages:
     get:
       tags:
@@ -3981,18 +3926,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/helppages" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/helppages?filter={"url_tela":"test"}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Help pages list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/HelpPages"
-        "400":
+                $ref: '#/components/schemas/HelpPages'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /bankaccounts:
     get:
       tags:
@@ -4018,18 +3963,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/bankaccounts" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/bankaccounts?filter={"cpf_cnpj":123,"id_pessoa":456}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Bank accounts list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BankAccounts"
-        "400":
+                $ref: '#/components/schemas/BankAccounts'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Bank Accounts
@@ -4041,25 +3986,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BankAccount"
+              $ref: '#/components/schemas/BankAccount'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/bankaccounts" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created bank account
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BankAccount"
-        "400":
+                $ref: '#/components/schemas/BankAccount'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /bankaccounts/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/bankaccounts/{id}':
     get:
       tags:
         - Bank Accounts
@@ -4077,18 +4022,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/bankaccounts/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Bank account info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BankAccount"
-        "400":
+                $ref: '#/components/schemas/BankAccount'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Bank Accounts
@@ -4107,24 +4052,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BankAccount"
+              $ref: '#/components/schemas/BankAccount'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/bankaccounts/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Updated bank account
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BankAccount"
-        "400":
+                $ref: '#/components/schemas/BankAccount'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /customercontacts:
     get:
       tags:
@@ -4150,18 +4095,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/customercontacts" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/customercontacts?filter={"id_pessoa":123,"inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer contacts list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerContacts"
-        "400":
+                $ref: '#/components/schemas/CustomerContacts'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Customer Contacts
@@ -4173,25 +4118,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerContact"
+              $ref: '#/components/schemas/CustomerContact'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/customercontacts" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created customer contact
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerContact"
-        "400":
+                $ref: '#/components/schemas/CustomerContact'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /customercontacts/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/customercontacts/{id}':
     get:
       tags:
         - Customer Contacts
@@ -4209,18 +4154,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/customercontacts/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Customer contact info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerContact"
-        "400":
+                $ref: '#/components/schemas/CustomerContact'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Customer Contacts
@@ -4239,24 +4184,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CustomerContact"
+              $ref: '#/components/schemas/CustomerContact'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/customercontacts/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Updated customer contact
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CustomerContact"
-        "400":
+                $ref: '#/components/schemas/CustomerContact'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /userauths:
     get:
       tags:
@@ -4282,18 +4227,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/userauths" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/userauths?filter={"user_id":123,"id_empresa":456}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: User auths list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserAuths"
-        "400":
+                $ref: '#/components/schemas/UserAuths'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /useremails:
     get:
       tags:
@@ -4319,19 +4264,19 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/useremails" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/useremails?filter={"desvinculados":true,"inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: User emails list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserEmails"
-        "400":
+                $ref: '#/components/schemas/UserEmails'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /useremails/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/useremails/{id}':
     delete:
       tags:
         - User Emails
@@ -4373,18 +4318,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/dashboards" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/dashboards?filter={"tipo":"test","inativos":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: User emails list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Dashboards"
-        "400":
+                $ref: '#/components/schemas/Dashboards'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Dashboards
@@ -4396,25 +4341,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Dashboard"
+              $ref: '#/components/schemas/Dashboard'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/dashboards" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created dashboard
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Dashboard"
-        "400":
+                $ref: '#/components/schemas/Dashboard'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /dashboards/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/dashboards/{id}':
     get:
       tags:
         - Dashboards
@@ -4432,18 +4377,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/dashboards/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Dashboard info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Dashboard"
-        "400":
+                $ref: '#/components/schemas/Dashboard'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Dashboards
@@ -4462,24 +4407,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Dashboard"
+              $ref: '#/components/schemas/Dashboard'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/dashboards/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Updated dashboard
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Dashboard"
-        "400":
+                $ref: '#/components/schemas/Dashboard'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /cashbalances:
     get:
       tags:
@@ -4505,18 +4450,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/cashbalances" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/cashbalances?filter={"data_abertura":"2000-01-01","id_empresa":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Cash balances list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CashBalances"
-        "400":
+                $ref: '#/components/schemas/CashBalances'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /scmconfigs:
     get:
       tags:
@@ -4542,18 +4487,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/scmconfigs" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/scmconfigs?filter={"todas":true}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: SCM configs list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ScmConfigs"
-        "400":
+                $ref: '#/components/schemas/ScmConfigs'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /skustocksummaries:
     get:
       tags:
@@ -4579,18 +4524,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/skustocksummaries" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/skustocksummaries?filter={"cod_sku":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Sku stock summaries list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SkuStockSummaries"
-        "400":
+                $ref: '#/components/schemas/SkuStockSummaries'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /imports:
     get:
       tags:
@@ -4616,18 +4561,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/imports" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/imports?filter={"inativas":false}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Imports list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Imports"
-        "400":
+                $ref: '#/components/schemas/Imports'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Imports
@@ -4639,24 +4584,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Import"
+              $ref: '#/components/schemas/Import'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/imports" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created import
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Import"
-        "400":
+                $ref: '#/components/schemas/Import'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /importfees:
     get:
       tags:
@@ -4682,18 +4627,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/importfees" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/importfees?filter={"import_id":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Import fees list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportFees"
-        "400":
+                $ref: '#/components/schemas/ImportFees'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /importadditions:
     get:
       tags:
@@ -4719,18 +4664,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/importadditions" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/importadditions?filter={"import_id":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Import additions list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAdditions"
-        "400":
+                $ref: '#/components/schemas/ImportAdditions'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     post:
       tags:
         - Import Additions
@@ -4742,25 +4687,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ImportAddition"
+              $ref: '#/components/schemas/ImportAddition'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X POST "https://rnge.com.br:8091/v2/importadditions" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Created import addition
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAddition"
-        "400":
+                $ref: '#/components/schemas/ImportAddition'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
-  /importadditions/{id}:
+                $ref: '#/components/schemas/Erro'
+  '/importadditions/{id}':
     get:
       tags:
         - Import Additions
@@ -4778,18 +4723,18 @@ paths:
           source: |
             curl -s -X GET "https://rnge.com.br:8091/v2/importadditions/123" --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Import addition info
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAddition"
-        "400":
+                $ref: '#/components/schemas/ImportAddition'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     put:
       tags:
         - Import Additions
@@ -4808,24 +4753,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ImportAddition"
+              $ref: '#/components/schemas/ImportAddition'
       x-code-samples:
         - lang: Bash
           source: |
             curl -s -X PUT "https://rnge.com.br:8091/v2/importadditions/123" --user ${user_id}:${token} -d payload.json | jq .
       responses:
-        "200":
+        '200':
           description: Updated import addition
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAddition"
-        "400":
+                $ref: '#/components/schemas/ImportAddition'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
     delete:
       tags:
         - Import Additions
@@ -4842,18 +4787,18 @@ paths:
           source: |
             curl -s -X DELETE https://rnge.com.br:8091/v2/importadditions/123 --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Import addition deleted
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAddition"
-        "400":
+                $ref: '#/components/schemas/ImportAddition'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
   /importadditiontaxes:
     get:
       tags:
@@ -4879,18 +4824,18 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/importadditiontaxes" --user ${user_id}:${token} | jq .
             curl -g -s -X GET 'https://rnge.com.br:8091/v2/importadditiontaxes?filter={"addition_id":123}' --user ${user_id}:${token} | jq .
       responses:
-        "200":
+        '200':
           description: Import addition taxes list
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ImportAdditionTaxes"
-        "400":
+                $ref: '#/components/schemas/ImportAdditionTaxes'
+        '400':
           description: Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Erro"
+                $ref: '#/components/schemas/Erro'
 components:
   schemas:
     ImportAdditionTaxe:
@@ -4907,27 +4852,27 @@ components:
           description: Taxe
         aliquota:
           type: float
-          example: 0.00
+          example: 0
           description: Aliquot
         valor:
           type: float
-          example: 0.00
+          example: 0
           description: Value
         base_calculo:
           type: float
-          example: 0.00
+          example: 0
           description: Calc base
     ImportAdditionTaxes:
       type: array
       items:
-        $ref: "#/components/schemas/ImportAdditionTaxe"
+        $ref: '#/components/schemas/ImportAdditionTaxe'
     InfoAdicao:
       type: object
       properties:
         BCICMS:
           type: float
-          example: 0.00
-          description:
+          example: 0
+          description: null
     ImportAddition:
       type: object
       properties:
@@ -4942,33 +4887,33 @@ components:
           description: Addition number
         ncm:
           type: string
-          description:
+          description: null
         moeda:
           type: string
           description: Currency
         vtotal_moeda:
           type: float
-          example: 0.00
+          example: 0
           description: Currency total value
         vaduaneiro:
           type: float
-          example: 0.00
+          example: 0
           description: Customs value
         vdesp_adu:
           type: float
-          example: 0.00
-          description:
+          example: 0
+          description: null
         peso_total:
           type: float
-          example: 0.00
+          example: 0
           description: Total weight
         info_adicao:
-          type:
-          $ref: "#/components/schemas/InfoAdicao"
+          type: null
+          $ref: '#/components/schemas/InfoAdicao'
     ImportAdditions:
       type: array
       items:
-        $ref: "#/components/schemas/ImportAddition"
+        $ref: '#/components/schemas/ImportAddition'
     ImportFee:
       type: object
       properties:
@@ -4989,16 +4934,16 @@ components:
           description: Currency
         vmoeda:
           type: float
-          example: 0.00
+          example: 0
           description: Currency value
         valor:
           type: float
-          example: 0.00
+          example: 0
           description: Value
     ImportFees:
       type: array
       items:
-        $ref: "#/components/schemas/ImportFee"
+        $ref: '#/components/schemas/ImportFee'
     ImpCambio:
       type: object
       properties:
@@ -5010,7 +4955,7 @@ components:
           description: Currency name
         taxa:
           type: float
-          example: 0.00
+          example: 0
           description: Fee
         data_taxa:
           type: string
@@ -5020,22 +4965,22 @@ components:
       properties:
         aliq_pis:
           type: float
-          example: 0.00
-          description:
+          example: 0
+          description: null
         aliq_cofins:
           type: float
-          example: 0.00
-          description:
+          example: 0
+          description: null
         observacoes:
           type: string
           description: Observation
         volumes:
           type: float
-          example: 0.00
+          example: 0
           description: Volumes
         peso_bruto:
-          type:type: float
-          example: 0.00
+          'type:type': float
+          example: 0
           description: Gross weight
     ConsPedidoEnder:
       type: object
@@ -5072,7 +5017,7 @@ components:
           description: Company ID on Internal Revenue Service (in Brazil is SEFAZ)
         cpf:
           type: string
-          description: Brazil's version of a Social Security Number
+          description: "Brazil's version of a Social Security Number"
         nome_razao:
           type: string
           description: Person name or company name
@@ -5096,23 +5041,23 @@ components:
           description: Email
         danfe:
           type: string
-          description:
+          description: null
         ind_iedest:
           type: integer
-          description:
+          description: null
         cnae:
           type: integer
-          description:
+          description: null
         ender_sede:
           type: string
           description: Headquarters address
         endereco:
           type: object
-          $ref: "#/components/schemas/ConsPedidoEnder"
+          $ref: '#/components/schemas/ConsPedidoEnder'
         pjuridica:
           type: bool
           example: true
-          description: If true this 'person' is a company
+          description: "If true this 'person' is a company"
     Import:
       type: object
       properties:
@@ -5124,10 +5069,10 @@ components:
           description: Company ID
         pemit:
           type: integer
-          description:
+          description: null
         data_desemb:
           type: string
-          description:
+          description: null
         cmun:
           type: integer
           description: Citie code
@@ -5136,13 +5081,13 @@ components:
           description: Order number
         pdest:
           type: integer
-          description:
+          description: null
         id_pessoa:
           type: integer
           description: Person ID
         cexportador:
           type: string
-          description:
+          description: null
         num_documento:
           type: string
           description: Document number
@@ -5151,38 +5096,38 @@ components:
           description: Document date
         outras_info:
           type: object
-          $ref: "#/components/schemas/ImpOutrasInfo"
+          $ref: '#/components/schemas/ImpOutrasInfo'
         via_transp:
           type: integer
-          description:
+          description: null
         tp_inter:
           type: integer
-          description:
+          description: null
         emit:
           type: object
-          $ref: "#/components/schemas/ConsPedidoPessoa"
+          $ref: '#/components/schemas/ConsPedidoPessoa'
         dest:
           type: object
-          $ref: "#/components/schemas/ConsPedidoPessoa"
+          $ref: '#/components/schemas/ConsPedidoPessoa'
         taxa_cambio:
           type: array
           items:
-            $ref: "#/components/schemas/ImpCambio"
+            $ref: '#/components/schemas/ImpCambio'
         vtotal:
           type: float
-          example: 0.00
+          example: 0
           description: Total value
         num_nf:
           type: integer
           description: Invoice number
         valor_nf:
           type: float
-          example: 0.00
+          example: 0
           description: Invoice value
     Imports:
       type: array
       items:
-        $ref: "#/components/schemas/Import"
+        $ref: '#/components/schemas/Import'
     SkuStockSummarie:
       type: object
       properties:
@@ -5203,14 +5148,14 @@ components:
           description: Hoard quantity
         cmm_predio:
           type: float
-          description:
+          description: null
         efet_temp:
           type: float
-          description:
+          description: null
     SkuStockSummaries:
       type: array
       items:
-        $ref: "#/components/schemas/SkuStockSummarie"
+        $ref: '#/components/schemas/SkuStockSummarie'
     Calendario:
       type: object
       properties:
@@ -5228,7 +5173,7 @@ components:
           description: Shirinked name
         proj:
           type: bool
-          description:
+          description: null
         loja:
           type: bool
           description: Shop
@@ -5238,11 +5183,11 @@ components:
         calendario:
           type: array
           items:
-            $ref: "#/components/schemas/Calendario"
+            $ref: '#/components/schemas/Calendario'
     ScmConfigs:
       type: array
       items:
-        $ref: "#/components/schemas/ScmConfig"
+        $ref: '#/components/schemas/ScmConfig'
     CashBalance:
       type: object
       properties:
@@ -5266,7 +5211,7 @@ components:
           description: Operator
         dinheiro:
           type: float
-          example: 0.00
+          example: 0
           description: Money
         fechada:
           type: bool
@@ -5295,7 +5240,7 @@ components:
     CashBalances:
       type: array
       items:
-        $ref: "#/components/schemas/CashBalance"
+        $ref: '#/components/schemas/CashBalance'
     ConfigQuadro:
       type: object
       properties:
@@ -5329,7 +5274,7 @@ components:
         grupos:
           type: array
           items:
-            $ref: "#/components/schemas/GrupoAcesso"
+            $ref: '#/components/schemas/GrupoAcesso'
         graficos:
           type: integer
           description: Graphics
@@ -5353,7 +5298,7 @@ components:
           description: Red above
         config_quadro:
           type: object
-          $ref: "#/components/schemas/ConfigQuadro"
+          $ref: '#/components/schemas/ConfigQuadro'
         ativo:
           type: bool
           example: true
@@ -5361,7 +5306,7 @@ components:
     Dashboards:
       type: array
       items:
-        $ref: "#/components/schemas/Dashboard"
+        $ref: '#/components/schemas/Dashboard'
     UserEmail:
       type: object
       properties:
@@ -5394,13 +5339,13 @@ components:
     UserEmails:
       type: array
       items:
-        $ref: "#/components/schemas/UserEmail"
+        $ref: '#/components/schemas/UserEmail'
     GrupoAcesso:
       type: object
       properties:
         id:
           type: integer
-          description:
+          description: null
         nome:
           type: string
           description: Name
@@ -5412,18 +5357,18 @@ components:
           description: User ID
         id:
           type: integer
-          description:
+          description: null
         nome_reduzido:
           type: string
           description: Shirinked name
         grupos:
           type: array
           items:
-            $ref: "#/components/schemas/GrupoAcesso"
+            $ref: '#/components/schemas/GrupoAcesso'
     UserAuths:
       type: array
       items:
-        $ref: "#/components/schemas/UserAuth"
+        $ref: '#/components/schemas/UserAuth'
     Relacionamento:
       type: object
       properties:
@@ -5479,21 +5424,21 @@ components:
           description: Observations
         relacionamento:
           type: object
-          $ref: "#/components/schemas/Relacionamento"
+          $ref: '#/components/schemas/Relacionamento'
         telefones:
           type: array
           items:
-            $ref: "#/components/schemas/Telefone"
+            $ref: '#/components/schemas/Telefone'
         email:
           type: string
           description: E-mail
         cpf_cnpj:
           type: integer
-          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
+          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
     CustomerContacts:
       type: array
       items:
-        $ref: "#/components/schemas/CustomerContact"
+        $ref: '#/components/schemas/CustomerContact'
     BankAccount:
       type: object
       properties:
@@ -5505,10 +5450,10 @@ components:
           description: Person ID
         cpf_cnpj:
           type: integer
-          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
+          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
         ccomp:
           type: integer
-          description:
+          description: null
         nome_banco:
           type: string
           description: Bank name
@@ -5527,7 +5472,7 @@ components:
     BankAccounts:
       type: array
       items:
-        $ref: "#/components/schemas/BankAccount"
+        $ref: '#/components/schemas/BankAccount'
     HelpPage:
       type: object
       properties:
@@ -5548,17 +5493,17 @@ components:
           description: Help URL
         texto_ajuda:
           type: string
-          description:
+          description: null
         config_ajuda:
           type: string
-          description:
+          description: null
         data_hora:
           type: string
-          description:
+          description: null
     HelpPages:
       type: array
       items:
-        $ref: "#/components/schemas/HelpPage"
+        $ref: '#/components/schemas/HelpPage'
     Log:
       type: object
       properties:
@@ -5601,7 +5546,7 @@ components:
     Logs:
       type: array
       items:
-        $ref: "#/components/schemas/Log"
+        $ref: '#/components/schemas/Log'
     PaymentPlanMethod:
       type: object
       properties:
@@ -5628,12 +5573,12 @@ components:
           description: Maximum installment
         parcela_min:
           type: float
-          example: 0.00
+          example: 0
           description: Minimal installment value
     PaymentPlanMethods:
       type: array
       items:
-        $ref: "#/components/schemas/PaymentPlanMethod"
+        $ref: '#/components/schemas/PaymentPlanMethod'
     InstallmentPlan:
       type: object
       properties:
@@ -5642,10 +5587,10 @@ components:
           description: Installment plan ID
         ordp:
           type: integer
-          description:
+          description: null
         id_plu:
           type: integer
-          description:
+          description: null
         nome_plano:
           type: string
           description: Plan name
@@ -5662,7 +5607,7 @@ components:
     InstallmentPlans:
       type: array
       items:
-        $ref: "#/components/schemas/InstallmentPlan"
+        $ref: '#/components/schemas/InstallmentPlan'
     Issuer:
       type: object
       properties:
@@ -5683,11 +5628,11 @@ components:
           description: Enviroment type
         versao_nfe:
           type: float
-          example: 0.0
+          example: 0
           description: Eletronic invoice version
         crt:
           type: integer
-          description:
+          description: null
         nome_regime:
           type: string
           description: Regime name
@@ -5697,7 +5642,7 @@ components:
     Issuers:
       type: array
       items:
-        $ref: "#/components/schemas/Issuer"
+        $ref: '#/components/schemas/Issuer'
     Barcode:
       type: object
       properties:
@@ -5719,7 +5664,7 @@ components:
     Barcodes:
       type: array
       items:
-        $ref: "#/components/schemas/Barcode"
+        $ref: '#/components/schemas/Barcode'
     Parameter:
       type: object
       properties:
@@ -5753,7 +5698,7 @@ components:
     Parameters:
       type: array
       items:
-        $ref: "#/components/schemas/Parameter"
+        $ref: '#/components/schemas/Parameter'
     Reason:
       type: object
       properties:
@@ -5782,13 +5727,13 @@ components:
     Reasons:
       type: array
       items:
-        $ref: "#/components/schemas/Reason"
+        $ref: '#/components/schemas/Reason'
     Auditoria:
       type: object
       properties:
         resp:
           type: string
-          description:
+          description: null
         falta_xml:
           type: array
           items:
@@ -5826,11 +5771,11 @@ components:
           description: Final slip
         auditoria:
           type: object
-          $ref: "#/components/schemas/Auditoria"
+          $ref: '#/components/schemas/Auditoria'
     IncompleteOpenings:
       type: array
       items:
-        $ref: "#/components/schemas/IncompleteOpening"
+        $ref: '#/components/schemas/IncompleteOpening'
     SkuCmm:
       type: object
       properties:
@@ -5845,28 +5790,28 @@ components:
           description: Stock days
         quant_mes:
           type: float
-          example: 0.00
+          example: 0
           description: Month quantity
         ticket_mes:
           type: float
-          example: 0.00
+          example: 0
           description: Mean price per month
         valor_mes:
           type: float
-          example: 0.00
+          example: 0
           description: Month value
         qtd_natural:
           type: float
-          example: 0.00
+          example: 0
           description: Natural quantity
         sazo_efet:
           type: float
-          example: 0.00
+          example: 0
           description: Seasonal efect
     SkuCmms:
       type: array
       items:
-        $ref: "#/components/schemas/SkuCmm"
+        $ref: '#/components/schemas/SkuCmm'
     SkuCurve:
       type: object
       properties:
@@ -5882,56 +5827,56 @@ components:
     SkuCurves:
       type: array
       items:
-        $ref: "#/components/schemas/SkuCurve"
+        $ref: '#/components/schemas/SkuCurve'
     SkuTrend:
       type: object
       properties:
+        '1':
+          type: string
+          description: January
+        '2':
+          type: string
+          description: Febreary
+        '3':
+          type: string
+          description: March
+        '4':
+          type: string
+          description: April
+        '5':
+          type: string
+          description: May
+        '6':
+          type: string
+          description: June
+        '7':
+          type: string
+          description: July
+        '8':
+          type: string
+          description: August
+        '9':
+          type: string
+          description: Setember
+        '10':
+          type: string
+          description: October
+        '11':
+          type: string
+          description: November
+        '12':
+          type: string
+          description: December
         id:
           type: integer
           description: Sku trends ID
         sigla:
           type: string
           description: abbreviation
-        1:
-          type: string
-          description: January
-        2:
-          type: string
-          description: Febreary
-        3:
-          type: string
-          description: March
-        4:
-          type: string
-          description: April
-        5:
-          type: string
-          description: May
-        6:
-          type: string
-          description: June
-        7:
-          type: string
-          description: July
-        8:
-          type: string
-          description: August
-        9:
-          type: string
-          description: Setember
-        10:
-          type: string
-          description: October
-        11:
-          type: string
-          description: November
-        12:
-          type: string
-          description: December
     SkusTrends:
       type: array
       items:
-        $ref: "#/components/schemas/SkuTrend"
+        $ref: '#/components/schemas/SkuTrend'
     SkuStock:
       type: object
       properties:
@@ -5952,7 +5897,7 @@ components:
           description: Letters
         quantidade:
           type: float
-          example: 0.00
+          example: 0
           description: Quantity
         capacidade:
           type: integer
@@ -5960,13 +5905,13 @@ components:
     SkuStocks:
       type: array
       items:
-        $ref: "#/components/schemas/SkuStock"
+        $ref: '#/components/schemas/SkuStock'
     SkuArticleBarcode:
       type: object
       properties:
         gtin:
           type: integer
-          description:
+          description: null
     SkuArticle:
       type: object
       properties:
@@ -5984,19 +5929,19 @@ components:
           description: Product description
         mult_sku:
           type: float
-          example: 0.00
+          example: 0
           description: SKU multiplier
         sku_id:
           type: integer
           description: Sku ID
         preco_venda:
           type: float
-          example: 0.00
+          example: 0
           description: Sale price
         barcodes:
           type: array
           items:
-            $ref: "#/components/schemas/SkuArticleBarcode"
+            $ref: '#/components/schemas/SkuArticleBarcode'
         ativo:
           type: bool
           example: true
@@ -6007,7 +5952,7 @@ components:
     SkuArticles:
       type: array
       items:
-        $ref: "#/components/schemas/SkuArticle"
+        $ref: '#/components/schemas/SkuArticle'
     Sku:
       type: object
       properties:
@@ -6022,22 +5967,22 @@ components:
           description: Product description
         variacao:
           type: string
-          description:
+          description: null
         referencia:
           type: string
-          description:
+          description: null
         marca:
           type: string
           description: Brand
         id_grade:
           type: integer
-          description:
+          description: null
         id_categ:
           type: integer
           description: Category ID
         caminho:
           type: string
-          description:
+          description: null
         ativo:
           type: bool
           example: true
@@ -6048,7 +5993,7 @@ components:
     Skus:
       type: array
       items:
-        $ref: "#/components/schemas/Sku"
+        $ref: '#/components/schemas/Sku'
     Task:
       type: object
       properties:
@@ -6100,7 +6045,7 @@ components:
     Tasks:
       type: array
       items:
-        $ref: "#/components/schemas/Task"
+        $ref: '#/components/schemas/Task'
     Supplier:
       type: object
       properties:
@@ -6123,7 +6068,7 @@ components:
     Suppliers:
       type: array
       items:
-        $ref: "#/components/schemas/Supplier"
+        $ref: '#/components/schemas/Supplier'
     PaymentTypeOptions:
       type: object
       properties:
@@ -6157,11 +6102,11 @@ components:
           description: If true this will be payed automatically
         outras_opcoes:
           type: object
-          $ref: "#/components/schemas/PaymentTypeOptions"
+          $ref: '#/components/schemas/PaymentTypeOptions'
     PaymentTypes:
       type: array
       items:
-        $ref: "#/components/schemas/PaymentType"
+        $ref: '#/components/schemas/PaymentType'
     Contract:
       type: object
       properties:
@@ -6199,7 +6144,7 @@ components:
     Contracts:
       type: array
       items:
-        $ref: "#/components/schemas/Contract"
+        $ref: '#/components/schemas/Contract'
     PostCategoryLink:
       type: object
       properties:
@@ -6213,7 +6158,7 @@ components:
             type: integer
         chips:
           type: object
-          $ref: "#/components/schemas/Link"
+          $ref: '#/components/schemas/Link'
     Link:
       type: object
       properties:
@@ -6249,15 +6194,15 @@ components:
           description: Breadcrumb
         chips:
           type: object
-          $ref: "#/components/schemas/Link"
+          $ref: '#/components/schemas/Link'
     CatalogLinks:
       type: array
       items:
-        $ref: "#/components/schemas/CatalogLink"
+        $ref: '#/components/schemas/CatalogLink'
     Categories:
       type: array
       items:
-        $ref: "#/components/schemas/CatalogCategory"
+        $ref: '#/components/schemas/CatalogCategory'
     CatalogCategory:
       type: object
       properties:
@@ -6283,7 +6228,7 @@ components:
     CatalogCategories:
       type: array
       items:
-        $ref: "#/components/schemas/CatalogCategory"
+        $ref: '#/components/schemas/CatalogCategory'
     Catalog:
       type: object
       properties:
@@ -6292,7 +6237,7 @@ components:
           description: Catalog ID
         nome_catalogo:
           type: string
-          description: Catalog's name
+          description: "Catalog's name"
         padrao:
           type: bool
           example: true
@@ -6308,7 +6253,7 @@ components:
     Catalogs:
       type: array
       items:
-        $ref: "#/components/schemas/Catalog"
+        $ref: '#/components/schemas/Catalog'
     PostEmailTemplate:
       type: object
       properties:
@@ -6318,16 +6263,16 @@ components:
         template:
           type: string
           example: danfe
-          description: Template's type
+          description: "Template's type"
         id_empresa:
           type: integer
           description: Company ID
         corpo:
           type: string
-          description: HTML e-mail's body
+          description: "HTML e-mail's body"
         config_template:
           type: object
-          $ref: "#/components/schemas/ConfigTemplate"
+          $ref: '#/components/schemas/ConfigTemplate'
     ConfigTemplate:
       type: object
       properties:
@@ -6359,17 +6304,17 @@ components:
           description: Shop abbreviation
         config_template:
           type: object
-          $ref: "#/components/schemas/ConfigTemplate"
+          $ref: '#/components/schemas/ConfigTemplate'
     EmailTemplates:
       type: array
       items:
-        $ref: "#/components/schemas/EmailTemplate"
+        $ref: '#/components/schemas/EmailTemplate'
     GeraEvento:
       type: object
       properties:
         chnfe:
           type: string
-          description: Eletronic invoice's access key
+          description: "Eletronic invoice's access key"
         tp_evento:
           type: integer
           description: Event type
@@ -6406,7 +6351,7 @@ components:
         pedidos:
           type: array
           items:
-            $ref: "#/components/schemas/ExtraOrder"
+            $ref: '#/components/schemas/ExtraOrder'
     CarrierCompany:
       type: object
       properties:
@@ -6430,22 +6375,22 @@ components:
           description: Person ID
         cpf_cnpj:
           type: integer
-          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
+          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
         nome_razao:
           type: string
           description: Person name or company name
         ativo:
           type: bool
-          example: True
+          example: true
           description: If true this carrier is active on the system
         empresas:
           type: array
           items:
-            $ref: "#/components/schemas/CarrierCompany"
+            $ref: '#/components/schemas/CarrierCompany'
     Carriers:
       type: array
       items:
-        $ref: "#/components/schemas/Carrier"
+        $ref: '#/components/schemas/Carrier'
     Desdobramento:
       type: object
       properties:
@@ -6454,7 +6399,7 @@ components:
           description: Sequence
         qtd:
           type: float
-          example: 0.00
+          example: 0
           description: Quantity
         cod_produto:
           type: integer
@@ -6479,11 +6424,11 @@ components:
           description: Product description on eletronic invoice (NF-e)
         qcom:
           type: float
-          example: 0.00
+          example: 0
           description: Trade quantity on eletronic invoice (NF-e)
         vuncom:
           type: float
-          example: 0.00
+          example: 0
           description: Trade unit value on eletronic invoice (NF-e)
         codigo_sku:
           type: integer
@@ -6496,11 +6441,11 @@ components:
           description: Product description on eletronic invoice (NF-e)
         quant_sku:
           type: float
-          example: 0.00
+          example: 0
           description: Stock Keeping Unit quantity
         vunit_sku:
           type: float
-          example: 0.00
+          example: 0
           description: Stock Keeping Unit value
         limpar:
           type: bool
@@ -6511,17 +6456,17 @@ components:
           description: Quantity
         desdobramento:
           type: array
-          $ref: "#/components/schemas/Desdobramento"
+          $ref: '#/components/schemas/Desdobramento'
     PurchaseItems:
       type: array
       items:
-        $ref: "#/components/schemas/PurchaseItem"
+        $ref: '#/components/schemas/PurchaseItem'
     PhoneType:
       type: object
       properties:
         id:
           type: string
-          description: Phone's type
+          description: "Phone's type"
         legado:
           type: bool
           example: true
@@ -6529,7 +6474,7 @@ components:
     PhoneTypes:
       type: array
       items:
-        $ref: "#/components/schemas/PhoneType"
+        $ref: '#/components/schemas/PhoneType'
     AddressType:
       type: object
       properties:
@@ -6546,7 +6491,7 @@ components:
     AddressTypes:
       type: array
       items:
-        $ref: "#/components/schemas/AddressType"
+        $ref: '#/components/schemas/AddressType'
     AddExtraInfo:
       type: object
       properties:
@@ -6631,11 +6576,11 @@ components:
         info_extra:
           type: object
           description: Aditional information
-          $ref: "#/components/schemas/AddExtraInfo"
+          $ref: '#/components/schemas/AddExtraInfo'
     Addresses:
       type: array
       items:
-        $ref: "#/components/schemas/Address"
+        $ref: '#/components/schemas/Address'
     CustomerEmail:
       type: object
       properties:
@@ -6664,7 +6609,7 @@ components:
     CustomerEmails:
       type: array
       items:
-        $ref: "#/components/schemas/CustomerEmail"
+        $ref: '#/components/schemas/CustomerEmail'
     CustomerPhone:
       type: object
       properties:
@@ -6697,7 +6642,7 @@ components:
     CustomerPhones:
       type: array
       items:
-        $ref: "#/components/schemas/CustomerPhone"
+        $ref: '#/components/schemas/CustomerPhone'
     CustomerTransaction:
       type: object
       properties:
@@ -6715,14 +6660,14 @@ components:
           description: Document type
         total_vnf:
           type: float
-          example: 0.0
-          description: Invoice's total value
+          example: 0
+          description: "Invoice's total value"
         numero:
           type: integer
-          description: Invoice's number
+          description: "Invoice's number"
         serie:
           type: integer
-          description: Invoice's serial
+          description: "Invoice's serial"
         lista_cfop:
           type: array
           items:
@@ -6731,13 +6676,13 @@ components:
     CustomerTransactions:
       type: array
       items:
-        $ref: "#/components/schemas/CustomerTransaction"
+        $ref: '#/components/schemas/CustomerTransaction'
     CustomerImport:
       type: object
       properties:
         cpf_cnpj:
           type: string
-          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
+          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
         nome_razao:
           type: string
           description: Person name or company name
@@ -6786,7 +6731,7 @@ components:
     CustomersImport:
       type: array
       items:
-        $ref: "#/components/schemas/CustomerImport"
+        $ref: '#/components/schemas/CustomerImport'
     Customer:
       type: object
       properties:
@@ -6798,7 +6743,7 @@ components:
           description: Customer ID on a previous system version
         cpf_cnpj:
           type: integer
-          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
+          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
         nome_razao:
           type: string
           description: Person name or company name
@@ -6807,7 +6752,7 @@ components:
           description: Company ID on Internal Revenue Service (in Brazil is SEFAZ)
         cpf:
           type: string
-          description: Brazil's version of a Social Security Number
+          description: "Brazil's version of a Social Security Number"
         nome_fantasia:
           type: string
           description: Trading name
@@ -6858,7 +6803,7 @@ components:
     Customers:
       type: array
       items:
-        $ref: "#/components/schemas/Customer"
+        $ref: '#/components/schemas/Customer'
     Recharge:
       type: object
       properties:
@@ -6902,7 +6847,7 @@ components:
     Recharges:
       type: array
       items:
-        $ref: "#/components/schemas/Recharge"
+        $ref: '#/components/schemas/Recharge'
     Slip:
       type: object
       properties:
@@ -6916,11 +6861,11 @@ components:
           description: Issuer company ID on Internal Revenue Service (in Brazil is SEFAZ)
         data_emissao:
           type: string
-          example: "2020-01-11"
+          example: '2020-01-11'
           description: Issue date
         data_hora:
           type: string
-          example: "2020-01-11 12:01:10"
+          example: '2020-01-11 12:01:10'
           description: Date and time
         tipo:
           type: string
@@ -6930,7 +6875,7 @@ components:
           description: POS number
         numero:
           type: integer
-          description: Slip's number
+          description: "Slip's number"
         id_pessoa:
           type: integer
           description: Person ID
@@ -6942,8 +6887,8 @@ components:
           description: Company ID on Internal Revenue Service (in Brazil is SEFAZ)
         total_Vnf:
           type: float
-          example: 0.00
-          description: Invoice's total value
+          example: 0
+          description: "Invoice's total value"
         qr_code:
           type: string
           description: Quick Response code
@@ -6966,7 +6911,7 @@ components:
     Slips:
       type: array
       items:
-        $ref: "#/components/schemas/Slip"
+        $ref: '#/components/schemas/Slip'
     Contacttype:
       type: object
       properties:
@@ -6977,11 +6922,11 @@ components:
         descricao_tipo:
           type: string
           example: test
-          description: Contact type's description
+          description: "Contact type's description"
     Contacttypes:
       type: array
       items:
-        $ref: "#/components/schemas/Contacttype"
+        $ref: '#/components/schemas/Contacttype'
     Purchase:
       type: object
       properties:
@@ -6996,18 +6941,18 @@ components:
         serie:
           type: integer
           example: 567
-          description: Serial's invoice
+          description: "Serial's invoice"
         numero:
           type: integer
           example: 898898
-          description: Number's invoice
+          description: "Number's invoice"
         status:
           type: integer
           example: 10
-          description: Status's purchase
+          description: "Status's purchase"
         data_emissao:
           type: string
-          example: 2017-01-11
+          example: '2017-01-11'
           description: Issue date
         nome_emitente:
           type: string
@@ -7019,8 +6964,8 @@ components:
           description: Destination shop abbreviation
         chnfe:
           type: string
-          example: "43170102505657000136550010011145821111011012"
-          description: Invoice's access key (in Brazil)
+          example: '43170102505657000136550010011145821111011012'
+          description: "Invoice's access key (in Brazil)"
         total_vnf:
           type: float
           example: 2629.56
@@ -7036,11 +6981,11 @@ components:
     Purchases:
       type: array
       items:
-        $ref: "#/components/schemas/Purchase"
+        $ref: '#/components/schemas/Purchase'
     Certificates:
       type: array
       items:
-        $ref: "#/components/schemas/Certificate"
+        $ref: '#/components/schemas/Certificate'
     Certificate:
       type: object
       properties:
@@ -7059,18 +7004,18 @@ components:
         serie_certificado:
           type: string
           example: 6FF3CDF6A7B528CB
-          description: Certificate's serial
+          description: "Certificate's serial"
         token_csc:
           type: string
           example: 220bc17f-6801-433f-9da2-b712651ada62
-          description: Certificate's token
+          description: "Certificate's token"
         token_id:
           type: integer
           example: 2
           description: Token ID
         data_validade:
           type: string
-          example: 2020-09-17
+          example: '2020-09-17'
           description: Expiration date
         nome_razao:
           type: string
@@ -7117,7 +7062,7 @@ components:
           description: State abbreviation
         url_fotos:
           type: string
-          example: http://10.10.1.10/fotos/
+          example: 'http://10.10.1.10/fotos/'
           description: Path to the copany pictures
         utiliza_pdv:
           type: bool
@@ -7130,7 +7075,7 @@ components:
     Companies:
       type: array
       items:
-        $ref: "#/components/schemas/Company"
+        $ref: '#/components/schemas/Company'
     CompanyInfo:
       type: object
       properties:
@@ -7172,7 +7117,7 @@ components:
           description: State abbreviation
         url_fotos:
           type: string
-          example: http://10.10.1.10/fotos/
+          example: 'http://10.10.1.10/fotos/'
           description: Path to the copany pictures
         utiliza_pdv:
           type: bool
@@ -7187,13 +7132,13 @@ components:
       properties:
         id:
           type: string
-          example: "432767348948"
+          example: '432767348948'
           description: Receipt number generated by Internal Revenue Service (in Brazil is SEFAZ)
     BatchePost:
       type: object
       properties:
         ids:
-          description: List of order's numbers separated by comma [ , ]
+          description: "List of order's numbers separated by comma [ , ]"
           type: array
           maxItems: 20
           items:
@@ -7218,7 +7163,7 @@ components:
           example: false
         data_emissao:
           type: string
-          example: 2019-10-12
+          example: '2019-10-12'
         incide_ipi:
           type: bool
           example: true
@@ -7246,12 +7191,12 @@ components:
       properties:
         cod_barras:
           type: integer
-          example: 0012345678905
+          example: 12345678905
           description: Number coded in bar
         cod_produto:
           type: integer
           example: 174585
-          description: Product's code
+          description: "Product's code"
         codigo_sku:
           type: integer
           example: 3452876
@@ -7297,7 +7242,7 @@ components:
         quant_pedido:
           type: integer
           example: 2
-          description: Order's quantity
+          description: "Order's quantity"
         quant_separada:
           type: integer
           example: 2
@@ -7317,7 +7262,7 @@ components:
             name: volume
             wrapped: true
           items:
-            $ref: "#/components/schemas/JSONPedidoConfVolume"
+            $ref: '#/components/schemas/JSONPedidoConfVolume'
     JSONPedTribDetalhe:
       type: object
       xml:
@@ -7484,7 +7429,7 @@ components:
         calcular:
           type: bool
           example: true
-          description: If 'true' all the above fields will be calculated by the system
+          description: "If 'true' all the above fields will be calculated by the system"
     JSONInfoAdic:
       type: object
       properties:
@@ -7510,7 +7455,7 @@ components:
             name: abc
             wrapped: true
           items:
-            $ref: "#/components/schemas/JSONPedidoConfItem"
+            $ref: '#/components/schemas/JSONPedidoConfItem'
         barcodes:
           type: array
           description: Barcodes
@@ -7518,11 +7463,11 @@ components:
             name: barcodes
             wrapped: true
           items:
-            $ref: "#/components/schemas/JSONWmsBarcodes"
+            $ref: '#/components/schemas/JSONWmsBarcodes'
         flags:
-          description: Order's flags
+          description: "Order's flags"
           allOf:
-            - $ref: "#/components/schemas/JSONPedidoFlags"
+            - $ref: '#/components/schemas/JSONPedidoFlags'
     OrderStatus:
       type: object
       properties:
@@ -7537,18 +7482,18 @@ components:
         limpar_zerados:
           type: bool
           example: true
-          description: If 'true' cleans zeroed items in the order
+          description: "If 'true' cleans zeroed items in the order"
     OrderStatusGet:
       type: object
       properties:
         rnx_order_id:
           type: integer
           example: 43567
-          description: Order's identification
+          description: "Order's identification"
         status_destino:
           type: integer
           example: 730
-          description: Next possible order's status
+          description: "Next possible order's status"
         sigla_status:
           type: string
           example: NF EXPEDIDA
@@ -7583,11 +7528,11 @@ components:
         vprod:
           type: integer
           example: 30
-          description: Item total value in the country currency (vuncom * qcom)
+          description: 'Item total value in the country currency (vuncom * qcom)'
         zerado:
           type: bool
           example: true
-          description:
+          description: null
         motivo:
           type: integer
           example: 2000
@@ -7595,11 +7540,11 @@ components:
         plu:
           type: integer
           example: 2
-          description:
+          description: null
         info_adic:
           description: Additional information
           allOf:
-            - $ref: "#/components/schemas/JSONInfoAdic"
+            - $ref: '#/components/schemas/JSONInfoAdic'
         imposto:
           type: array
           description: Tax
@@ -7607,11 +7552,11 @@ components:
             name: tax
             wrapped: true
           items:
-            $ref: "#/components/schemas/JSONPedTribDetalhe"
+            $ref: '#/components/schemas/JSONPedTribDetalhe'
         zerar_desconto:
           type: bool
           example: true
-          description: If 'true' the field 'vdesc' won't be applied
+          description: "If 'true' the field 'vdesc' won't be applied"
     CashierResp:
       type: object
       properties:
@@ -7650,7 +7595,7 @@ components:
         contagem:
           type: bool
           example: false
-          description: Inform whether POS's operator must execute bills count process
+          description: "Inform whether POS's operator must execute bills count process"
     CashierPost:
       type: object
       properties:
@@ -7710,35 +7655,35 @@ components:
       properties:
         url:
           type: string
-          example: https://storage.googleapis.com/rednaxel-fotos/produto/cdp/web.10373.jpg
+          example: 'https://storage.googleapis.com/rednaxel-fotos/produto/cdp/web.10373.jpg'
           description: Complete path of image on the cloud
     ImagesPos:
       type: object
       properties:
         url:
           type: string
-          example: https://storage.googleapis.com/rednaxel-fotos/produto/cdp/web.10373-1.jpg
+          example: 'https://storage.googleapis.com/rednaxel-fotos/produto/cdp/web.10373-1.jpg'
           description: Complete path of image on the cloud
     ImagesLogo:
       type: object
       properties:
         url:
           type: string
-          example: https://storage.googleapis.com/rednaxel-fotos/logo/cdp/web.png
+          example: 'https://storage.googleapis.com/rednaxel-fotos/logo/cdp/web.png'
           description: Complete path of image on the cloud
     ImagesDanfe:
       type: object
       properties:
         url:
           type: string
-          example: https://storage.googleapis.com/rednaxel-fotos/logo/cdp/cdp.jpg
+          example: 'https://storage.googleapis.com/rednaxel-fotos/logo/cdp/cdp.jpg'
           description: Complete path of image on the cloud
     ImagesDanfeCo:
       type: object
       properties:
         url:
           type: string
-          example: https://storage.googleapis.com/rednaxel-fotos/logo/cdp/cdp-1596.jpg
+          example: 'https://storage.googleapis.com/rednaxel-fotos/logo/cdp/cdp-1596.jpg'
           description: Complete path of image on the cloud
     Login:
       type: object
@@ -7746,11 +7691,11 @@ components:
         user_id:
           type: integer
           example: 58232
-          description: API's user ID
+          description: "API's user ID"
         token:
           type: string
           example: b56f8a50-9eb3-4d7b-ab1e-92ad37be816e
-          description: Hash of username, account and password
+          description: 'Hash of username, account and password'
     Cashier:
       type: object
       properties:
@@ -7792,7 +7737,7 @@ components:
         ultimo_login:
           type: string
           format: date-time
-          description: Last time of a user's login
+          description: "Last time of a user's login"
         id_empresa:
           type: int
           example: 35
@@ -7804,7 +7749,7 @@ components:
     Cashiers:
       type: array
       items:
-        $ref: "#/components/schemas/Cashier"
+        $ref: '#/components/schemas/Cashier'
     NovaEmpresa:
       type: object
       properties:
@@ -7862,7 +7807,7 @@ components:
       properties:
         chnfe:
           type: string
-          description: Invoice's access key
+          description: "Invoice's access key"
     NovoItem:
       type: object
       properties:
@@ -7871,7 +7816,7 @@ components:
           description: Slip number
         sequencia_item:
           type: integer
-          description: Item's sequence
+          description: "Item's sequence"
         motivo:
           type: integer
           description: Reason code
@@ -7883,7 +7828,7 @@ components:
           description: Product ID
         valor_canc:
           type: float
-          example: 0.00
+          example: 0
           description: Cancel value
         motiv_canc:
           type: integer
@@ -7899,23 +7844,23 @@ components:
       properties:
         id:
           type: integer
-          description: Order's ID
+          description: "Order's ID"
         fiscdoc:
           type: integer
-          description: Document's ID
+          description: "Document's ID"
         numero_pedido:
           type: integer
-          description: Order's number
+          description: "Order's number"
         tipo:
           type: string
-          description: Order's type
+          description: "Order's type"
         id_pessoa:
           type: integer
           description: Person ID
     Pedidos:
       type: array
       items:
-        $ref: "#/components/schemas/Pedido"
+        $ref: '#/components/schemas/Pedido'
     PedidoCancelado:
       type: object
       required:
@@ -7924,7 +7869,7 @@ components:
         message:
           type: string
           example: OK - Novo status é 599 (PD CANCELADO)
-          description: Success message!
+          description: 'Success message!'
     ID:
       type: object
       required:
@@ -7941,7 +7886,7 @@ components:
         message:
           type: string
           example: OK
-          description: Success message!
+          description: 'Success message!'
     Erro:
       type: object
       required:
@@ -7959,7 +7904,7 @@ components:
             allOf:
               - description: My Batche
                 title: BatchesPost
-              - $ref: "#/components/schemas/BatchePost"
+              - $ref: '#/components/schemas/BatchePost'
     CashiersPut:
       content:
         application/json:
@@ -7967,7 +7912,7 @@ components:
             allOf:
               - description: My POS
                 title: DevicePut
-              - $ref: "#/components/schemas/CashierPut"
+              - $ref: '#/components/schemas/CashierPut'
     CashiersPost:
       content:
         application/json:
@@ -7975,4 +7920,4 @@ components:
             allOf:
               - description: My POS
                 title: DevicePost
-              - $ref: "#/components/schemas/CashierPost"
+              - $ref: '#/components/schemas/CashierPost'
