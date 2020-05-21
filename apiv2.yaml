@@ -1448,8 +1448,8 @@ paths:
     get:
       tags:
         - Addresses
-      summary: People addresses list
-      description: Returns a list of people addresses
+      summary: Lista de endereços
+      description: Retorna a lista de endereços de uma pessoa (filtro `id_pessoa` int64) ou a lista de endereços das lojas de uma rede (filtro `cliente_retira` bool). O filtro `cliente_retira` tem prioridade sobre os demais.
       parameters:
         - name: filter
           in: query
