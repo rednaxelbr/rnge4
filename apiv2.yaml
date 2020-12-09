@@ -1534,6 +1534,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
+      security:
+        - basicAuth: []
     post:
       tags:
         - Addresses
@@ -4903,6 +4905,7 @@ paths:
 
 
 
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5046,7 +5049,7 @@ paths:
         description: teste do post
 components:
   securitySchemes:
-    basicAuth:     # <-- arbitrary name for the security scheme
+    basicAuth:
       type: http
       scheme: basic
   schemas:
