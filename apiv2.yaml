@@ -5045,6 +5045,10 @@ paths:
                 - predio
         description: teste do post
 components:
+  securitySchemes:
+    basicAuth:     # <-- arbitrary name for the security scheme
+      type: http
+      scheme: basic
   schemas:
     ImportAdditionTaxe:
       type: object
