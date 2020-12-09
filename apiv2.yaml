@@ -72,6 +72,7 @@ tags:
       This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. 
       **Warning\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All 
       images must have more than 1 Kb and less than 1 Mb.
+  - name: Distribuição
 paths:
   /login:
     post:
@@ -4891,10 +4892,14 @@ paths:
   /distributions:
     get:
       summary: Distribuição
-      tags: []
+      tags:
+        - Distribuição
       responses:
         '200':
           description: |2
+
+
+
 
 
 
@@ -5004,7 +5009,7 @@ paths:
                   tipo_distrib: string
                   gerar_pedidos: true
                   predio: 0
-      description: teste do get
+      description: 'Teste do get . '
     post:
       summary: ''
       operationId: post-distributions
