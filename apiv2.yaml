@@ -4946,6 +4946,10 @@ paths:
 
 
 
+
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5060,6 +5064,8 @@ paths:
                 gerar_pedidos:
                   type: boolean
                 predio:
+                  type: integer
+                codigo_sku:
                   type: integer
           application/xml:
             schema:
@@ -7939,6 +7945,8 @@ components:
           type: string
           example: b56f8a50-9eb3-4d7b-ab1e-92ad37be816e
           description: 'Hash of username, account and password'
+      description: ''
+      title: ''
     Cashier:
       type: object
       properties:
