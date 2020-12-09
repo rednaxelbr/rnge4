@@ -4892,7 +4892,79 @@ paths:
     get:
       summary: Distribuição
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: |2
+
+              "id": 793,
+              "datahora_geracao": "2020-12-09T15:03:46-03:00",
+              "id_predio": 1,
+              "desc_predio": "LAURO MULLER",
+              "user_id": 10334,
+              "nome_usuario": "JARDEL",
+              "conclusao": 1,
+              "lista_params": [
+                {
+                  "key": "crescimento_padrao",
+                  "value": "1.00"
+                },
+                {
+                  "key": "dias_suprimento",
+                  "value": "30"
+                },
+                {
+                  "key": "distrib_curva_minima",
+                  "value": "9"
+                },
+                {
+                  "key": "distrib_dias_faixa",
+                  "value": "5"
+                },
+                {
+                  "key": "distrib_mos_maximo",
+                  "value": "0.20"
+                },
+                {
+                  "key": "distrib_reversa_empresas",
+                  "value": "[33]"
+                },
+                {
+                  "key": "empresas",
+                  "value": "[9]"
+                },
+                {
+                  "key": "faixa_maxima_sazonal",
+                  "value": "1"
+                },
+                {
+                  "key": "indice_suprimento",
+                  "value": "20"
+                },
+                {
+                  "key": "itens_por_pedido",
+                  "value": "50"
+                },
+                {
+                  "key": "max_linhas_empresa",
+                  "value": "15000"
+                },
+                {
+                  "key": "pedido",
+                  "value": "455695"
+                },
+                {
+                  "key": "sempre_fracionar",
+                  "value": "false"
+                }
+              ],
+              "info_suprimento": {
+                "cont_skus": 1,
+                "cont_disp": 1,
+                "pedidos": 0
+              },
+              "tipo": "NORMAL",
+              "ativo": true
+            }
       operationId: get-distributions
       requestBody:
         content:
@@ -4922,6 +4994,47 @@ paths:
             examples:
               '{"ids_empresas":[3],"numero_pedido":455695,"tipo_distrib":"NORMAL","gerar_pedidos":true, "predio":3}':
                 value: {}
+              'curl -k -X GET "https://10.10.1.239:8091/v2/distributions/793" --user 10334:faf99841-c219-4e2f-a386-3f14cccd9d0b | jq ;':
+                value:
+                  ids_empresas:
+                    - {}
+                  numero_pedido: 0
+                  tipo_distrib: string
+                  gerar_pedidos: true
+                  predio: 0
+    post:
+      summary: ''
+      operationId: post-distributions
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                ids_empresas:
+                  type: array
+                  items:
+                    required: []
+                    properties: {}
+                numero_pedido:
+                  type: number
+                tipo_distrib:
+                  type: string
+                  minLength: 1
+                gerar_pedidos:
+                  type: boolean
+                predio:
+                  type: number
+              required:
+                - ids_empresas
+                - numero_pedido
+                - tipo_distrib
+                - gerar_pedidos
+                - predio
 components:
   schemas:
     ImportAdditionTaxe:
