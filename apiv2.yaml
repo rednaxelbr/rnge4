@@ -1,9 +1,9 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://rnge.com.br:8091/v2'
-    description: Produção
   - url: 'https://10.10.1.239:8091/v2'
     description: Sandbox
+  - url: 'https://rnge.com.br:8091/v2'
+    description: Produção
 info:
   description: |
     Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token 
@@ -1569,8 +1569,8 @@ paths:
     get:
       tags:
         - Pessoas
-      summary: Address info
-      description: Returns data about existing address (demands address ID)
+      summary: Dados de um endereço
+      description: Um endereço (de uma pessoa)
       parameters:
         - in: path
           name: id
@@ -4899,6 +4899,11 @@ paths:
       responses:
         '200':
           description: |2
+
+
+
+
+
 
 
 
