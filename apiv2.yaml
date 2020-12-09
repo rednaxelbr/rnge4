@@ -4989,6 +4989,9 @@ paths:
 
 
 
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5133,6 +5136,13 @@ paths:
       tags:
         - Distribuição
     parameters: []
+  /ping:
+    get:
+      summary: PING
+      tags: []
+      responses: {}
+      operationId: get-ping
+      description: Verifica se o servidor está online
 components:
   securitySchemes:
     UsuarioToken:
