@@ -5,7 +5,54 @@ servers:
   - url: 'https://10.10.1.239:8091/v2'
     description: Sandbox
 info:
-  description: "Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token \nin most resources except POST v2/login which uses username@tenant:senha. The response is almost always in JSON \nformat; some resources return other formats like XML or PDF.\n\n# DEFINITIONS\n\n**Tenant\\:** it’s the customer’s account (eg:amazon). The tenant may have one or more companies (eg:stores).\n\n**User\\:** Each user belongs to a tenant and has a globally unique user_id. The username is unique inside a tenant \n(eg:jeff@amazon is different from jeff@mystore). He or she can have login access to one or more companies.\n\n# PATTERNS\n\nAll GET must support at least the parameters \"filter\", \"sort\" and \"range\" in the following format:\n\n | Parameter  | Format | URL Query                                            | Resulting SELECT          |\n |------------|--------|------------------------------------------------------|---------------------------|\n | filter     |  JSON  | GET v2/resources?filter={\"store\":34,\"inativo\":true}  | ... WHERE store = 34      |\n | sort       |  CSV   | GET v2/resources?sort=[\"name\",\"ASC\"]                 | ... ORDER BY name, asc    |\n | range      |  CSV   | GET v2/resources?range=[0,9]                         | ... OFFSET 0 LIMIT 10     |\n\n# TOOLS\n\nThe examples in this document use the curl command-line tool. It’s available on Linux via apt-get or similar.\nWindows version\\: https://curl.haxx.se/windows/\n\nWe use the jq command line tool for JSON formatting. It’s available on Linux via apt-get or similar.\nWindows version\\: https://stedolan.github.io/jq/download/\n\n # Changes from v1\n\n | Action          | v1 request                                      | v2request                             |\n |-----------------|-------------------------------------------------|---------------------------------------|\n | Get list        | GET /pesqpedido/                                | GET v2/orders                         |\n | Get one record  | GET /consultapedido/123                         | GET v2/orders/123                     |\n | Get many        | -                                               | GET v2/orders?filter={ids:[123,456]}  |\n | Update a record | POST /pedido/ -d {“numped”:123, id_pessoa:9876} | PUT v2/orders/123 -d {id_pessoa:9876} |\n | Create a record | POST /pedido/ -d {id_pessoa:9876}               | POST v2/orders -d {id_pessoa:9876}    |\n | Delete a record | -                                               | DELETE v2/orders/123                  |\n \n\n | Other actions   | v1 request                                      | v2 request                                     |\n |-----------------|-------------------------------------------------|------------------------------------------------|\n | Cancel an order | POST /cancelapedido/123                         | POST v2/orders/123/cancel                      |\n | Change status   | POST /mudastatus/123 -d {status:510}            | POST v2/orders/123/status -d {status:510}      |\n | Create invoice  | POST /geranota/123                              | POST v2/orders/123/invoice                     |\n | Insert an item  | POST /pedidoitem/123 -d {idprod:5, qcom:1}      | POST v2/orders/123/items -d {idprod:5, qcom:1} |\n"
+  description: |
+    Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token 
+    in most resources except POST v2/login which uses username@tenant:senha. The response is almost always in JSON 
+    format; some resources return other formats like XML or PDF.
+
+    # DEFINITIONS
+
+    **Tenant\:** it’s the customer’s account (eg:amazon). The tenant may have one or more companies (eg:stores).
+
+    **User\:** Each user belongs to a tenant and has a globally unique user_id. The username is unique inside a tenant 
+    (eg:jeff@amazon is different from jeff@mystore). He or she can have login access to one or more companies.
+
+    # PATTERNS
+
+    All GET must support at least the parameters "filter", "sort" and "range" in the following format:
+
+     | Parameter  | Format | URL Query                                            | Resulting SELECT          |
+     |------------|--------|------------------------------------------------------|---------------------------|
+     | filter     |  JSON  | GET v2/resources?filter={"store":34,"inativo":true}  | ... WHERE store = 34      |
+     | sort       |  CSV   | GET v2/resources?sort=["name","ASC"]                 | ... ORDER BY name, asc    |
+     | range      |  CSV   | GET v2/resources?range=[0,9]                         | ... OFFSET 0 LIMIT 10     |
+
+    # TOOLS
+
+    The examples in this document use the curl command-line tool. It’s available on Linux via apt-get or similar.
+    Windows version\: https://curl.haxx.se/windows/
+
+    We use the jq command line tool for JSON formatting. It’s available on Linux via apt-get or similar.
+    Windows version\: https://stedolan.github.io/jq/download/
+
+     # Changes from v1
+
+     | Action          | v1 request                                      | v2request                             |
+     |-----------------|-------------------------------------------------|---------------------------------------|
+     | Get list        | GET /pesqpedido/                                | GET v2/orders                         |
+     | Get one record  | GET /consultapedido/123                         | GET v2/orders/123                     |
+     | Get many        | -                                               | GET v2/orders?filter={ids:[123,456]}  |
+     | Update a record | POST /pedido/ -d {“numped”:123, id_pessoa:9876} | PUT v2/orders/123 -d {id_pessoa:9876} |
+     | Create a record | POST /pedido/ -d {id_pessoa:9876}               | POST v2/orders -d {id_pessoa:9876}    |
+     | Delete a record | -                                               | DELETE v2/orders/123                  |
+     
+
+     | Other actions   | v1 request                                      | v2 request                                     |
+     |-----------------|-------------------------------------------------|------------------------------------------------|
+     | Cancel an order | POST /cancelapedido/123                         | POST v2/orders/123/cancel                      |
+     | Change status   | POST /mudastatus/123 -d {status:510}            | POST v2/orders/123/status -d {status:510}      |
+     | Create invoice  | POST /geranota/123                              | POST v2/orders/123/invoice                     |
+     | Insert an item  | POST /pedidoitem/123 -d {idprod:5, qcom:1}      | POST v2/orders/123/items -d {idprod:5, qcom:1} |
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
@@ -21,7 +68,10 @@ tags:
     description: |
       This is the first step in order to use API.
   - name: Images
-    description: "This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. \n**Warning\\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All \nimages must have more than 1 Kb and less than 1 Mb.\n"
+    description: |
+      This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. 
+      **Warning\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All 
+      images must have more than 1 Kb and less than 1 Mb.
 paths:
   /login:
     post:
@@ -57,7 +107,9 @@ paths:
             curl -s -X POST https://rnge.com.br:8091/v2/login --user ${user}@${tenant}:${password} | jq .
       responses:
         '200':
-          description: "The credencials for the API. The third party app must save the fields `user_id` and `token` in order to use in all calls. \nIn this  documentation this fields will be quoted as ID:token for now on.\n"
+          description: |
+            The credencials for the API. The third party app must save the fields `user_id` and `token` in order to use in all calls. 
+            In this  documentation this fields will be quoted as ID:token for now on.
           content:
             application/json:
               schema:
@@ -118,7 +170,7 @@ paths:
         $ref: '#/components/requestBodies/CashiersPost'
       responses:
         '200':
-          description: 'Success!'
+          description: Success!
           content:
             application/json:
               schema:
@@ -170,7 +222,7 @@ paths:
         $ref: '#/components/requestBodies/CashiersPut'
       responses:
         '200':
-          description: 'Success!'
+          description: Success!
           content:
             application/json:
               schema:
@@ -405,7 +457,7 @@ paths:
       tags:
         - Orders
       summary: New order
-      description: "Creates a new order returning the order's ID"
+      description: Creates a new order returning the order's ID
       requestBody:
         description: Order to be created
         required: true
@@ -560,7 +612,7 @@ paths:
       tags:
         - Orders
       summary: Order status
-      description: "Will change the order's status (demands order number)"
+      description: Will change the order's status (demands order number)
       parameters:
         - in: path
           name: numped
@@ -577,7 +629,7 @@ paths:
               $ref: '#/components/schemas/OrderStatus'
       responses:
         '200':
-          description: "Order's status changed"
+          description: Order's status changed
           content:
             application/json:
               schema:
@@ -625,7 +677,7 @@ paths:
       tags:
         - Orders
       summary: Order sync
-      description: "Order's update (demands order number)"
+      description: Order's update (demands order number)
       parameters:
         - in: path
           name: numped
@@ -639,7 +691,7 @@ paths:
             curl -s -X GET "https://rnge.com.br:8091/v2/orders/179925/sync" --user ${user_id}:${token} | jq .
       responses:
         '200':
-          description: "Flag 'atualizarerp' is false"
+          description: Flag 'atualizarerp' is false
           content:
             application/json:
               schema:
@@ -746,7 +798,7 @@ paths:
       tags:
         - Companies
       summary: New company
-      description: "Creates a new company returning the company's ID"
+      description: Creates a new company returning the company's ID
       requestBody:
         description: Company to be created
         required: true
@@ -1038,7 +1090,7 @@ paths:
       tags:
         - Slips
       summary: Slip update
-      description: "Insert extra data in slip's items"
+      description: Insert extra data in slip's items
       requestBody:
         description: Extra data to be inserted
         required: true
@@ -1249,7 +1301,7 @@ paths:
       tags:
         - Customers Import
       summary: Customers import
-      description: "Import's customers to the system"
+      description: Import's customers to the system
       requestBody:
         description: Customer to be imported
         required: true
@@ -1485,7 +1537,7 @@ paths:
       tags:
         - Addresses
       summary: New address
-      description: "Creates a new address returning the address's ID"
+      description: Creates a new address returning the address's ID
       requestBody:
         description: Address to be created
         required: true
@@ -1731,7 +1783,7 @@ paths:
       tags:
         - Purchases
       summary: Insert purchase
-      description: "Insert invoice's files on the system"
+      description: Insert invoice's files on the system
       x-code-samples:
         - lang: Bash
           source: |
@@ -2048,7 +2100,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: "Eletronic invoice's access key (chnfe)"
+          description: Eletronic invoice's access key (chnfe)
       x-code-samples:
         - lang: Bash
           source: |
@@ -2080,7 +2132,7 @@ paths:
           schema:
             type: integer
           required: true
-          description: "Eletronic invoice's access key (chnfe)"
+          description: Eletronic invoice's access key (chnfe)
       x-code-samples:
         - lang: Bash
           source: |
@@ -2110,14 +2162,14 @@ paths:
       tags:
         - Invoices
       summary: Sends e-mail
-      description: "Sends invoice XML and 'Danfe' (eletronic invoice auxiliary document) PDF by e-mail"
+      description: Sends invoice XML and 'Danfe' (eletronic invoice auxiliary document) PDF by e-mail
       parameters:
         - in: path
           name: id
           schema:
             type: integer
           required: true
-          description: "Eletronic invoice's access key (chnfe)"
+          description: Eletronic invoice's access key (chnfe)
       x-code-samples:
         - lang: Bash
           source: |
@@ -2390,8 +2442,8 @@ paths:
     get:
       tags:
         - Catalogs
-      summary: "Catalog's categories list"
-      description: "Returns a list of catalog's categories"
+      summary: Catalog's categories list
+      description: Returns a list of catalog's categories
       parameters:
         - in: path
           name: id
@@ -4836,6 +4888,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
+  /distributions:
+    get:
+      summary: Distribuição
+      tags: []
+      responses: {}
+      operationId: get-distributions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                ids_empresas:
+                  type: array
+                  items:
+                    type: object
+                numero_pedido:
+                  type: number
+                tipo_distrib:
+                  type: string
+                  minLength: 1
+                gerar_pedidos:
+                  type: boolean
+                predio:
+                  type: integer
+              required:
+                - ids_empresas
+                - numero_pedido
+                - tipo_distrib
+                - gerar_pedidos
+            examples:
+              example-1:
+                value: {}
 components:
   schemas:
     ImportAdditionTaxe:
@@ -5017,7 +5103,7 @@ components:
           description: Company ID on Internal Revenue Service (in Brazil is SEFAZ)
         cpf:
           type: string
-          description: "Brazil's version of a Social Security Number"
+          description: Brazil's version of a Social Security Number
         nome_razao:
           type: string
           description: Person name or company name
@@ -5057,7 +5143,7 @@ components:
         pjuridica:
           type: bool
           example: true
-          description: "If true this 'person' is a company"
+          description: If true this 'person' is a company
     Import:
       type: object
       properties:
@@ -5434,7 +5520,7 @@ components:
           description: E-mail
         cpf_cnpj:
           type: integer
-          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
+          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
     CustomerContacts:
       type: array
       items:
@@ -5450,7 +5536,7 @@ components:
           description: Person ID
         cpf_cnpj:
           type: integer
-          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
+          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
         ccomp:
           type: integer
           description: null
@@ -6237,7 +6323,7 @@ components:
           description: Catalog ID
         nome_catalogo:
           type: string
-          description: "Catalog's name"
+          description: Catalog's name
         padrao:
           type: bool
           example: true
@@ -6263,13 +6349,13 @@ components:
         template:
           type: string
           example: danfe
-          description: "Template's type"
+          description: Template's type
         id_empresa:
           type: integer
           description: Company ID
         corpo:
           type: string
-          description: "HTML e-mail's body"
+          description: HTML e-mail's body
         config_template:
           type: object
           $ref: '#/components/schemas/ConfigTemplate'
@@ -6314,7 +6400,7 @@ components:
       properties:
         chnfe:
           type: string
-          description: "Eletronic invoice's access key"
+          description: Eletronic invoice's access key
         tp_evento:
           type: integer
           description: Event type
@@ -6375,7 +6461,7 @@ components:
           description: Person ID
         cpf_cnpj:
           type: integer
-          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
+          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
         nome_razao:
           type: string
           description: Person name or company name
@@ -6466,7 +6552,7 @@ components:
       properties:
         id:
           type: string
-          description: "Phone's type"
+          description: Phone's type
         legado:
           type: bool
           example: true
@@ -6661,13 +6747,13 @@ components:
         total_vnf:
           type: float
           example: 0
-          description: "Invoice's total value"
+          description: Invoice's total value
         numero:
           type: integer
-          description: "Invoice's number"
+          description: Invoice's number
         serie:
           type: integer
-          description: "Invoice's serial"
+          description: Invoice's serial
         lista_cfop:
           type: array
           items:
@@ -6682,7 +6768,7 @@ components:
       properties:
         cpf_cnpj:
           type: string
-          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
+          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
         nome_razao:
           type: string
           description: Person name or company name
@@ -6743,7 +6829,7 @@ components:
           description: Customer ID on a previous system version
         cpf_cnpj:
           type: integer
-          description: "Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)"
+          description: Brazil's version of a Social Security Number or company ID on Internal Revenue Service (in Brazil is SEFAZ)
         nome_razao:
           type: string
           description: Person name or company name
@@ -6752,7 +6838,7 @@ components:
           description: Company ID on Internal Revenue Service (in Brazil is SEFAZ)
         cpf:
           type: string
-          description: "Brazil's version of a Social Security Number"
+          description: Brazil's version of a Social Security Number
         nome_fantasia:
           type: string
           description: Trading name
@@ -6875,7 +6961,7 @@ components:
           description: POS number
         numero:
           type: integer
-          description: "Slip's number"
+          description: Slip's number
         id_pessoa:
           type: integer
           description: Person ID
@@ -6888,7 +6974,7 @@ components:
         total_Vnf:
           type: float
           example: 0
-          description: "Invoice's total value"
+          description: Invoice's total value
         qr_code:
           type: string
           description: Quick Response code
@@ -6922,7 +7008,7 @@ components:
         descricao_tipo:
           type: string
           example: test
-          description: "Contact type's description"
+          description: Contact type's description
     Contacttypes:
       type: array
       items:
@@ -6941,15 +7027,15 @@ components:
         serie:
           type: integer
           example: 567
-          description: "Serial's invoice"
+          description: Serial's invoice
         numero:
           type: integer
           example: 898898
-          description: "Number's invoice"
+          description: Number's invoice
         status:
           type: integer
           example: 10
-          description: "Status's purchase"
+          description: Status's purchase
         data_emissao:
           type: string
           example: '2017-01-11'
@@ -6965,7 +7051,7 @@ components:
         chnfe:
           type: string
           example: '43170102505657000136550010011145821111011012'
-          description: "Invoice's access key (in Brazil)"
+          description: Invoice's access key (in Brazil)
         total_vnf:
           type: float
           example: 2629.56
@@ -7004,11 +7090,11 @@ components:
         serie_certificado:
           type: string
           example: 6FF3CDF6A7B528CB
-          description: "Certificate's serial"
+          description: Certificate's serial
         token_csc:
           type: string
           example: 220bc17f-6801-433f-9da2-b712651ada62
-          description: "Certificate's token"
+          description: Certificate's token
         token_id:
           type: integer
           example: 2
@@ -7138,7 +7224,7 @@ components:
       type: object
       properties:
         ids:
-          description: "List of order's numbers separated by comma [ , ]"
+          description: 'List of order''s numbers separated by comma [ , ]'
           type: array
           maxItems: 20
           items:
@@ -7196,7 +7282,7 @@ components:
         cod_produto:
           type: integer
           example: 174585
-          description: "Product's code"
+          description: Product's code
         codigo_sku:
           type: integer
           example: 3452876
@@ -7242,7 +7328,7 @@ components:
         quant_pedido:
           type: integer
           example: 2
-          description: "Order's quantity"
+          description: Order's quantity
         quant_separada:
           type: integer
           example: 2
@@ -7429,7 +7515,7 @@ components:
         calcular:
           type: bool
           example: true
-          description: "If 'true' all the above fields will be calculated by the system"
+          description: If 'true' all the above fields will be calculated by the system
     JSONInfoAdic:
       type: object
       properties:
@@ -7465,7 +7551,7 @@ components:
           items:
             $ref: '#/components/schemas/JSONWmsBarcodes'
         flags:
-          description: "Order's flags"
+          description: Order's flags
           allOf:
             - $ref: '#/components/schemas/JSONPedidoFlags'
     OrderStatus:
@@ -7482,18 +7568,18 @@ components:
         limpar_zerados:
           type: bool
           example: true
-          description: "If 'true' cleans zeroed items in the order"
+          description: If 'true' cleans zeroed items in the order
     OrderStatusGet:
       type: object
       properties:
         rnx_order_id:
           type: integer
           example: 43567
-          description: "Order's identification"
+          description: Order's identification
         status_destino:
           type: integer
           example: 730
-          description: "Next possible order's status"
+          description: Next possible order's status
         sigla_status:
           type: string
           example: NF EXPEDIDA
@@ -7528,7 +7614,7 @@ components:
         vprod:
           type: integer
           example: 30
-          description: 'Item total value in the country currency (vuncom * qcom)'
+          description: Item total value in the country currency (vuncom * qcom)
         zerado:
           type: bool
           example: true
@@ -7556,7 +7642,7 @@ components:
         zerar_desconto:
           type: bool
           example: true
-          description: "If 'true' the field 'vdesc' won't be applied"
+          description: If 'true' the field 'vdesc' won't be applied
     CashierResp:
       type: object
       properties:
@@ -7595,7 +7681,7 @@ components:
         contagem:
           type: bool
           example: false
-          description: "Inform whether POS's operator must execute bills count process"
+          description: Inform whether POS's operator must execute bills count process
     CashierPost:
       type: object
       properties:
@@ -7691,7 +7777,7 @@ components:
         user_id:
           type: integer
           example: 58232
-          description: "API's user ID"
+          description: API's user ID
         token:
           type: string
           example: b56f8a50-9eb3-4d7b-ab1e-92ad37be816e
@@ -7737,7 +7823,7 @@ components:
         ultimo_login:
           type: string
           format: date-time
-          description: "Last time of a user's login"
+          description: Last time of a user's login
         id_empresa:
           type: int
           example: 35
@@ -7807,7 +7893,7 @@ components:
       properties:
         chnfe:
           type: string
-          description: "Invoice's access key"
+          description: Invoice's access key
     NovoItem:
       type: object
       properties:
@@ -7816,7 +7902,7 @@ components:
           description: Slip number
         sequencia_item:
           type: integer
-          description: "Item's sequence"
+          description: Item's sequence
         motivo:
           type: integer
           description: Reason code
@@ -7844,16 +7930,16 @@ components:
       properties:
         id:
           type: integer
-          description: "Order's ID"
+          description: Order's ID
         fiscdoc:
           type: integer
-          description: "Document's ID"
+          description: Document's ID
         numero_pedido:
           type: integer
-          description: "Order's number"
+          description: Order's number
         tipo:
           type: string
-          description: "Order's type"
+          description: Order's type
         id_pessoa:
           type: integer
           description: Person ID
@@ -7869,7 +7955,7 @@ components:
         message:
           type: string
           example: OK - Novo status é 599 (PD CANCELADO)
-          description: 'Success message!'
+          description: Success message!
     ID:
       type: object
       required:
@@ -7886,7 +7972,7 @@ components:
         message:
           type: string
           example: OK
-          description: 'Success message!'
+          description: Success message!
     Erro:
       type: object
       required:
