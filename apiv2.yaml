@@ -4920,7 +4920,7 @@ paths:
                 - tipo_distrib
                 - gerar_pedidos
             examples:
-              example-1:
+              '{"ids_empresas":[3],"numero_pedido":455695,"tipo_distrib":"NORMAL","gerar_pedidos":true, "predio":3}':
                 value: {}
 components:
   schemas:
