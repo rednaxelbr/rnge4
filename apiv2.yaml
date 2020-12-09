@@ -4975,6 +4975,15 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5121,9 +5130,14 @@ paths:
     parameters: []
 components:
   securitySchemes:
-    basicAuth:
+    UsuarioToken:
       type: http
       scheme: basic
+      description: 'USERID:TOKEN'
+    UsuarioSenha:
+      type: http
+      scheme: basic
+      description: 'USERNAME@TENANT:PASSWORD'
   schemas:
     ImportAdditionTaxe:
       type: object
