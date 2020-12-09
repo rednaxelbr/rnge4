@@ -4962,6 +4962,19 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5058,7 +5071,7 @@ paths:
       operationId: post-distributions
       responses:
         '200':
-          description: OK
+          description: ''
       requestBody:
         content:
           application/json:
@@ -5080,23 +5093,29 @@ paths:
                     - ABLOJA
                     - REVFND
                     - REVSNO
+                  description: 'Tipo de distribuição (padrão: NORMAL)'
                 gerar_pedidos:
                   type: boolean
+                  description: 'Se TRUE, gera os pedidos após criar a distribuição'
                 predio:
                   type: integer
+                  description: 'Prédio de origem (padrão: CD)'
                 codigo_sku:
                   type: integer
+                  description: Código de um SKU para testes
+                curva_minima_geral:
+                  type: integer
+                  description: Somente produtos desta curva para cima serão enviados
           application/xml:
             schema:
               type: object
               properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
         description: ''
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: Content-Type
-          description: application/json
+      parameters: []
       tags:
         - Distribuição
     parameters: []
