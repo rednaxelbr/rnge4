@@ -4950,6 +4950,18 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5042,7 +5054,7 @@ paths:
           in: query
           name: sort
     post:
-      summary: ''
+      summary: Cria uma nova distribuição
       operationId: post-distributions
       responses:
         '200':
@@ -5056,11 +5068,18 @@ paths:
               properties:
                 ids_empresas:
                   type: array
+                  description: Lista de empresas destino
                   items: {}
                 numero_pedido:
                   type: integer
+                  description: Nº do pedido que contém os itens que serão enviados
                 tipo_distrib:
                   type: string
+                  enum:
+                    - NORMAL
+                    - ABLOJA
+                    - REVFND
+                    - REVSNO
                 gerar_pedidos:
                   type: boolean
                 predio:
@@ -5071,7 +5090,7 @@ paths:
             schema:
               type: object
               properties: {}
-        description: teste do post
+        description: ''
       parameters:
         - schema:
             type: string
