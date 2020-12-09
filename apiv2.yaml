@@ -73,6 +73,8 @@ tags:
       **Warning\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All 
       images must have more than 1 Kb and less than 1 Mb.
   - name: Distribuição
+  - name: Pessoas
+  - name: Addresses
 paths:
   /login:
     post:
@@ -1500,7 +1502,7 @@ paths:
   /addresses:
     get:
       tags:
-        - Addresses
+        - Pessoas
       summary: Lista de endereços
       description: Retorna a lista de endereços de uma pessoa (filtro `id_pessoa` int64) ou a lista de endereços das lojas de uma rede (filtro `cliente_retira` bool). O filtro `cliente_retira` tem prioridade sobre os demais.
       parameters:
@@ -1566,7 +1568,7 @@ paths:
   '/addresses/{id}':
     get:
       tags:
-        - Addresses
+        - Pessoas
       summary: Address info
       description: Returns data about existing address (demands address ID)
       parameters:
@@ -1654,7 +1656,7 @@ paths:
   /addresstypes:
     get:
       tags:
-        - Address Types
+        - Pessoas
       summary: Address types list
       description: Returns a list of address types
       parameters:
@@ -1685,7 +1687,7 @@ paths:
   '/addresstypes/{id}':
     get:
       tags:
-        - Address Types
+        - Pessoas
       summary: Address types info
       description: Returns data about existing address type (demands address type ID)
       parameters:
@@ -4897,6 +4899,11 @@ paths:
       responses:
         '200':
           description: |2
+
+
+
+
+
 
 
 
@@ -8136,4 +8143,4 @@ components:
                 title: DevicePost
               - $ref: '#/components/schemas/CashierPost'
 security:
-  - basicAuth: []  #      
+  - basicAuth: []
