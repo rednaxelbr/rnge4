@@ -4896,6 +4896,8 @@ paths:
         '200':
           description: |2
 
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -5002,6 +5004,7 @@ paths:
                   tipo_distrib: string
                   gerar_pedidos: true
                   predio: 0
+      description: teste do get
     post:
       summary: ''
       operationId: post-distributions
@@ -5035,6 +5038,7 @@ paths:
                 - tipo_distrib
                 - gerar_pedidos
                 - predio
+        description: teste do post
 components:
   schemas:
     ImportAdditionTaxe:
