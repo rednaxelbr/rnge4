@@ -1534,8 +1534,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
-      security:
-        - basicAuth: []
     post:
       tags:
         - Addresses
@@ -4906,6 +4904,7 @@ paths:
 
 
 
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -8136,3 +8135,5 @@ components:
               - description: My POS
                 title: DevicePost
               - $ref: '#/components/schemas/CashierPost'
+security:
+  - basicAuth: []  #      
