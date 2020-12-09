@@ -4912,6 +4912,40 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               "id": 793,
               "datahora_geracao": "2020-12-09T15:03:46-03:00",
               "id_predio": 1,
@@ -4988,37 +5022,21 @@ paths:
             schema:
               description: ''
               type: object
-              properties:
-                ids_empresas:
-                  type: array
-                  items:
-                    type: object
-                numero_pedido:
-                  type: number
-                tipo_distrib:
-                  type: string
-                  minLength: 1
-                gerar_pedidos:
-                  type: boolean
-                predio:
-                  type: integer
-              required:
-                - ids_empresas
-                - numero_pedido
-                - tipo_distrib
-                - gerar_pedidos
-            examples:
-              '{"ids_empresas":[3],"numero_pedido":455695,"tipo_distrib":"NORMAL","gerar_pedidos":true, "predio":3}':
-                value: {}
-              'curl -k -X GET "https://10.10.1.239:8091/v2/distributions/793" --user 10334:faf99841-c219-4e2f-a386-3f14cccd9d0b | jq ;':
-                value:
-                  ids_empresas:
-                    - {}
-                  numero_pedido: 0
-                  tipo_distrib: string
-                  gerar_pedidos: true
-                  predio: 0
+            examples: {}
       description: 'Teste do get . '
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: filter
+        - schema:
+            type: array
+          in: query
+          name: range
+        - schema:
+            type: array
+          in: query
+          name: sort
     post:
       summary: ''
       operationId: post-distributions
@@ -5034,25 +5052,29 @@ paths:
               properties:
                 ids_empresas:
                   type: array
-                  items:
-                    required: []
-                    properties: {}
+                  items: {}
                 numero_pedido:
-                  type: number
+                  type: integer
                 tipo_distrib:
                   type: string
-                  minLength: 1
                 gerar_pedidos:
                   type: boolean
                 predio:
-                  type: number
-              required:
-                - ids_empresas
-                - numero_pedido
-                - tipo_distrib
-                - gerar_pedidos
-                - predio
+                  type: integer
+          application/xml:
+            schema:
+              type: object
+              properties: {}
         description: teste do post
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Content-Type
+          description: application/json
+      tags:
+        - Distribuição
+    parameters: []
 components:
   securitySchemes:
     basicAuth:
