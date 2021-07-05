@@ -960,7 +960,7 @@ paths:
     get:
       tags:
         - Contact types
-      summary: Contact types list
+      summary: Lista de Tipos de Contatos
       description: Returns a list of contact types
       parameters:
         - name: filter
@@ -4899,6 +4899,7 @@ paths:
       responses:
         '200':
           description: |2
+
 
 
 
