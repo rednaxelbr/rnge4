@@ -6,9 +6,7 @@ info:
   description: |-
     Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (conforme RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
 
-    # AUTENTICAÇÃO
-
-    ## Usuário, tenant e senha
+    ## Autenticação
 
     Conforme a RFC7617, o cabeçalho *Authentication* é composto da palavra `Basic` seguida de um espaço e da string `username:password` em base64.
 
@@ -21,13 +19,13 @@ info:
 
     Em nosso caso, o campo "username" é composto de usuario@tenant, então o usuário "admin", tenant "zezinho" e senha "zeus" resultam na string `admin@zezinho:zeus` que convertida para base64 fica `YWRtaW5AemV6aW5obzp6ZXVz`. O próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
 
-    # DEFINIÇÕES
+    ## Definições
 
     **Tenant\:** Conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
 
     **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", apesar de ambos serem ADMIN cada um tem um UserID próprio.
 
-    # PADRÕES
+    ## Padrões
 
     Todos os GET usam os parâmetros "filter", "sort" e "range" da seguinte forma:
 
@@ -37,7 +35,7 @@ info:
      | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name, asc |
      | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10  |
 
-    # FERRAMENTAS
+    ## Ferramentas
 
     Os exemplos nesse documento usam a ferramenta de linha-de-comando curl. Ela está disponível na maioria das distribuições Linux via apt-get ou similar.
     Versão Windows: https://curl.haxx.se/windows/
@@ -51,18 +49,6 @@ info:
   x-logo:
     url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
-tags:
-  - name: Login
-    description: |
-      This is the first step in order to use API.
-  - name: Images
-    description: |
-      This resource can save images for company logo, product image and danfe’s image. The image file must be jpeg or png. 
-      **Warning\:** images for danfe **must be in jpeg** format and for logo **must be in png** format. All 
-      images must have more than 1 Kb and less than 1 Mb.
-  - name: Distribuição
-  - name: Pessoas
-  - name: Addresses
 paths:
   /login:
     parameters: []
