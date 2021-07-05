@@ -105,7 +105,16 @@ paths:
           name: Authorization
           required: true
           description: BasicAuth
-      description: Efetua o login na plataforma para obter UserID e Token
+      description: |-
+        Efetua o login na plataforma para obter UserID e Token. 
+
+        Para usar a aba **Try It** acima, monte o Base64 do AuthBasic:
+
+        1) Abra o site https://www.base64encode.org (ou outro similar)
+        2) Digite `usuario@tenant:senha` (com seus dados) depois clique em ENCODE e copie
+        3) Na aba "Headers", cole o Base64 resultante no campo "Value" e clique em Send
+
+        Usando **curl** basta passar `--user usuario@tenant:senha` diretamente na linha de comando.
       security:
         - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
       tags:
