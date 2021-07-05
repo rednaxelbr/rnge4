@@ -17,7 +17,7 @@ info:
 
     ## Autenticação
 
-    Conforme a RFC7617, o cabeçalho *Authentication* é composto da palavra `Basic` seguida de um espaço e da string `username:password` em base64.
+    Conforme a RFC 7617, o cabeçalho *Authentication* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
 
     > If the user agent wishes to send the user-id "Aladdin" and password
     > "open sesame", it would use the following header field:
@@ -26,7 +26,11 @@ info:
 
     Fonte: RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
 
-    Em nosso caso, o campo "username" é composto de usuario@tenant, então o usuário "admin", tenant "zezinho" e senha "zeus" resultam na string `admin@zezinho:zeus` que convertida para base64 fica YWRtaW5AemV6aW5obzp6ZXVz. O próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
+    Utilizamos essa autenticação de duas formas:
+    - No `POST v2/login`, username = `usuario@tenant` e password = `senha`
+    - Nos demais recursos, username = `user_id` e password = `token` (obtidos no login)
+
+    Conforme a RFC 7617, o próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
 
     ## Definições
 
