@@ -5,54 +5,29 @@ servers:
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 info:
-  description: |
-    Our API follows REST standard and HTTP AuthBasic authentication in all resource calls, passing userid:token 
-    in most resources except POST v2/login which uses username@tenant:senha. The response is almost always in JSON 
-    format; some resources return other formats like XML or PDF.
+  description: |-
+    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic em todos os recursos. O formato padrão de resposta é o JSON, exceto recursos que retornam documentos XML ou PDF.
 
-    # DEFINITIONS
+    # DEFINIÇÕES
 
-    **Tenant\:** it’s the customer’s account (eg:amazon). The tenant may have one or more companies (eg:stores).
+    **Tenant\:** Esta é a conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
 
-    **User\:** Each user belongs to a tenant and has a globally unique user_id. The username is unique inside a tenant 
-    (eg:jeff@amazon is different from jeff@mystore). He or she can have login access to one or more companies.
+    **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", apesar de ambos serem ADMIN cada um tem um UserID próprio.
 
-    # PATTERNS
+    # PADRÕES
 
-    All GET must support at least the parameters "filter", "sort" and "range" in the following format:
+    Todos os GET usam os parâmetros "filter", "sort" e "range" da seguinte forma:
 
-     | Parameter  | Format | URL Query                                            | Resulting SELECT          |
-     |------------|--------|------------------------------------------------------|---------------------------|
-     | filter     |  JSON  | GET v2/resources?filter={"store":34,"inativo":true}  | ... WHERE store = 34      |
-     | sort       |  CSV   | GET v2/resources?sort=["name","ASC"]                 | ... ORDER BY name, asc    |
-     | range      |  CSV   | GET v2/resources?range=[0,9]                         | ... OFFSET 0 LIMIT 10     |
+     | Parâmetro  | Formato | URL Query                            | SQL equivalente        |
+     |------------|---------|--------------------------------------|------------------------|
+     | filter     |   JSON  | GET v2/resources?filter={"store":34} | ... WHERE store = 34   |
+     | sort       |  CSV    | GET v2/resources?sort=["name","ASC"] | ... ORDER BY name, asc |
+     | range      |  CSV    | GET v2/resources?range=[0,9]         | ... OFFSET 0 LIMIT 10  |
 
-    # TOOLS
+    # FERRAMENTAS
 
-    The examples in this document use the curl command-line tool. It’s available on Linux via apt-get or similar.
-    Windows version\: https://curl.haxx.se/windows/
-
-    We use the jq command line tool for JSON formatting. It’s available on Linux via apt-get or similar.
-    Windows version\: https://stedolan.github.io/jq/download/
-
-     # Changes from v1
-
-     | Action          | v1 request                                      | v2request                             |
-     |-----------------|-------------------------------------------------|---------------------------------------|
-     | Get list        | GET /pesqpedido/                                | GET v2/orders                         |
-     | Get one record  | GET /consultapedido/123                         | GET v2/orders/123                     |
-     | Get many        | -                                               | GET v2/orders?filter={ids:[123,456]}  |
-     | Update a record | POST /pedido/ -d {“numped”:123, id_pessoa:9876} | PUT v2/orders/123 -d {id_pessoa:9876} |
-     | Create a record | POST /pedido/ -d {id_pessoa:9876}               | POST v2/orders -d {id_pessoa:9876}    |
-     | Delete a record | -                                               | DELETE v2/orders/123                  |
-     
-
-     | Other actions   | v1 request                                      | v2 request                                     |
-     |-----------------|-------------------------------------------------|------------------------------------------------|
-     | Cancel an order | POST /cancelapedido/123                         | POST v2/orders/123/cancel                      |
-     | Change status   | POST /mudastatus/123 -d {status:510}            | POST v2/orders/123/status -d {status:510}      |
-     | Create invoice  | POST /geranota/123                              | POST v2/orders/123/invoice                     |
-     | Insert an item  | POST /pedidoitem/123 -d {idprod:5, qcom:1}      | POST v2/orders/123/items -d {idprod:5, qcom:1} |
+    Os exemplos nesse documento usam a ferramenta de linha-de-comando curl. Ela está disponível na maioria das distribuições Linux via apt-get ou similar.
+    Versão Windows: https://curl.haxx.se/windows/
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
@@ -4899,169 +4874,6 @@ paths:
       responses:
         '200':
           description: |2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              "id": 793,
-              "datahora_geracao": "2020-12-09T15:03:46-03:00",
-              "id_predio": 1,
-              "desc_predio": "LAURO MULLER",
-              "user_id": 10334,
-              "nome_usuario": "JARDEL",
-              "conclusao": 1,
-              "lista_params": [
-                {
-                  "key": "crescimento_padrao",
-                  "value": "1.00"
-                },
-                {
-                  "key": "dias_suprimento",
-                  "value": "30"
-                },
-                {
-                  "key": "distrib_curva_minima",
-                  "value": "9"
-                },
-                {
-                  "key": "distrib_dias_faixa",
-                  "value": "5"
-                },
-                {
-                  "key": "distrib_mos_maximo",
-                  "value": "0.20"
-                },
-                {
-                  "key": "distrib_reversa_empresas",
-                  "value": "[33]"
-                },
-                {
-                  "key": "empresas",
-                  "value": "[9]"
-                },
-                {
-                  "key": "faixa_maxima_sazonal",
-                  "value": "1"
-                },
-                {
-                  "key": "indice_suprimento",
-                  "value": "20"
-                },
-                {
-                  "key": "itens_por_pedido",
-                  "value": "50"
-                },
-                {
-                  "key": "max_linhas_empresa",
-                  "value": "15000"
-                },
-                {
-                  "key": "pedido",
-                  "value": "455695"
-                },
-                {
-                  "key": "sempre_fracionar",
-                  "value": "false"
-                }
-              ],
-              "info_suprimento": {
-                "cont_skus": 1,
-                "cont_disp": 1,
-                "pedidos": 0
-              },
-              "tipo": "NORMAL",
-              "ativo": true
-            }
       operationId: get-distributions
       requestBody:
         content:
