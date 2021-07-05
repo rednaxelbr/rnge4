@@ -10,7 +10,7 @@ info:
 
     # DEFINIÇÕES
 
-    **Tenant\:** Esta é a conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
+    **Tenant\:** Conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
 
     **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", apesar de ambos serem ADMIN cada um tem um UserID próprio.
 
@@ -4873,7 +4873,8 @@ paths:
         - Distribuição
       responses:
         '200':
-          description: |2
+          description: |+
+
       operationId: get-distributions
       requestBody:
         content:
