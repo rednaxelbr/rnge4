@@ -13,11 +13,11 @@ tags:
     description: Distribuição
 info:
   description: |-
-    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (conforme RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
+    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (definida na RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
 
     ## Autenticação
 
-    Conforme a RFC 7617, o cabeçalho *Authentication* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
+    Conforme a RFC 7617, na autenticação AuthBasic o cabeçalho *Authorization* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
 
     > If the user agent wishes to send the user-id "Aladdin" and password
     > "open sesame", it would use the following header field:
