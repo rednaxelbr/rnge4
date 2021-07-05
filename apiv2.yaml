@@ -18,11 +18,11 @@ info:
 
     Todos os GET usam os parâmetros "filter", "sort" e "range" da seguinte forma:
 
-     | Parâmetro  | Formato | URL Query                            | SQL equivalente        |
-     |------------|---------|--------------------------------------|------------------------|
-     | filter     |   JSON  | GET v2/resources?filter={"store":34} | ... WHERE store = 34   |
-     | sort       |  CSV    | GET v2/resources?sort=["name","ASC"] | ... ORDER BY name, asc |
-     | range      |  CSV    | GET v2/resources?range=[0,9]         | ... OFFSET 0 LIMIT 10  |
+     | Parâmetro  | Formato | URL Query                              | SQL equivalente        |
+     |------------|---------|----------------------------------------|------------------------|
+     | filter     |   JSON  | GET v2/resources?filter={"store":34}   | ... WHERE store = 34   |
+     | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name, asc |
+     | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10  |
 
     # FERRAMENTAS
 
@@ -55,8 +55,8 @@ paths:
     post:
       tags:
         - Login
-      summary: Sing in the user on the system
-      description: Authenticates the user on the system
+      summary: Login no sistema
+      description: Faz o login e obtém o token de acesso
       parameters:
         - name: user
           in: path
@@ -86,14 +86,18 @@ paths:
       responses:
         '200':
           description: |
-            The credencials for the API. The third party app must save the fields `user_id` and `token` in order to use in all calls. 
-            In this  documentation this fields will be quoted as ID:token for now on.
+            Retorna as credenciais da API. A aplicação deve salvar `user_id` e `token` para usar nas chamadas subsequentes. 
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Login'
-        '400':
-          description: Error
+              examples:
+                example-1:
+                  value:
+                    user_id: 58232
+                    token: b56f8a50-9eb3-4d7b-ab1e-92ad37be816e
+        '401':
+          description: Usuário ou senha inválido(a)
           content:
             application/json:
               schema:
