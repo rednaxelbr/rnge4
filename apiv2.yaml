@@ -2,6 +2,15 @@ openapi: 3.0.0
 servers:
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
+tags:
+  - name: Autenticação
+    description: Autenticação
+  - name: PDV
+    description: Equipamento PDV
+  - name: Pedidos
+    description: Pedidos
+  - name: Distribuição
+    description: Distribuição
 info:
   description: |-
     Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (conforme RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
@@ -54,7 +63,7 @@ paths:
     parameters: []
     post:
       summary: ''
-      operationId: ''
+      operationId: post-login
       responses:
         '200':
           description: OK
@@ -76,10 +85,31 @@ paths:
       summary: ''
       tags:
         - Autenticação
-      responses: {}
-      operationId: ''
+      operationId: get-ping
       description: Verifica se o servidor está online
       security: []
+      responses:
+        '200':
+          description: Sucesso
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  resp:
+                    type: string
+                    minLength: 1
+                required:
+                  - resp
+                x-examples:
+                  example-1:
+                    resp: OK
+              examples:
+                JSON:
+                  value:
+                    resp: OK
   /cashiers:
     get:
       tags:
@@ -106,13 +136,19 @@ paths:
           name: Authorization
           required: true
           description: 'ID:TOKEN'
+      operationId: get-cashiers
+      responses:
+        '200':
+          description: OK
     post:
       tags:
         - PDV
       summary: ''
       description: Cria novo PDV
-      requestBody:
-        $ref: '#/components/requestBodies/CashiersPost'
+      operationId: post-cashiers
+      responses:
+        '200':
+          description: OK
   '/cashiers/{id}':
     get:
       tags:
@@ -127,26 +163,21 @@ paths:
           description: 'ID:TOKEN'
           required: true
           name: Authorization
+      operationId: getone-cashiers
+      responses:
+        '200':
+          description: OK
     put:
       tags:
         - PDV
       summary: ''
       description: Atualiza um PDV
-      requestBody:
-        $ref: '#/components/requestBodies/CashiersPut'
       responses:
         '200':
           description: Success!
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CashierResp'
         '400':
           description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
+      operationId: put-cashiers
     delete:
       tags:
         - PDV
@@ -155,17 +186,9 @@ paths:
       responses:
         '200':
           description: Info about deleted POS
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Cashier'
         '400':
           description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-      operationId: ''
+      operationId: delete-cashiers
     parameters:
       - schema:
           type: integer
@@ -194,40 +217,42 @@ paths:
             type: array
             items:
               type: integer
+      operationId: get-orders
+      responses:
+        '200':
+          description: OK
     post:
       tags:
         - Pedidos
       summary: ''
       description: Cria um novo pedido
-      requestBody:
-        description: Pedido a ser criado
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NovoPedido'
+      operationId: post-orders
+      responses:
+        '200':
+          description: OK
   '/orders/{id}':
     put:
       tags:
         - Pedidos
       summary: ''
       description: Atualiza pedido
-      requestBody:
-        description: Order to be modified
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NovoPedido'
+      operationId: put-orders
+      responses:
+        '200':
+          description: OK
     get:
       tags:
         - Pedidos
       summary: ''
       description: Consulta pedido
+      operationId: getone-orders
+      responses:
+        '200':
+          description: OK
     parameters:
       - schema:
           type: integer
-          default: '1234'
+          default: 1234
         name: id
         in: path
         required: true
@@ -237,7 +262,7 @@ paths:
       summary: ''
       tags:
         - Distribuição
-      operationId: ''
+      operationId: get-distributions
       requestBody:
         content:
           application/json:
@@ -259,9 +284,12 @@ paths:
             type: array
           in: query
           name: sort
+      responses:
+        '200':
+          description: OK
     post:
       summary: ''
-      operationId: ''
+      operationId: post-distributions
       requestBody:
         content:
           application/json:
@@ -309,6 +337,9 @@ paths:
       tags:
         - Distribuição
       description: Cria uma nova distribuição
+      responses:
+        '200':
+          description: OK
     parameters: []
 components:
   securitySchemes:
@@ -320,6 +351,5 @@ components:
       type: http
       scheme: basic
       description: '1234:uuid-token'
-  schemas: null
 security:
   - Basic MTIzNDp1dWlkLXRva2Vu: []
