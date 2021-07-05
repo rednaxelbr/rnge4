@@ -62,7 +62,7 @@ paths:
   /login:
     parameters: []
     post:
-      summary: ''
+      summary: Efetuando login
       operationId: post-login
       responses:
         '200':
@@ -82,7 +82,7 @@ paths:
         - Autenticação
   /ping:
     get:
-      summary: ''
+      summary: Verificando servidor
       tags:
         - Autenticação
       operationId: get-ping
@@ -114,7 +114,7 @@ paths:
     get:
       tags:
         - PDV
-      summary: ''
+      summary: Listando PDVs
       description: Lista de Equipamentos PDV de todas as lojas (companies) do tenant
       parameters:
         - name: filter
@@ -143,7 +143,7 @@ paths:
     post:
       tags:
         - PDV
-      summary: ''
+      summary: Criando PDV
       description: Cria novo PDV
       operationId: post-cashiers
       responses:
@@ -153,7 +153,7 @@ paths:
     get:
       tags:
         - PDV
-      summary: ''
+      summary: Consultando um PDV
       description: Consulta PDV
       parameters:
         - schema:
@@ -170,7 +170,7 @@ paths:
     put:
       tags:
         - PDV
-      summary: ''
+      summary: Atualizando um PDV
       description: Atualiza um PDV
       responses:
         '200':
@@ -181,7 +181,7 @@ paths:
     delete:
       tags:
         - PDV
-      summary: ''
+      summary: Deletando um PDV
       description: Deleta um PDV
       responses:
         '200':
