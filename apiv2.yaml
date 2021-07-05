@@ -59,27 +59,6 @@ info:
     url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
 paths:
-  /login:
-    parameters: []
-    post:
-      summary: Efetuando login
-      operationId: post-login
-      responses:
-        '200':
-          description: OK
-      parameters:
-        - schema:
-            type: string
-            default: Basic YWRtaW5AemV6aW5obzp6ZXVz
-          in: header
-          name: Authorization
-          required: true
-          description: BasicAuth
-      description: Efetua o login na plataforma para obter UserID e Token
-      security:
-        - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
-      tags:
-        - Autenticação
   /ping:
     get:
       summary: Verificando servidor
@@ -110,6 +89,27 @@ paths:
                 JSON:
                   value:
                     resp: OK
+  /login:
+    parameters: []
+    post:
+      summary: Efetuando login
+      operationId: post-login
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+            default: Basic YWRtaW5AemV6aW5obzp6ZXVz
+          in: header
+          name: Authorization
+          required: true
+          description: BasicAuth
+      description: Efetua o login na plataforma para obter UserID e Token
+      security:
+        - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
+      tags:
+        - Autenticação
   /cashiers:
     get:
       tags:
