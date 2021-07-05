@@ -85,6 +85,15 @@ paths:
         - Basic QURNSU5AemV6aW5obzp6ZXVz: []
       tags:
         - Autenticação
+  /ping:
+    get:
+      summary: ''
+      tags:
+        - Autenticação
+      responses: {}
+      operationId: ''
+      description: Verifica se o servidor está online
+      security: []
   /cashiers:
     get:
       tags:
@@ -180,6 +189,63 @@ paths:
         in: path
         required: true
         description: ID do PDV
+  /orders:
+    get:
+      tags:
+        - Pedidos
+      summary: ''
+      description: Lista de pedidos
+      parameters:
+        - name: filter
+          in: query
+          description: Filtros
+          schema:
+            type: string
+        - name: range
+          in: query
+          description: Paginação
+          schema:
+            type: array
+            items:
+              type: integer
+    post:
+      tags:
+        - Pedidos
+      summary: ''
+      description: Cria um novo pedido
+      requestBody:
+        description: Pedido a ser criado
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NovoPedido'
+  '/orders/{id}':
+    put:
+      tags:
+        - Pedidos
+      summary: ''
+      description: Atualiza pedido
+      requestBody:
+        description: Order to be modified
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NovoPedido'
+    get:
+      tags:
+        - Pedidos
+      summary: ''
+      description: Consulta pedido
+    parameters:
+      - schema:
+          type: integer
+          default: '1234'
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
   '/images/produto/{code}':
     post:
       tags:
@@ -335,132 +401,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
-  /orders:
-    get:
-      tags:
-        - Orders
-      summary: Orders list
-      description: Returns a list of orders
-      parameters:
-        - name: filter
-          in: query
-          description: Filters for the query
-          schema:
-            type: string
-        - name: range
-          in: query
-          description: Paging
-          schema:
-            type: array
-            items:
-              type: integer
-      responses:
-        '200':
-          description: Array of orders
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pedidos'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-      x-code-samples:
-        - lang: bash
-          source: |
-            curl -s -X GET "https://rnge.com.br:8091/v2/orders" --user ${user_id}:${token} | jq .
-            curl -g -s -X GET 'https://rnge.com.br:8091/v2/orders?filter={"id_empresa":3475,"cnpj_emit":4754268000170}' --user ${user_id}:${token} | jq .
-    post:
-      tags:
-        - Orders
-      summary: New order
-      description: Creates a new order returning the order's ID
-      requestBody:
-        description: Order to be created
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NovoPedido'
-      responses:
-        '200':
-          description: Created order
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pedidos'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-      x-code-samples:
-        - lang: bash
-          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders --user ${user_id}:${token} -d payload.json | jq .'
-  '/orders/{numped}':
-    put:
-      tags:
-        - Orders
-      summary: Order update
-      description: Modify a existing order (demands order number)
-      parameters:
-        - in: path
-          name: numped
-          schema:
-            type: integer
-          required: true
-          description: Order number
-      requestBody:
-        description: Order to be modified
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NovoPedido'
-      responses:
-        '200':
-          description: Order modified
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pedidos'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-    get:
-      tags:
-        - Orders
-      summary: Order info
-      description: Returns data about existing order (demands order number)
-      parameters:
-        - in: path
-          name: orderID
-          schema:
-            type: integer
-          required: true
-          description: Order number
-      responses:
-        '200':
-          description: Order data
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pedidos'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-      x-code-samples:
-        - lang: bash
-          source: 'curl -s -X POST https://rnge.com.br:8091/v2/orders/277519 --user ${user_id}:${token} | jq .'
   '/orders/{numped}/cancel':
     post:
       tags:
@@ -4891,13 +4831,6 @@ paths:
       tags:
         - Distribuição
     parameters: []
-  /ping:
-    get:
-      summary: PING
-      tags: []
-      responses: {}
-      operationId: get-ping
-      description: Verifica se o servidor está online
 components:
   securitySchemes:
     Basic QURNSU5AemV6aW5obzp6ZXVz:
