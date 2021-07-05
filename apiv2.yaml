@@ -1,12 +1,25 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://10.10.1.239:8091/v2'
-    description: Sandbox
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 info:
   description: |-
-    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic em todos os recursos. O formato padrão de resposta é o JSON, exceto recursos que retornam documentos XML ou PDF.
+    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (conforme RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
+
+    # AUTENTICAÇÃO
+
+    ## Usuário, tenant e senha
+
+    Conforme a RFC7617, o cabeçalho *Authentication* é composto da palavra `Basic` seguida de um espaço e da string `username:password` em base64.
+
+    > If the user agent wishes to send the user-id "Aladdin" and password
+    > "open sesame", it would use the following header field:
+    >
+    >   Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+    Fonte: RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
+
+    Em nosso caso, o campo "username" é composto de usuario@tenant, então o usuário "admin", tenant "zezinho" e senha "zeus" resultam na string `admin@zezinho:zeus` que convertida para base64 fica `YWRtaW5AemV6aW5obzp6ZXVz`. O próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
 
     # DEFINIÇÕES
 
@@ -52,56 +65,32 @@ tags:
   - name: Addresses
 paths:
   /login:
+    parameters: []
     post:
-      tags:
-        - Login
-      summary: Login no sistema
-      description: Faz o login e obtém o token de acesso
-      parameters:
-        - name: user
-          in: path
-          description: |
-            Username for the account.
-          required: true
-          schema:
-            type: string
-        - name: tenant
-          in: path
-          description: |
-            The customer account.
-          required: true
-          schema:
-            type: string
-        - name: password
-          in: path
-          description: |
-            It's the user's password.
-          required: true
-          schema:
-            type: string
+      summary: ''
+      operationId: ''
       responses:
         '200':
-          description: |
-            Retorna as credenciais da API. A aplicação deve salvar `user_id` e `token` para usar nas chamadas subsequentes. 
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Login'
-              examples: {}
-        '401':
-          description: Usuário ou senha inválido(a)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
+          description: OK
+      parameters:
+        - schema:
+            type: string
+            default: Basic QURNSU5AemV6aW5obzp6ZXVz=
+          in: header
+          name: Authorization
+          required: true
+          description: BasicAuth
+      description: Efetua o login na plataforma para obter UserID e Token
       security:
-        - UsuarioSenha: []
+        - Basic QURNSU5AemV6aW5obzp6ZXVz: []
+      tags:
+        - Autenticação
   /cashiers:
     get:
       tags:
         - Cashiers
-      summary: POS list
-      description: Returns a list of POS (point of sale) devices of all tenant’s companies
+      summary: ''
+      description: Lista de Equipamentos PDV de todas as lojas (companies) do tenant
       parameters:
         - name: filter
           in: query
@@ -115,85 +104,39 @@ paths:
             type: array
             items:
               type: integer
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X GET https://rnge.com.br:8091/v2/cashiers --user ${user_id}:${token} | jq .
-            curl -g -s -X GET 'https://rnge.com.br:8091/v2/cashiers?filter={"num_serie":"1002","id_empresa":5623}' --user ${user_id}:${token} | jq .
-      responses:
-        '200':
-          description: Array of POS
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Cashiers'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
+        - schema:
+            type: string
+            default: Basic MTIzNDp1dWlkLXRva2Vu
+          in: header
+          name: Authorization
+          required: true
+          description: 'ID:TOKEN'
     post:
       tags:
-        - Cashiers
-      summary: New POS
-      description: Will create a new POS device on the system
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X POST https://rnge.com.br:8091/v2/cashiers --user ${user_id}:${token} -d payload.json | jq .
+        - PDV
+      summary: ''
+      description: Cria novo PDV
       requestBody:
         $ref: '#/components/requestBodies/CashiersPost'
-      responses:
-        '200':
-          description: Success!
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CashierResp'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
-  '/cashiers/{pdv_id}':
+  '/cashiers/{id}':
     get:
       tags:
-        - Cashiers
-      summary: POS info
-      description: Returns all data about a specific POS device
+        - PDV
+      summary: ''
+      description: Consulta PDV
       parameters:
-        - name: pdv_id
-          in: path
-          schema:
-            type: integer
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X POST "https://rnge.com.br:8091/v2/cashiers/${pdv_id}" --user ${user_id}:${token} | jq .
-      responses:
-        '200':
-          description: POS info
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Cashier'
-        '400':
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Erro'
+        - schema:
+            type: string
+            default: Basic MTIzNDp1dWlkLXRva2Vu
+          in: header
+          description: 'ID:TOKEN'
+          required: true
+          name: Authorization
     put:
       tags:
-        - Cashiers
-      summary: POS update
-      description: Updates data of a specific POS device
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X PUT https://rnge.com.br:8091/v2/cashiers/1554 --user ${user_id}:${token} -d payload.json | jq .
+        - PDV
+      summary: ''
+      description: Atualiza um PDV
       requestBody:
         $ref: '#/components/requestBodies/CashiersPut'
       responses:
@@ -211,19 +154,9 @@ paths:
                 $ref: '#/components/schemas/Erro'
     delete:
       tags:
-        - Cashiers
-      summary: POS delete
-      description: Removes a POS device from the system
-      parameters:
-        - name: pdv_id
-          in: path
-          description: POS ID
-          schema:
-            type: integer
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X DELETE https://rnge.com.br:8091/v2/cashiers/1778 --user ${user_id}:${token} | jq .
+        - PDV
+      summary: ''
+      description: Deleta um PDV
       responses:
         '200':
           description: Info about deleted POS
@@ -237,6 +170,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
+      operationId: ''
+    parameters:
+      - schema:
+          type: integer
+          minimum: 1
+          default: 1
+        name: id
+        in: path
+        required: true
+        description: ID do PDV
   '/images/produto/{code}':
     post:
       tags:
@@ -4957,14 +4900,14 @@ paths:
       description: Verifica se o servidor está online
 components:
   securitySchemes:
-    UsuarioToken:
+    Basic QURNSU5AemV6aW5obzp6ZXVz:
       type: http
       scheme: basic
-      description: 'USERID:TOKEN'
-    UsuarioSenha:
+      description: 'ADMIN@zezinho:zeus'
+    Basic MTIzNDp1dWlkLXRva2Vu:
       type: http
       scheme: basic
-      description: 'USERNAME@TENANT:PASSWORD'
+      description: '1234:uuid-token'
   schemas:
     ImportAdditionTaxe:
       type: object
@@ -8052,4 +7995,4 @@ components:
                 title: DevicePost
               - $ref: '#/components/schemas/CashierPost'
 security:
-  - basicAuth: []
+  - Basic MTIzNDp1dWlkLXRva2Vu: []
