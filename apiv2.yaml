@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://rnge.com.br:8091/v2/'
+  - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 tags:
   - name: Autenticação
@@ -63,7 +63,7 @@ info:
     url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
 paths:
-  ping:
+  /ping:
     get:
       summary: Verificando servidor
       tags:
@@ -94,7 +94,7 @@ paths:
                   value:
                     resp: OK
     parameters: []
-  login:
+  /login:
     parameters: []
     post:
       summary: Efetuando login
@@ -124,7 +124,7 @@ paths:
         - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
       tags:
         - Autenticação
-  cashiers:
+  /cashiers:
     get:
       tags:
         - PDV
@@ -164,7 +164,7 @@ paths:
         '200':
           description: OK
     parameters: []
-  'cashiers/{id}':
+  '/cashiers/{id}':
     get:
       tags:
         - PDV
@@ -213,7 +213,7 @@ paths:
         in: path
         required: true
         description: ID do PDV
-  orders:
+  /orders:
     get:
       tags:
         - Pedidos
@@ -222,16 +222,19 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: Filtros
+          description: |            
+            - ids_empresas: `integer[]`
+            - id_destino: `integer`
+            - meus_pedidos: `boolean`
+            - dias: `integer`
           schema:
-            type: string
+            type: object
+          default: '{"dias":10}'
         - name: range
           in: query
           description: Paginação
           schema:
             type: array
-            items:
-              type: integer
       operationId: get-orders
       responses:
         '200':
@@ -246,7 +249,7 @@ paths:
         '200':
           description: OK
     parameters: []
-  'orders/{id}':
+  '/orders/{id}':
     put:
       tags:
         - Pedidos
@@ -273,7 +276,7 @@ paths:
         in: path
         required: true
         description: Número do Pedido
-  distributions:
+  /distributions:
     get:
       summary: Listando distribuições
       tags:
