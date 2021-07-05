@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://rnge.com.br:8091/v2'
+  - url: 'https://rnge.com.br:8091/v2/'
     description: Produção
 tags:
   - name: Autenticação
@@ -63,7 +63,7 @@ info:
     url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
 paths:
-  /ping:
+  ping:
     get:
       summary: Verificando servidor
       tags:
@@ -93,7 +93,8 @@ paths:
                 JSON:
                   value:
                     resp: OK
-  /login:
+    parameters: []
+  login:
     parameters: []
     post:
       summary: Efetuando login
@@ -123,7 +124,7 @@ paths:
         - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
       tags:
         - Autenticação
-  /cashiers:
+  cashiers:
     get:
       tags:
         - PDV
@@ -162,7 +163,8 @@ paths:
       responses:
         '200':
           description: OK
-  '/cashiers/{id}':
+    parameters: []
+  'cashiers/{id}':
     get:
       tags:
         - PDV
@@ -211,7 +213,7 @@ paths:
         in: path
         required: true
         description: ID do PDV
-  /orders:
+  orders:
     get:
       tags:
         - Pedidos
@@ -243,7 +245,8 @@ paths:
       responses:
         '200':
           description: OK
-  '/orders/{id}':
+    parameters: []
+  'orders/{id}':
     put:
       tags:
         - Pedidos
@@ -270,7 +273,7 @@ paths:
         in: path
         required: true
         description: Número do Pedido
-  /distributions:
+  distributions:
     get:
       summary: Listando distribuições
       tags:
