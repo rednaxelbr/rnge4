@@ -79,10 +79,6 @@ paths:
           required: true
           schema:
             type: string
-      x-code-samples:
-        - lang: Bash
-          source: |
-            curl -s -X POST https://rnge.com.br:8091/v2/login --user ${user}@${tenant}:${password} | jq .
       responses:
         '200':
           description: |
@@ -91,17 +87,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Login'
-              examples:
-                example-1:
-                  value:
-                    user_id: 58232
-                    token: b56f8a50-9eb3-4d7b-ab1e-92ad37be816e
+              examples: {}
         '401':
           description: Usuário ou senha inválido(a)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Erro'
+      security:
+        - UsuarioSenha: []
   /cashiers:
     get:
       tags:
