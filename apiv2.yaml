@@ -26,7 +26,7 @@ info:
 
     Fonte: RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
 
-    Em nosso caso, o campo "username" é composto de usuario@tenant, então o usuário "admin", tenant "zezinho" e senha "zeus" resultam na string `admin@zezinho:zeus` que convertida para base64 fica `YWRtaW5AemV6aW5obzp6ZXVz`. O próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
+    Em nosso caso, o campo "username" é composto de usuario@tenant, então o usuário "admin", tenant "zezinho" e senha "zeus" resultam na string `admin@zezinho:zeus` que convertida para base64 fica YWRtaW5AemV6aW5obzp6ZXVz. O próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
 
     ## Definições
 
