@@ -12,41 +12,36 @@ tags:
   - name: Distribuição
     description: Distribuição
 info:
-  description: |-
-    Nossa API utiliza o padrão REST e autenticação HTTP AuthBasic (definida na RFC 7617) em todos os recursos. O formato padrão de resposta é o JSON na imensa maioria dos recursos; as exceções são os recursos que retornam NFe/NFCe (XML) ou documentos para impressão (PDF).
+  description: |
+    Esta API utiliza o padrão REST e autenticação HTTP AuthBasic (RFC 7617) em todos os recursos. O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF).
 
     ## Autenticação
 
-    Conforme a RFC 7617 [1], na autenticação AuthBasic o cabeçalho *Authorization* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
+    Conforme a RFC 7617 [1], o cabeçalho *Authorization* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
 
-    [1] RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
+    [1] RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617#page-5
 
     Utilizamos essa autenticação de duas formas:
     - No `POST /login`, username = `usuario@tenant` e password = `senha`
-    - Nos demais recursos, username = `user_id` e password = `token` (obtidos no login)
+    - Demais recursos, username = `user_id` e password = `token` (obtidos no login)
 
     Conforme a RFC 7617, o próprio aplicativo cliente deve se encarregar de fazer essa conversão.
 
     ## Definições
 
-    **Tenant\:** Conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
+    **Tenant\:** Conta do cliente na Rednaxel. O tenant pode ter uma ou empresas que podem ser filiais (mesma raiz de CNPJ) ou não.
 
-    **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", cada um tem um UserID próprio.
+    **Usuário\:** Cada usuário pertence a um tenant e tem um `user_id` global e um `nome_usuario` único dentro do tenant.
 
     ## Padrões
 
     Todos os GET usam os parâmetros "filter", "sort" e "range" da seguinte forma:
 
-     | Parâmetro  | Formato | URL Query                              | SQL equivalente        |
-     |------------|---------|----------------------------------------|------------------------|
-     | filter     |   JSON  | GET v2/resources?filter={"store":34}   | ... WHERE store = 34   |
-     | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name, asc |
-     | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10  |
-
-    ## Ferramentas
-
-    Os exemplos nesse documento usam a ferramenta de linha-de-comando curl. Ela está disponível na maioria das distribuições Linux via apt-get ou similar.
-    Versão Windows: https://curl.haxx.se/windows/
+     | Parâmetro  | Formato | URL Query                              | SQL equivalente       |
+     |------------|---------|----------------------------------------|-----------------------|
+     | filter     |   JSON  | GET v2/resources?filter={"store":34}   | ... WHERE store = 34  |
+     | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name asc |
+     | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
@@ -379,10 +374,10 @@ components:
     Usuário/Senha:
       type: http
       scheme: basic
-      description: 'Usuário, Conta(tenant) e senha no formato admin@zezinho:zeus'
+      description: 'Usuário, Conta(tenant) e senha, ex: admin@zezinho:zeus'
     ID/Token:
       type: http
       scheme: basic
-      description: 'ID do usuário e token no formato 1234:89a1e75e-87da'
+      description: 'ID do usuário e token, ex: 12345:89a1e75e-87da'
 security:
   - ID/Token: []
