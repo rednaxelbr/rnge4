@@ -101,7 +101,49 @@ paths:
       operationId: post-login
       responses:
         '200':
-          description: OK
+          description: Os campos `user_id` e `token` devem ser usados nas chamadas seguintes.
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    id: 1561144325
+                    user_id: 10023
+                    token: 89a1e75e-87da-400a-9899-7ca1a170667c
+                    logo_color: '#404040'
+                    font_color: '#FFFFFF'
+                    homologacao: true
+                properties:
+                  id:
+                    type: number
+                    description: ID do login
+                  user_id:
+                    type: number
+                    description: ID do Usuário
+                  token:
+                    type: string
+                    minLength: 1
+                    description: Token de acesso
+                  logo_color:
+                    type: string
+                    minLength: 1
+                    description: Cor de fundo (frontend)
+                  font_color:
+                    type: string
+                    minLength: 1
+                    description: Cor da letra (frontend)
+                  homologacao:
+                    type: boolean
+                    description: Servidor de homologação ou produção?
+                required:
+                  - id
+                  - user_id
+                  - token
+                  - logo_color
+                  - font_color
+                  - homologacao
       parameters:
         - schema:
             type: string
@@ -222,14 +264,13 @@ paths:
       parameters:
         - name: filter
           in: query
-          description: |            
+          description: |
             - ids_empresas: `integer[]`
             - id_destino: `integer`
             - meus_pedidos: `boolean`
             - dias: `integer`
           schema:
             type: object
-          default: '{"dias":10}'
         - name: range
           in: query
           description: Paginação
