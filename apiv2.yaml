@@ -17,26 +17,21 @@ info:
 
     ## Autenticação
 
-    Conforme a RFC 7617, na autenticação AuthBasic o cabeçalho *Authorization* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
+    Conforme a RFC 7617 [1], na autenticação AuthBasic o cabeçalho *Authorization* é composto da palavra `Basic` seguida de um espaço e da string `username:password` codificada em base64.
 
-    > If the user agent wishes to send the user-id "Aladdin" and password
-    > "open sesame", it would use the following header field:
-    >
-    >   Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-
-    Fonte: RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
+    [1] RFC 7617, capítulo 2, em https://datatracker.ietf.org/doc/html/rfc7617
 
     Utilizamos essa autenticação de duas formas:
-    - No `POST v2/login`, username = `usuario@tenant` e password = `senha`
+    - No `POST /login`, username = `usuario@tenant` e password = `senha`
     - Nos demais recursos, username = `user_id` e password = `token` (obtidos no login)
 
-    Conforme a RFC 7617, o próprio aplicativo cliente deve se encarregar de fazer essa conversão; para testes, pode-se usar sites que convertem para base64 como https://www.base64encode.org e similares.
+    Conforme a RFC 7617, o próprio aplicativo cliente deve se encarregar de fazer essa conversão.
 
     ## Definições
 
     **Tenant\:** Conta do cliente (eg:casadopapel) na Rednaxel. O tenant pode ter uma ou empresas (companies), que podem ser filiais usando a mesma raiz de CNPJ ou não.
 
-    **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", apesar de ambos serem ADMIN cada um tem um UserID próprio.
+    **Usuário\:** Cada usuário pertence a um tenant e tem um UserID global e um UserName único dentro do tenant. Por exemplo, "admin@thony" é diferente de "admin@tebori", cada um tem um UserID próprio.
 
     ## Padrões
 
@@ -384,10 +379,10 @@ components:
     Usuário/Senha:
       type: http
       scheme: basic
-      description: 'admin@zezinho:zeus'
+      description: 'Usuário, Conta(tenant) e senha no formato admin@zezinho:zeus'
     ID/Token:
       type: http
       scheme: basic
-      description: '1234:uuid-token'
+      description: 'ID do usuário e token no formato 1234:89a1e75e-87da'
 security:
   - ID/Token: []
