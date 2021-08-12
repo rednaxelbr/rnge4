@@ -80,15 +80,16 @@ paths:
               schema:
                 description: ''
                 type: object
+                x-examples:
+                  example-1:
+                    resp: OK
                 properties:
                   resp:
                     type: string
                     minLength: 1
+                    description: Resposta (OK)
                 required:
                   - resp
-                x-examples:
-                  example-1:
-                    resp: OK
               examples:
                 JSON:
                   value:
@@ -124,26 +125,19 @@ paths:
                     description: ID do Usuário
                   token:
                     type: string
-                    minLength: 1
                     description: Token de acesso
                   logo_color:
                     type: string
-                    minLength: 1
                     description: Cor de fundo (frontend)
                   font_color:
                     type: string
-                    minLength: 1
                     description: Cor da letra (frontend)
                   homologacao:
                     type: boolean
                     description: Servidor de homologação ou produção?
                 required:
-                  - id
                   - user_id
                   - token
-                  - logo_color
-                  - font_color
-                  - homologacao
       parameters:
         - schema:
             type: string
@@ -312,7 +306,6 @@ paths:
     parameters:
       - schema:
           type: integer
-          default: 1234
         name: id
         in: path
         required: true
