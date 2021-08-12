@@ -138,26 +138,11 @@ paths:
                 required:
                   - user_id
                   - token
-      parameters:
-        - schema:
-            type: string
-            default: Basic YWRtaW5AemV6aW5obzp6ZXVz
-          in: header
-          name: Authorization
-          required: true
-          description: BasicAuth
-      description: |-
-        Efetua o login na plataforma para obter UserID e Token. 
-
-        Para usar a aba **Try It** acima, monte o Base64 do AuthBasic:
-
-        1) Abra o site https://www.base64encode.org (ou outro similar)
-        2) Digite `usuario@tenant:senha` (com seus dados) depois clique em ENCODE e copie
-        3) Na aba "Headers", cole o Base64 resultante no campo "Value" e clique em Send
-
-        Usando **curl** basta passar `--user usuario@tenant:senha` diretamente na linha de comando.
+      parameters: []
+      description: |
+        Efetua o login com `usuario@tenant` e `senha` para obter UserID e Token. 
       security:
-        - Basic YWRtaW5AemV6aW5obzp6ZXVz: []
+        - Usuário/Senha: []
       tags:
         - Autenticação
   /cashiers:
@@ -396,13 +381,13 @@ paths:
     parameters: []
 components:
   securitySchemes:
-    Basic YWRtaW5AemV6aW5obzp6ZXVz:
+    Usuário/Senha:
       type: http
       scheme: basic
       description: 'admin@zezinho:zeus'
-    Basic MTIzNDp1dWlkLXRva2Vu:
+    ID/Token:
       type: http
       scheme: basic
       description: '1234:uuid-token'
 security:
-  - Basic MTIzNDp1dWlkLXRva2Vu: []
+  - ID/Token: []
