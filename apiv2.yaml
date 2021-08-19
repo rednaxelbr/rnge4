@@ -3,8 +3,8 @@ servers:
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 tags:
-  - name: Autenticação
-    description: Autenticação
+  - name: Login
+    description: Login
   - name: Pedidos
     description: Pedidos
   - name: PDV
