@@ -53,38 +53,6 @@ info:
     url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
     altText: Logo da Rednaxel
 paths:
-  /ping:
-    get:
-      summary: Verificando servidor
-      tags:
-        - Autenticação
-      operationId: get-ping
-      description: Verifica se o servidor está online
-      security: []
-      responses:
-        '200':
-          description: Sucesso
-          headers: {}
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    resp: OK
-                properties:
-                  resp:
-                    type: string
-                    minLength: 1
-                    description: Resposta (OK)
-                required:
-                  - resp
-              examples:
-                JSON:
-                  value:
-                    resp: OK
-    parameters: []
   /login:
     parameters: []
     post:
@@ -130,11 +98,145 @@ paths:
                   - token
       parameters: []
       description: |
-        Efetua o login com `usuario@tenant` e `senha` para obter UserID e Token. 
+        Efetua o login com `usuario@tenant` e `senha` para obter UserID e Token. Se o `id_empresa` não for informado o login será feito na *empresa padrão* do usuário. 
       security:
         - Usuário/Senha: []
       tags:
         - Autenticação
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                end_ip:
+                  type: string
+                  description: IP interno para suporte
+                id_empresa:
+                  description: ID da empresa onde será feito o login
+                  type: integer
+  '/tokens/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Informações do token
+      tags:
+        - Autenticação
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    id: 1564931602
+                    user_id: 10023
+                    nome_razao: Alexsander Da Rosa
+                    loja: 10
+                    nome_loja: ADMINISTRATIVO
+                    id_predio: 13
+                    nome_usuario: ALEXSANDER
+                    conta: cdp
+                    url_logo: 'https://storage.googleapis.com/rednaxel-fotos/cdp/logo/web.png'
+                    user_email: alexsander.rosa@gmail.com
+                    picture_url: 'https://lh6.googleusercontent.com/-1_ZMsIBah1w/AAAAAAAAAAI/AAAAAAAAkkk/0C-voD9hwsk/photo.jpg'
+                    ip_externo: 177.101.216.158
+                    versao: (Linux 64) Chrome/92
+                    ult_oper: '2021-08-19T18:25:30-03:00'
+                    cmun: 4314902
+                    nome_municipio: Porto Alegre
+                    uf: RS
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  nome_usuario:
+                    type: string
+                    description: Nome do usuário logado
+                  user_email:
+                    type: string
+                    description: Email do usuário logado
+                  picture_url:
+                    type: string
+                    description: URL da foto do usuário logado
+                  loja:
+                    description: ID da empresa onde foi efetuado o login
+                    type: integer
+                  nome_razao:
+                    type: string
+                    description: Nome/Razão Social da empresa onde foi efetuado o login
+                  nome_loja:
+                    type: string
+                    description: Nome reduzido da empresa onde foi efetuado o login
+                  id_predio:
+                    type: integer
+                    description: ID do prédio da empresa logada
+                  cmun:
+                    type: integer
+                    description: Código do município (IBGE) da sede da empresa logada
+                  uf:
+                    type: string
+                    description: UF (estado) da sede da empresa logada
+                  nome_municipio:
+                    type: string
+                    description: Nome do município da sede da empresa logada
+                  conta:
+                    type: string
+                    description: Conta (tenant) do usuário
+                  url_logo:
+                    type: string
+                    description: URL do logotipo do tenant
+                  ip_externo:
+                    type: string
+                    description: IP de onde foi efetuado o login
+                  versao:
+                    type: string
+                    description: Versão do navegador (ou outro app frontend)
+                  ult_oper:
+                    type: string
+                    description: Data/hora da última requisição
+      operationId: get-tokens-id
+      description: Obtém informações do login atual
+  /ping:
+    get:
+      summary: Verificando servidor
+      tags:
+        - Autenticação
+      operationId: get-ping
+      description: Verifica se o servidor está online
+      security: []
+      responses:
+        '200':
+          description: Sucesso
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    resp: OK
+                properties:
+                  resp:
+                    type: string
+                    minLength: 1
+                    description: Resposta (OK)
+                required:
+                  - resp
+              examples:
+                JSON:
+                  value:
+                    resp: OK
+    parameters: []
   /cashiers:
     get:
       tags:
