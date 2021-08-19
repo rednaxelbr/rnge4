@@ -102,7 +102,7 @@ paths:
       security:
         - Usuário/Senha: []
       tags:
-        - Autenticação
+        - Login
       requestBody:
         content:
           application/json:
@@ -125,7 +125,7 @@ paths:
     get:
       summary: Informações do token
       tags:
-        - Autenticação
+        - Login
       responses:
         '200':
           description: OK
@@ -209,7 +209,7 @@ paths:
     get:
       summary: Verificando servidor
       tags:
-        - Autenticação
+        - Login
       operationId: get-ping
       description: Verifica se o servidor está online
       security: []
