@@ -1,5 +1,7 @@
 openapi: 3.0.0
 servers:
+  - url: 'https://homolog.rnge.com.br:8091/v2'
+    description: Homologação
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 tags:
