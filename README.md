@@ -3,4 +3,5 @@ API do RNGE4
 
 - Teste do Jardel
 - Teste do Kaue
-- Teste do Melo
+- Teste do Cristiano
+- Teste Jairo
