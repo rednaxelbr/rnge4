@@ -1146,7 +1146,7 @@ components:
           type: string
         legado:
           type: boolean
-        '':
+        embalagens:
           $ref: '#/components/schemas/Embalagens'
       required:
         - ucom
