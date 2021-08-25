@@ -553,8 +553,8 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
     post:
-      summary: Criando um produto (SKU)
-      operationId: skus-post
+      summary: Criando uma mercadoria
+      operationId: skuarticles2
       responses:
         '200':
           description: OK
@@ -562,7 +562,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SKU'
+              $ref: '#/components/schemas/Embalagens'
       description: ''
       tags:
         - Produtos
