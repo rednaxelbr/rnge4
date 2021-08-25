@@ -374,21 +374,7 @@ paths:
         - Produtos
       operationId: get-skus
       parameters: []
-      description: |
-        Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id | []int64 |  | 
-        | codigo | int64 |  | 
-        | id_categ | int64 |  | 
-        | inativos | bool |  | 
-        | ncm_vencido | bool |  | 
-        | q | string | descrição do produto | 
-        | fornecedor | string | nome do fornecedor | 
-        | numero_pedido | int64 | produtos que estão nesse pedido| 
-        | barcode | int64 | código de barras | 
-        | id_grade | int64 |  |
+      description: ''
       responses:
         '200':
           description: OK
@@ -786,7 +772,21 @@ paths:
         - Produtos
       responses: {}
       operationId: get-skus
-      description: ''
+      description: |
+        Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | []int64 |  | 
+        | codigo | int64 |  | 
+        | id_categ | int64 |  | 
+        | inativos | bool |  | 
+        | ncm_vencido | bool |  | 
+        | q | string | descrição do produto | 
+        | fornecedor | string | nome do fornecedor | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | barcode | int64 | código de barras | 
+        | id_grade | int64 |  |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
