@@ -204,13 +204,7 @@ paths:
           description: Created
       operationId: get-tokens-id
       description: Obtém informações do login atual
-      parameters:
-        - schema:
-            type: integer
-            default: '1234'
-          in: query
-          name: id
-          required: true
+      parameters: []
   /ping:
     get:
       summary: Verificando servidor
