@@ -711,7 +711,7 @@ paths:
             type: string
           in: query
           name: sort
-      description: "Filtros disponíveis\n- id            []int64 \n- codigo\t      int64   \n- id_categ\t  int64   \n- inativos\t  bool    \n- ncm_vencido\t  bool    \n- q\t          string  \n- fornecedor\t  string  \n- numero_pedido int64   \n- barcode\t      int64   \n- id_grade\t  int64   "
+      description: "Filtros disponíveis\n- id :            []int64 \n- codigo: \t      int64   \n- id_categ:\t  int64   \n- inativos:\t  bool    \n- ncm_vencido:\t  bool    \n- q:\t          string   (descrição do produto) \n- fornecedor:\t  string  (nome do fornecedor)\n- numero_pedido: int64   (produtos que estão nesse pedido)\n- barcode:\t      int64 (código de barras)  \n- id_grade:\t  int64 "
     post:
       summary: Criando um produto (SKU)
       operationId: post-skus
