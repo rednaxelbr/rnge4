@@ -504,7 +504,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/SKU'
     delete:
-      summary: Excluindo um produto (SKU)
+      summary: Excluindo uma mercadoria
       operationId: skuarticles3
       responses:
         '200':
