@@ -373,16 +373,15 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | id | []int64 |  | 
-        | codigo | int64 |  | 
-        | id_categ | int64 |  | 
-        | inativos | bool |  | 
-        | ncm_vencido | bool |  | 
+        | codigo | int64 | código do Produto (SKU)| 
+        | id_categ | int64 | ID da categoria produto | 
+        | inativos | bool |  padrão é filtrar somente os ativos| 
+        | ncm_vencido | bool |  fim da vigência menor que a data atual| 
         | q | string | descrição do produto | 
         | fornecedor | string | nome do fornecedor | 
         | numero_pedido | int64 | produtos que estão nesse pedido| 
-        | barcode | int64 | código de barras | 
-        | id_grade | int64 |  |
+        | barcode | int64 | código de barras (pode ser Produto ou Endereço de Estoque) | 
+        | id_grade | int64 |  ID da grade (meta produto)|
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
