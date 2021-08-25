@@ -1114,7 +1114,24 @@ components:
           type: array
           uniqueItems: true
           minItems: 1
-          items: {}
+          items:
+            type: object
+            properties:
+              nome_catalogo:
+                type: string
+              id_categoria:
+                type: number
+              desc_categoria:
+                type: string
+              principal:
+                type:
+                  - string
+                  - boolean
+            required:
+              - nome_catalogo
+              - id_categoria
+              - desc_categoria
+              - principal
         codigo_agrup:
           type: string
           minLength: 1
