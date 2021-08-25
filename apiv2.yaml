@@ -460,6 +460,113 @@ paths:
         in: path
         description: Código do produto (SKU)
         required: true
+  '/skuarticles/{id}':
+    get:
+      summary: Consultando uma mercadoria
+      tags:
+        - Produtos
+      operationId: skuarticles1
+      parameters: []
+      description: Mostra uma mercadoria já existente
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Embalagens'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    message: Nenhum registro encontrado
+                properties:
+                  message:
+                    type: string
+                    minLength: 1
+                    description: Mensagem de Erro
+                required:
+                  - message
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: skuarticles2
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+      description: Atualiza uma mercadoria já existente
+      requestBody:
+        $ref: '#/components/requestBodies/SKU'
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: skuarticles3
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+      description: Exclui uma mercadoria já existente
+    parameters:
+      - schema:
+          type: integer
+          default: 10888
+        name: id
+        in: path
+        description: Código da mercadoria
+        required: true
+  /skuarticles:
+    get:
+      summary: Listando mercadorias
+      tags:
+        - Produtos
+      responses: {}
+      operationId: skuarticles1
+      description: |
+        Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | codigo_sku | int64 | código da mercadoria (ver filtro por embalagens)| 
+        | embalagens | bool | deverá informar true para visualizar também as embalagens | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | codigo_descricao | string | Descrição da mercadoria, ou Se for numero então Se > 9999999 filtra por codigo de barras, senão pelo codigo mercadoria | 
+        | fornecedor | string |  nome do fornecedor| 
+        | marca | string |  nome da marca| 
+        | ids_categ | []int64 | array de IDs de categorias | 
+        | nivel | int | nivel da categoria | 
+        | categoria | string | nome da categoria | 
+        | fora_venda | bool |  incluir produtos que estão fora de venda? (padrão: false) |
+        | referencia | string |  referência do código da mercadoria do fornecedor |
+        | ncm | string |  código ncm |
+        | barcode | int64 | código de barras|
+        | user_id | int64 | ID do usuário que criou a mercadoria|
+        | data_preco | string |  Data/Hora da ultima alteração do preco promocional ou mercadoria |
+        | id_empresa | int |  utilizado para filtrar o estoque do predio |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um produto (SKU)
+      operationId: skus-post
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU'
+      description: ''
+      tags:
+        - Produtos
+    parameters: []
   '/orders/{id}':
     put:
       tags:
