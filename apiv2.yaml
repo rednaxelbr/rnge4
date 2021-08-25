@@ -19,7 +19,7 @@ info:
   description: |
     Utilizamos a autenticação de duas formas:
     - No `POST /login`, username = `usuario@tenant` e password = `senha`
-    - Demais recursos, username = `user_id` e password = `token` (obtidos no login)
+    - **Demais recursos, username = `user_id` e password = `token` (obtidos no login)**
 
     ## Definições
 
@@ -826,6 +826,9 @@ components:
       type: http
       scheme: basic
       description: 'ID do usuário e token, ex: 12345:89a1e75e-87da'
+    Token de acesso:
+      type: http
+      scheme: bearer
   requestBodies: {}
   schemas:
     Grade:
@@ -1171,4 +1174,4 @@ components:
         default: '["id","DESC"]'
       description: Ordenação
 security:
-  - ID/Token: []
+  - Token de acesso: []
