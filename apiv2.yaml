@@ -382,6 +382,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SKU'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    message: Nenhum registro encontrado
+                properties:
+                  message:
+                    type: string
+                    minLength: 1
+                    description: Mensagem de Erro
+                required:
+                  - message
     put:
       summary: Atualizando um produto (SKU)
       operationId: put-skus
