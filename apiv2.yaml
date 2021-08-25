@@ -17,9 +17,9 @@ tags:
     description: Distribuição
 info:
   description: |
-    Utilizamos a autenticação de duas formas:
-    - No `POST /login`, username = `usuario@tenant` e password = `senha`
-    - **Demais recursos, username = `user_id` e password = `token` (obtidos no login)**
+    Utilizamos o **Authorization** de duas formas:
+    - No `POST /login`, **Basic** com username = `usuario@tenant` e password = `senha`
+    - Nos demais recursos utilizar **Bearer** `token` (obtido no login)
 
     ## Definições
 
@@ -822,10 +822,6 @@ components:
       type: http
       scheme: basic
       description: 'Usuário, Conta(tenant) e senha, ex: admin@zezinho:zeus'
-    ID/Token:
-      type: http
-      scheme: basic
-      description: 'ID do usuário e token, ex: 12345:89a1e75e-87da'
     Token de acesso:
       type: http
       scheme: bearer
