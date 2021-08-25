@@ -367,6 +367,46 @@ paths:
         '200':
           description: OK
     parameters: []
+  /skus:
+    get:
+      summary: Listando produtos (SKUs)
+      tags:
+        - Produtos
+      responses: {}
+      operationId: get-skus
+      description: |
+        Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | []int64 |  | 
+        | codigo | int64 |  | 
+        | id_categ | int64 |  | 
+        | inativos | bool |  | 
+        | ncm_vencido | bool |  | 
+        | q | string | descrição do produto | 
+        | fornecedor | string | nome do fornecedor | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | barcode | int64 | código de barras | 
+        | id_grade | int64 |  |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um produto (SKU)
+      operationId: post-skus
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU'
+      description: ''
+      tags:
+        - Produtos
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
@@ -781,46 +821,6 @@ paths:
       tags:
         - Produtos
       description: ''
-  /skus:
-    get:
-      summary: Listando produtos (SKUs)
-      tags:
-        - Produtos
-      responses: {}
-      operationId: get-skus
-      description: |
-        Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id | []int64 |  | 
-        | codigo | int64 |  | 
-        | id_categ | int64 |  | 
-        | inativos | bool |  | 
-        | ncm_vencido | bool |  | 
-        | q | string | descrição do produto | 
-        | fornecedor | string | nome do fornecedor | 
-        | numero_pedido | int64 | produtos que estão nesse pedido| 
-        | barcode | int64 | código de barras | 
-        | id_grade | int64 |  |
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Criando um produto (SKU)
-      operationId: post-skus
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SKU'
-      description: ''
-      tags:
-        - Produtos
 components:
   securitySchemes:
     Usuário/Senha:
