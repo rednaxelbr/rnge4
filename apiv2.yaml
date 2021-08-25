@@ -779,7 +779,8 @@ paths:
   /skugrids:
     get:
       summary: Listando Grades de SKU
-      tags: []
+      tags:
+        - Produtos
       responses: {}
       operationId: get-skugrids
       parameters:
@@ -788,7 +789,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
       description: ''
     post:
-      summary: ''
+      summary: Criando uma grade
       operationId: post-skugrids
       responses:
         '200':
@@ -804,6 +805,7 @@ paths:
           in: query
       tags:
         - Produtos
+      description: ''
 components:
   securitySchemes:
     Usuário/Senha:
