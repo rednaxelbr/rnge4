@@ -1114,24 +1114,7 @@ components:
           type: array
           uniqueItems: true
           minItems: 1
-          items:
-            type: object
-            properties:
-              nome_catalogo:
-                type: string
-                minLength: 1
-              id_categoria:
-                type: number
-              desc_categoria:
-                type: string
-                minLength: 1
-              principal:
-                type: boolean
-            required:
-              - nome_catalogo
-              - id_categoria
-              - desc_categoria
-              - principal
+          items: {}
         codigo_agrup:
           type: string
           minLength: 1
@@ -1147,7 +1130,9 @@ components:
         legado:
           type: boolean
         embalagens:
-          $ref: '#/components/schemas/Embalagens'
+          type: array
+          items:
+            $ref: '#/components/schemas/Embalagens'
       required:
         - ucom
         - prod_xprod
