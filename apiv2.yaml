@@ -414,7 +414,7 @@ paths:
         - Produtos
       operationId: skusid1
       parameters: []
-      description: ''
+      description: Mostra um produto já existente
       responses:
         '200':
           description: OK
@@ -458,6 +458,7 @@ paths:
           description: OK
       tags:
         - Produtos
+      description: Exclui um produto já existente
     parameters:
       - schema:
           type: integer
