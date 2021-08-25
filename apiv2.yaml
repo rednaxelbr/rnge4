@@ -369,27 +369,11 @@ paths:
     parameters: []
   '/skus/{id}':
     get:
-      summary: Listando produtos (SKUs)
+      summary: Consultando um produto (SKU)
       tags:
         - Produtos
       operationId: get-skus
-      parameters:
-        - schema:
-            type: string
-            default: '{"q":"produto"}'
-          in: query
-          name: filter
-        - schema:
-            type: string
-            default: '[0,9]'
-          in: query
-          name: range
-          required: true
-        - schema:
-            type: string
-            default: '["id", "DESC"]'
-          in: query
-          name: sort
+      parameters: []
       description: |
         Filtros disponíveis
 
@@ -413,19 +397,6 @@ paths:
               schema:
                 type: object
                 properties: {}
-    post:
-      summary: Criando um produto (SKU)
-      operationId: post-skus
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SKU'
     put:
       summary: Atualizando um produto (SKU)
       operationId: put-skus
@@ -806,6 +777,32 @@ paths:
       tags:
         - Produtos
       description: ''
+  /skus:
+    get:
+      summary: Listando produtos (SKUs)
+      tags:
+        - Produtos
+      responses: {}
+      operationId: get-skus
+      description: ''
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um produto (SKU)
+      operationId: post-skus
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU'
+      description: ''
+      tags:
+        - Produtos
 components:
   securitySchemes:
     Usuário/Senha:
