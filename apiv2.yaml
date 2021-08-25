@@ -802,6 +802,8 @@ paths:
         - schema:
             type: string
           in: query
+      tags:
+        - Produtos
 components:
   securitySchemes:
     Usuário/Senha:
