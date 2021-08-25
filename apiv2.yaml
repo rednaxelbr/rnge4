@@ -207,6 +207,8 @@ paths:
                   ult_oper:
                     type: string
                     description: Data/hora da última requisição
+        '201':
+          description: Created
       operationId: get-tokens-id
       description: Obtém informações do login atual
   /ping:
@@ -365,6 +367,90 @@ paths:
         '200':
           description: OK
     parameters: []
+  '/skus/{id}':
+    get:
+      summary: Listando produtos (SKUs)
+      tags:
+        - Produtos
+      operationId: get-skus
+      parameters:
+        - schema:
+            type: string
+            default: '{"q":"produto"}'
+          in: query
+          name: filter
+        - schema:
+            type: string
+            default: '[0,9]'
+          in: query
+          name: range
+          required: true
+        - schema:
+            type: string
+            default: '["id", "DESC"]'
+          in: query
+          name: sort
+      description: |
+        Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | []int64 |  | 
+        | codigo | int64 |  | 
+        | id_categ | int64 |  | 
+        | inativos | bool |  | 
+        | ncm_vencido | bool |  | 
+        | q | string | descrição do produto | 
+        | fornecedor | string | nome do fornecedor | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | barcode | int64 | código de barras | 
+        | id_grade | int64 |  |
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+    post:
+      summary: Criando um produto (SKU)
+      operationId: post-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU'
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: put-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+      description: Atualiza um produto já existente
+      requestBody:
+        $ref: '#/components/requestBodies/SKU'
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: delete-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        description: Código do produto (SKU)
   '/orders/{id}':
     put:
       tags:
@@ -690,69 +776,32 @@ paths:
         '200':
           description: OK
     parameters: []
-  /skus:
+  /skugrids:
     get:
-      summary: Listando produtos (SKUs)
-      tags:
-        - Produtos
+      summary: Listando Grades de SKU
+      tags: []
       responses: {}
-      operationId: get-skus
+      operationId: get-skugrids
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: ''
+    post:
+      summary: ''
+      operationId: post-skugrids
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grade'
       parameters:
         - schema:
             type: string
-            default: '{"q":"produto"}'
           in: query
-          name: filter
-        - schema:
-            type: string
-            default: '[0,9]'
-          in: query
-          name: range
-          required: true
-        - schema:
-            type: string
-            default: '["id", "DESC"]'
-          in: query
-          name: sort
-      description: |
-        Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id | []int64 |  | 
-        | codigo | int64 |  | 
-        | id_categ | int64 |  | 
-        | inativos | bool |  | 
-        | ncm_vencido | bool |  | 
-        | q | string | descrição do produto | 
-        | fornecedor | string | nome do fornecedor | 
-        | numero_pedido | int64 | produtos que estão nesse pedido| 
-        | barcode | int64 | código de barras | 
-        | id_grade | int64 |  |
-    post:
-      summary: Criando um produto (SKU)
-      operationId: post-skus
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos
-    put:
-      summary: Atualizando um produto (SKU)
-      operationId: put-skus
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos
-    delete:
-      summary: Excluindo um produto (SKU)
-      operationId: delete-skus
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos
 components:
   securitySchemes:
     Usuário/Senha:
@@ -763,5 +812,349 @@ components:
       type: http
       scheme: basic
       description: 'ID do usuário e token, ex: 12345:89a1e75e-87da'
+  requestBodies: {}
+  schemas:
+    Grade:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        id_marca:
+          type: number
+        id_categ:
+          type: number
+        caminho:
+          type: string
+          minLength: 1
+        ativo:
+          type: boolean
+        marca:
+          type: string
+          minLength: 1
+        orig:
+          type: number
+        id_classe:
+          type: number
+        trib:
+          type: string
+          minLength: 1
+        cst:
+          type: number
+        aliq_ipi:
+          type: number
+        ncm:
+          type: string
+          minLength: 1
+        cest:
+          type: string
+        codigo_alfa:
+          type: string
+          minLength: 1
+        desc_basica:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - id_marca
+        - id_categ
+        - caminho
+        - ativo
+        - marca
+        - orig
+        - id_classe
+        - trib
+        - cst
+        - aliq_ipi
+        - ncm
+        - cest
+        - codigo_alfa
+        - desc_basica
+      x-examples:
+        example-1:
+          id: 209711
+          id_marca: 1464
+          id_categ: 4563
+          caminho: PASTA > PASTAS SANFONADAS > PASTA SANFONADA DUPLICATA > PASTA SANFONADA DUPLICATA 31 DIVI PERCALUX
+          ativo: false
+          marca: '-'
+          orig: 0
+          id_classe: 3
+          trib: ICMS
+          cst: 60
+          aliq_ipi: 10
+          ncm: '00000000'
+          cest: ''
+          codigo_alfa: G31013
+          desc_basica: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
+    SKU:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 31013
+          ucom: UN
+          prod_xprod: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
+          preco_venda: 18.7
+          grade:
+            id: 209711
+            id_marca: 1464
+            id_categ: 4563
+            caminho: PASTA > PASTAS SANFONADAS > PASTA SANFONADA DUPLICATA > PASTA SANFONADA DUPLICATA 31 DIVI PERCALUX
+            ativo: false
+            marca: '-'
+            orig: 0
+            id_classe: 3
+            trib: ICMS
+            cst: 60
+            aliq_ipi: 10
+            ncm: '00000000'
+            cest: ''
+            codigo_alfa: G31013
+            desc_basica: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
+          ativo: false
+          dthr_sku: '2021-08-25T10:39:28-03:00'
+          custos:
+            custo_liquido: 9.35
+            curva: 0
+            vbcst_nota: 0
+            icms_efetivo: 0
+            reducao_bcst: 0
+            vicmsst_ret: 0
+            vicms_substituto: 0
+            vunit_compra: 7.6
+            pst_compra: 0
+            custo_merc_vend: 8.36
+          fornecedores:
+            - id_fornec: 53721
+              nome_fornec: FORNECEDOR PASTA SANFONADA
+              id_pessoa: 35510001
+          fotos:
+            - id: 3101300
+              url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/31013.JPG'
+              primario: ''
+              secundario: ''
+          flags_sku:
+            falta_fornecedor: true
+            fora_de_linha: false
+            status_legado: 1
+          desc_comercial: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
+          categorias:
+            - nome_catalogo: Ecommerce
+              id_categoria: 3
+              desc_categoria: Escritório
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 5
+              desc_categoria: Pasta
+              principal: true
+            - nome_catalogo: Ecommerce
+              id_categoria: 11
+              desc_categoria: Escolar
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 995
+              desc_categoria: Pasta Sanfonada
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 998
+              desc_categoria: Pasta Sanfonada Duplicata
+              principal: false
+            - nome_catalogo: Tags
+              id_categoria: 10004
+              desc_categoria: Escolar
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 20842
+              desc_categoria: Organização e Planejamento
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 20857
+              desc_categoria: Pasta Sanfonada
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 20860
+              desc_categoria: Pasta Sanfonada Duplicata
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 20878
+              desc_categoria: Pasta
+              principal: false
+            - nome_catalogo: Ecommerce
+              id_categoria: 20882
+              desc_categoria: Pasta Sanfonada
+              principal: false
+          codigo_agrup: '*'
+      properties:
+        id:
+          type: number
+        ucom:
+          type: string
+          minLength: 1
+        prod_xprod:
+          type: string
+          minLength: 1
+        preco_venda:
+          type: number
+        ativo:
+          type: boolean
+        dthr_sku:
+          type: string
+          minLength: 1
+        custos:
+          type: object
+          required:
+            - custo_liquido
+            - curva
+            - vbcst_nota
+            - icms_efetivo
+            - reducao_bcst
+            - vicmsst_ret
+            - vicms_substituto
+            - vunit_compra
+            - pst_compra
+            - custo_merc_vend
+          properties:
+            custo_liquido:
+              type: number
+            curva:
+              type: number
+            vbcst_nota:
+              type: number
+            icms_efetivo:
+              type: number
+            reducao_bcst:
+              type: number
+            vicmsst_ret:
+              type: number
+            vicms_substituto:
+              type: number
+            vunit_compra:
+              type: number
+            pst_compra:
+              type: number
+            custo_merc_vend:
+              type: number
+        fornecedores:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id_fornec:
+                type: number
+              nome_fornec:
+                type: string
+                minLength: 1
+              id_pessoa:
+                type: number
+            required:
+              - id_fornec
+              - nome_fornec
+              - id_pessoa
+        fotos:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+              url_foto:
+                type: string
+                minLength: 1
+              primario:
+                type: string
+              secundario:
+                type: string
+            required:
+              - id
+              - url_foto
+              - primario
+              - secundario
+        flags_sku:
+          type: object
+          required:
+            - falta_fornecedor
+            - fora_de_linha
+            - status_legado
+          properties:
+            falta_fornecedor:
+              type: boolean
+            fora_de_linha:
+              type: boolean
+            status_legado:
+              type: number
+        desc_comercial:
+          type: string
+          minLength: 1
+        categorias:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              nome_catalogo:
+                type: string
+                minLength: 1
+              id_categoria:
+                type: number
+              desc_categoria:
+                type: string
+                minLength: 1
+              principal:
+                type: boolean
+            required:
+              - nome_catalogo
+              - id_categoria
+              - desc_categoria
+              - principal
+        codigo_agrup:
+          type: string
+          minLength: 1
+        grade:
+          $ref: '#/components/schemas/Grade'
+      required:
+        - id
+        - ucom
+        - prod_xprod
+        - preco_venda
+        - ativo
+        - dthr_sku
+        - custos
+        - fornecedores
+        - fotos
+        - flags_sku
+        - desc_comercial
+        - categorias
+        - codigo_agrup
+  parameters:
+    Filter:
+      name: filter
+      in: query
+      required: false
+      schema:
+        type: string
+        default: '{"q":"PRODUTO"}'
+      description: Filtros
+    Range:
+      name: range
+      in: query
+      required: true
+      schema:
+        type: array
+        default: '[0,9]'
+      description: Paginação
+    Sort:
+      name: sort
+      in: query
+      required: false
+      schema:
+        type: array
+        default: '["id","DESC"]'
+      description: Ordenação
 security:
   - ID/Token: []
