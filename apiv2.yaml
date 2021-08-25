@@ -692,11 +692,35 @@ paths:
     parameters: []
   /skus:
     get:
-      summary: Produtos (skus)
+      summary: Listando produtos (SKUs)
       tags:
         - Produtos
       responses: {}
       operationId: get-skus
+    post:
+      summary: Criando um produto (SKU)
+      operationId: post-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: put-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: delete-skus
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos
 components:
   securitySchemes:
     Usuário/Senha:
