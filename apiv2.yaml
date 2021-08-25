@@ -7,6 +7,8 @@ servers:
 tags:
   - name: Login
     description: Login
+  - name: Produtos
+    description: Produtos
   - name: Pedidos
     description: Pedidos
   - name: PDV
@@ -688,6 +690,13 @@ paths:
         '200':
           description: OK
     parameters: []
+  /skus:
+    get:
+      summary: Produtos (skus)
+      tags:
+        - Produtos
+      responses: {}
+      operationId: get-skus
 components:
   securitySchemes:
     Usuário/Senha:
