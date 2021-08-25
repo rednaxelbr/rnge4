@@ -704,6 +704,7 @@ paths:
           name: filter
         - schema:
             type: string
+            default: '[0,9]'
           in: query
           name: range
           required: true
