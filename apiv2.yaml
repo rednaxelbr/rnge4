@@ -422,6 +422,7 @@ paths:
         name: id
         in: path
         description: Código do produto (SKU)
+        required: true
   '/orders/{id}':
     put:
       tags:
