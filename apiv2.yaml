@@ -33,7 +33,7 @@ info:
 
      | Parâmetro  | Formato | URL Query                              | SQL equivalente       |
      |------------|---------|----------------------------------------|-----------------------|
-     | filter     |   JSON  | GET v2/resources?filter={"store":34}   | ... WHERE store = 34  |
+     | filter     |  JSON   | GET v2/resources?filter={"store":34}   | ... WHERE store = 34  |
      | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name asc |
      | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
 
@@ -381,7 +381,7 @@ paths:
         | fornecedor | string | nome do fornecedor | 
         | numero_pedido | int64 | produtos que estão nesse pedido| 
         | barcode | int64 | código de barras (pode ser Produto ou Endereço de Estoque) | 
-        | id_grade | int64 |  ID da grade (meta produto)|
+        | id_grade | int64 |  Código da grade |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
