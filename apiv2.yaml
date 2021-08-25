@@ -829,6 +829,23 @@ components:
     Grade:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          id: 209711
+          id_marca: 1464
+          id_categ: 4563
+          caminho: PASTA > PASTAS SANFONADAS > PASTA SANFONADA DUPLICATA > PASTA SANFONADA DUPLICATA 31 DIVI PERCALUX
+          ativo: false
+          marca: '-'
+          orig: 0
+          id_classe: 3
+          trib: ICMS
+          cst: 60
+          aliq_ipi: 10
+          ncm: '00000000'
+          cest: ''
+          codigo_alfa: G31013
+          desc_basica: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
       properties:
         id:
           type: number
@@ -867,38 +884,11 @@ components:
           type: string
           minLength: 1
       required:
-        - id
-        - id_marca
-        - id_categ
-        - caminho
         - ativo
-        - marca
         - orig
-        - id_classe
-        - trib
         - cst
-        - aliq_ipi
         - ncm
         - cest
-        - codigo_alfa
-        - desc_basica
-      x-examples:
-        example-1:
-          id: 209711
-          id_marca: 1464
-          id_categ: 4563
-          caminho: PASTA > PASTAS SANFONADAS > PASTA SANFONADA DUPLICATA > PASTA SANFONADA DUPLICATA 31 DIVI PERCALUX
-          ativo: false
-          marca: '-'
-          orig: 0
-          id_classe: 3
-          trib: ICMS
-          cst: 60
-          aliq_ipi: 10
-          ncm: '00000000'
-          cest: ''
-          codigo_alfa: G31013
-          desc_basica: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
     SKU:
       description: ''
       type: object
