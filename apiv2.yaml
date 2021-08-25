@@ -373,7 +373,7 @@ paths:
       tags:
         - Produtos
       responses: {}
-      operationId: get-skus
+      operationId: skus-get
       description: |
         Filtros disponíveis
 
@@ -395,7 +395,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
     post:
       summary: Criando um produto (SKU)
-      operationId: post-skus
+      operationId: skus-post
       responses:
         '200':
           description: OK
@@ -412,7 +412,7 @@ paths:
       summary: Consultando um produto (SKU)
       tags:
         - Produtos
-      operationId: get-skus
+      operationId: skusid-get
       parameters: []
       description: ''
       responses:
@@ -441,7 +441,7 @@ paths:
                   - message
     put:
       summary: Atualizando um produto (SKU)
-      operationId: put-skus
+      operationId: skusid-put
       responses:
         '200':
           description: OK
@@ -452,7 +452,7 @@ paths:
         $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo um produto (SKU)
-      operationId: delete-skus
+      operationId: skusid-xdelete
       responses:
         '200':
           description: OK
@@ -797,7 +797,7 @@ paths:
       tags:
         - Produtos
       responses: {}
-      operationId: get-skugrids
+      operationId: skugrids-get
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
@@ -805,7 +805,7 @@ paths:
       description: ''
     post:
       summary: Criando uma grade
-      operationId: post-skugrids
+      operationId: skugrids-post
       responses:
         '200':
           description: OK
