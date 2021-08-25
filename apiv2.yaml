@@ -700,6 +700,7 @@ paths:
       parameters:
         - schema:
             type: string
+            default: '{"q":"produto"}'
           in: query
           name: filter
         - schema:
@@ -710,9 +711,24 @@ paths:
           required: true
         - schema:
             type: string
+            default: '["id", "DESC"]'
           in: query
           name: sort
-      description: "Filtros disponíveis\n- id :            []int64 \n- codigo: \t      int64   \n- id_categ:\t  int64   \n- inativos:\t  bool    \n- ncm_vencido:\t  bool    \n- q:\t          string   (descrição do produto) \n- fornecedor:\t  string  (nome do fornecedor)\n- numero_pedido: int64   (produtos que estão nesse pedido)\n- barcode:\t      int64 (código de barras)  \n- id_grade:\t  int64 \n\n\n Campo | Tipo | Descrição |\n| ------ | ------ | ------ |\n| id | []int64 | Descrição | \n| codigo | int64 | Descrição | \n| id_categ | int64 | Descrição | \n| inativos | bool | Descrição | \n| ncm_vencido | bool | Descrição | \n| q | string | Descrição | \n| fornecedor | string | Descrição | \n| numero_pedido | int64 | Descrição| \n| barcode | int64 | Descrição | \n| id_grade | int64 | Descrição |\n"
+      description: |
+        Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | []int64 |  | 
+        | codigo | int64 |  | 
+        | id_categ | int64 |  | 
+        | inativos | bool |  | 
+        | ncm_vencido | bool |  | 
+        | q | string | descrição do produto | 
+        | fornecedor | string | nome do fornecedor | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | barcode | int64 | código de barras | 
+        | id_grade | int64 |  |
     post:
       summary: Criando um produto (SKU)
       operationId: post-skus
