@@ -381,8 +381,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/SKU'
     put:
       summary: Atualizando um produto (SKU)
       operationId: put-skus
