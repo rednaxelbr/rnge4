@@ -419,6 +419,7 @@ paths:
     parameters:
       - schema:
           type: integer
+          default: 5
         name: id
         in: path
         description: Código do produto (SKU)
