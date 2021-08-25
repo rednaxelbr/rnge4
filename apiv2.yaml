@@ -412,7 +412,7 @@ paths:
       summary: Consultando um produto (SKU)
       tags:
         - Produtos
-      operationId: skusid-get
+      operationId: skusid1
       parameters: []
       description: ''
       responses:
@@ -441,7 +441,7 @@ paths:
                   - message
     put:
       summary: Atualizando um produto (SKU)
-      operationId: skusid-put
+      operationId: skusid2
       responses:
         '200':
           description: OK
@@ -452,7 +452,7 @@ paths:
         $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo um produto (SKU)
-      operationId: skusid-xdelete
+      operationId: skusid3
       responses:
         '200':
           description: OK
