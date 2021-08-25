@@ -381,7 +381,7 @@ paths:
         | fornecedor | string | nome do fornecedor | 
         | numero_pedido | int64 | produtos que estão nesse pedido| 
         | barcode | int64 | código de barras (pode ser Produto ou Endereço de Estoque) | 
-        | id_grade | int64 |  Código da grade |
+        | id_grade | int64 |  Código da grade de produto (variações) |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
