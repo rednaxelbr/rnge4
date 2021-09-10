@@ -1328,6 +1328,9 @@ components:
                 properties:
                   deletar:
                     type: boolean
+              invalido:
+                type: boolean
+                description: Indica que o código de barras pode estar inválido
             required:
               - gtin
         ativo:
