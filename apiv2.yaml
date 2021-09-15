@@ -1298,6 +1298,42 @@ components:
           pendente_erp: {}
           promo_inicio: '2021-08-20T00:00:00'
           promo_termino: '2021-09-20T00:00:00'
+        example-2:
+          value:
+            id: 0
+            data_cadastro: string
+            ucom: string
+            prod_xprod: string
+            codigo_sku: 0
+            preco_tabela: 0
+            barcodes:
+              - gtin: 0
+                flags:
+                  deletar: true
+                invalido: true
+            ativo: true
+            url_foto: string
+            preco_promo: 0
+            preco_venda: 0
+            estoque_predio: 0
+            desc_web:
+              longa: string
+              nome: string
+              curta: string
+            peso_kg: 0
+            largura_m: 0
+            altura_m: 0
+            profundidade_m: 0
+            id_package: 0
+            nome_embalagem: string
+            capac_package: 0
+            embalagem_venda: true
+            margem_padrao: 0
+            pendente_erp:
+              preco: true
+              cadastro: true
+            promo_inicio: string
+            promo_termino: string
       properties:
         id:
           type: number
@@ -1388,6 +1424,8 @@ components:
         promo_termino:
           type: string
           minLength: 1
+        embalagem_fragil:
+          type: boolean
       required:
         - id
         - barcodes
