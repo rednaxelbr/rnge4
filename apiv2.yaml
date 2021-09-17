@@ -8,13 +8,15 @@ tags:
   - name: Login
     description: Login
   - name: Produtos
-    description: Produtos
+    description: Cadastro de Produtos
+  - name: Estoque
+    description: Controle de Estoque
   - name: Pedidos
-    description: Pedidos
+    description: Gestão de Pedidos
   - name: PDV
     description: Equipamento PDV
   - name: Distribuição
-    description: Distribuição
+    description: Distribuição para filiais
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -369,7 +371,9 @@ paths:
       responses: {}
       operationId: get-skus
       description: |
-        Filtros disponíveis
+        Lista de produtos
+
+        ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
@@ -528,7 +532,9 @@ paths:
       responses: {}
       operationId: get-skuarticles
       description: |
-        Filtros disponíveis
+        Lista de mercadorias (SKUs e suas embalagens)
+
+        ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
@@ -581,7 +587,7 @@ paths:
       tags:
         - Pedidos
       summary: Consultando um pedido
-      description: Consulta pedido
+      description: Consulta um pedido
       operationId: get-orders-id
       responses:
         '200':
@@ -606,7 +612,7 @@ paths:
               description: ''
               type: object
             examples: {}
-      description: Distribuição
+      description: Lista de distribuições para filiais
       parameters:
         - schema:
             type: string
@@ -903,7 +909,7 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      description: ''
+      description: 'Lista de grades de SKU (cores, tamanhos, etc)'
     post:
       summary: Criando uma grade
       operationId: post-skugrids
@@ -922,6 +928,23 @@ paths:
       tags:
         - Produtos
       description: ''
+  /skustocks:
+    get:
+      summary: Listando endereços de estoque
+      tags:
+        - Estoque
+      responses: {}
+      operationId: get-skustocks
+      description: Lista de endereços de estoque (SKU x Prédio x Setor)
+    post:
+      summary: ''
+      operationId: post-skustocks
+      responses:
+        '200':
+          description: OK
+      description: Cria um novo endereço de estoque
+      tags:
+        - Estoque
 components:
   securitySchemes:
     Usuário/Senha:
