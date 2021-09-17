@@ -291,7 +291,7 @@ paths:
           description: 'ID:TOKEN'
           required: true
           name: Authorization
-      operationId: getone-cashiers
+      operationId: get-cashiers-id
       responses:
         '200':
           description: OK
@@ -305,7 +305,7 @@ paths:
           description: Success!
         '400':
           description: Error
-      operationId: put-cashiers
+      operationId: put-cashiers-id
     delete:
       tags:
         - PDV
@@ -316,7 +316,7 @@ paths:
           description: Info about deleted POS
         '400':
           description: Error
-      operationId: delete-cashiers
+      operationId: delete-cashiers-id
     parameters:
       - schema:
           type: integer
@@ -367,7 +367,7 @@ paths:
       tags:
         - Produtos
       responses: {}
-      operationId: skus-get
+      operationId: get-skus
       description: |
         Filtros disponíveis
 
@@ -388,7 +388,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
     post:
       summary: Criando um produto (SKU)
-      operationId: skus-post
+      operationId: post-skus
       responses:
         '200':
           description: OK
@@ -405,7 +405,7 @@ paths:
       summary: Consultando um produto (SKU)
       tags:
         - Produtos
-      operationId: skusid1
+      operationId: get-skus-id
       parameters: []
       description: Mostra um produto já existente
       responses:
@@ -434,7 +434,7 @@ paths:
                   - message
     put:
       summary: Atualizando um produto (SKU)
-      operationId: skusid2
+      operationId: put-skus-id
       responses:
         '200':
           description: OK
@@ -445,7 +445,7 @@ paths:
         $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo um produto (SKU)
-      operationId: skusid3
+      operationId: delete-skus-id
       responses:
         '200':
           description: OK
@@ -465,7 +465,7 @@ paths:
       summary: Consultando uma mercadoria
       tags:
         - Produtos
-      operationId: skuarticles1
+      operationId: get-skuarticles-id
       parameters: []
       description: Mostra uma mercadoria já existente
       responses:
@@ -494,7 +494,7 @@ paths:
                   - message
     put:
       summary: Atualizando um produto (SKU)
-      operationId: skuarticles2
+      operationId: put-skuarticles-id
       responses:
         '200':
           description: OK
@@ -505,7 +505,7 @@ paths:
         $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo uma mercadoria
-      operationId: skuarticles3
+      operationId: delete-skuarticles-id
       responses:
         '200':
           description: OK
@@ -526,7 +526,7 @@ paths:
       tags:
         - Produtos
       responses: {}
-      operationId: skuarticles1
+      operationId: get-skuarticles
       description: |
         Filtros disponíveis
 
@@ -554,7 +554,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
     post:
       summary: Criando uma mercadoria
-      operationId: skuarticles2
+      operationId: post-skuarticles
       responses:
         '200':
           description: OK
@@ -573,7 +573,7 @@ paths:
         - Pedidos
       summary: Atualizando um pedido
       description: Atualiza pedido
-      operationId: put-orders
+      operationId: put-orders-id
       responses:
         '200':
           description: OK
@@ -582,7 +582,7 @@ paths:
         - Pedidos
       summary: Consultando um pedido
       description: Consulta pedido
-      operationId: getone-orders
+      operationId: get-orders-id
       responses:
         '200':
           description: OK
@@ -898,7 +898,7 @@ paths:
       tags:
         - Produtos
       responses: {}
-      operationId: skugrids-get
+      operationId: get-skugrids
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
@@ -906,7 +906,7 @@ paths:
       description: ''
     post:
       summary: Criando uma grade
-      operationId: skugrids-post
+      operationId: post-skugrids
       responses:
         '200':
           description: OK
