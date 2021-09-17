@@ -933,7 +933,13 @@ paths:
       summary: Listando endereços de estoque
       tags:
         - Estoque
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estoque-GET'
       operationId: get-skustocks
       description: Lista de endereços de estoque (SKU x Prédio x Setor)
     post:
@@ -945,6 +951,11 @@ paths:
       description: Cria um novo endereço de estoque
       tags:
         - Estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estoque-GET'
 components:
   securitySchemes:
     Usuário/Senha:
@@ -1452,6 +1463,57 @@ components:
       required:
         - id
         - barcodes
+    Estoque-GET:
+      description: Endereço de Estoque
+      type: object
+      x-examples:
+        example-1:
+          id_estoque: 9900220202040204
+          id: '9900220202040205'
+          setor: 2
+          corredor: 2
+          cod_sku: 118685
+          id_predio: 22
+          desc_predio: CANOAS
+          letras: BBD-0205
+          quantidade: 57
+          capacidade: 120
+          prod_xprod: LAPIS COR 12 CORES PASTEL SEXTAVADO LYKE LIKITO
+      properties:
+        id:
+          type: string
+        id_estoque:
+          type: number
+        cod_sku:
+          type: number
+        prod_xprod:
+          type: string
+          description: Descrição do produto
+        setor:
+          type: number
+        corredor:
+          type: number
+        id_predio:
+          type: number
+        desc_predio:
+          type: string
+        letras:
+          type: string
+          description: ID do endereço em formato alfanumérico
+        quantidade:
+          type: number
+        capacidade:
+          type: number
+      required:
+        - id
+        - id_estoque
+        - cod_sku
+        - prod_xprod
+        - setor
+        - id_predio
+        - desc_predio
+        - letras
+        - quantidade
   parameters:
     Filter:
       name: filter
