@@ -8,9 +8,11 @@ tags:
   - name: Login
     description: Login
   - name: Produtos
-    description: Produtos
+    description: Cadastro de Produtos
+  - name: Estoque
+    description: Controle de Estoque
   - name: Pedidos
-    description: Pedidos
+    description: Gestão de Pedidos
   - name: PDV
     description: Equipamento PDV
   - name: Distribuição
@@ -369,7 +371,9 @@ paths:
       responses: {}
       operationId: skus-get
       description: |
-        Filtros disponíveis
+        Lista de SKUs (Stock Keeping Units)
+
+        ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
@@ -815,6 +819,89 @@ paths:
       tags:
         - Produtos
       description: ''
+  /skustocks:
+    get:
+      summary: Listando estoques
+      tags:
+        - Estoque
+      operationId: skustocks-get
+      description: |
+        Lista de endereços de estoque
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | cod_sku | int64 | código do Produto (SKU) |
+        | lista_vazia | bool | ignora os demais filtros e retorna uma lista vazia |
+        | todos | bool | inclui os endereços com estoque zerado |
+        | id_predio | int64 | ID do prédio |
+        | separar_pedido | int64 | Número do pedido a separar (WMS) |
+        | manutencao | string | Operações especiais (WMS) |
+        | id_empresa | int | Usado com manutencao = "encalhados" |
+        | id_categoria | int | Código da categoria |
+        | setor_letra | string | Setor/Corredor ex: "B#" |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estoque'
+    post:
+      summary: ''
+      operationId: skustocks-post
+      responses:
+        '200':
+          description: OK
+      description: Cria um novo endereço
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estoque'
+  '/skustocks/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando um endereço de estoque
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estoque'
+      operationId: get-skustocks-id
+      description: Mostra um endereço já existente
+    put:
+      summary: ''
+      operationId: put-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza um endereço de estoque já existente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estoque'
+    delete:
+      summary: ''
+      operationId: delete-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um endereço de estoque vazio
 components:
   securitySchemes:
     Usuário/Senha:
@@ -1143,6 +1230,96 @@ components:
         - desc_comercial
         - categorias
         - codigo_agrup
+    Estoque:
+      description: Endereço de Estoque
+      type: object
+      x-examples:
+        example-1:
+          id: '9900190100002018'
+          id_estoque: 9900190100002018
+          cod_sku: 2018
+          prod_xprod: ARQUIVO MORTO PAPELAO C34CMXL13CMXA24CM PEQUENO
+          id_predio: 19
+          desc_predio: ARMAZENAGEM
+          letras: A@@-2018
+          setor: 1
+          quantidade: 11150
+      properties:
+        id:
+          type: string
+        id_estoque:
+          type: number
+          description: ID no formato numérico
+        cod_sku:
+          type: number
+        prod_xprod:
+          type: string
+          description: Descrição do produto
+        id_predio:
+          type: number
+        desc_predio:
+          type: string
+        letras:
+          type: string
+          description: ID no formato alfanumérico
+        setor:
+          type: number
+        quantidade:
+          type: number
+        capacidade:
+          type: integer
+        capac_zero:
+          type: boolean
+          description: Passar "true" para zerar a capacidade
+        delta:
+          type: number
+          description: alteração de estoque (para mais ou para menos)
+        destino:
+          type: integer
+          description: Transferência interna de estoque
+        tipo_virtual:
+          type: integer
+          description: Tipo (35-38) de endereço virtual
+        motivo_virt:
+          type: integer
+          description: Motivo da quebra ou ajuste (4001-4999)
+        inventario:
+          type: number
+          description: 'Contagem de estoque (substitui a quantidade, não soma)'
+        tipo_manutencao:
+          type: string
+          description: 'Tipo de manutenção (encalhados, negativos, etc)'
+        data_checagem:
+          type: string
+          description: Data da última checagem (encalhados)
+        separar:
+          type: number
+          description: Quantidade a separar (usado pelo WMS)
+        pedido:
+          type: number
+          description: Número do pedido a separar (WMS)
+        pedido_baixa:
+          type: integer
+          description: 'Usado na baixa de estoque por pedido (ex: depósito fechado)'
+        pedido_supri:
+          type: integer
+          description: 'Usado no suprimento de estoque por pedido (ex: depósito fechado)'
+        bloqueado_por:
+          type: string
+          description: Nome do usuário que bloqueou o endereço (WMS)
+        zerar:
+          type: boolean
+          description: Passar "true" para zerar a quantidade
+      required:
+        - id
+        - id_estoque
+        - cod_sku
+        - prod_xprod
+        - id_predio
+        - desc_predio
+        - letras
+        - setor
+        - quantidade
   parameters:
     Filter:
       name: filter
