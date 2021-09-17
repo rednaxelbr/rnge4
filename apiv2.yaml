@@ -407,7 +407,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU'
-      description: 'Cria um SKU'
+      description: Cria um SKU
       tags:
         - Produtos
   '/skus/{id}':
@@ -577,7 +577,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Embalagens'
-      description: 'Cria uma mercadoria (embalagem de um SKU)'
+      description: Cria uma mercadoria (embalagem de um SKU)
       tags:
         - Produtos
     parameters: []
@@ -954,7 +954,7 @@ paths:
       operationId: get-skustocks
       description: Lista de endereços de estoque (SKU x Prédio x Setor)
     post:
-      summary: ''
+      summary: Criando um endereço
       operationId: post-skustocks
       responses:
         '200':
@@ -967,6 +967,54 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Estoque-GET'
+  '/skustocks/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando um estoque
+      tags:
+        - Estoque
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estoque-GET'
+      operationId: get-skustocks-id
+      description: Consulta um endereço de estoque
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    put:
+      summary: Atualizando um endereço
+      operationId: put-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza um endereço de estoque
+      tags:
+        - Estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estoque-PUT'
+        description: ''
+    delete:
+      summary: Excluindo um endereço
+      operationId: delete-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
+      tags:
+        - Estoque
 components:
   securitySchemes:
     Usuário/Senha:
@@ -1493,6 +1541,9 @@ components:
           type: string
         id_estoque:
           type: number
+        letras:
+          type: string
+          description: ID do endereço em formato alfanumérico
         cod_sku:
           type: number
         prod_xprod:
@@ -1506,9 +1557,6 @@ components:
           type: number
         desc_predio:
           type: string
-        letras:
-          type: string
-          description: ID do endereço em formato alfanumérico
         quantidade:
           type: number
         capacidade:
@@ -1516,12 +1564,103 @@ components:
       required:
         - id
         - id_estoque
+        - letras
         - cod_sku
         - prod_xprod
         - setor
         - id_predio
         - desc_predio
+        - quantidade
+    Estoque-PUT:
+      description: Endereço de Estoque
+      type: object
+      x-examples:
+        example-1:
+          id_estoque: 9900220202040204
+          id: '9900220202040205'
+          setor: 2
+          corredor: 2
+          cod_sku: 118685
+          id_predio: 22
+          desc_predio: CANOAS
+          letras: BBD-0205
+          quantidade: 57
+          capacidade: 120
+          prod_xprod: LAPIS COR 12 CORES PASTEL SEXTAVADO LYKE LIKITO
+      title: ''
+      properties:
+        id:
+          type: string
+        id_estoque:
+          type: number
+        letras:
+          type: string
+          description: ID do endereço em formato alfanumérico
+        cod_sku:
+          type: number
+        prod_xprod:
+          type: string
+          description: Descrição do produto
+        setor:
+          type: number
+        corredor:
+          type: number
+        id_predio:
+          type: number
+        desc_predio:
+          type: string
+        quantidade:
+          type: number
+        capacidade:
+          type: number
+        zerar:
+          type: boolean
+          description: Passar "true" para zerar a quantidade
+        capac_zero:
+          type: boolean
+          description: Passar "true" para zerar a capacidade
+        delta:
+          type: number
+          description: Alteração na quantidade (para mais ou para menos)
+        inventario:
+          type: number
+          description: Contagem de estoque (substitui a quantidade atual)
+        destino:
+          type: integer
+          description: ID do endereço destino (transferência interna no prédio)
+        tipo_virtual:
+          type: integer
+          description: Tipo de estoque virtual (de 35 a 38)
+        motivo_virt:
+          type: integer
+          description: 'Motivo da perda, quebra, ajuste, etc (4000-4999)'
+        tipo_manut:
+          type: string
+          description: 'Tipo de manutenção (encalhados, negativos, etc)'
+        data_checagem:
+          type: string
+          description: Data de checagem (encalhados)
+        separar:
+          type: integer
+          description: Número do pedido a separar (WMS)
+        pedido_baixa:
+          type: integer
+          description: 'Pedido de baixa (ex: depósito fechado)'
+        pedido_supri:
+          type: integer
+          description: 'Pedido de suprimento (ex: depósito fechado)'
+        bloqueado_por:
+          type: string
+          description: Usuário que está bloqueando no WMS
+      required:
+        - id
+        - id_estoque
         - letras
+        - cod_sku
+        - prod_xprod
+        - setor
+        - id_predio
+        - desc_predio
         - quantidade
   parameters:
     Filter:
@@ -1538,7 +1677,9 @@ components:
       required: true
       schema:
         type: array
-        default: [0,9]
+        default:
+          - 0
+          - 9
       description: Paginação
     Sort:
       name: sort
@@ -1546,7 +1687,9 @@ components:
       required: false
       schema:
         type: array
-        default: ["id","DESC"]
+        default:
+          - id
+          - DESC
       description: Ordenação
 security:
   - Token de acesso: []
