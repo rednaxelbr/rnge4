@@ -368,7 +368,6 @@ paths:
       summary: Listando produtos (SKUs)
       tags:
         - Produtos
-      responses: {}
       operationId: get-skus
       description: |
         Lista de produtos
@@ -390,6 +389,13 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU'
     post:
       summary: Criando um produto (SKU)
       operationId: post-skus
@@ -401,7 +407,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU'
-      description: ''
+      description: 'Cria um SKU'
       tags:
         - Produtos
   '/skus/{id}':
@@ -445,8 +451,6 @@ paths:
       tags:
         - Produtos
       description: Atualiza um produto já existente
-      requestBody:
-        $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo um produto (SKU)
       operationId: delete-skus-id
@@ -505,8 +509,6 @@ paths:
       tags:
         - Produtos
       description: Atualiza uma mercadoria já existente
-      requestBody:
-        $ref: '#/components/requestBodies/SKU'
     delete:
       summary: Excluindo uma mercadoria
       operationId: delete-skuarticles-id
@@ -529,7 +531,13 @@ paths:
       summary: Listando mercadorias
       tags:
         - Produtos
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Embalagens'
       operationId: get-skuarticles
       description: |
         Lista de mercadorias (SKUs e suas embalagens)
@@ -569,7 +577,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Embalagens'
-      description: ''
+      description: 'Cria uma mercadoria (embalagem de um SKU)'
       tags:
         - Produtos
     parameters: []
@@ -903,7 +911,13 @@ paths:
       summary: Listando Grades de SKU
       tags:
         - Produtos
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Grade'
       operationId: get-skugrids
       parameters:
         - $ref: '#/components/parameters/Filter'
@@ -921,13 +935,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Grade'
-      parameters:
-        - schema:
-            type: string
-          in: query
+      parameters: []
       tags:
         - Produtos
-      description: ''
+      description: 'Cria uma grade de SKU (cor, tamanho, etc)'
   /skustocks:
     get:
       summary: Listando endereços de estoque
@@ -1255,9 +1266,7 @@ components:
               desc_categoria:
                 type: string
               principal:
-                type:
-                  - string
-                  - boolean
+                type: boolean
             required:
               - nome_catalogo
               - id_categoria
@@ -1529,7 +1538,7 @@ components:
       required: true
       schema:
         type: array
-        default: '[0,9]'
+        default: [0,9]
       description: Paginação
     Sort:
       name: sort
@@ -1537,7 +1546,7 @@ components:
       required: false
       schema:
         type: array
-        default: '["id","DESC"]'
+        default: ["id","DESC"]
       description: Ordenação
 security:
   - Token de acesso: []
