@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "API do app do Entregador",
+      "uri": "reference/api-entregador.yaml"
+    },
+    {
+      "type": "item",
+      "title": "API do PDV",
+      "uri": "reference/api-pdv.yaml"
+    },
+    {
+      "type": "item",
+      "title": "API do RNGE 4",
+      "uri": "reference/apiv2.yaml"
+    }
+  ]
+}
