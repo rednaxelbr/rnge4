@@ -7,8 +7,12 @@ servers:
 tags:
   - name: Login
     description: Login
-  - name: Produtos
-    description: Cadastro de Produtos
+  - name: Produtos (skuarticles)
+    description: Cadastro de Mercadorias
+  - name: Produtos (skus)
+    description: Cadastro de SKUs
+  - name: Produtos (skugrids)
+    description: Cadastro de Grades
   - name: Estoque
     description: Controle de Estoque
   - name: Pedidos
@@ -367,7 +371,7 @@ paths:
     get:
       summary: Listando produtos (SKUs)
       tags:
-        - Produtos
+        - Produtos (skus)
       operationId: get-skus
       description: |
         Lista de produtos
@@ -409,12 +413,12 @@ paths:
               $ref: '#/components/schemas/SKU'
       description: Cria um SKU
       tags:
-        - Produtos
+        - Produtos (skus)
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
       tags:
-        - Produtos
+        - Produtos (skus)
       operationId: get-skus-id
       parameters: []
       description: Mostra um produto já existente
@@ -449,7 +453,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Produtos
+        - Produtos (skus)
       description: Atualiza um produto já existente
     delete:
       summary: Excluindo um produto (SKU)
@@ -458,7 +462,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Produtos
+        - Produtos (skus)
       description: Exclui um produto já existente
     parameters:
       - schema:
@@ -472,7 +476,7 @@ paths:
     get:
       summary: Consultando uma mercadoria
       tags:
-        - Produtos
+        - Produtos (skuarticles)
       operationId: get-skuarticles-id
       parameters: []
       description: Mostra uma mercadoria já existente
@@ -507,7 +511,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Produtos
+        - Produtos (skuarticles)
       description: Atualiza uma mercadoria já existente
     delete:
       summary: Excluindo uma mercadoria
@@ -516,7 +520,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Produtos
+        - Produtos (skuarticles)
       description: Exclui uma mercadoria já existente
     parameters:
       - schema:
@@ -530,7 +534,7 @@ paths:
     get:
       summary: Listando mercadorias
       tags:
-        - Produtos
+        - Produtos (skuarticles)
       responses:
         '200':
           description: OK
@@ -579,7 +583,7 @@ paths:
               $ref: '#/components/schemas/Embalagens'
       description: Cria uma mercadoria (embalagem de um SKU)
       tags:
-        - Produtos
+        - Produtos (skuarticles)
     parameters: []
   '/orders/{id}':
     put:
@@ -910,7 +914,7 @@ paths:
     get:
       summary: Listando Grades de SKU
       tags:
-        - Produtos
+        - Produtos (skugrids)
       responses:
         '200':
           description: OK
@@ -937,7 +941,7 @@ paths:
               $ref: '#/components/schemas/Grade'
       parameters: []
       tags:
-        - Produtos
+        - Produtos (skugrids)
       description: 'Cria uma grade de SKU (cor, tamanho, etc)'
   /skustocks:
     get:
