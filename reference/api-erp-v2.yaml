@@ -13,13 +13,15 @@ tags:
     description: Cadastro de SKUs
   - name: Produtos (skugrids)
     description: Cadastro de Grades
-  - name: Estoque
+  - name: Listas de Preços (pricelists)
+    description: Listas de Preços
+  - name: Estoque (skustocks)
     description: Controle de Estoque
-  - name: Pedidos
+  - name: Pedidos (orders)
     description: Gestão de Pedidos
   - name: PDV
     description: Equipamento PDV
-  - name: Distribuição
+  - name: Distribuição (distributions)
     description: Distribuição para filiais
 info:
   description: |
@@ -1019,6 +1021,26 @@ paths:
       description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
       tags:
         - Estoque
+  '/pricelists/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultar uma lista de preços
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PLU'
+      operationId: get-pricelists-id
+      parameters: []
 components:
   securitySchemes:
     Usuário/Senha:
@@ -1666,6 +1688,49 @@ components:
         - id_predio
         - desc_predio
         - quantidade
+    PLU:
+      description: Lista de Preços (Price LookUp)
+      type: object
+      x-examples:
+        example-1:
+          id: 212
+          precedencia: 150
+          nome_lista: Preço Amazon
+          percentual_desconto: 0
+          canais:
+            - id_canal: 114
+              desc_canal: Amazon Supriagora
+      properties:
+        id:
+          type: number
+        precedencia:
+          type: number
+          description: Ordem de precedência em caso de empate
+        nome_lista:
+          type: string
+        percentual_desconto:
+          type: number
+        canais:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          description: Lista de canais atendidos
+          items:
+            type: object
+            properties:
+              id_canal:
+                type: number
+                description: ''
+              desc_canal:
+                type: string
+            required:
+              - id_canal
+              - desc_canal
+      required:
+        - id
+        - precedencia
+        - nome_lista
+        - canais
   parameters:
     Filter:
       name: filter
