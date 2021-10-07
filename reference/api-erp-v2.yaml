@@ -337,7 +337,7 @@ paths:
   /orders:
     get:
       tags:
-        - Pedidos
+        - Pedidos (orders)
       summary: Listando pedidos
       description: Lista de pedidos
       parameters:
@@ -361,7 +361,7 @@ paths:
           description: OK
     post:
       tags:
-        - Pedidos
+        - Pedidos (orders)
       summary: Criando um novo pedido
       description: Cria um novo pedido
       operationId: post-orders
@@ -590,7 +590,7 @@ paths:
   '/orders/{id}':
     put:
       tags:
-        - Pedidos
+        - Pedidos (orders)
       summary: Atualizando um pedido
       description: Atualiza pedido
       operationId: put-orders-id
@@ -599,7 +599,7 @@ paths:
           description: OK
     get:
       tags:
-        - Pedidos
+        - Pedidos (orders)
       summary: Consultando um pedido
       description: Consulta um pedido
       operationId: get-orders-id
@@ -617,7 +617,7 @@ paths:
     get:
       summary: Listando distribuições
       tags:
-        - Distribuição
+        - Distribuição (distributions)
       operationId: get-distributions
       requestBody:
         content:
@@ -906,7 +906,7 @@ paths:
         description: ''
       parameters: []
       tags:
-        - Distribuição
+        - Distribuição (distributions)
       description: Cria uma nova distribuição
       responses:
         '200':
@@ -949,7 +949,7 @@ paths:
     get:
       summary: Listando endereços de estoque
       tags:
-        - Estoque
+        - Estoque (skustocks)
       responses:
         '200':
           description: OK
@@ -967,7 +967,7 @@ paths:
           description: OK
       description: Cria um novo endereço de estoque
       tags:
-        - Estoque
+        - Estoque (skustocks)
       requestBody:
         content:
           application/json:
@@ -983,7 +983,7 @@ paths:
     get:
       summary: Consultando um estoque
       tags:
-        - Estoque
+        - Estoque (skustocks)
       responses:
         '200':
           description: OK
@@ -1005,7 +1005,7 @@ paths:
           description: OK
       description: Atualiza um endereço de estoque
       tags:
-        - Estoque
+        - Estoque (skustocks)
       requestBody:
         content:
           application/json:
@@ -1020,7 +1020,7 @@ paths:
           description: OK
       description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
       tags:
-        - Estoque
+        - Estoque (skustocks)
   '/pricelists/{id}':
     parameters:
       - schema:
@@ -1041,6 +1041,30 @@ paths:
                 $ref: '#/components/schemas/PLU'
       operationId: get-pricelists-id
       parameters: []
+      description: Consulta uma lista de preços
+    put:
+      summary: Atualizando uma Lista de Preços
+      operationId: put-pricelists-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza dados de uma lista de preços
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLU'
+      tags:
+        - Listas de Preços (pricelists)
+    delete:
+      summary: Removendo uma lista de preços
+      operationId: delete-pricelists-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Listas de Preços (pricelists)
+      description: Remove uma lista de preços
 components:
   securitySchemes:
     Usuário/Senha:
