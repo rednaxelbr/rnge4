@@ -1095,6 +1095,41 @@ paths:
               $ref: '#/components/schemas/PLU'
       tags:
         - Listas de Preços (pricelists)
+  '/pricelistarticles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Preço de um produto em um PLU
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PLU-item'
+      operationId: get-pricelistarticles-id
+      description: Consulta um preço de um PLU
+    post:
+      summary: Insere um produto num PLU
+      operationId: post-pricelistarticles-id
+      responses:
+        '200':
+          description: OK
+      description: Insere um registro na lista de preços
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLU-item'
+        description: ''
+      tags:
+        - Listas de Preços (pricelists)
 components:
   securitySchemes:
     Usuário/Senha:
@@ -1785,6 +1820,46 @@ components:
         - precedencia
         - nome_lista
         - canais
+    PLU-item:
+      description: Item de um PLU (cruzamento Produto x PLU)
+      type: object
+      x-examples:
+        example-1:
+          id: 631220
+          id_plu: 201
+          cod_produto: 126924
+          ucom: CX
+          prod_xprod: CAFE MELITTA CAPSULA COMPATIVEL 50G 10UN AUDACCE
+          preco_tabela: 21.25
+          margem_cliente: 15
+          preco_cliente: 21.25
+          sku_ativo: true
+      properties:
+        id:
+          type: number
+        id_plu:
+          type: number
+          description: ID do PLU
+        cod_produto:
+          type: number
+        ucom:
+          type: string
+        prod_xprod:
+          type: string
+        preco_tabela:
+          type: number
+          description: Preço de tabela
+        preco_cliente:
+          type: number
+          description: Preço do produto nesse PLU
+        margem_cliente:
+          type: number
+        sku_ativo:
+          type: boolean
+      required:
+        - id
+        - id_plu
+        - cod_produto
   parameters:
     Filter:
       name: filter
