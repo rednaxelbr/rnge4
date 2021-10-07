@@ -507,7 +507,7 @@ paths:
                 required:
                   - message
     put:
-      summary: Atualizando um produto (SKU)
+      summary: Atualizando uma mercadoria
       operationId: put-skuarticles-id
       responses:
         '200':
@@ -1029,7 +1029,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Consultar uma lista de preços
+      summary: Consultando uma Lista de Preços (PLU)
       tags:
         - Listas de Preços (pricelists)
       responses:
@@ -1043,7 +1043,7 @@ paths:
       parameters: []
       description: Consulta uma lista de preços
     put:
-      summary: Atualizando uma Lista de Preços
+      summary: Atualizando uma Lista de Preços (PLU)
       operationId: put-pricelists-id
       responses:
         '200':
@@ -1057,14 +1057,44 @@ paths:
       tags:
         - Listas de Preços (pricelists)
     delete:
-      summary: Removendo uma lista de preços
+      summary: Excluindo uma Lista de Preços (PLU)
       operationId: delete-pricelists-id
       responses:
         '200':
           description: OK
       tags:
         - Listas de Preços (pricelists)
-      description: Remove uma lista de preços
+      description: Exclui uma lista de preços
+  /pricelists:
+    get:
+      summary: Listando as Listas de Preços (PLU)
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PLU'
+      operationId: get-pricelists
+      description: Lista os PLUs
+    post:
+      summary: Criando uma nova Lista de Preços (PLU)
+      operationId: post-pricelists
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova Lista de Preços (PLU)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLU'
+      tags:
+        - Listas de Preços (pricelists)
 components:
   securitySchemes:
     Usuário/Senha:
