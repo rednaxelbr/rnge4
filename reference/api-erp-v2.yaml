@@ -27,6 +27,8 @@ tags:
     description: Controle de Estoque
   - name: Pedidos (orders)
     description: Gestão de Pedidos
+  - name: Notas/Cupons Fiscais (invoices)
+    description: Notas e Cupons Fiscais (NFe/NFCe)
   - name: PDV
     description: Equipamento PDV
   - name: Distribuição (distributions)
@@ -1369,6 +1371,29 @@ paths:
             schema:
               $ref: '#/components/schemas/SKU-Mapeamento'
       description: Cria um novo mapeamento produto x fornecedor
+  /invoices:
+    post:
+      summary: Criando Nota/Cupom Fiscal
+      operationId: post-invoices
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      parameters: []
+      description: 'Envia o XML de uma NFe/NFCe '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                xml:
+                  type: string
+                  description: XML codificado em Base64
+                  writeOnly: true
+              required:
+                - xml
 components:
   securitySchemes:
     Usuário/Senha:
