@@ -19,6 +19,8 @@ tags:
     description: Cadastro de SKUs
   - name: Produtos (skugrids)
     description: Cadastro de Grades
+  - name: Mapeamentos (purchasemappings)
+    description: Mapeamentos Produto x Fornecedor
   - name: Listas de Preços (pricelists)
     description: Listas de Preços
   - name: Estoque (skustocks)
@@ -1222,7 +1224,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Consulta um endereço
+      summary: Consultando um endereço
       tags:
         - Endereços de pessoas (addresses)
       responses:
@@ -1235,7 +1237,7 @@ paths:
       operationId: get-addresses-id
       description: Consulta um endereço de uma pessoa
     put:
-      summary: Atualiza um endereço
+      summary: Atualizando um endereço
       operationId: put-addresses-id
       responses:
         '200':
@@ -1249,7 +1251,7 @@ paths:
       tags:
         - Endereços de pessoas (addresses)
     delete:
-      summary: Exclui um endereço
+      summary: Excluindo um endereço
       operationId: delete-addresses-id
       responses:
         '200':
@@ -1259,7 +1261,7 @@ paths:
         - Endereços de pessoas (addresses)
   /addresses:
     get:
-      summary: Lista os endereços de uma pessoa
+      summary: Listando endereços de uma pessoa
       tags:
         - Endereços de pessoas (addresses)
       responses:
@@ -1285,7 +1287,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
     post:
-      summary: Cria um novo endereço
+      summary: Criando um endereço
       operationId: post-addresses
       responses:
         '200':
@@ -1299,6 +1301,74 @@ paths:
             schema:
               $ref: '#/components/schemas/Endereco'
         description: ''
+  '/purchasemappings/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando um mapeamento
+      tags:
+        - Mapeamentos (purchasemappings)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU-Mapeamento'
+      operationId: get-purchasemappings-id
+      description: Consulta um Mapeamento Produto x Fornecedor
+    put:
+      summary: Atualizando um mapeamento
+      operationId: put-purchasemappings-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Mapeamentos (purchasemappings)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Mapeamento'
+      description: Atualiza um mapeamento produto x fornecedor
+  /purchasemappings:
+    get:
+      summary: Listando mapeamentos
+      tags:
+        - Mapeamentos (purchasemappings)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SKU-Mapeamento'
+      operationId: get-purchasemappings
+      description: Listagem de mapeamentos de um produto (ou fornecedor)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um mapeamento
+      operationId: post-purchasemappings
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Mapeamentos (purchasemappings)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Mapeamento'
+      description: Cria um novo mapeamento produto x fornecedor
 components:
   securitySchemes:
     Usuário/Senha:
@@ -2429,6 +2499,41 @@ components:
         - sede
         - ativo
       title: ''
+    SKU-Mapeamento:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 2150
+          cnpj_fornec: 4402277000100
+          cod_produto: 43091
+          referencia: '930819'
+          variacao: ''
+          codigo_sku: 282
+      properties:
+        id:
+          type: number
+        cnpj_fornec:
+          type: number
+          description: CNPJ do fornecedor (emitente da NF)
+        cod_produto:
+          type: number
+          description: Código do produto
+        referencia:
+          type: string
+          minLength: 1
+          description: Referência (tag cProd da NF)
+        variacao:
+          type: string
+          description: Variação na descrição (pode estar em branco)
+        codigo_sku:
+          type: number
+          description: Código do SKU deste produto
+      required:
+        - cnpj_fornec
+        - cod_produto
+        - referencia
+        - variacao
   parameters:
     Filter:
       name: filter
