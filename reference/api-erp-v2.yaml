@@ -1943,7 +1943,7 @@ components:
         - id_plu
         - cod_produto
     Pessoa:
-      description: ''
+      description: Pessoa física ou jurídica
       type: object
       x-examples:
         example-1:
@@ -2005,43 +2005,60 @@ components:
           type: number
         nome_razao:
           type: string
+          description: Nome ou Razão Social
         nome_fantasia:
           type: string
+          description: Nome fantasia
         cpf_cnpj:
           type: number
+          description: CPF ou CNPJ (ver campo "pjuridica")
         pjuridica:
           type: boolean
+          description: 'Pessoa jurídica? TRUE = Pessoa Jurídica, FALSE = Pessoa Física'
         ind_iedest:
-          type: number
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 9
+          description: Indicador da IE do Destinatário (Manual NFe)
         telefone:
           type: string
+          description: Telefone principal
         type_id:
           type: number
+          description: Tipo do telefone principal
         email:
           type: string
+          description: Email favorito
         fav_danfe:
           type: boolean
+          description: Email favorito recebe DANFE?
         ender_sede:
           type: string
+          description: Endereço-sede (somente leitura)
+          readOnly: true
         emails:
           type: array
           uniqueItems: true
+          description: Lista de emails (somente um pode ser favorito)
           items:
             type: object
             properties:
               email:
                 type: string
+              favorito:
+                type: boolean
               pessoal:
                 type: boolean
               danfe:
-                type: boolean
-              favorito:
                 type: boolean
             required:
               - email
         telefones:
           type: array
           uniqueItems: true
+          description: Lista de telefones (somente um pode ser principal)
           items:
             type: object
             properties:
@@ -2061,6 +2078,7 @@ components:
         categorias:
           type: array
           uniqueItems: true
+          description: Lista de categorias
           items:
             type: object
             properties:
@@ -2073,11 +2091,13 @@ components:
         config_formas:
           type: array
           uniqueItems: true
+          description: Configuração de crédito por forma de pagamento
           items:
             type: object
             properties:
               cod_tpag:
                 type: number
+                description: Código da Forma de Pagamento (tPag)
               desc_forma:
                 type: string
               nome_usuario:
@@ -2086,6 +2106,7 @@ components:
                 type: number
               semaforo_forma:
                 type: number
+                description: Semáforo de crédito específico
             required:
               - cod_tpag
         outras_info:
@@ -2093,51 +2114,71 @@ components:
           properties:
             semaforo_credito:
               type: number
+              description: Semáforo de crédito (números negativos bloqueiam venda)
             limite_credito:
               type: number
+              description: Limite de crédito (R$)
             tpag_preferido:
               type: number
+              description: Forma de pagamento preferida
             mensagem_inconsistente:
               type: string
+              description: Inconsistência de cadastro (integração)
             dias_ciclagem:
               type: number
+              description: Dias de Ciclo (CRM)
             isento_acrescimo:
               type: boolean
+              description: Isenção de boleto
             credito_loja:
               type: boolean
         canal:
           type: string
         id_canal:
           type: number
+          description: Canal por onde essa pessoa foi cadastrada
         id_vendedor:
           type: number
+          description: 'ID do vendedor da carteira da pessoa. Se a pessoa fizer parte de mais de uma carteira, é o vendedor dono da carteira favorita dessa pessoa.'
         ativo:
           type: boolean
+          description: Ativo/inativo
         observ_padrao:
           type: string
+          description: Observações (padrão)
         observ_financeira:
           type: string
+          description: Observações financeiras (visível somente para usuários autorizados)
         perfis:
           type: array
           uniqueItems: true
+          description: Perfis da pessoa no sistema
           items:
             type: object
             properties:
               perfil:
                 type: string
                 minLength: 1
+                enum:
+                  - cliente
+                  - almoxarifado
+                  - colaborador
+                  - comprador
+                  - fornecedor
+                  - representante
+                  - vendedor
+                  - transportadora
         data_cadastro:
           type: string
           minLength: 1
+          description: ''
       required:
         - id
         - nome_razao
         - cpf_cnpj
         - pjuridica
-        - ind_iedest
         - categorias
         - config_formas
-        - data_cadastro
     Empresa:
       description: ''
       type: object
