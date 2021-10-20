@@ -9,6 +9,8 @@ tags:
     description: Login
   - name: Pessoas (customers)
     description: Cadastro de Pessoas
+  - name: Empresas (companies)
+    description: Cadastro de Empresas
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
   - name: Produtos (skus)
@@ -1175,6 +1177,41 @@ paths:
       description: Inativa uma pessoa física ou jurídica
       tags:
         - Pessoas (customers)
+  '/companies/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consulta uma empresa
+      tags:
+        - Empresas (companies)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empresa'
+      operationId: get-companies-id
+      description: Consulta uma empresa
+    put:
+      summary: Atualiza uma empresa
+      operationId: put-companies-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Empresa'
+        description: ''
+      description: Atualiza uma empresa
+      tags:
+        - Empresas (companies)
 components:
   securitySchemes:
     Usuário/Senha:
@@ -2101,6 +2138,87 @@ components:
         - categorias
         - config_formas
         - data_cadastro
+    Empresa:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          nome_reduzido: VOLUNTARIOS
+          sigla_loja: VLT
+          id_pessoa: 9778001
+          nome_razao: BELLER COMERCIO DE PAPEIS LTDA.
+          nome_municipio: Porto Alegre
+          uf: RS
+          utiliza_pdv: true
+          cnpj_padrao: 5563868000113
+          loja_aberta: true
+          id_canal: 49
+          desc_canal: VLT
+          lista_pedidos:
+            - id_empresa: 1
+              sigla: VLT
+          id_predio: 5
+      properties:
+        id:
+          type: number
+        nome_reduzido:
+          type: string
+          maxLength: 20
+          description: ''
+        sigla_loja:
+          type: string
+          maxLength: 6
+        id_pessoa:
+          type: number
+          description: ID da pessoa (geralmente jurídica) da empresa
+        nome_razao:
+          type: string
+          description: Nome/Razão Social da pessoa da empresa
+        nome_municipio:
+          type: string
+          description: Município do endereço-sede da pessoa da empresa
+        uf:
+          type: string
+          description: UF do endereço-sede da pessoa da empresa
+        utiliza_pdv:
+          type: boolean
+          description: Utiliza o aplicativo PDV (emite NFCe)
+        cnpj_padrao:
+          type: number
+          description: 'Ao carregar um XML a empresa emitente é determinada por este campo, que é UNIQUE se preenchido.'
+        loja_aberta:
+          type: boolean
+          description: Quando FALSE nenhum usuário pode fazer login nela.
+        id_canal:
+          type: number
+          description: Canal padrão das vendas feitas por esta loja
+        desc_canal:
+          type: string
+        lista_pedidos:
+          type: array
+          uniqueItems: true
+          description: Lista (opcional) de outras empresas cujos pedidos serão visualizados juntamente com os pedidos dessa empresa
+          items:
+            type: object
+            properties:
+              id_empresa:
+                type: number
+              sigla:
+                type: string
+            required:
+              - id_empresa
+        id_predio:
+          type: number
+          description: 'Prédio do Estoque (vendas, separação, etc)'
+      required:
+        - id
+        - nome_reduzido
+        - sigla_loja
+        - id_pessoa
+        - utiliza_pdv
+        - id_canal
+        - lista_pedidos
   parameters:
     Filter:
       name: filter
