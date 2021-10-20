@@ -1257,6 +1257,48 @@ paths:
       description: Exclui um endereço
       tags:
         - Endereços de pessoas (addresses)
+  /addresses:
+    get:
+      summary: Lista os endereços de uma pessoa
+      tags:
+        - Endereços de pessoas (addresses)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Endereco'
+      operationId: get-addresses
+      description: |
+        Listagem de endereços
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_pessoa | int64 | código da pessoa | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria um novo endereço
+      operationId: post-addresses
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Endereços de pessoas (addresses)
+      description: Cria um endereço de uma pessoa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Endereco'
+        description: ''
 components:
   securitySchemes:
     Usuário/Senha:
@@ -2306,7 +2348,7 @@ components:
         - id_canal
         - lista_pedidos
     Endereco:
-      description: ''
+      description: Endereço de uma pessoa
       type: object
       x-examples:
         example-1:
@@ -2378,7 +2420,6 @@ components:
           type: string
           description: 'Se for a sede de uma empresa (loja), traz o nome'
       required:
-        - id
         - id_pessoa
         - id_tipo
         - logradouro
@@ -2387,6 +2428,7 @@ components:
         - cmun
         - sede
         - ativo
+      title: ''
   parameters:
     Filter:
       name: filter
