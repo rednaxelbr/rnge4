@@ -9,6 +9,8 @@ tags:
     description: Login
   - name: Pessoas (customers)
     description: Cadastro de Pessoas
+  - name: Endereços de pessoas (addresses)
+    description: Endereços de Pessoas
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Produtos (skuarticles)
@@ -1212,6 +1214,45 @@ paths:
       description: Atualiza uma empresa
       tags:
         - Empresas (companies)
+  '/addresses/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consulta um endereço
+      tags:
+        - Endereços de pessoas (addresses)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endereco'
+      operationId: get-addresses-id
+      description: Consulta um endereço de uma pessoa
+    put:
+      summary: Atualiza um endereço
+      operationId: put-addresses-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Endereco'
+      description: Atualiza um endereço
+    delete:
+      summary: Exclui um endereço
+      operationId: delete-addresses-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um endereço
 components:
   securitySchemes:
     Usuário/Senha:
@@ -2260,6 +2301,88 @@ components:
         - utiliza_pdv
         - id_canal
         - lista_pedidos
+    Endereco:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 984115
+          id_pessoa: 9778001
+          id_endereco: 132189034
+          id_tipo: 24
+          desc_tipo: SEDE
+          logradouro: RUA VOLUNTÁRIOS DA PÁTRIA
+          numero: 547
+          complemento: LOJA CASA DO PAPEL
+          bairro: CENTRO HISTÓRICO
+          cidade: Porto Alegre
+          uf: RS
+          cep: '90030003'
+          cmun: 4314902
+          sede: true
+          ativo: true
+          codigo_pais: 1058
+          nome_pais: BRASIL
+          sigla_loja: VLT
+          nome_reduzido: VOLUNTARIOS
+      properties:
+        id:
+          type: number
+        id_pessoa:
+          type: number
+        id_endereco:
+          type: number
+          description: ID numérico do endereço no sistema legado (opcional)
+        id_tipo:
+          type: number
+          description: ID do Tipo de endereço
+        desc_tipo:
+          type: string
+          description: ID do Tipo de endereço
+        logradouro:
+          type: string
+        numero:
+          type: number
+        complemento:
+          type: string
+        bairro:
+          type: string
+        cidade:
+          type: string
+        uf:
+          type: string
+        cep:
+          type: string
+          minLength: 8
+          maxLength: 8
+        cmun:
+          type: number
+          description: Código IBGE do Município
+        sede:
+          type: boolean
+          description: Informar TRUE se for a SEDE da pessoa física ou jurídica
+        ativo:
+          type: boolean
+        codigo_pais:
+          type: number
+        nome_pais:
+          type: string
+        sigla_loja:
+          type: string
+          description: 'Se for a sede de uma empresa (loja), traz a sigla'
+        nome_reduzido:
+          type: string
+          description: 'Se for a sede de uma empresa (loja), traz o nome'
+      required:
+        - id
+        - id_pessoa
+        - id_tipo
+        - logradouro
+        - bairro
+        - cep
+        - cmun
+        - sede
+        - ativo
   parameters:
     Filter:
       name: filter
