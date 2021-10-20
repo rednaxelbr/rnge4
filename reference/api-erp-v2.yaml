@@ -1246,6 +1246,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Endereco'
       description: Atualiza um endereço
+      tags:
+        - Endereços de pessoas (addresses)
     delete:
       summary: Exclui um endereço
       operationId: delete-addresses-id
@@ -1253,6 +1255,8 @@ paths:
         '200':
           description: OK
       description: Exclui um endereço
+      tags:
+        - Endereços de pessoas (addresses)
 components:
   securitySchemes:
     Usuário/Senha:
