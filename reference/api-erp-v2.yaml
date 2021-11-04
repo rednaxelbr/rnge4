@@ -426,6 +426,48 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
+  /skuconfigs:
+    get:
+      summary: Listando Configuração do sku X empresa (SkuConfigs)
+      operationId: get-skuconfigs
+      description: |-
+        Lista de produtos
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | codigo_sku | int64 | código do Produto (SKU)| 
+        | id_empresa | int64 | ID da empresa | 
+        | pendente_erp | bool |  Usado na integração | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses: {}
+      tags:
+        - Produtos (skuconfigs)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Configs'
+            examples: {}
+    post:
+      summary: Criando um produto (SKU)
+      operationId: post-skuconfigs
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Configs'
+      description: 'Cria um SKUConfig '
+      tags:
+        - Produtos (skus)
+    parameters: []
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
@@ -2559,6 +2601,83 @@ components:
         - cod_produto
         - referencia
         - variacao
+    SKU-Configs:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 105840
+          id_empresa: 7
+          sigla_loja: PCH
+          nome_reduzido: PADRE CHAGAS
+          codigo_sku: 10887
+          quant_mes: 278
+          ticket_mes: 206
+          valor_mes: 6606.44
+          quant_natural: 278
+          sazo_efet: 360
+          expo: 1
+          total_sazo: 1200
+          cmmf_quant: 150
+          cmmf_validade: '2022-02-11'
+          ultima_venda: '2021-11-01'
+          data_hora: '2021-11-04T00:13:46-03:00'
+      properties:
+        id:
+          type: number
+        id_empresa:
+          type: number
+        sigla_loja:
+          type: string
+          minLength: 1
+        nome_reduzido:
+          type: string
+          minLength: 1
+        codigo_sku:
+          type: number
+          description: Código do produto SKU base
+        dias_estoq:
+          type: number
+          description: Dias Com Estoque (DCE)
+        quant_mes:
+          type: number
+          description: CMM efetivo (CMM ou CMMF)
+        ticket_mes:
+          type: number
+          description: Quantidade de Tickets (ajustada)
+        valor_mes:
+          type: number
+          description: Valor Acumulado vendido
+        quant_natural:
+          type: number
+          description: CMM natural (calculado)
+        expo:
+          type: number
+          description: 'Exposição (EXPO), geralmente 1 ou 0'
+        sazo_efet:
+          type: number
+          description: Sazonal efetivo (já com potência sazonal aplicada)
+        total_sazo:
+          type: number
+          description: Sazonal 100% (SAZO)
+        es_minimo:
+          type: integer
+          description: Estoque de Segurança Mínimo (por loja)
+        cmmf_quant:
+          type: number
+        cmmf_validade:
+          type: string
+          minLength: 1
+        ultima_venda:
+          type: string
+          minLength: 1
+        data_hora:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - id_empresa
+        - codigo_sku
   parameters:
     Filter:
       name: filter
