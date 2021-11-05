@@ -1785,6 +1785,7 @@ components:
           items:
             $ref: '#/components/schemas/Embalagens'
       required:
+        - id
         - ucom
         - prod_xprod
         - custos
