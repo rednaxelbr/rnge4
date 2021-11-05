@@ -2728,19 +2728,24 @@ components:
           description: Código do produto SKU base
         dias_estoq:
           type: number
-          description: Dias Com Estoque (DCE)
+          description: Dias Com Estoque (DCE)  (Campo calculado / Somente Leitura)
+          readOnly: true
         quant_mes:
           type: number
-          description: CMM efetivo (CMM ou CMMF)
+          description: CMM efetivo (CMM ou CMMF) - (Campo calculado / Somente Leitura)
+          readOnly: true
         ticket_mes:
           type: number
-          description: Quantidade de Tickets (ajustada)
+          description: Quantidade de Tickets (ajustada) - (Campo calculado / Somente Leitura)
+          readOnly: true
         valor_mes:
           type: number
-          description: Valor Acumulado vendido
+          description: Valor Acumulado vendido - (Campo calculado / Somente Leitura)
+          readOnly: true
         quant_natural:
           type: number
-          description: CMM natural (calculado)
+          description: CMM natural (calculado) - (Campo calculado / Somente Leitura)
+          readOnly: true
         expo:
           type: number
           description: 'Exposição (EXPO), geralmente 1 ou 0'
