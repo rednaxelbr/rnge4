@@ -426,12 +426,12 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
-  '/skuconfigs/{id}':
+  /skuconfigs/:
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
       operationId: get-skuconfigs
-      description: |-
-        Lista de produtos
+      description: |
+        Lista de configuração de sku x empresa (mostra também o cmm (consumo médio mensal))
 
         ### Filtros disponíveis
 
@@ -439,7 +439,6 @@ paths:
         | ------ | ------ | ------ |
         | codigo_sku | int64 | código do Produto (SKU)| 
         | id_empresa | int64 | ID da empresa | 
-        | pendente_erp | bool |  Usado na integração | 
       parameters:
         - in: query
           name: filter
@@ -473,12 +472,7 @@ paths:
       description: 'Cria um SKUConfig '
       tags:
         - Produtos (skuconfigs)
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
+    parameters: []
     put:
       summary: Atualizando uma configuração do sku X empresa (SKUConfigs)
       operationId: put-skuconfigs
@@ -543,6 +537,47 @@ paths:
       tags:
         - Produtos (skus)
       description: Exclui um produto já existente
+    parameters:
+      - schema:
+          type: integer
+          default: 5
+        name: id
+        in: path
+        description: Código do produto (SKU)
+        required: true
+  '/skusconfigs/{id}':
+    get:
+      summary: Consultando uma Configuração do sku X empresa  (SKUconfigs)
+      operationId: get-skusconfigs-id
+      parameters: []
+      description: Mostra um skuconfig já existente
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU'
+      tags:
+        - Produtos (skuconfigs)
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: put-skuconfigs-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza um skuconfig já existente
+      tags:
+        - Produtos (skuconfigs)
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: delete-skus-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um skuconfig já existente
+      tags:
+        - Produtos (skuconfigs)
     parameters:
       - schema:
           type: integer
