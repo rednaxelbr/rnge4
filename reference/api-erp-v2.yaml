@@ -491,6 +491,8 @@ paths:
             schema:
               $ref: '#/components/schemas/SKU-Configs'
       description: 'Atualiza um SKUConfig '
+      tags:
+        - Produtos (skuconfigs)
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
