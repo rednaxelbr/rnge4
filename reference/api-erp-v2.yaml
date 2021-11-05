@@ -446,7 +446,7 @@ paths:
           description: Filtro
           schema:
             default: '{"codigo_sku":5}'
-            example: '{"codigo_sku":5}'
+            example: '{"codigo_sku":5,"id_empresa":1}'
           required: true
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
