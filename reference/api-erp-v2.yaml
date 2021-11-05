@@ -426,7 +426,7 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
-  /skuconfigs:
+  '/skuconfigs/{id}':
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
       operationId: get-skuconfigs
@@ -460,7 +460,7 @@ paths:
       tags:
         - Produtos (skuconfigs)
     post:
-      summary: Criando um produto (SKU)
+      summary: Criando configuração do sku X empresa (SKUConfigs)
       operationId: post-skuconfigs
       responses:
         '200':
@@ -473,7 +473,23 @@ paths:
       description: 'Cria um SKUConfig '
       tags:
         - Produtos (skuconfigs)
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: put-skuconfigs
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Configs'
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
@@ -2681,7 +2697,6 @@ components:
           type: string
           minLength: 1
       required:
-        - id
         - id_empresa
         - codigo_sku
   parameters:
