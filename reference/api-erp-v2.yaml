@@ -480,7 +480,7 @@ paths:
         in: path
         required: true
     put:
-      summary: ''
+      summary: Atualizando uma configuração do sku X empresa (SKUConfigs)
       operationId: put-skuconfigs
       responses:
         '200':
@@ -490,6 +490,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU-Configs'
+      description: 'Atualiza um SKUConfig '
   '/skus/{id}':
     get:
       summary: Consultando um produto (SKU)
