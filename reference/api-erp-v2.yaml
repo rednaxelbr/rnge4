@@ -558,6 +558,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SKU-Configs'
+              examples:
+                example-1:
+                  value:
+                    id: 80095
+                    id_empresa: 0
+                    sigla_loja: string
+                    nome_reduzido: string
+                    codigo_sku: 0
+                    dias_estoq: 0
+                    quant_mes: 0
+                    ticket_mes: 0
+                    valor_mes: 0
+                    quant_natural: 0
+                    expo: 0
+                    sazo_efet: 0
+                    total_sazo: 0
+                    es_minimo: 0
+                    cmmf_quant: 0
+                    cmmf_validade: string
+                    ultima_venda: string
+                    data_hora: string
       tags:
         - Produtos (skuconfigs)
     put:
