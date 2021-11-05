@@ -590,6 +590,11 @@ paths:
       description: Atualiza um skuconfig já existente
       tags:
         - Produtos (skuconfigs)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SKU-Configs'
     delete:
       summary: Excluindo uma configuração do sku X empresa  (SKUConfigs)
       operationId: delete-skus-id
