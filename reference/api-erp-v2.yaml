@@ -490,7 +490,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU-Configs'
-      description: 'Atualiza um SKUConfig '
+      description: Atualiza um SKUConfig (CMM)
       tags:
         - Produtos (skuconfigs)
   '/skus/{id}':
