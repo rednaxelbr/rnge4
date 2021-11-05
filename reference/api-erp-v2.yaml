@@ -601,14 +601,14 @@ paths:
       responses:
         '200':
           description: OK
-      description: Exclui um skuconfig já existente
+      description: '"Exclui" um skuconfig já existente. O sistema não deleta o registro, apenas coloca nulo nos campos de configuração do sku x empresa, ou seja, os campos: sazo_efet, quant_expo, total_sazo, es_minimo, quant_camp, cmmf_quant, cmmf_validade são setados para nulo, e o campo interno config_compra é armazenado a data e o usuário que efetuou o ajuste.'
       tags:
         - Produtos (skuconfigs)
     parameters:
       - schema:
           type: integer
-          default: 80095
-          example: 80095
+          default: 100
+          example: 100
         name: id
         in: path
         description: ID que representa a configuração do sku x empresa
