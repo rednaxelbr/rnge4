@@ -441,7 +441,13 @@ paths:
         | id_empresa | int64 | ID da empresa | 
         | pendente_erp | bool |  Usado na integração | 
       parameters:
-        - $ref: '#/components/parameters/Filter'
+        - in: query
+          name: filter
+          description: Filtro
+          schema:
+            default: '{"codigo_sku":5}'
+            example: '{"codigo_sku":5}'
+          required: true
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       responses:
@@ -2685,7 +2691,6 @@ components:
       required: false
       schema:
         type: string
-        default: '{"q":"PRODUTO"}'
       description: Filtros
     Range:
       name: range
