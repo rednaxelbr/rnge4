@@ -602,10 +602,11 @@ paths:
     parameters:
       - schema:
           type: integer
-          default: 5
+          default: 80095
+          example: 80095
         name: id
         in: path
-        description: Código do produto (SKU)
+        description: ID que representa a configuração do sku x empresa
         required: true
   '/skuarticles/{id}':
     get:
