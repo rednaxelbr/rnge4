@@ -2720,9 +2720,11 @@ components:
         sigla_loja:
           type: string
           minLength: 1
+          readOnly: true
         nome_reduzido:
           type: string
           minLength: 1
+          readOnly: true
         codigo_sku:
           type: number
           description: Código do produto SKU base
