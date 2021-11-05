@@ -2768,6 +2768,7 @@ components:
         ultima_venda:
           type: string
           minLength: 1
+          readOnly: true
         data_hora:
           type: string
           minLength: 1
