@@ -472,7 +472,7 @@ paths:
               $ref: '#/components/schemas/SKU-Configs'
       description: 'Cria um SKUConfig '
       tags:
-        - Produtos (skus)
+        - Produtos (skuconfigs)
     parameters: []
   '/skus/{id}':
     get:
