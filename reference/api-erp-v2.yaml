@@ -2771,6 +2771,7 @@ components:
         data_hora:
           type: string
           minLength: 1
+          readOnly: true
       required:
         - id
         - id_empresa
