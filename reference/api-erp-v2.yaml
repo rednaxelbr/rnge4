@@ -547,7 +547,7 @@ paths:
         required: true
   '/skusconfigs/{id}':
     get:
-      summary: Consultando uma Configuração do sku X empresa  (SKUconfigs)
+      summary: Consultando uma configuração do sku X empresa  (SKUconfigs)
       operationId: get-skusconfigs-id
       parameters: []
       description: Mostra um skuconfig já existente
@@ -561,7 +561,7 @@ paths:
       tags:
         - Produtos (skuconfigs)
     put:
-      summary: Atualizando um produto (SKU)
+      summary: Atualizando uma configuração do sku X empresa  (SKUConfigs)
       operationId: put-skuconfigs-id
       responses:
         '200':
@@ -570,7 +570,7 @@ paths:
       tags:
         - Produtos (skuconfigs)
     delete:
-      summary: Excluindo um produto (SKU)
+      summary: Excluindo uma configuração do sku X empresa  (SKUConfigs)
       operationId: delete-skus-id
       responses:
         '200':
