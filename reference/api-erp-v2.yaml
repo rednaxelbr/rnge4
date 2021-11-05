@@ -557,7 +557,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SKU'
+                $ref: '#/components/schemas/SKU-Configs'
       tags:
         - Produtos (skuconfigs)
     put:
@@ -2687,7 +2687,7 @@ components:
         id:
           type: number
           default: 0
-          example: 0
+          example: 80095
         id_empresa:
           type: number
         sigla_loja:
