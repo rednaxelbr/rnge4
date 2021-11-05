@@ -2651,6 +2651,8 @@ components:
         id:
           type: number
           default: 0
+          format: double
+          example: 0
         id_empresa:
           type: number
         sigla_loja:
