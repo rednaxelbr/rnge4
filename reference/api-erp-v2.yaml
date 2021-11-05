@@ -545,7 +545,7 @@ paths:
         in: path
         description: Código do produto (SKU)
         required: true
-  '/skusconfigs/{id}':
+  '/skuconfigs/{id}':
     get:
       summary: Consultando uma configuração do sku X empresa  (SKUconfigs)
       operationId: get-skusconfigs-id
