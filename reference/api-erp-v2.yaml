@@ -2608,9 +2608,9 @@ components:
         example-1:
           id: 105840
           id_empresa: 7
-          sigla_loja: PCH
-          nome_reduzido: PADRE CHAGAS
-          codigo_sku: 10887
+          sigla_loja: XXX
+          nome_reduzido: NOME FILIAL
+          codigo_sku: 123456
           quant_mes: 278
           ticket_mes: 206
           valor_mes: 6606.44
