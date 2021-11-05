@@ -444,15 +444,15 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU-Configs'
       tags:
         - Produtos (skuconfigs)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SKU-Configs'
-            examples: {}
     post:
       summary: Criando um produto (SKU)
       operationId: post-skuconfigs
