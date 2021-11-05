@@ -2651,7 +2651,6 @@ components:
         id:
           type: number
           default: 0
-          format: double
           example: 0
         id_empresa:
           type: number
@@ -2703,6 +2702,7 @@ components:
           type: string
           minLength: 1
       required:
+        - id
         - id_empresa
         - codigo_sku
   parameters:
