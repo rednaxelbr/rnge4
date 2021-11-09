@@ -462,7 +462,7 @@ paths:
       tags:
         - Pessoa (Categoria)
     post:
-      summary: Criando uma pessoa Categoria (customercategories)
+      summary: Criando uma Pessoa Categoria (customercategories)
       operationId: post-skuconfigs
       responses:
         '200':
