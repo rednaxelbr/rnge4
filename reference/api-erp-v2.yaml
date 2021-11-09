@@ -478,7 +478,7 @@ paths:
     parameters: []
   '/customercategories/{id}':
     get:
-      summary: Consultando uma pessoa categoria (customercategories)
+      summary: Consultando uma Pessoa Categoria (customercategories)
       operationId: get-customercategories-id
       parameters: []
       description: Mostra uma pessoa categoria já existente
@@ -515,7 +515,7 @@ paths:
       tags:
         - Pessoa (Categoria)
     put:
-      summary: Atualizando uma pessoa categoria  (customercategories)
+      summary: Atualizando uma Pessoa Categoria  (customercategories)
       operationId: put-customercategories-id
       responses:
         '200':
@@ -529,7 +529,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Pessoa-Categoria'
     delete:
-      summary: Excluindo uma pessoa categoria (customercategories)
+      summary: Excluindo uma Pessoa Categoria (customercategories)
       operationId: delete-customercategories-id
       responses:
         '200':
