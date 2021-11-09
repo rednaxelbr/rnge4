@@ -515,7 +515,7 @@ paths:
       tags:
         - Pessoa (Categoria)
     put:
-      summary: Atualizando uma configuração do sku X empresa  (SKUConfigs)
+      summary: Atualizando uma pessoa categoria  (customercategories)
       operationId: put-customercategories-id
       responses:
         '200':
