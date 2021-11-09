@@ -20,7 +20,7 @@ tags:
   - name: Produtos (skugrids)
     description: Cadastro de Grades
   - name: Produtos (skuconfigs)
-    description: Cadastro de configuração de SKU x Empresa  
+    description: Cadastro de configuração de SKU x Empresa
   - name: Mapeamentos (purchasemappings)
     description: Mapeamentos Produto x Fornecedor
   - name: Listas de Preços (pricelists)
@@ -428,6 +428,124 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
+  /customercategories/:
+    get:
+      summary: Listando Pessoa Categoria (customercategories)
+      operationId: get-customercategories
+      description: |
+        Lista da Pessoa Categoria
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | ID | int64 | código da categoria pessoa| 
+        | IDs | []int64 | vetor do código da categoria pessoa| 
+        | desc_categoria | string | Descrição da categoria pessoa | 
+      parameters:
+        - in: query
+          name: filter
+          description: Filtro
+          schema:
+            default: '{"id":5}'
+            example: '{"id":5}'
+          required: true
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU-Configs'
+      tags:
+        - Pessoa (Categoria)
+    post:
+      summary: Criando uma pessoa Categoria (customercategories)
+      operationId: post-skuconfigs
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pessoa-Categoria'
+      description: Cria uma pessoa categoria
+      tags:
+        - Pessoa (Categoria)
+    parameters: []
+  '/customercategories/{id}':
+    get:
+      summary: Consultando uma pessoa categoria (customercategories)
+      operationId: get-customercategories-id
+      parameters: []
+      description: Mostra uma pessoa categoria já existente
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pessoa-Categoria'
+              examples:
+                example-1:
+                  value:
+                    id: 80095
+                    id_empresa: 0
+                    sigla_loja: string
+                    nome_reduzido: string
+                    codigo_sku: 0
+                    dias_estoq: 0
+                    quant_mes: 0
+                    ticket_mes: 0
+                    valor_mes: 0
+                    quant_natural: 0
+                    expo: 0
+                    sazo_efet: 0
+                    total_sazo: 0
+                    es_minimo: 0
+                    cmmf_quant: 0
+                    cmmf_validade: string
+                    ultima_venda: string
+                    data_hora: string
+        '':
+          headers: {}
+      tags:
+        - Pessoa (Categoria)
+    put:
+      summary: Atualizando uma configuração do sku X empresa  (SKUConfigs)
+      operationId: put-customercategories-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma pessoa categoria já existente
+      tags:
+        - Pessoa (Categoria)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pessoa-Categoria'
+    delete:
+      summary: Excluindo uma pessoa categoria (customercategories)
+      operationId: delete-customercategories-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui uma pessoa categoria já existente.
+      tags:
+        - Pessoa (Categoria)
+    parameters:
+      - schema:
+          type: integer
+          default: 100
+          example: 100
+        name: id
+        in: path
+        description: ID que representa a configuração do sku x empresa
+        required: true
   /skuconfigs/:
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
@@ -482,20 +600,6 @@ paths:
       tags:
         - Produtos (skuconfigs)
     parameters: []
-    put:
-      summary: Atualizando uma configuração do sku X empresa (SKUConfigs)
-      operationId: put-skuconfigs
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SKU-Configs'
-      description: Atualiza um SKUConfig (CMM)
-      tags:
-        - Produtos (skuconfigs)
   '/skuconfigs/{id}':
     get:
       summary: Consultando uma configuração do sku X empresa  (SKUconfigs)
@@ -2500,6 +2604,34 @@ components:
         - pjuridica
         - categorias
         - config_formas
+    Pessoa-Categoria:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 5
+          categ_id: 301
+          desc_categoria: ATACADO
+          plu_id: 214
+          categ_mae: null
+      properties:
+        id:
+          type: number
+        categ_id:
+          type: number
+        desc_categoria:
+          type: string
+          minLength: 1
+        plu_id:
+          type: number
+        categ_mae:
+          type: number
+          description: Também conhecido como a categoria pai (árvore hierárquica)
+      required:
+        - id
+        - categ_id
+        - desc_categoria
+      title: Pessoa Categoria
     Empresa:
       description: ''
       type: object
