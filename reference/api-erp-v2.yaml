@@ -19,6 +19,8 @@ tags:
     description: Cadastro de SKUs
   - name: Produtos (skugrids)
     description: Cadastro de Grades
+  - name: Produtos (skuconfigs)
+    description: Cadastro de configuração de SKU x Empresa  
   - name: Mapeamentos (purchasemappings)
     description: Mapeamentos Produto x Fornecedor
   - name: Listas de Preços (pricelists)
@@ -494,64 +496,6 @@ paths:
       description: Atualiza um SKUConfig (CMM)
       tags:
         - Produtos (skuconfigs)
-  '/skus/{id}':
-    get:
-      summary: Consultando um produto (SKU)
-      tags:
-        - Produtos (skus)
-      operationId: get-skus-id
-      parameters: []
-      description: Mostra um produto já existente
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SKU'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    message: Nenhum registro encontrado
-                properties:
-                  message:
-                    type: string
-                    minLength: 1
-                    description: Mensagem de Erro
-                required:
-                  - message
-    put:
-      summary: Atualizando um produto (SKU)
-      operationId: put-skus-id
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos (skus)
-      description: Atualiza um produto já existente
-    delete:
-      summary: Excluindo um produto (SKU)
-      operationId: delete-skus-id
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos (skus)
-      description: Exclui um produto já existente
-    parameters:
-      - schema:
-          type: integer
-          default: 5
-        name: id
-        in: path
-        description: Código do produto (SKU)
-        required: true
   '/skuconfigs/{id}':
     get:
       summary: Consultando uma configuração do sku X empresa  (SKUconfigs)
@@ -619,6 +563,64 @@ paths:
         name: id
         in: path
         description: ID que representa a configuração do sku x empresa
+        required: true
+  '/skus/{id}':
+    get:
+      summary: Consultando um produto (SKU)
+      tags:
+        - Produtos (skus)
+      operationId: get-skus-id
+      parameters: []
+      description: Mostra um produto já existente
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SKU'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    message: Nenhum registro encontrado
+                properties:
+                  message:
+                    type: string
+                    minLength: 1
+                    description: Mensagem de Erro
+                required:
+                  - message
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: put-skus-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Atualiza um produto já existente
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: delete-skus-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Exclui um produto já existente
+    parameters:
+      - schema:
+          type: integer
+          default: 5
+        name: id
+        in: path
+        description: Código do produto (SKU)
         required: true
   '/skuarticles/{id}':
     get:
