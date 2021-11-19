@@ -1633,6 +1633,83 @@ paths:
                   writeOnly: true
               required:
                 - xml
+  /orderitems:
+    get:
+      summary: Lista de itens de um pedido
+      tags:
+        - Pedidos (orders)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pedido-Item'
+      operationId: get-orderitems
+      description: Filtro "numero_pedido" é obrigatório.
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Insere um item em um pedido
+      operationId: post-orderitems
+      responses:
+        '200':
+          description: OK
+      description: 'Insere um item em um pedido. Se o `vuncom` (valor unitário) não for informado, usa o preço de tabela.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido-Item'
+      tags:
+        - Pedidos (orders)
+  '/orderitems/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consulta um item de um pedido
+      tags:
+        - Pedidos (orders)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido-Item'
+      operationId: get-orderitems-id
+      description: Consulta (para edição) um item de um pedido
+    put:
+      summary: Atualiza um item de um pedido
+      operationId: put-orderitems-id
+      responses:
+        '200':
+          description: OK
+      description: Modifica um item de um pedido
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido-Item'
+      tags:
+        - Pedidos (orders)
+    delete:
+      summary: Remove um item de um pedido
+      operationId: delete-orderitems-id
+      responses:
+        '200':
+          description: OK
+      description: Remove um item de um pedido
+      tags:
+        - Pedidos (orders)
 components:
   securitySchemes:
     Usuário/Senha:
@@ -2910,7 +2987,7 @@ components:
         - id_empresa
         - codigo_sku
     Pedido:
-      description: ''
+      description: Pedido/Orçamento
       type: object
       x-examples:
         example-1:
@@ -2998,28 +3075,7 @@ components:
           type: array
           uniqueItems: true
           items:
-            type: object
-            properties:
-              seq:
-                type: number
-              idprod:
-                type: number
-                description: Código do produto
-              qcom:
-                type: number
-                description: Quantidade
-              vuncom:
-                type: number
-                description: 'Preço unitário (se não informado, usa preço de tabela)'
-              vdesc:
-                type: number
-                description: Valor do desconto
-              vprod:
-                type: number
-                description: Total do item
-            required:
-              - idprod
-              - qcom
+            $ref: '#/components/schemas/Pedido-Item'
         pagtos:
           type: array
           uniqueItems: true
@@ -3063,6 +3119,53 @@ components:
         - num_loja
         - id_pessoa
         - flags
+    Pedido-Item:
+      description: Item de um pedido
+      type: object
+      x-examples:
+        example-1:
+          id: 6597129
+          numero_pedido: 778495
+          seq: 50
+          idprod: 125896
+          ucom: UN
+          xprod: CADERNO COLEGIAL CD 01X1 80FL 177MMX240MM FORONI COLUMBIA
+          qcom: 3
+          vuncom: 0
+          vprod: 0
+      properties:
+        id:
+          type: number
+          description: ID do item (para edição)
+        numero_pedido:
+          type: number
+          description: Número do pedido
+        seq:
+          type: number
+          description: Sequência do item no pedido
+        idprod:
+          type: number
+          description: Código do produto
+        ucom:
+          type: string
+          description: Unidade de comercialização
+        xprod:
+          type: string
+          description: Descrição do item
+        qcom:
+          type: number
+          description: Quantidade
+        vuncom:
+          type: number
+          description: Valor unitário
+        vdesc:
+          type: number
+        vprod:
+          type: number
+          description: Total do item
+      required:
+        - numero_pedido
+        - idprod
   parameters:
     Filter:
       name: filter
