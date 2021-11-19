@@ -9,6 +9,8 @@ tags:
     description: Login
   - name: Pessoas (customers)
     description: Cadastro de Pessoas
+  - name: Pessoa (Categoria)
+    description: Categorias de Pessoas
   - name: Endereços de pessoas (addresses)
     description: Endereços de Pessoas
   - name: Empresas (companies)
@@ -371,6 +373,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
     post:
       tags:
         - Pedidos (orders)
@@ -380,6 +386,11 @@ paths:
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido'
     parameters: []
   /skus:
     get:
@@ -428,7 +439,7 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
-  /customercategories/:
+  /customercategories:
     get:
       summary: Listando Pessoa Categoria (customercategories)
       operationId: get-customercategories
@@ -458,12 +469,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SKU-Configs'
+                $ref: '#/components/schemas/Pessoa-Categoria'
       tags:
         - Pessoa (Categoria)
     post:
       summary: Criando uma Pessoa Categoria (customercategories)
-      operationId: post-skuconfigs
+      operationId: post-customercategories
       responses:
         '200':
           description: OK
@@ -482,6 +493,8 @@ paths:
       operationId: get-customercategories-id
       parameters: []
       description: Mostra uma pessoa categoria já existente
+      tags:
+        - Pessoa (Categoria)
       responses:
         '200':
           description: OK
@@ -489,31 +502,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pessoa-Categoria'
-              examples:
-                example-1:
-                  value:
-                    id: 80095
-                    id_empresa: 0
-                    sigla_loja: string
-                    nome_reduzido: string
-                    codigo_sku: 0
-                    dias_estoq: 0
-                    quant_mes: 0
-                    ticket_mes: 0
-                    valor_mes: 0
-                    quant_natural: 0
-                    expo: 0
-                    sazo_efet: 0
-                    total_sazo: 0
-                    es_minimo: 0
-                    cmmf_quant: 0
-                    cmmf_validade: string
-                    ultima_venda: string
-                    data_hora: string
-        '':
-          headers: {}
-      tags:
-        - Pessoa (Categoria)
     put:
       summary: Atualizando uma Pessoa Categoria  (customercategories)
       operationId: put-customercategories-id
@@ -546,7 +534,7 @@ paths:
         in: path
         description: ID que representa a configuração do sku x empresa
         required: true
-  /skuconfigs/:
+  /skuconfigs:
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
       operationId: get-skuconfigs
@@ -652,7 +640,7 @@ paths:
               $ref: '#/components/schemas/SKU-Configs'
     delete:
       summary: Excluindo uma configuração do sku X empresa  (SKUConfigs)
-      operationId: delete-skus-id
+      operationId: delete-skusconfigs-id
       responses:
         '200':
           description: OK
@@ -844,11 +832,16 @@ paths:
       tags:
         - Pedidos (orders)
       summary: Atualizando um pedido
-      description: Atualiza pedido
+      description: Atualiza um pedido
       operationId: put-orders-id
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido'
     get:
       tags:
         - Pedidos (orders)
@@ -858,6 +851,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
     parameters:
       - schema:
           type: integer
@@ -2605,23 +2602,20 @@ components:
         - categorias
         - config_formas
     Pessoa-Categoria:
-      description: ''
+      description: Cruzamento pessoa x categoria
       type: object
       x-examples:
         example-1:
           id: 5
-          categ_id: 301
           desc_categoria: ATACADO
           plu_id: 214
           categ_mae: null
+      title: Pessoa Categoria
       properties:
         id:
           type: number
-        categ_id:
-          type: number
         desc_categoria:
           type: string
-          minLength: 1
         plu_id:
           type: number
         categ_mae:
@@ -2629,9 +2623,6 @@ components:
           description: Também conhecido como a categoria pai (árvore hierárquica)
       required:
         - id
-        - categ_id
-        - desc_categoria
-      title: Pessoa Categoria
     Empresa:
       description: ''
       type: object
@@ -2831,7 +2822,7 @@ components:
         - referencia
         - variacao
     SKU-Configs:
-      description: ''
+      description: Configuração logística de um SKU
       type: object
       x-examples:
         example-1:
@@ -2918,6 +2909,160 @@ components:
         - id
         - id_empresa
         - codigo_sku
+    Pedido:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          origem: Amazon
+          identificador: 701-0050622-3473402
+          num_loja: 2
+          id_pessoa: 36997002
+          id_vendedor: 1176
+          status: 590
+          tipo: VENDAS
+          mod_frete: '0'
+          total: 673.74
+          entrega:
+            id_meio: 39
+            id_endereco: 77907002
+            data_entrega: '2021-11-19'
+            nome_turno: MANHA
+          observacoes: Sem cebola
+          itens:
+            - seq: 1
+              idprod: 120464
+              qcom: 6
+              vuncom: 112.29
+              vdesc: 0
+              vprod: 673.74
+          pagtos:
+            - parcela: 1
+              valor: 673.74
+              data_parcela: '2021-12-10'
+              tpintegra: 1
+              tpag: 15
+              extra:
+                dias_prazo: 28
+                id_conta: 0
+          flags:
+            usuario_legado: ZEZINHO
+      title: ''
+      properties:
+        origem:
+          type: string
+          description: ERP externo/Marketplace de origem
+        identificador:
+          type: string
+          description: Identificador do pedido no ERP externo/Marketplace
+        num_loja:
+          type: number
+          description: ID da empresa (loja) do pedido
+        id_pessoa:
+          type: number
+          description: ID da pessoa (cliente) do pedido
+        id_vendedor:
+          type: number
+          description: 'ID do vendedor '
+        status:
+          type: number
+          description: Status inicial do pedido
+          default: 500
+        tipo:
+          type: string
+          default: VENDAS
+          description: Tipo de operação do pedido
+        mod_frete:
+          type: string
+          description: Modalidade do frete (tag <modFrete> na NFe)
+        total:
+          type: number
+        entrega:
+          type: object
+          properties:
+            id_meio:
+              type: number
+              description: ID do meio de entrega
+            id_endereco:
+              type: number
+              description: ID do endereço de entrega
+            data_entrega:
+              type: string
+              description: Data prevista de entrega
+            nome_turno:
+              type: string
+              description: Turno preferencial de entrega
+        observacoes:
+          type: string
+        itens:
+          type: array
+          uniqueItems: true
+          items:
+            type: object
+            properties:
+              seq:
+                type: number
+              idprod:
+                type: number
+                description: Código do produto
+              qcom:
+                type: number
+                description: Quantidade
+              vuncom:
+                type: number
+                description: 'Preço unitário (se não informado, usa preço de tabela)'
+              vdesc:
+                type: number
+                description: Valor do desconto
+              vprod:
+                type: number
+                description: Total do item
+            required:
+              - idprod
+              - qcom
+        pagtos:
+          type: array
+          uniqueItems: true
+          items:
+            type: object
+            properties:
+              parcela:
+                type: number
+                description: Número sequencial da parcela (1/n)
+              tpag:
+                type: number
+                description: Tipo de pagamento (tag <tPag> da NFe)
+              valor:
+                type: number
+                description: Valor da parcela
+              data_parcela:
+                type: string
+                description: Data de vencimento
+              tpintegra:
+                type: number
+                description: Tipo de integração (tg <tpIntegra> da NFe)
+              extra:
+                type: object
+                properties:
+                  dias_prazo:
+                    type: number
+                    description: Dias de prazo (parcelamento)
+                  id_conta:
+                    type: number
+                    description: ID da Conta Bancária (Cheque/Depósito)
+            required:
+              - parcela
+              - tpag
+              - valor
+        flags:
+          type: object
+          properties:
+            requer_separacao:
+              type: boolean
+      required:
+        - num_loja
+        - id_pessoa
+        - flags
   parameters:
     Filter:
       name: filter
