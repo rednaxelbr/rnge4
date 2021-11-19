@@ -1650,7 +1650,12 @@ paths:
       operationId: get-orderitems
       description: Filtro "numero_pedido" é obrigatório.
       parameters:
-        - $ref: '#/components/parameters/Filter'
+        - in: query
+          name: filter
+          description: Filtros
+          required: true
+          schema:
+            default: '{"numero_pedido":999999}'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
     post:
