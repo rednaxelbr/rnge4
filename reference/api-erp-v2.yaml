@@ -1715,6 +1715,38 @@ paths:
       description: Remove um item de um pedido
       tags:
         - Pedidos (orders)
+  /customers:
+    get:
+      summary: Listando pessoas
+      tags:
+        - Pessoas (customers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pessoa'
+      operationId: get-customers
+      description: 'Lista '
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria uma pessoa
+      operationId: post-customers
+      responses:
+        '200':
+          description: OK
+      description: Cadastra uma nova pessoa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pessoa'
+      tags:
+        - Pessoas (customers)
 components:
   securitySchemes:
     Usuário/Senha:
