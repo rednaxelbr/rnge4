@@ -1208,6 +1208,10 @@ paths:
                 $ref: '#/components/schemas/Estoque-GET'
       operationId: get-skustocks
       description: Lista de endereços de estoque (SKU x Prédio x Setor)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
     post:
       summary: Criando um endereço
       operationId: post-skustocks
