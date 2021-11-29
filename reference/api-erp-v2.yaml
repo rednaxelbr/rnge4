@@ -1207,7 +1207,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Estoque-GET'
       operationId: get-skustocks
-      description: |+
+      description: |
         Lista de endereços de estoque (SKU x Prédio x Setor)
 
         ### Filtros disponíveis
@@ -1225,8 +1225,10 @@ paths:
         | manutencao | string | Filtrar os "encalhados" ou "negativos" | 
         | id_recepcao | int64 | ID da recepção |
         | fornecedor | string | Nome do Fornecedor |
+        | todos | bool | Por padrão traz somente os estoques diferentes de zero. Para trazer também os zerados deve-se colocar "todos" |
+        | somente_zerados | bool | Somente estoques zerados |
+        | arroba_zerado | bool | Somente os estoques com o arroba zerado |
         | pendente_erp | bool | Usado na integração |
-
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
