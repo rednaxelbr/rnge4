@@ -37,6 +37,8 @@ tags:
     description: Equipamento PDV
   - name: Distribuição (distributions)
     description: Distribuição para filiais
+  - name: Tributária (Classe Fiscal)
+    description: Cadastro das classes fiscais
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -1602,6 +1604,68 @@ paths:
             schema:
               $ref: '#/components/schemas/SKU-Mapeamento'
       description: Atualiza um mapeamento produto x fornecedor
+  '/taxclasses/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: ''
+      tags:
+        - Tributária (Classe Fiscal)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classe-Fiscal'
+      operationId: get-taxclasses-id
+      description: Consulta uma classe fiscal
+    put:
+      summary: Atualizando uma classe fiscal
+      operationId: put-taxclasses-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Tributária (Classe Fiscal)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+      description: Atualiza uma classe fiscal
+    delete:
+      summary: Excluindo uma classe fiscal
+      operationId: delete-taxclasses-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      description: Exclui uma classe fiscal
+      tags:
+        - Tributária (Classe Fiscal)
   /purchasemappings:
     get:
       summary: Listando mapeamentos
@@ -1636,6 +1700,44 @@ paths:
             schema:
               $ref: '#/components/schemas/SKU-Mapeamento'
       description: Cria um novo mapeamento produto x fornecedor
+  /taxclasses:
+    get:
+      summary: Listando as classes fiscais
+      tags:
+        - Tributária (Classe Fiscal)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Classe-Fiscal'
+      operationId: get-taxclasses
+      description: |
+        Listagem das classes fiscais
+
+        Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um mapeamento
+      operationId: post-taxclasses
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Tributária (Classe Fiscal)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+      description: Cria uma nova classe fiscal
+    parameters: []
   /invoices:
     post:
       summary: Criando Nota/Cupom Fiscal
@@ -3229,6 +3331,75 @@ components:
       required:
         - numero_pedido
         - idprod
+    Classe-Fiscal:
+      description: |
+        Impostos por produto (ICMS, IPI, PIS e COFINS)
+
+        Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview
+      type: object
+      x-examples:
+        example-1:
+          id: 2
+          id_tributo_fk: ICMS
+          cst: 0
+          desc_trib: TRIB. INTEGRAL
+          cfop_nfce: 5102
+          modbc: 3
+          modbc_st: 4
+          predbc_st: 100
+          csosn: 102
+          config_classe: {}
+      properties:
+        id:
+          type: number
+        id_tributo_fk:
+          type: string
+          minLength: 1
+          example: ICMS
+          description: 'Campo em conjunto como cst. Pode ser: ICMS, CSOSN, PIS, COFINS, IPI, ISSQN'
+        cst:
+          type: number
+          description: Campo em conjunto com o id_tributo_fk
+          example: 51
+        desc_trib:
+          type: string
+          minLength: 1
+        cfop_nfce:
+          type: number
+        modbc:
+          type: number
+        modbc_st:
+          type: number
+        predbc_st:
+          type: number
+        csosn:
+          type: number
+        config_classe:
+          type: object
+          properties:
+            texto_legislacao:
+              type: string
+            nfe_cbenef:
+              type: string
+            sem_credito_pis_cofins:
+              type: boolean
+            cfop:
+              type: integer
+        csosn_manual:
+          type: integer
+        picms:
+          type: number
+        predbc:
+          type: number
+        cst_ipi:
+          type: number
+        cst_pis:
+          type: number
+        cst_cofins:
+          type: number
+      required:
+        - id
+        - id_tributo_fk
   parameters:
     Filter:
       name: filter
