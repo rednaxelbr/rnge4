@@ -1226,7 +1226,7 @@ paths:
         | id_recepcao | int64 | ID da recepção |
         | fornecedor | string | Nome do Fornecedor |
         | todos | bool | Por padrão traz somente os estoques diferentes de zero. Para trazer também os zerados deve-se colocar "todos" |
-        | somente_zerados | bool | Somente estoques zerados |
+        | somente_zerados | bool | Somente setor A com estoques zerados ou menores que zero |
         | arroba_zerado | bool | Somente os estoques com o arroba zerado |
         | pendente_erp | bool | Usado na integração |
       parameters:
