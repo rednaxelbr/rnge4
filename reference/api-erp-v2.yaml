@@ -1207,7 +1207,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/Estoque-GET'
       operationId: get-skustocks
-      description: Lista de endereços de estoque (SKU x Prédio x Setor)
+      description: |+
+        Lista de endereços de estoque (SKU x Prédio x Setor)
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | cod_sku | int64 | código do Produto (SKU)| 
+        | id_predio | int64 | ID do prédio | 
+        | id_empresa | int64 |  Filtro por empresa. O id_predio tem prioridade sobre o id_empresa | 
+        | setor_letra | string | Filtra os estoques de um setor |
+        | numero_pedido | int64 |  Filtra o estoque dos itens do pedido| 
+        | id_categoria | int64 | Filtra o estoque dos itens da categoria a ser filtrada | 
+        | data_inicial | string | Data Inicial alteração de estoque | 
+        | data_final | string | Data da última alteração de estoque| 
+        | manutencao | string | Filtrar os "encalhados" ou "negativos" | 
+        | id_recepcao | int64 | ID da recepção |
+        | fornecedor | string | Nome do Fornecedor |
+        | pendente_erp | bool | Usado na integração |
+
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
