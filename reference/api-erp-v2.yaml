@@ -1226,8 +1226,8 @@ paths:
         | id_recepcao | int64 | ID da recepção |
         | fornecedor | string | Nome do Fornecedor |
         | todos | bool | Por padrão traz somente os estoques diferentes de zero. Para trazer também os zerados deve-se colocar "todos" |
-        | somente_zerados | bool | Somente setor A com estoques zerados ou menores que zero |
-        | arroba_zerado | bool | Somente os estoques com o arroba zerado |
+        | somente_zerados | bool | Somente com estoques zerados ou menores que zero |
+        | arroba_zerado | bool | Somente os estoques com o setor A zerado |
         | tipo_virtual | int | Quando 35 = DISTRIB (Distribuição em trânsito), 36 = RMA (Retorno de Mercadoria), 37 = Descarte (Danificado aguardando descarte), 38 = PERDA, e quando 99 = todos |
         | pendente_erp | bool | Usado na integração |
       parameters:
