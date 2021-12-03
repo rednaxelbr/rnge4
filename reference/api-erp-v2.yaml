@@ -2056,6 +2056,7 @@ components:
         prod_xprod:
           type: string
           minLength: 1
+          description: Descrição do SKU (tag <xProd> da NFe)
         ativo:
           type: boolean
         dthr_sku:
@@ -2063,15 +2064,6 @@ components:
           minLength: 1
         custos:
           type: object
-          required:
-            - curva
-            - vbcst_nota
-            - icms_efetivo
-            - reducao_bcst
-            - vicmsst_ret
-            - vicms_substituto
-            - vunit_compra
-            - pst_compra
           properties:
             custo_liquido:
               type: number
@@ -2109,6 +2101,8 @@ components:
                 minLength: 1
               id_pessoa:
                 type: number
+            required:
+              - id_fornec
         fotos:
           type: array
           uniqueItems: true
@@ -2125,16 +2119,8 @@ components:
                 type: string
               secundario:
                 type: string
-            required:
-              - id
-              - url_foto
-              - primario
-              - secundario
         flags_sku:
           type: object
-          required:
-            - falta_fornecedor
-            - fora_de_linha
           properties:
             falta_fornecedor:
               type: boolean
@@ -2176,10 +2162,7 @@ components:
               principal:
                 type: boolean
             required:
-              - nome_catalogo
               - id_categoria
-              - desc_categoria
-              - principal
         codigo_agrup:
           type: string
           minLength: 1
@@ -2202,11 +2185,6 @@ components:
         - id
         - ucom
         - prod_xprod
-        - custos
-        - fornecedores
-        - fotos
-        - flags_sku
-        - categorias
     Embalagens:
       description: ''
       type: object
