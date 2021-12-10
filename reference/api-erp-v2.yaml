@@ -9,12 +9,14 @@ tags:
     description: Login
   - name: Pessoas (customers)
     description: Cadastro de Pessoas
-  - name: Pessoa (Categoria)
+  - name: Pessoa (customercategories)
     description: Categorias de Pessoas
   - name: Endereços de pessoas (addresses)
     description: Endereços de Pessoas
   - name: Empresas (companies)
     description: Cadastro de Empresas
+  - name: Categorias (categories)
+    description: Categorias de produtos
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
   - name: Produtos (skus)
@@ -473,7 +475,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pessoa-Categoria'
       tags:
-        - Pessoa (Categoria)
+        - Pessoa (customercategories)
     post:
       summary: Criando uma Pessoa Categoria (customercategories)
       operationId: post-customercategories
@@ -487,7 +489,7 @@ paths:
               $ref: '#/components/schemas/Pessoa-Categoria'
       description: Cria uma pessoa categoria
       tags:
-        - Pessoa (Categoria)
+        - Pessoa (customercategories)
     parameters: []
   '/customercategories/{id}':
     get:
@@ -496,7 +498,7 @@ paths:
       parameters: []
       description: Mostra uma pessoa categoria já existente
       tags:
-        - Pessoa (Categoria)
+        - Pessoa (customercategories)
       responses:
         '200':
           description: OK
@@ -512,7 +514,7 @@ paths:
           description: OK
       description: Atualiza uma pessoa categoria já existente
       tags:
-        - Pessoa (Categoria)
+        - Pessoa (customercategories)
       requestBody:
         content:
           application/json:
@@ -526,7 +528,7 @@ paths:
           description: OK
       description: Exclui uma pessoa categoria já existente.
       tags:
-        - Pessoa (Categoria)
+        - Pessoa (customercategories)
     parameters:
       - schema:
           type: integer
@@ -1875,6 +1877,26 @@ paths:
               $ref: '#/components/schemas/Pessoa'
       tags:
         - Pessoas (customers)
+  /catalogs:
+    get:
+      summary: Listagem de catálogos
+      tags:
+        - Categorias (categories)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Catalogo'
+      operationId: get-catalogs
+      description: Lista de catálogos
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   securitySchemes:
     Usuário/Senha:
@@ -3378,6 +3400,36 @@ components:
       required:
         - id
         - id_tributo_fk
+    Catalogo:
+      description: Catálogo de categorias
+      type: object
+      x-examples:
+        example-1:
+          id: 21
+          nome_catalogo: Taxonomia
+          padrao: true
+          eh_taxonomia: true
+          ativo: true
+      properties:
+        id:
+          type: number
+        nome_catalogo:
+          type: string
+          minLength: 1
+        padrao:
+          type: boolean
+          description: Somente um catálogo pode ser o padrão
+        eh_taxonomia:
+          type: boolean
+          description: Quando um catálogo é do tipo Taxonomia suas categorias podem ser usadas na taxonomia dos produtos
+        ativo:
+          type: boolean
+      required:
+        - id
+        - nome_catalogo
+        - padrao
+        - eh_taxonomia
+        - ativo
   parameters:
     Filter:
       name: filter
