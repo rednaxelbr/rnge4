@@ -1897,6 +1897,40 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  /categories:
+    get:
+      summary: Listagem de Categorias
+      tags:
+        - Categorias (categories)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+      operationId: get-categories
+      description: Listagem de categorias de produtos. Filtre por "id_catalogo" para listar as categorias de um catálogo.
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria uma nova categoria
+      operationId: post-categories
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova categoria de produto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+      tags:
+        - Categorias (categories)
 components:
   securitySchemes:
     Usuário/Senha:
@@ -3430,6 +3464,43 @@ components:
         - padrao
         - eh_taxonomia
         - ativo
+    Categoria:
+      description: Categoria de produto
+      type: object
+      x-examples:
+        example-1:
+          id: 10005
+          nivel_categ: 1
+          breadcrumb: Festas > Natal
+          desc_categoria: Natal
+          parent_id: 20929
+          ativa: true
+          id_catalogo: 27
+      properties:
+        id:
+          type: number
+        nivel_categ:
+          type: number
+          description: Nível na árvore (automático)
+        breadcrumb:
+          type: string
+          minLength: 1
+          description: Caminho desde a raiz
+        desc_categoria:
+          type: string
+          minLength: 1
+          description: Descrição
+        parent_id:
+          type: number
+          description: ID da categoria da qual essa categoria é filha
+        ativa:
+          type: boolean
+        id_catalogo:
+          type: number
+          description: ID do catálogo ao qual essa categoria pertence
+      required:
+        - desc_categoria
+        - id_catalogo
   parameters:
     Filter:
       name: filter
