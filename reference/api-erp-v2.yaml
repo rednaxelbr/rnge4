@@ -43,6 +43,8 @@ tags:
     description: Cadastro das classes fiscais
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
+  - name: Marcas
+    description: Cadastro das marcas dos produtos
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -1309,6 +1311,50 @@ paths:
       tags:
         - Prédios de Estoque
     parameters: []
+  /brands:
+    get:
+      summary: Listando as marcas
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Marca-GET'
+              examples: {}
+      operationId: get-brands
+      description: |-
+        Lista de marcas de produto 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | id da Marca| 
+        | ids | []int64 | Possibilidade de filtrar mais de uma marca |
+        | nome_marca | string | Nome da marca |
+        | inativas | bool | Trazer somente as marcas inativas |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Marcas
+    post:
+      summary: Criando uma marca
+      operationId: post-brands
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova marca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Marca-PUT'
+      tags:
+        - Marcas
+    parameters: []
   '/skustocks/{id}':
     parameters:
       - schema:
@@ -1405,6 +1451,54 @@ paths:
       description: Exclui um prédio de estoque.
       tags:
         - Prédios de Estoque
+  '/brands/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando uma marca de produto
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Marca-GET'
+      operationId: get-brands-id
+      description: Consulta uma marca de produto
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Marcas
+    put:
+      summary: Atualizando um prédio de estoque
+      operationId: put-brands-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma marca de produto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Marca-PUT'
+        description: ''
+      tags:
+        - Prédios de Estoque
+    delete:
+      summary: Excluindo uma marca de produto
+      operationId: delete-brands-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui uma marca de produto.
+      tags:
+        - Marcas
   '/pricelists/{id}':
     parameters:
       - schema:
@@ -3005,6 +3099,168 @@ components:
       required:
         - id
     Empresa:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          nome_reduzido: VOLUNTARIOS
+          sigla_loja: VLT
+          id_pessoa: 9778001
+          nome_razao: BELLER COMERCIO DE PAPEIS LTDA.
+          nome_municipio: Porto Alegre
+          uf: RS
+          utiliza_pdv: true
+          cnpj_padrao: 5563868000113
+          loja_aberta: true
+          id_canal: 49
+          desc_canal: VLT
+          lista_pedidos:
+            - id_empresa: 1
+              sigla: VLT
+          id_predio: 5
+      properties:
+        id:
+          type: number
+        nome_reduzido:
+          type: string
+          maxLength: 20
+          description: ''
+        sigla_loja:
+          type: string
+          maxLength: 6
+        id_pessoa:
+          type: number
+          description: ID da pessoa (geralmente jurídica) da empresa
+        nome_razao:
+          type: string
+          description: Nome/Razão Social da pessoa da empresa
+        nome_municipio:
+          type: string
+          description: Município do endereço-sede da pessoa da empresa
+        uf:
+          type: string
+          description: UF do endereço-sede da pessoa da empresa
+        utiliza_pdv:
+          type: boolean
+          description: Utiliza o aplicativo PDV (emite NFCe)
+        cnpj_padrao:
+          type: number
+          description: 'Ao carregar um XML a empresa emitente é determinada por este campo, que é UNIQUE se preenchido.'
+        loja_aberta:
+          type: boolean
+          description: Quando FALSE nenhum usuário pode fazer login nela.
+        id_canal:
+          type: number
+          description: Canal padrão das vendas feitas por esta loja
+        desc_canal:
+          type: string
+        lista_pedidos:
+          type: array
+          uniqueItems: true
+          description: Lista (opcional) de outras empresas cujos pedidos serão visualizados juntamente com os pedidos dessa empresa
+          items:
+            type: object
+            properties:
+              id_empresa:
+                type: number
+              sigla:
+                type: string
+            required:
+              - id_empresa
+        id_predio:
+          type: number
+          description: 'Prédio do Estoque (vendas, separação, etc)'
+      required:
+        - id
+        - nome_reduzido
+        - sigla_loja
+        - id_pessoa
+        - utiliza_pdv
+        - id_canal
+        - lista_pedidos
+    Marca-GET:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          nome_reduzido: VOLUNTARIOS
+          sigla_loja: VLT
+          id_pessoa: 9778001
+          nome_razao: BELLER COMERCIO DE PAPEIS LTDA.
+          nome_municipio: Porto Alegre
+          uf: RS
+          utiliza_pdv: true
+          cnpj_padrao: 5563868000113
+          loja_aberta: true
+          id_canal: 49
+          desc_canal: VLT
+          lista_pedidos:
+            - id_empresa: 1
+              sigla: VLT
+          id_predio: 5
+      properties:
+        id:
+          type: number
+        nome_reduzido:
+          type: string
+          maxLength: 20
+          description: ''
+        sigla_loja:
+          type: string
+          maxLength: 6
+        id_pessoa:
+          type: number
+          description: ID da pessoa (geralmente jurídica) da empresa
+        nome_razao:
+          type: string
+          description: Nome/Razão Social da pessoa da empresa
+        nome_municipio:
+          type: string
+          description: Município do endereço-sede da pessoa da empresa
+        uf:
+          type: string
+          description: UF do endereço-sede da pessoa da empresa
+        utiliza_pdv:
+          type: boolean
+          description: Utiliza o aplicativo PDV (emite NFCe)
+        cnpj_padrao:
+          type: number
+          description: 'Ao carregar um XML a empresa emitente é determinada por este campo, que é UNIQUE se preenchido.'
+        loja_aberta:
+          type: boolean
+          description: Quando FALSE nenhum usuário pode fazer login nela.
+        id_canal:
+          type: number
+          description: Canal padrão das vendas feitas por esta loja
+        desc_canal:
+          type: string
+        lista_pedidos:
+          type: array
+          uniqueItems: true
+          description: Lista (opcional) de outras empresas cujos pedidos serão visualizados juntamente com os pedidos dessa empresa
+          items:
+            type: object
+            properties:
+              id_empresa:
+                type: number
+              sigla:
+                type: string
+            required:
+              - id_empresa
+        id_predio:
+          type: number
+          description: 'Prédio do Estoque (vendas, separação, etc)'
+      required:
+        - id
+        - nome_reduzido
+        - sigla_loja
+        - id_pessoa
+        - utiliza_pdv
+        - id_canal
+        - lista_pedidos
+    Marca-PUT:
       description: ''
       type: object
       x-examples:
