@@ -3243,7 +3243,7 @@ components:
           id: 5766
           nome_marca: REGISPEL
           marca_ativa: true
-    Predio-Estoque-GET:
+    Predio-Estoque:
       description: ''
       type: object
       x-examples:
@@ -3292,6 +3292,10 @@ components:
                 minLength: 1
         config_predio:
           type: object
+        cdist:
+          type: boolean
+        legado:
+          type: boolean
     Predio-Estoque-PUT:
       description: ''
       type: object
