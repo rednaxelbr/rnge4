@@ -2983,6 +2983,19 @@ components:
     Predio-Estoque-GET:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          id: 7
+          desc_predio: PADRE CHAGAS
+          address_id: 1052519
+          logradouro: Rua Padre Chagas
+          numero: 52
+          nome_municipio: Porto Alegre
+          uf: RS
+          empresas:
+            - id: 7
+              sigla_loja: PCH
+          config_predio: {}
       properties:
         id:
           type: number
@@ -3007,9 +3020,7 @@ components:
           uniqueItems: true
           minItems: 1
           items:
-            required:
-              - id
-              - sigla_loja
+            type: object
             properties:
               id:
                 type: number
@@ -3018,31 +3029,6 @@ components:
                 minLength: 1
         config_predio:
           type: object
-          properties: {}
-          required: []
-      required:
-        - id
-        - desc_predio
-        - address_id
-        - logradouro
-        - numero
-        - nome_municipio
-        - uf
-        - empresas
-        - config_predio
-      x-examples:
-        example-1:
-          id: 7
-          desc_predio: PADRE CHAGAS
-          address_id: 1052519
-          logradouro: Rua Padre Chagas
-          numero: 52
-          nome_municipio: Porto Alegre
-          uf: RS
-          empresas:
-            - id: 7
-              sigla_loja: PCH
-          config_predio: {}
     Predio-Estoque-PUT:
       description: ''
       type: object
