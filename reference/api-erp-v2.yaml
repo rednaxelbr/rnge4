@@ -2980,6 +2980,93 @@ components:
         - utiliza_pdv
         - id_canal
         - lista_pedidos
+    Predio-Estoque-GET:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        desc_predio:
+          type: string
+          minLength: 1
+        address_id:
+          type: number
+        logradouro:
+          type: string
+          minLength: 1
+        numero:
+          type: number
+        nome_municipio:
+          type: string
+          minLength: 1
+        uf:
+          type: string
+          minLength: 1
+        empresas:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            required:
+              - id
+              - sigla_loja
+            properties:
+              id:
+                type: number
+              sigla_loja:
+                type: string
+                minLength: 1
+        config_predio:
+          type: object
+          properties: {}
+          required: []
+      required:
+        - id
+        - desc_predio
+        - address_id
+        - logradouro
+        - numero
+        - nome_municipio
+        - uf
+        - empresas
+        - config_predio
+      x-examples:
+        example-1:
+          id: 7
+          desc_predio: PADRE CHAGAS
+          address_id: 1052519
+          logradouro: Rua Padre Chagas
+          numero: 52
+          nome_municipio: Porto Alegre
+          uf: RS
+          empresas:
+            - id: 7
+              sigla_loja: PCH
+          config_predio: {}
+    Predio-Estoque-PUT:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: number
+        desc_predio:
+          type: string
+          minLength: 1
+        legado:
+          type: boolean
+        cdist:
+          type: boolean
+      required:
+        - id
+        - desc_predio
+        - legado
+        - cdist
+      x-examples:
+        example-1:
+          id: 7
+          desc_predio: PADRE CHAGAS
+          legado: true
+          cdist: true
     Endereco:
       description: Endereço de uma pessoa
       type: object
