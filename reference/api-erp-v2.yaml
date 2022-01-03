@@ -1328,7 +1328,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Marca-GET'
+                $ref: '#/components/schemas/Marca'
               examples:
                 example-1:
                   value:
@@ -1371,7 +1371,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Marca-PUT'
+              $ref: '#/components/schemas/Marca'
       tags:
         - Marcas
     parameters: []
@@ -1486,7 +1486,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Marca-GET'
+                $ref: '#/components/schemas/Marca'
       operationId: get-brands-id
       description: Consulta uma marca de produto
       parameters:
@@ -1506,7 +1506,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Marca-PUT'
+              $ref: '#/components/schemas/Marca'
         description: ''
       tags:
         - Prédios de Estoque
@@ -3199,7 +3199,7 @@ components:
         - utiliza_pdv
         - id_canal
         - lista_pedidos
-    Marca-GET:
+    Marca:
       description: ''
       type: object
       properties:
@@ -3223,26 +3223,6 @@ components:
           nome_marca: REGISPEL
           marca_ativa: true
           produtos: 16
-    Marca-PUT:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        nome_marca:
-          type: string
-          minLength: 1
-        marca_ativa:
-          type: boolean
-      required:
-        - id
-        - nome_marca
-        - marca_ativa
-      x-examples:
-        example-1:
-          id: 5766
-          nome_marca: REGISPEL
-          marca_ativa: true
     Predio-Estoque:
       description: ''
       type: object
