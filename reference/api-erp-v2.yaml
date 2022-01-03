@@ -705,6 +705,14 @@ paths:
       tags:
         - Produtos (skus)
       description: Atualiza um produto já existente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                '':
+                  $ref: '#/components/schemas/SKU'
     delete:
       summary: Excluindo um produto (SKU)
       operationId: delete-skus-id
