@@ -1273,7 +1273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Predio-Estoque-GET'
+                $ref: '#/components/schemas/Predio-Estoque'
               examples:
                 example-1:
                   value:
@@ -1315,7 +1315,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Predio-Estoque-PUT'
+              $ref: '#/components/schemas/Predio-Estoque'
       tags:
         - Prédios de Estoque
     parameters: []
@@ -1438,7 +1438,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Estoque-GET'
+                $ref: '#/components/schemas/Predio-Estoque'
       operationId: get-buildings-id
       description: Consulta um prédio de estoque
       parameters:
@@ -1458,7 +1458,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Predio-Estoque-PUT'
+              $ref: '#/components/schemas/Predio-Estoque'
         description: ''
       tags:
         - Prédios de Estoque
@@ -3296,30 +3296,6 @@ components:
           type: boolean
         legado:
           type: boolean
-    Predio-Estoque-PUT:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        desc_predio:
-          type: string
-          minLength: 1
-        legado:
-          type: boolean
-        cdist:
-          type: boolean
-      required:
-        - id
-        - desc_predio
-        - legado
-        - cdist
-      x-examples:
-        example-1:
-          id: 7
-          desc_predio: PADRE CHAGAS
-          legado: true
-          cdist: true
     Endereco:
       description: Endereço de uma pessoa
       type: object
