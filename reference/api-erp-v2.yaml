@@ -3202,6 +3202,12 @@ components:
     Marca:
       description: ''
       type: object
+      x-examples:
+        example-1:
+          id: 5766
+          nome_marca: REGISPEL
+          marca_ativa: true
+          produtos: 16
       properties:
         id:
           type: number
@@ -3215,14 +3221,6 @@ components:
       required:
         - id
         - nome_marca
-        - marca_ativa
-        - produtos
-      x-examples:
-        example-1:
-          id: 5766
-          nome_marca: REGISPEL
-          marca_ativa: true
-          produtos: 16
     Predio-Estoque:
       description: ''
       type: object
@@ -3276,6 +3274,9 @@ components:
           type: boolean
         legado:
           type: boolean
+      required:
+        - id
+        - desc_predio
     Endereco:
       description: Endereço de uma pessoa
       type: object
