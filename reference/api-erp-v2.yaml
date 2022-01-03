@@ -41,6 +41,8 @@ tags:
     description: Distribuição para filiais
   - name: Tributária (Classe Fiscal)
     description: Cadastro das classes fiscais
+  - name: Prédios de Estoque
+    description: Cadastro dos prédios de estoque
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -1252,6 +1254,61 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Estoque-GET'
+  /buildings:
+    get:
+      summary: Listando prédios de estoque
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Predio-Estoque-GET'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    desc_predio: string
+                    address_id: 0
+                    logradouro: string
+                    numero: 0
+                    nome_municipio: string
+                    uf: string
+                    empresas:
+                      - id: 0
+                        sigla_loja: string
+                    config_predio: {}
+      operationId: get-buildings
+      description: |
+        Lista de prédios de estoque 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | código do Prédio| 
+        | todos | boolean | Padrão False, trazendo somente os prédios com endereço | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Prédios de Estoque
+    post:
+      summary: Criando um endereço
+      operationId: post-buildings
+      responses:
+        '200':
+          description: OK
+      description: Cria um novo prédio de estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Predio-Estoque-PUT'
+      tags:
+        - Prédios de Estoque
+    parameters: []
   '/skustocks/{id}':
     parameters:
       - schema:
@@ -1300,6 +1357,54 @@ paths:
       description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
       tags:
         - Estoque (skustocks)
+  '/buildings/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando um prédio de estoque
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estoque-GET'
+      operationId: get-buildings-id
+      description: Consulta um prédio de estoque
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Prédios de Estoque
+    put:
+      summary: Atualizando um prédio de estoque
+      operationId: put-buildings-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza um prédio de estoque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Predio-Estoque-PUT'
+        description: ''
+      tags:
+        - Prédios de Estoque
+    delete:
+      summary: Excluindo um prédio de estoque
+      operationId: delete-buildings-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um prédio de estoque.
+      tags:
+        - Prédios de Estoque
   '/pricelists/{id}':
     parameters:
       - schema:
