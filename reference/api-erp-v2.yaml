@@ -1334,17 +1334,11 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 0
-                    desc_predio: string
-                    address_id: 0
-                    logradouro: string
-                    numero: 0
-                    nome_municipio: string
-                    uf: string
-                    empresas:
-                      - id: 0
-                        sigla_loja: string
-                    config_predio: {}
+                    id: 1
+                    sigla_forma: DIN
+                    desc_forma: DINHEIRO
+                    tpag: 1
+                    forma_ativa: true
       operationId: get-paymentcodes
       description: |
         Lista de formas de quitação
@@ -3396,15 +3390,14 @@ components:
       properties:
         id:
           type: number
-        codigo_forma:
-          type: integer
-          description: Esse campo não é obrigatório (campo opcional)
         sigla_forma:
           type: string
-          minLength: 1
         desc_forma:
           type: string
           minLength: 1
+        codigo_forma:
+          type: integer
+          description: Esse campo não é obrigatório (campo opcional)
         tpag:
           type: number
         forma_ativa:
