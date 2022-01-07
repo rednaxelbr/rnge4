@@ -1374,7 +1374,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Forma-Quitacao'
       tags:
-        - Prédios de Estoque
+        - Forma Quitação
     parameters: []
   /brands:
     get:
@@ -1551,7 +1551,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Prédios de Estoque
+        - Forma Quitação
     put:
       summary: Atualizando uma forma de quitação
       operationId: put-paymentcodes-id
@@ -1566,7 +1566,7 @@ paths:
               $ref: '#/components/schemas/Forma-Quitacao'
         description: ''
       tags:
-        - Prédios de Estoque
+        - Forma Quitação
     delete:
       summary: Excluindo uma forma de quitação
       operationId: delete-paymentcodes-id
@@ -1575,7 +1575,7 @@ paths:
           description: OK
       description: Exclui uma forma de quitação.
       tags:
-        - Prédios de Estoque
+        - Forma Quitação
   '/brands/{id}':
     parameters:
       - schema:
