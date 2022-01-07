@@ -3396,6 +3396,9 @@ components:
       properties:
         id:
           type: number
+        codigo_forma:
+          type: integer
+          description: Esse campo não é obrigatório (campo opcional)
         sigla_forma:
           type: string
           minLength: 1
