@@ -45,6 +45,8 @@ tags:
     description: Cadastro dos prédios de estoque
   - name: Marcas
     description: Cadastro das marcas dos produtos
+  - name: Forma Quitação
+    description: Cadastro das formas de quitação
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -1319,6 +1321,61 @@ paths:
       tags:
         - Prédios de Estoque
     parameters: []
+  /paymentcodes:
+    get:
+      summary: Listando formas de quitação
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forma-Quitacao'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    desc_predio: string
+                    address_id: 0
+                    logradouro: string
+                    numero: 0
+                    nome_municipio: string
+                    uf: string
+                    empresas:
+                      - id: 0
+                        sigla_loja: string
+                    config_predio: {}
+      operationId: get-paymentcodes
+      description: |
+        Lista de formas de quitação
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | id da forma quitação| 
+        | todos | boolean | Padrão False, trazendo somente as formas de quitação ativas | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Forma Quitação
+    post:
+      summary: Criando um endereço
+      operationId: post-paymentcodes
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova forma de quitação
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Forma-Quitacao'
+      tags:
+        - Prédios de Estoque
+    parameters: []
   /brands:
     get:
       summary: Listando as marcas
@@ -1469,6 +1526,54 @@ paths:
         '200':
           description: OK
       description: Exclui um prédio de estoque.
+      tags:
+        - Prédios de Estoque
+  '/paymentcodes/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando uma forma de quitação
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forma-Quitacao'
+      operationId: get-paymentcodes-id
+      description: Consulta uma forma de pagamento
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Prédios de Estoque
+    put:
+      summary: Atualizando uma forma de quitação
+      operationId: put-paymentcodes-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma forma de quitação
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Forma-Quitacao'
+        description: ''
+      tags:
+        - Prédios de Estoque
+    delete:
+      summary: Excluindo uma forma de quitação
+      operationId: delete-paymentcodes-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui uma forma de quitação.
       tags:
         - Prédios de Estoque
   '/brands/{id}':
@@ -3277,6 +3382,40 @@ components:
       required:
         - id
         - desc_predio
+    Forma-Quitacao:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 1
+          sigla_forma: DIN
+          desc_forma: DINHEIRO
+          tpag: 1
+          forma_ativa: true
+          config_forma: {}
+      properties:
+        id:
+          type: number
+        sigla_forma:
+          type: string
+          minLength: 1
+        desc_forma:
+          type: string
+          minLength: 1
+        tpag:
+          type: number
+        forma_ativa:
+          type: boolean
+        config_forma:
+          type: object
+          properties:
+            '':
+              type: string
+      required:
+        - id
+        - sigla_forma
+        - desc_forma
+        - forma_ativa
     Endereco:
       description: Endereço de uma pessoa
       type: object
