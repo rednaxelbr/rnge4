@@ -1401,6 +1401,9 @@ paths:
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
         | id | int64 | id da conta despesa| 
+        | codigo_conta | int64 | código da conta despesa| 
+        | desc_conta | string | Descrição da conta despesa. Pesquisa maiúscula e minúscula e em qualquer parte da descrição| 
+        | conta_contabil | string | código string exato da conta contábil| 
         | todos | boolean | Padrão False, trazendo somente as contas de despesa ativas | 
       parameters:
         - $ref: '#/components/parameters/Filter'
