@@ -45,8 +45,10 @@ tags:
     description: Cadastro dos prédios de estoque
   - name: Marcas
     description: Cadastro das marcas dos produtos
-  - name: Forma Quitação
+  - name: Forma Quitação (paymentcodes)
     description: Cadastro das formas de quitação
+  - name: Conta despesa (expenseaccounts)
+    description: Cadastro das contas de despesa
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -1354,9 +1356,9 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Forma Quitação
+        - Forma Quitação (paymentcodes)
     post:
-      summary: Criando um endereço
+      summary: Criando uma forma de quitação
       operationId: post-paymentcodes
       responses:
         '200':
@@ -1368,7 +1370,68 @@ paths:
             schema:
               $ref: '#/components/schemas/Forma-Quitacao'
       tags:
-        - Forma Quitação
+        - Forma Quitação (paymentcodes)
+    parameters: []
+  /expenseaccounts:
+    get:
+      summary: Listando as contas de despesa
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conta-Despesa'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    codigo_conta: 0
+                    conta_contabil: string
+                    desc_conta: string
+                    conta_ativa: true
+                    config_conta: null
+                    padrao_compra: true
+      operationId: get-expenseaccounts
+      description: |
+        Lista de contas de despesa
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | id da conta despesa| 
+        | todos | boolean | Padrão False, trazendo somente as contas de despesa ativas | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Conta despesa (expenseaccounts)
+    post:
+      summary: Criando uma conta de despesa
+      operationId: post-expenseaccounts
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova conta de despesa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Conta-Despesa'
+            examples:
+              example-1:
+                value:
+                  id: 0
+                  codigo_conta: 0
+                  conta_contabil: string
+                  desc_conta: string
+                  conta_ativa: true
+                  config_conta: null
+                  padrao_compra: true
+      tags:
+        - Conta despesa (expenseaccounts)
     parameters: []
   /brands:
     get:
@@ -1545,7 +1608,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Forma Quitação
+        - Forma Quitação (paymentcodes)
     put:
       summary: Atualizando uma forma de quitação
       operationId: put-paymentcodes-id
@@ -1560,7 +1623,7 @@ paths:
               $ref: '#/components/schemas/Forma-Quitacao'
         description: ''
       tags:
-        - Forma Quitação
+        - Forma Quitação (paymentcodes)
     delete:
       summary: Excluindo uma forma de quitação
       operationId: delete-paymentcodes-id
@@ -1569,7 +1632,75 @@ paths:
           description: OK
       description: Exclui uma forma de quitação.
       tags:
-        - Forma Quitação
+        - Forma Quitação (paymentcodes)
+  '/expenseaccounts/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consultando uma conta despesa
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conta-Despesa'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    codigo_conta: 0
+                    conta_contabil: string
+                    desc_conta: string
+                    conta_ativa: true
+                    config_conta: null
+                    padrao_compra: true
+      operationId: get-expenseaccounts-id
+      description: Consulta uma conta despesa
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Conta despesa (expenseaccounts)
+    put:
+      summary: Atualizando uma conta despesa
+      operationId: put-expenseaccounts-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma conta despesa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Conta-Despesa'
+            examples:
+              example-1:
+                value:
+                  id: 0
+                  codigo_conta: 0
+                  conta_contabil: string
+                  desc_conta: string
+                  conta_ativa: true
+                  config_conta: null
+                  padrao_compra: true
+        description: ''
+      tags:
+        - Conta despesa (expenseaccounts)
+    delete:
+      summary: Excluindo uma conta despesa
+      operationId: delete-expenseaccounts-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui uma conta despesa.
+      tags:
+        - Conta despesa (expenseaccounts)
   '/brands/{id}':
     parameters:
       - schema:
@@ -3412,6 +3543,42 @@ components:
         - sigla_forma
         - desc_forma
         - forma_ativa
+    Conta-Despesa:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 12
+          codigo_conta: 2
+          conta_contabil: '2.20'
+          desc_conta: FORNECEDOR
+          conta_ativa: true
+          config_conta: null
+          padrao_compra: true
+      properties:
+        id:
+          type: number
+        codigo_conta:
+          type: number
+        conta_contabil:
+          type: string
+          minLength: 1
+          maxLength: 20
+        desc_conta:
+          type: string
+          minLength: 1
+          maxLength: 40
+        conta_ativa:
+          type: boolean
+        config_conta: {}
+        padrao_compra:
+          type: boolean
+          description: Somente uma conta pode ser padrão
+      required:
+        - id
+        - conta_contabil
+        - desc_conta
+        - conta_ativa
     Endereco:
       description: Endereço de uma pessoa
       type: object
