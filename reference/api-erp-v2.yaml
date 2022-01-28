@@ -21,8 +21,8 @@ tags:
     description: Cadastro de Mercadorias
   - name: Produtos (skus)
     description: Cadastro de SKUs
-  - name: Produtos (skugrids)
-    description: Cadastro de Grades
+  - name: Produtos (products)
+    description: Cadastro de Produtos
   - name: Produtos (skuconfigs)
     description: Cadastro de configuração de SKU x Empresa
   - name: Mapeamentos (purchasemappings)
@@ -1181,11 +1181,11 @@ paths:
         '200':
           description: OK
     parameters: []
-  /skugrids:
+  /products:
     get:
-      summary: Listando Grades de SKU
+      summary: Listando Produtos
       tags:
-        - Produtos (skugrids)
+        - Produtos (products)
       responses:
         '200':
           description: OK
@@ -1193,15 +1193,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Grade'
-      operationId: get-skugrids
+      operationId: get-products
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      description: 'Lista de grades de SKU (cores, tamanhos, etc)'
+      description: Lista de Produtos (simples ou com variações)
     post:
       summary: Criando uma grade
-      operationId: post-skugrids
+      operationId: post-products
       responses:
         '200':
           description: OK
@@ -1212,8 +1212,9 @@ paths:
               $ref: '#/components/schemas/Grade'
       parameters: []
       tags:
-        - Produtos (skugrids)
-      description: 'Cria uma grade de SKU (cor, tamanho, etc)'
+        - Produtos (products)
+      description: Cria um produto novo
+    parameters: []
   /skustocks:
     get:
       summary: Listando endereços de estoque
