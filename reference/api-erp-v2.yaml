@@ -1200,7 +1200,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
       description: Lista de Produtos (simples ou com variações)
     post:
-      summary: Criando uma grade
+      summary: Criando um novo produto
       operationId: post-products
       responses:
         '200':
