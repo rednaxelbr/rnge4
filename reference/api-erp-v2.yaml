@@ -2384,6 +2384,36 @@ paths:
               $ref: '#/components/schemas/Categoria'
       tags:
         - Categorias (categories)
+  /units:
+    get:
+      summary: Listagem de unidades de medida
+      tags:
+        - Produtos (skuarticles)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unidade'
+      operationId: get-units
+      description: Lista as unidades de medida
+    post:
+      summary: ''
+      operationId: post-units
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skuarticles)
+      description: Cria uma unidade de medida
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Unidade'
 components:
   securitySchemes:
     Usuário/Senha:
@@ -4104,6 +4134,31 @@ components:
       required:
         - desc_categoria
         - id_catalogo
+    Unidade:
+      description: Unidade de medida
+      type: object
+      properties:
+        id:
+          type: number
+        ucom:
+          type: string
+          minLength: 1
+        desc_unidade:
+          type: string
+          minLength: 1
+        casas_decimais:
+          type: number
+      required:
+        - id
+        - ucom
+        - desc_unidade
+        - casas_decimais
+      x-examples:
+        example-1:
+          id: 187
+          ucom: AA
+          desc_unidade: teaaa
+          casas_decimais: 4
   parameters:
     Filter:
       name: filter
