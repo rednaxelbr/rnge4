@@ -19,6 +19,10 @@ tags:
     description: Categorias de produtos
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
+  - name: Unidades (units)
+    description: Unidades de Medida
+  - name: Agrupamentos (skugroups)
+    description: Agrupamentos Comerciais
   - name: Produtos (skus)
     description: Cadastro de SKUs
   - name: Produtos (products)
@@ -2386,9 +2390,9 @@ paths:
         - Categorias (categories)
   /units:
     get:
-      summary: Listagem de unidades de medida
+      summary: Listar unidades
       tags:
-        - Produtos (skuarticles)
+        - Unidades (units)
       responses:
         '200':
           description: OK
@@ -2401,19 +2405,49 @@ paths:
       operationId: get-units
       description: Lista as unidades de medida
     post:
-      summary: ''
+      summary: Criar unidade
       operationId: post-units
       responses:
         '200':
           description: OK
       tags:
-        - Produtos (skuarticles)
+        - Unidades (units)
       description: Cria uma unidade de medida
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Unidade'
+  /skugroups:
+    get:
+      summary: Listar Agrupamentos Comerciais
+      tags:
+        - Agrupamentos (skugroups)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agrup-Comercial'
+      operationId: get-skugroups
+      description: Listagem de Agrupamentos Comerciais (AC)
+    post:
+      summary: Criar Agrupamento Comercial
+      operationId: post-skugroups
+      responses:
+        '200':
+          description: OK
+      description: Cria um novo AC (Agrupamento Comercial)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Agrup-Comercial'
+      tags:
+        - Agrupamentos (skugroups)
 components:
   securitySchemes:
     Usuário/Senha:
@@ -4159,6 +4193,13 @@ components:
           ucom: AA
           desc_unidade: teaaa
           casas_decimais: 4
+    Agrup-Comercial:
+      title: Agrup-Comercial
+      type: object
+      properties:
+        id:
+          type: string
+      description: Agrupamento Comercial
   parameters:
     Filter:
       name: filter
