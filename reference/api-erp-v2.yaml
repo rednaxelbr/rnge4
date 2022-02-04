@@ -19,7 +19,7 @@ tags:
     description: Categorias de produtos
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
-  - name: Unidades (units)
+  - name: Unidades de Medida (units)
     description: Unidades de Medida
   - name: Agrupamentos (skugroups)
     description: Agrupamentos Comerciais
@@ -2392,7 +2392,7 @@ paths:
     get:
       summary: Listar unidades
       tags:
-        - Unidades (units)
+        - Unidades de Medida (units)
       responses:
         '200':
           description: OK
@@ -2411,7 +2411,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Unidades (units)
+        - Unidades de Medida (units)
       description: Cria uma unidade de medida
       requestBody:
         content:
@@ -4171,28 +4171,30 @@ components:
     Unidade:
       description: Unidade de medida
       type: object
-      properties:
-        id:
-          type: number
-        ucom:
-          type: string
-          minLength: 1
-        desc_unidade:
-          type: string
-          minLength: 1
-        casas_decimais:
-          type: number
-      required:
-        - id
-        - ucom
-        - desc_unidade
-        - casas_decimais
       x-examples:
         example-1:
           id: 187
           ucom: AA
           desc_unidade: teaaa
           casas_decimais: 4
+      properties:
+        id:
+          type: number
+        ucom:
+          type: string
+          minLength: 1
+          description: 'Abreviatura (ex: PCT)'
+        desc_unidade:
+          type: string
+          minLength: 1
+          description: 'Descrição (ex: PACOTE)'
+        casas_decimais:
+          type: number
+          description: 'Quando informado, permite quantidades fracionadas'
+      required:
+        - id
+        - ucom
+        - desc_unidade
     Agrup-Comercial:
       description: Agrupamento Comercial
       type: object
