@@ -4194,12 +4194,29 @@ components:
           desc_unidade: teaaa
           casas_decimais: 4
     Agrup-Comercial:
-      title: Agrup-Comercial
+      description: Agrupamento Comercial
       type: object
+      x-examples:
+        example-1:
+          id: 14
+          codigo_agrup: I
+          desc_agrupamento: ICONE
+          unico: true
       properties:
         id:
+          type: number
+        codigo_agrup:
           type: string
-      description: Agrupamento Comercial
+          minLength: 1
+        desc_agrupamento:
+          type: string
+          minLength: 1
+        unico:
+          type: boolean
+      required:
+        - id
+        - codigo_agrup
+        - desc_agrupamento
   parameters:
     Filter:
       name: filter
