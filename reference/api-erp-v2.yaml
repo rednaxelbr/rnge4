@@ -25,8 +25,6 @@ tags:
     description: Agrupamentos Comerciais
   - name: Produtos (skus)
     description: Cadastro de SKUs
-  - name: Produtos (products)
-    description: Cadastro de Produtos
   - name: Produtos (skuconfigs)
     description: Cadastro de configuração de SKU x Empresa
   - name: Mapeamentos (purchasemappings)
