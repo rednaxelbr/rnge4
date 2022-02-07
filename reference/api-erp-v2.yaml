@@ -2448,6 +2448,40 @@ paths:
               $ref: '#/components/schemas/Agrup-Comercial'
       tags:
         - Agrupamentos (skugroups)
+  /skugrids:
+    get:
+      summary: Lista de grades
+      tags:
+        - Produtos (skus)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grade'
+      operationId: get-skugrids
+      description: 'Lista de grades. Filtros: `codigo_sku` (number) e `codigo_alfa` (string).'
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criar nova grade
+      operationId: post-skugrids
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Criar nova grade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grade'
 components:
   securitySchemes:
     Usuário/Senha:
