@@ -1202,21 +1202,6 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       description: Lista de Produtos (simples ou com variações)
-    post:
-      summary: Criando um novo produto
-      operationId: post-products
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Grade'
-      parameters: []
-      tags:
-        - Produtos (products)
-      description: Cria um produto novo
     parameters: []
   /skustocks:
     get:
