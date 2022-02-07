@@ -17,16 +17,16 @@ tags:
     description: Cadastro de Empresas
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Produtos (skus)
+    description: Cadastro de SKUs
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
+  - name: Produtos (skuconfigs)
+    description: Cadastro de configuração de SKU x Empresa
   - name: Unidades de Medida (units)
     description: Unidades de Medida
   - name: Agrupamentos (skugroups)
     description: Agrupamentos Comerciais
-  - name: Produtos (skus)
-    description: Cadastro de SKUs
-  - name: Produtos (skuconfigs)
-    description: Cadastro de configuração de SKU x Empresa
   - name: Mapeamentos (purchasemappings)
     description: Mapeamentos Produto x Fornecedor
   - name: Listas de Preços (pricelists)
@@ -47,7 +47,7 @@ tags:
     description: Cadastro dos prédios de estoque
   - name: Marcas
     description: Cadastro das marcas dos produtos
-  - name: Forma Quitação (paymentcodes)
+  - name: Formas de Quitação (paymentcodes)
     description: Cadastro das formas de quitação
   - name: Conta despesa (expenseaccounts)
     description: Cadastro das contas de despesa
@@ -1326,7 +1326,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Forma Quitação (paymentcodes)
+        - Formas de Quitação (paymentcodes)
     post:
       summary: Criando uma forma de quitação
       operationId: post-paymentcodes
@@ -1340,7 +1340,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Forma-Quitacao'
       tags:
-        - Forma Quitação (paymentcodes)
+        - Formas de Quitação (paymentcodes)
     parameters: []
   /expenseaccounts:
     get:
@@ -1581,7 +1581,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Forma Quitação (paymentcodes)
+        - Formas de Quitação (paymentcodes)
     put:
       summary: Atualizando uma forma de quitação
       operationId: put-paymentcodes-id
@@ -1596,7 +1596,7 @@ paths:
               $ref: '#/components/schemas/Forma-Quitacao'
         description: ''
       tags:
-        - Forma Quitação (paymentcodes)
+        - Formas de Quitação (paymentcodes)
     delete:
       summary: Excluindo uma forma de quitação
       operationId: delete-paymentcodes-id
@@ -1605,7 +1605,7 @@ paths:
           description: OK
       description: Exclui uma forma de quitação.
       tags:
-        - Forma Quitação (paymentcodes)
+        - Formas de Quitação (paymentcodes)
   '/expenseaccounts/{id}':
     parameters:
       - schema:
