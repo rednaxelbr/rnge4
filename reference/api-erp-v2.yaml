@@ -476,7 +476,6 @@ paths:
           schema:
             default: '{"id":5}'
             example: '{"id":5}'
-          required: true
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       responses:
