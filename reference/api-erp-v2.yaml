@@ -1185,23 +1185,6 @@ paths:
           description: OK
     parameters: []
   /products:
-    get:
-      summary: Listando Produtos
-      tags:
-        - Produtos (products)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Grade'
-      operationId: get-products
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      description: Lista de Produtos (simples ou com variações)
     parameters: []
   /skustocks:
     get:
