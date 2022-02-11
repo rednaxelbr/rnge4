@@ -74,7 +74,7 @@ info:
      | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
 
 
-    Esta API utiliza o padrão REST e autenticação HTTP AuthBasic (RFC 7617) em todos os recursos. O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF).
+    Esta API utiliza o padrão REST e autenticação HTTP AuthBasic (RFC 7617) em todos os recursos. O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
@@ -2334,7 +2334,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Categoria'
       operationId: get-categories
-      description: Listagem de categorias de produtos. Filtre por "id_catalogo" para listar as categorias de um catálogo.
+      description: |-
+        Listagem de categorias de produtos. Se o catálogo não for informado é listado o catálogo padrão (Taxonomia). Principais filtros:
+        - `id_catalogo` (number) categorias de um catálogo
+        - `nivel_categ` (number) categorias de um nível
+        - `parent_id` (number) subcategorias de uma categoria
+        - `arvore` (bool) catálogo em formato de árvore 
+        - `dump` (bool) dump do catálogo completo (use com e inativas) 
+        - `inativas` (bool) inclui categorias inativas
+        - `vinculavel` (bool) categorias vinculáveis
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
