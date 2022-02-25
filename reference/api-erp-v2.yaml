@@ -4226,6 +4226,131 @@ components:
         - id
         - codigo_agrup
         - desc_agrupamento
+    Ordem-Compra:
+      description: Ordem de Compra
+      type: object
+      x-examples:
+        example-1:
+          dthr_criacao: '2021-06-01'
+          id_pessoa: 51207010
+          cnpj_fornec: 4310364000129
+          status: 190
+          id_empresa: 6
+          codigo_legado: 49086/10
+          rnx_timestamp: '2021-06-01 15:55:40'
+          itens:
+            - ordem: 5
+              codigo_sku: 99704
+              quantidade: 300
+              valor_unit: 4.19
+              aliq_icms: 4
+              aliq_ipi: 15
+              observ_item: 'NR=288;EV=291;DOS=50,9;mDfx2=-15;DNRG=0,52'
+            - ordem: 7
+              codigo_sku: 99708
+              quantidade: 200
+              valor_unit: 7.37
+              aliq_icms: 4
+              aliq_ipi: 15
+              observ_item: 'NR=396;EV=535;DOS=74,5;mDfx2=-16;DNRG=19,36'
+          pagtos:
+            - data_vencto: '2021-07-21'
+              numero_parcela: 2787485
+              historico: CFOP 2102 (EMBRAST EMBALAGENS)
+              valor_parcela: 1046.88
+              codigo_conta: 2
+              codigo_centro: null
+              sigla_forma: DOC
+            - data_vencto: '2021-07-31'
+              numero_parcela: 2787486
+              historico: CFOP 2102 (EMBRAST EMBALAGENS)
+              valor_parcela: 1046.88
+              codigo_conta: 2
+              codigo_centro: null
+              sigla_forma: DOC
+            - data_vencto: '2021-08-20'
+              numero_parcela: 2787487
+              historico: CFOP 2102 (EMBRAST EMBALAGENS)
+              valor_parcela: 1046.89
+              codigo_conta: 2
+              codigo_centro: null
+              sigla_forma: DOC
+      properties:
+        dthr_criacao:
+          type: string
+          minLength: 1
+        id_pessoa:
+          type: number
+        cnpj_fornec:
+          type: number
+        status:
+          type: number
+        id_empresa:
+          type: number
+        codigo_legado:
+          type: string
+          minLength: 1
+        rnx_timestamp:
+          type: string
+          minLength: 1
+        itens:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              ordem:
+                type: number
+              codigo_sku:
+                type: number
+              quantidade:
+                type: number
+              valor_unit:
+                type: number
+              aliq_icms:
+                type: number
+              aliq_ipi:
+                type: number
+              observ_item:
+                type: string
+                minLength: 1
+            required:
+              - ordem
+              - codigo_sku
+              - quantidade
+              - valor_unit
+        pagtos:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              data_vencto:
+                type: string
+                minLength: 1
+              numero_parcela:
+                type: number
+              historico:
+                type: string
+                minLength: 1
+              valor_parcela:
+                type: number
+              codigo_conta:
+                type: number
+              codigo_centro: {}
+              sigla_forma:
+                type: string
+                minLength: 1
+            required:
+              - data_vencto
+              - numero_parcela
+              - valor_parcela
+      required:
+        - dthr_criacao
+        - cnpj_fornec
+        - id_empresa
   parameters:
     Filter:
       name: filter
