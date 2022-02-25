@@ -51,6 +51,8 @@ tags:
     description: Cadastro das formas de quitação
   - name: Conta despesa (expenseaccounts)
     description: Cadastro das contas de despesa
+  - name: Ordens de Compra (purchaseorders)
+    description: Gestão de Ordens de Compra
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -2455,6 +2457,36 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Grade'
+  /purchaseorders:
+    get:
+      summary: Lista Ordens de Compra
+      tags:
+        - Ordens de Compra (purchaseorders)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ordem-Compra'
+      operationId: get-purchaseorders
+      description: Listagem de OC
+    post:
+      summary: Cria uma nova OC
+      operationId: post-purchaseorders
+      responses:
+        '200':
+          description: OK
+      description: Criação de Ordem de Compra
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ordem-Compra'
+      tags:
+        - Ordens de Compra (purchaseorders)
 components:
   securitySchemes:
     Usuário/Senha:
