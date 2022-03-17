@@ -2479,7 +2479,7 @@ paths:
       responses:
         '200':
           description: OK
-      description: Criação de Ordem de Compra
+      description: Criação de uma nova Ordem de Compra
       requestBody:
         content:
           application/json:
