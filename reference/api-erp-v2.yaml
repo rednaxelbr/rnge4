@@ -2282,7 +2282,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pessoa'
       operationId: get-customers
-      description: 'Lista '
+      description: |
+        Filtros:
+        - `nome` (string): Nome ou Razão Social
+        - `nome_fantasia` (string): Nome Fantasia
+        - `inativos` (bool): Inclui os inativos
+        - `inconsistentes` (bool): Inclui os inconsistentes
+        - `id_canal` (integer): canal onde foi criado
+        - `telefone` (integer): telefone (sem DDD)
+        - `email` (string): email
+        - `comprador` (bool): Somente os compradores
+        - `credito_loja` (bool): Somente clientes que podem pagar depois
+        - `todos` (bool): Inclui todos (inativos e todos os canais)
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
