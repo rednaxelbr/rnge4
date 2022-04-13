@@ -4272,84 +4272,6 @@ components:
     Ordem-Compra:
       description: ''
       type: object
-      properties:
-        id:
-          type: number
-        id_fornec:
-          type: number
-        cnpj_fornec:
-          type: number
-        id_pessoa:
-          type: number
-        nome_fornec:
-          type: string
-          minLength: 1
-        dthr_criacao:
-          type: string
-          minLength: 1
-        valor_total:
-          type: number
-        codigo_legado:
-          type: string
-          minLength: 1
-        id_empresa:
-          type: number
-        sigla_loja:
-          type: string
-          minLength: 1
-        nome_usuario:
-          type: string
-          minLength: 1
-        status:
-          type: number
-        sigla_status:
-          type: string
-          minLength: 1
-        itens:
-          type: array
-          uniqueItems: true
-          minItems: 1
-          items:
-            required:
-              - id
-              - numero_oc
-              - ordem
-              - codigo_sku
-              - ucom
-              - prod_xprod
-              - valor_unit
-            properties:
-              id:
-                type: number
-              numero_oc:
-                type: number
-              ordem:
-                type: number
-              codigo_sku:
-                type: number
-              ucom:
-                type: string
-                minLength: 1
-              prod_xprod:
-                type: string
-                minLength: 1
-              valor_unit:
-                type: number
-      required:
-        - id
-        - id_fornec
-        - cnpj_fornec
-        - id_pessoa
-        - nome_fornec
-        - dthr_criacao
-        - valor_total
-        - codigo_legado
-        - id_empresa
-        - sigla_loja
-        - nome_usuario
-        - status
-        - sigla_status
-        - itens
       x-examples:
         example-1:
           id: 229
@@ -4373,6 +4295,66 @@ components:
               ucom: UN
               prod_xprod: CORRENTE PLASTICA SINALIZACAO ELO 63MMX34MMX9MM 10MT
               valor_unit: 23
+      properties:
+        id:
+          type: number
+        id_fornec:
+          type: number
+        cnpj_fornec:
+          type: number
+        id_pessoa:
+          type: number
+        nome_fornec:
+          type: string
+        dthr_criacao:
+          type: string
+        valor_total:
+          type: number
+        codigo_legado:
+          type: string
+          description: Código no ERP externo
+        id_empresa:
+          type: number
+        sigla_loja:
+          type: string
+        nome_usuario:
+          type: string
+        status:
+          type: number
+        sigla_status:
+          type: string
+        itens:
+          type: array
+          uniqueItems: true
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+              numero_oc:
+                type: number
+              ordem:
+                type: number
+              codigo_sku:
+                type: number
+              ucom:
+                type: string
+              prod_xprod:
+                type: string
+              valor_unit:
+                type: number
+            required:
+              - ordem
+              - codigo_sku
+              - ucom
+              - valor_unit
+      required:
+        - id
+        - id_fornec
+        - cnpj_fornec
+        - id_pessoa
+        - id_empresa
+        - status
   parameters:
     Filter:
       name: filter
