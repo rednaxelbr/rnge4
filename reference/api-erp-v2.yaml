@@ -4270,70 +4270,39 @@ components:
         - codigo_agrup
         - desc_agrupamento
     Ordem-Compra:
-      description: Ordem de Compra
+      description: ''
       type: object
-      x-examples:
-        example-1:
-          dthr_criacao: '2021-06-01'
-          id_pessoa: 51207010
-          cnpj_fornec: 4310364000129
-          status: 190
-          id_empresa: 6
-          codigo_legado: 49086/10
-          rnx_timestamp: '2021-06-01 15:55:40'
-          itens:
-            - ordem: 5
-              codigo_sku: 99704
-              quantidade: 300
-              valor_unit: 4.19
-              aliq_icms: 4
-              aliq_ipi: 15
-              observ_item: 'NR=288;EV=291;DOS=50,9;mDfx2=-15;DNRG=0,52'
-            - ordem: 7
-              codigo_sku: 99708
-              quantidade: 200
-              valor_unit: 7.37
-              aliq_icms: 4
-              aliq_ipi: 15
-              observ_item: 'NR=396;EV=535;DOS=74,5;mDfx2=-16;DNRG=19,36'
-          pagtos:
-            - data_vencto: '2021-07-21'
-              numero_parcela: 2787485
-              historico: CFOP 2102 (EMBRAST EMBALAGENS)
-              valor_parcela: 1046.88
-              codigo_conta: 2
-              codigo_centro: null
-              sigla_forma: DOC
-            - data_vencto: '2021-07-31'
-              numero_parcela: 2787486
-              historico: CFOP 2102 (EMBRAST EMBALAGENS)
-              valor_parcela: 1046.88
-              codigo_conta: 2
-              codigo_centro: null
-              sigla_forma: DOC
-            - data_vencto: '2021-08-20'
-              numero_parcela: 2787487
-              historico: CFOP 2102 (EMBRAST EMBALAGENS)
-              valor_parcela: 1046.89
-              codigo_conta: 2
-              codigo_centro: null
-              sigla_forma: DOC
       properties:
-        dthr_criacao:
-          type: string
-          minLength: 1
-        id_pessoa:
+        id:
+          type: number
+        id_fornec:
           type: number
         cnpj_fornec:
           type: number
-        status:
+        id_pessoa:
           type: number
-        id_empresa:
+        nome_fornec:
+          type: string
+          minLength: 1
+        dthr_criacao:
+          type: string
+          minLength: 1
+        valor_total:
           type: number
         codigo_legado:
           type: string
           minLength: 1
-        rnx_timestamp:
+        id_empresa:
+          type: number
+        sigla_loja:
+          type: string
+          minLength: 1
+        nome_usuario:
+          type: string
+          minLength: 1
+        status:
+          type: number
+        sigla_status:
           type: string
           minLength: 1
         itens:
@@ -4341,59 +4310,69 @@ components:
           uniqueItems: true
           minItems: 1
           items:
-            type: object
+            required:
+              - id
+              - numero_oc
+              - ordem
+              - codigo_sku
+              - ucom
+              - prod_xprod
+              - valor_unit
             properties:
+              id:
+                type: number
+              numero_oc:
+                type: number
               ordem:
                 type: number
               codigo_sku:
                 type: number
-              quantidade:
-                type: number
+              ucom:
+                type: string
+                minLength: 1
+              prod_xprod:
+                type: string
+                minLength: 1
               valor_unit:
                 type: number
-              aliq_icms:
-                type: number
-              aliq_ipi:
-                type: number
-              observ_item:
-                type: string
-                minLength: 1
-            required:
-              - ordem
-              - codigo_sku
-              - quantidade
-              - valor_unit
-        pagtos:
-          type: array
-          uniqueItems: true
-          minItems: 1
-          items:
-            type: object
-            properties:
-              data_vencto:
-                type: string
-                minLength: 1
-              numero_parcela:
-                type: number
-              historico:
-                type: string
-                minLength: 1
-              valor_parcela:
-                type: number
-              codigo_conta:
-                type: number
-              codigo_centro: {}
-              sigla_forma:
-                type: string
-                minLength: 1
-            required:
-              - data_vencto
-              - numero_parcela
-              - valor_parcela
       required:
-        - dthr_criacao
+        - id
+        - id_fornec
         - cnpj_fornec
+        - id_pessoa
+        - nome_fornec
+        - dthr_criacao
+        - valor_total
+        - codigo_legado
         - id_empresa
+        - sigla_loja
+        - nome_usuario
+        - status
+        - sigla_status
+        - itens
+      x-examples:
+        example-1:
+          id: 229
+          id_fornec: 3730
+          cnpj_fornec: 1234
+          id_pessoa: 49698010
+          nome_fornec: PROTECT QUALITY
+          dthr_criacao: '2021-01-14T00:00:00-03:00'
+          valor_total: 0
+          codigo_legado: 47270/10
+          id_empresa: 6
+          sigla_loja: BCD
+          nome_usuario: PAPAFILA
+          status: 199
+          sigla_status: OC CANCELADA
+          itens:
+            - id: 2420
+              numero_oc: 229
+              ordem: 1
+              codigo_sku: 104960
+              ucom: UN
+              prod_xprod: CORRENTE PLASTICA SINALIZACAO ELO 63MMX34MMX9MM 10MT
+              valor_unit: 23
   parameters:
     Filter:
       name: filter
