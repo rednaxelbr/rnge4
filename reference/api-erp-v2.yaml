@@ -2505,27 +2505,54 @@ paths:
       summary: Fotos de Produtos
       tags:
         - Fotos de Produtos (productimages)
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Fotos.yaml
       operationId: get-productimages
       description: 'Lista as fotos, filtros `cod_produto` (mercadoria) e `codigo_sku` (SKU).'
     post:
       summary: Upload de fotos
       tags:
         - Fotos de Produtos (productimages)
-      responses: {}
+      responses:
+        '200':
+          description: OK
       operationId: post-productimages
+      description: Faz o upload de fotos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Fotos.yaml
     delete:
       summary: Remover fotos
       tags:
         - Fotos de Produtos (productimages)
-      responses: {}
+      responses:
+        '200':
+          description: OK
       operationId: delete-productimages
+      description: Remove uma foto
   /operations:
     get:
       summary: Tipos de pedidos
       tags:
         - Pedidos (orders)
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Operacoes.yaml
       operationId: get-operations
       description: Operações (tipos de pedidos)
 components:

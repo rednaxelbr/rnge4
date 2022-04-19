@@ -1,0 +1,43 @@
+description: ''
+type: object
+x-examples:
+  example-1:
+    id: VENDAS
+    operation_id: VENDAS
+    desc_operacao: Venda de mercadoria adquirida ou recebid
+    cfop_trib: 5102
+    cfop_subst: 5405
+    decimais: 2
+    tp_preco: V
+    fin_nfe: 1
+    desc_finalidade: NF-e normal
+properties:
+  id:
+    type: string
+    minLength: 1
+  desc_operacao:
+    type: string
+    minLength: 1
+  cfop_trib:
+    type: number
+  cfop_subst:
+    type: number
+  decimais:
+    type: number
+  tp_preco:
+    type: string
+    minLength: 1
+  fin_nfe:
+    type: number
+  desc_finalidade:
+    type: string
+    minLength: 1
+required:
+  - id
+  - desc_operacao
+  - cfop_trib
+  - cfop_subst
+  - decimais
+  - tp_preco
+  - fin_nfe
+  - desc_finalidade
