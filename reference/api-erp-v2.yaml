@@ -2510,12 +2510,14 @@ paths:
       description: 'Lista as fotos, filtros `cod_produto` (mercadoria) e `codigo_sku` (SKU).'
     post:
       summary: Upload de fotos
-      tags: []
+      tags:
+        - Fotos de Produtos (productimages)
       responses: {}
       operationId: post-productimages
     delete:
       summary: Remover fotos
-      tags: []
+      tags:
+        - Fotos de Produtos (productimages)
       responses: {}
       operationId: delete-productimages
 components:
