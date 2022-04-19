@@ -23,6 +23,8 @@ tags:
     description: Cadastro de Mercadorias
   - name: Produtos (skuconfigs)
     description: Cadastro de configuração de SKU x Empresa
+  - name: Fotos de Produtos (productimages)
+    description: Fotos de Produtos
   - name: Unidades de Medida (units)
     description: Unidades de Medida
   - name: Agrupamentos (skugroups)
@@ -2498,6 +2500,24 @@ paths:
               $ref: '#/components/schemas/Ordem-Compra'
       tags:
         - Ordens de Compra (purchaseorders)
+  /productimages:
+    get:
+      summary: Fotos de Produtos
+      tags:
+        - Fotos de Produtos (productimages)
+      responses: {}
+      operationId: get-productimages
+      description: 'Lista as fotos, filtros `cod_produto` (mercadoria) e `codigo_sku` (SKU).'
+    post:
+      summary: Upload de fotos
+      tags: []
+      responses: {}
+      operationId: post-productimages
+    delete:
+      summary: Remover fotos
+      tags: []
+      responses: {}
+      operationId: delete-productimages
 components:
   securitySchemes:
     Usuário/Senha:
