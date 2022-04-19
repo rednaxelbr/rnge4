@@ -1,0 +1,35 @@
+description: Fotos
+type: object
+x-examples:
+  example-1:
+    id: 17195
+    cod_produto: 282
+    codigo_sku: 282
+    ordem_foto: 1
+    url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/282-1.JPG'
+    nome_usuario: PAPAFILA
+    data_hora: '2022-03-03 09:14:50'
+    primario: 282-1
+    secundario: 'UN '
+properties:
+  id:
+    type: number
+  cod_produto:
+    type: number
+  codigo_sku:
+    type: number
+  ordem_foto:
+    type: number
+  url_foto:
+    type: string
+  nome_usuario:
+    type: string
+  data_hora:
+    type: string
+  primario:
+    type: string
+  secundario:
+    type: string
+required:
+  - cod_produto
+  - ordem_foto
