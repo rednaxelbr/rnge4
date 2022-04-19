@@ -55,6 +55,8 @@ tags:
     description: Cadastro das contas de despesa
   - name: Ordens de Compra (purchaseorders)
     description: Gestão de Ordens de Compra
+  - name: Recepção de Nota (receptions)
+    description: Recepção de Nota (RN)
 info:
   description: |
     Utilizamos o **Authorization** de duas formas:
@@ -2555,6 +2557,37 @@ paths:
                   $ref: ../models/Operacoes.yaml
       operationId: get-operations
       description: Operações (tipos de pedidos)
+  /receptions:
+    get:
+      summary: Listagem de RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/RN.yaml
+      operationId: get-receptions
+      description: Lista as RN
+    post:
+      summary: Criar uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: post-receptions
+      description: Cria uma nova RN
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/RN.yaml
+    parameters: []
 components:
   securitySchemes:
     Usuário/Senha:
