@@ -2588,6 +2588,49 @@ paths:
             schema:
               $ref: ../models/RN.yaml
     parameters: []
+  '/receptions/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Consulta uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/RN.yaml
+      operationId: get-receptions-id
+      description: Consulta uma RN
+    put:
+      summary: Atualiza uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: put-receptions-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/RN.yaml
+      description: Atualiza uma RN
+    delete:
+      summary: Cancela uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-receptions-id
+      description: Cancela uma RN
 components:
   securitySchemes:
     Usuário/Senha:
