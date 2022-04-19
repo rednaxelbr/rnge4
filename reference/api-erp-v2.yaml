@@ -2520,6 +2520,14 @@ paths:
         - Fotos de Produtos (productimages)
       responses: {}
       operationId: delete-productimages
+  /operations:
+    get:
+      summary: Tipos de pedidos
+      tags:
+        - Pedidos (orders)
+      responses: {}
+      operationId: get-operations
+      description: Operações (tipos de pedidos)
 components:
   securitySchemes:
     Usuário/Senha:
