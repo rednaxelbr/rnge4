@@ -4164,6 +4164,21 @@ components:
           properties:
             requer_separacao:
               type: boolean
+        logs_legado:
+          type: array
+          description: lista log_geral do pedido
+          items:
+            type: object
+            properties:
+              dthr_evento:
+                type: string
+              nome_usu:
+                type: string
+              historico:
+                type: string
+        anotacao_legado:
+          type: string
+          description: Semelhante a observacoes porém o texto é adicionado na aba "Andamentos"
       required:
         - num_loja
         - id_pessoa
