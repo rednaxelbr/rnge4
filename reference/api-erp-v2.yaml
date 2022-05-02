@@ -247,38 +247,6 @@ paths:
       operationId: get-tokens-id
       description: Obtém informações do login atual
       parameters: []
-  /ping:
-    get:
-      summary: Verificando servidor
-      tags:
-        - Login
-      operationId: get-ping
-      description: Verifica se o servidor está online
-      security: []
-      responses:
-        '200':
-          description: Sucesso
-          headers: {}
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    resp: OK
-                properties:
-                  resp:
-                    type: string
-                    minLength: 1
-                    description: Resposta (OK)
-                required:
-                  - resp
-              examples:
-                JSON:
-                  value:
-                    resp: OK
-    parameters: []
   /cashiers:
     get:
       tags:
@@ -318,6 +286,38 @@ paths:
       responses:
         '200':
           description: OK
+    parameters: []
+  /ping:
+    get:
+      summary: Verificando servidor
+      tags:
+        - Login
+      operationId: get-ping
+      description: Verifica se o servidor está online
+      security: []
+      responses:
+        '200':
+          description: Sucesso
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    resp: OK
+                properties:
+                  resp:
+                    type: string
+                    minLength: 1
+                    description: Resposta (OK)
+                required:
+                  - resp
+              examples:
+                JSON:
+                  value:
+                    resp: OK
     parameters: []
   '/cashiers/{id}':
     get:
@@ -4081,9 +4081,13 @@ components:
         identificador:
           type: string
           description: Identificador do pedido no ERP externo/Marketplace
+        data_hora:
+          type: string
+          description: Data hora exata usado no pedido externo. Na ausência de pedido externo então é a data hora de criação do pedido
         num_loja:
           type: number
-          description: ID da empresa (loja) do pedido
+          description: ID da empresa (loja) do pedido. Somente gravação referente ao id da empresa
+          writeOnly: true
         id_pessoa:
           type: number
           description: ID da pessoa (cliente) do pedido
@@ -4121,44 +4125,7 @@ components:
         observacoes:
           type: string
         itens:
-          type: array
-          uniqueItems: true
-          items:
-            $ref: '#/components/schemas/Pedido-Item'
-        pagtos:
-          type: array
-          uniqueItems: true
-          items:
-            type: object
-            properties:
-              parcela:
-                type: number
-                description: Número sequencial da parcela (1/n)
-              tpag:
-                type: number
-                description: Tipo de pagamento (tag <tPag> da NFe)
-              valor:
-                type: number
-                description: Valor da parcela
-              data_parcela:
-                type: string
-                description: Data de vencimento
-              tpintegra:
-                type: number
-                description: Tipo de integração (tg <tpIntegra> da NFe)
-              extra:
-                type: object
-                properties:
-                  dias_prazo:
-                    type: number
-                    description: Dias de prazo (parcelamento)
-                  id_conta:
-                    type: number
-                    description: ID da Conta Bancária (Cheque/Depósito)
-            required:
-              - parcela
-              - tpag
-              - valor
+          $ref: '#/components/schemas/Pedido-Item'
         flags:
           type: object
           properties:
@@ -4179,6 +4146,133 @@ components:
         anotacao_legado:
           type: string
           description: Semelhante a observacoes porém o texto é adicionado na aba "Andamentos"
+          writeOnly: true
+        id_recepcao:
+          type: integer
+          readOnly: true
+        cpf_cnpj:
+          type: number
+          readOnly: true
+        delivery_id:
+          type: number
+          readOnly: true
+        fiscdoc:
+          type: number
+          readOnly: true
+        data_emissao:
+          type: string
+          description: Data de Emissão quando houver documento emitido
+          readOnly: true
+        id_empresa:
+          type: integer
+          description: Somente para leitura do id da empresa
+          readOnly: true
+        sigla_loja:
+          type: string
+          description: Sigla da Loja/Empresa
+          readOnly: true
+        nome_reduzido:
+          type: string
+          readOnly: true
+        tipo_oper:
+          type: string
+          description: 'Tipo da Operação usado na rastreamento. Ex: DEVCLI, DEVFORNEC, TRANSF, etc'
+        desc_operacao:
+          type: string
+          description: Descrição do Tipo da Operação
+          readOnly: true
+        lista_cfop:
+          type: array
+          description: Lista dos CFOP'S no documento
+          items:
+            type: number
+          readOnly: true
+        aplicativo:
+          type: string
+          description: Nome do aplicativo
+          readOnly: true
+        id_externo:
+          description: ID do pedido externo
+          type: string
+          readOnly: true
+        id_romaneio:
+          type: number
+          readOnly: true
+        emit:
+          type: object
+          properties:
+            cnpj:
+              type: string
+              readOnly: true
+            cpf:
+              type: string
+              readOnly: true
+            nome_razao:
+              type: string
+              readOnly: true
+            nome_fantasia:
+              type: string
+              readOnly: true
+            iestadual:
+              type: string
+              readOnly: true
+            telefone_fixo:
+              type: string
+              readOnly: true
+            single_email:
+              type: string
+              readOnly: true
+            telefone:
+              type: string
+              readOnly: true
+            email:
+              type: string
+              readOnly: true
+            danfe:
+              type: string
+              readOnly: true
+            ind_iedest:
+              type: integer
+              readOnly: true
+            cnae:
+              type: number
+              readOnly: true
+            ender_sede:
+              type: string
+              readOnly: true
+            endereco:
+              type: object
+              properties:
+                logradouro:
+                  type: string
+                  readOnly: true
+                numero:
+                  type: integer
+                  readOnly: true
+                complemento:
+                  type: string
+                  readOnly: true
+                bairro:
+                  type: string
+                  readOnly: true
+                cep_fk:
+                  type: string
+                  readOnly: true
+                id_municipio:
+                  type: integer
+                  readOnly: true
+                nome_municipio:
+                  type: string
+                  readOnly: true
+                uf_sigla_fk:
+                  type: string
+                  readOnly: true
+              readOnly: true
+            pjuridica:
+              type: boolean
+          readOnly: true
+        pagtos:
+          $ref: '#/components/schemas/Pagamentos'
       required:
         - num_loja
         - id_pessoa
@@ -4199,17 +4293,17 @@ components:
           vprod: 0
       properties:
         id:
-          type: number
+          type: integer
           description: ID do item (para edição)
         numero_pedido:
-          type: number
+          type: integer
           description: Número do pedido
         seq:
-          type: number
           description: Sequência do item no pedido
+          type: integer
         idprod:
-          type: number
           description: Código do produto
+          type: integer
         ucom:
           type: string
           description: Unidade de comercialização
@@ -4227,6 +4321,24 @@ components:
         vprod:
           type: number
           description: Total do item
+        zerado:
+          type: boolean
+          description: Usado na devolução
+        motivo:
+          type: number
+        plu:
+          type: integer
+        info_adic:
+          type: object
+          properties:
+            cfop_item:
+              type: integer
+            cbenef:
+              type: string
+        imposto:
+          type: object
+        zerar_desconto:
+          type: boolean
       required:
         - numero_pedido
         - idprod
@@ -4503,6 +4615,56 @@ components:
         - id_pessoa
         - id_empresa
         - status
+    Pagamentos:
+      title: Pagamentos
+      type: object
+      properties:
+        id:
+          type: string
+        numero_pedido:
+          type: integer
+        parcela:
+          type: integer
+        tpag:
+          type: integer
+        valor:
+          type: number
+        total_recebido:
+          type: number
+        data_parcela:
+          type: string
+        sigla_forma:
+          type: string
+        extra:
+          type: object
+          properties:
+            cartao:
+              type: object
+            cheque:
+              type: object
+            pagto_custom:
+              type: integer
+            dias_prazo:
+              type: integer
+            id_conta:
+              type: integer
+        card_id:
+          type: integer
+        voucher_id:
+          type: integer
+        fiscdoc_id:
+          type: integer
+        nome_bandeira:
+          type: string
+        nosso_numero:
+          type: string
+        excluir:
+          type: boolean
+        limpar_pagtos:
+          type: boolean
+        id_boleto:
+          type: integer
+      description: Lista de Pagamentos
   parameters:
     Filter:
       name: filter
