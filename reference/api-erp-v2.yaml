@@ -4104,7 +4104,7 @@ components:
           description: Tipo de operação do pedido
         mod_frete:
           type: string
-          description: Modalidade do frete (tag <modFrete> na NFe)
+          description: 'String pois pode receber "0" '
         total:
           type: number
         entrega:
@@ -4122,15 +4122,89 @@ components:
             nome_turno:
               type: string
               description: Turno preferencial de entrega
+            id_entregador:
+              type: integer
+            entregador_legado:
+              type: integer
+            nome_entregador:
+              type: string
+            address_id:
+              type: integer
+            endereco:
+              type: object
+              properties:
+                logradouro:
+                  type: string
+                numero:
+                  type: integer
+                complemento:
+                  type: string
+                bairro:
+                  type: string
+                cep_fk:
+                  type: string
+                id_municipio:
+                  type: integer
+                nome_municipio:
+                  type: string
+                uf_sigla_fk:
+                  type: string
         observacoes:
           type: string
         itens:
           $ref: '#/components/schemas/Pedido-Item'
         flags:
           type: object
+          description: Quando usa o mod_mesclar ele mescla com os flags já existentes no pedido
           properties:
             requer_separacao:
               type: boolean
+            embalagem_presente:
+              type: boolean
+            doca_expedicao:
+              type: integer
+            limite_volume:
+              type: integer
+            data_emissao:
+              type: string
+            incide_ipi:
+              type: boolean
+            versao_calculo:
+              type: integer
+            cliente_retira:
+              type: boolean
+            cfop_manual:
+              type: integer
+            especial:
+              type: boolean
+            status_financ:
+              type: integer
+            limpar_flags:
+              type: string
+            nat_oper:
+              type: string
+            motivo:
+              type: integer
+            ignorar_estoque:
+              type: boolean
+            emissao_bloqueada:
+              type: boolean
+            urgente:
+              type: boolean
+            requer_liberacao:
+              type: boolean
+            troco_para:
+              type: integer
+            usuario_legado:
+              type: string
+            requer_conferencia:
+              type: boolean
+            id_cartaz:
+              type: integer
+              description: ID do cartaz (somente pedidos tipo CARTAZ)
+            usar_utrib:
+              type: boolean
+          readOnly: true
         logs_legado:
           type: array
           description: lista log_geral do pedido
@@ -4273,6 +4347,85 @@ components:
           readOnly: true
         pagtos:
           $ref: '#/components/schemas/Pagamentos'
+        nfref:
+          type: object
+          properties:
+            data_emissao:
+              type: string
+            tipo_oper:
+              type: string
+            numero_pedido:
+              type: integer
+            chnfe:
+              type: string
+            total_vnf:
+              type: number
+        desconto:
+          type: number
+          readOnly: true
+        frete:
+          type: number
+        seguro:
+          type: number
+        outras:
+          type: number
+        vprod:
+          type: number
+          readOnly: true
+        mesclar:
+          type: boolean
+          description: Modo Mesclar é usado juntamente com o campo flags
+        vetor_flags:
+          type: array
+          items:
+            type: object
+            properties:
+              flag:
+                type: string
+              valor:
+                type: string
+          readOnly: true
+        text_flags:
+          type: object
+          properties:
+            requer_separacao:
+              type: string
+            embalagem_presente:
+              type: string
+            incide_ipi:
+              type: string
+            urgente:
+              type: string
+            cliente_retira:
+              type: string
+            ignorar_estoque:
+              type: string
+            especial:
+              type: string
+            emissao_bloqueada:
+              type: string
+            requer_liberacao:
+              type: string
+            requer_conferencia:
+              type: string
+            usar_utrib:
+              type: string
+              readOnly: true
+        data_entrega:
+          type: string
+          description: Somente Leitura da Data Ent
+          readOnly: true
+        transportadora:
+          type: string
+          description: Nome do entregador
+          readOnly: true
+        contador_itens:
+          type: integer
+          readOnly: true
+        resumo_pagto:
+          type: string
+          description: Tag info_adic referente aos pagamentos (pagto)
+          readOnly: true
       required:
         - num_loja
         - id_pessoa
