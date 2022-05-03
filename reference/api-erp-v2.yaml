@@ -4095,9 +4095,9 @@ components:
           type: number
           description: 'ID do vendedor '
         status:
-          type: number
           description: Status inicial do pedido
           default: 500
+          type: integer
         tipo:
           type: string
           default: VENDAS
@@ -4425,6 +4425,187 @@ components:
         resumo_pagto:
           type: string
           description: Tag info_adic referente aos pagamentos (pagto)
+          readOnly: true
+        devolver:
+          type: boolean
+          writeOnly: true
+        devolver_nenhum:
+          type: boolean
+          writeOnly: true
+        devolver_tudo:
+          type: boolean
+          writeOnly: true
+        devolver_remover:
+          type: boolean
+          writeOnly: true
+        qtd_vol:
+          type: integer
+          description: Quantidade de Volumes
+        pedido_pai:
+          type: integer
+        id_canal:
+          type: integer
+          description: canal vindo no json tem prioridade sobre a regra
+        volumes_detalhados:
+          type: boolean
+          description: Quando possuir itens de volume
+          readOnly: true
+        volumes:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            data_hora:
+              type: string
+              readOnly: true
+            nvol:
+              type: integer
+              readOnly: true
+            peso:
+              type: number
+              readOnly: true
+            itens:
+              type: integer
+              readOnly: true
+            fechado:
+              type: boolean
+              readOnly: true
+            ean13:
+              type: string
+              readOnly: true
+            layout:
+              type: string
+              readOnly: true
+          readOnly: true
+        nome_usuario:
+          type: string
+          readOnly: true
+        nome_vendedor:
+          type: string
+          readOnly: true
+        chnfe_gerada:
+          type: string
+          readOnly: true
+        chave_acesso:
+          type: string
+          readOnly: true
+        num_nota:
+          type: string
+          readOnly: true
+        serie:
+          type: integer
+          readOnly: true
+        num_nf:
+          type: integer
+          readOnly: true
+        nfe_nprot:
+          type: integer
+          readOnly: true
+        protocolo:
+          type: string
+          readOnly: true
+        vtotal:
+          type: number
+          readOnly: true
+        vtroco:
+          type: number
+          readOnly: true
+        cor_fundo:
+          type: string
+          readOnly: true
+        cstat:
+          type: integer
+          readOnly: true
+        xmotivo:
+          type: string
+          readOnly: true
+        categorias:
+          type: array
+          items:
+            type: object
+            properties:
+              desc_categ:
+                type: string
+                readOnly: true
+              id_categ:
+                type: integer
+                readOnly: true
+            readOnly: true
+          readOnly: true
+        cupons_desconto:
+          type: array
+          items:
+            type: object
+            properties:
+              codigo_cupom:
+                type: integer
+        separador:
+          type: string
+          readOnly: true
+        conferente:
+          type: string
+          readOnly: true
+        limite_exp:
+          type: string
+          readOnly: true
+        inicio_proc:
+          type: string
+          readOnly: true
+        atraso:
+          type: object
+          properties:
+            atrasado:
+              type: boolean
+              readOnly: true
+            minutos:
+              type: integer
+              readOnly: true
+            cor_fundo:
+              type: string
+              readOnly: true
+          readOnly: true
+        extra:
+          type: object
+          properties:
+            cartao:
+              type: object
+              properties:
+                tband:
+                  type: integer
+                  readOnly: true
+                tpintegra:
+                  type: integer
+                  readOnly: true
+                caut:
+                  type: string
+                  readOnly: true
+                cnpj:
+                  type: integer
+                  readOnly: true
+                qtd_parcelas:
+                  type: integer
+                  readOnly: true
+              readOnly: true
+            cheque:
+              type: object
+              properties:
+                numero:
+                  type: integer
+                  readOnly: true
+                acct_id:
+                  type: integer
+                  readOnly: true
+              readOnly: true
+            pagto_custom:
+              type: integer
+              readOnly: true
+            dias_prazo:
+              type: integer
+              readOnly: true
+            id_conta:
+              type: integer
+              readOnly: true
           readOnly: true
       required:
         - num_loja
