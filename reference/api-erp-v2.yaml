@@ -4106,6 +4106,7 @@ components:
           type: string
           default: VENDAS
           description: Tipo de operação do pedido
+          writeOnly: true
         mod_frete:
           type: string
           description: 'String pois pode receber "0" '
@@ -4230,6 +4231,7 @@ components:
         tipo_oper:
           type: string
           description: 'Tipo da Operação usado na rastreamento. Ex: DEVCLI, DEVFORNEC, TRANSF, etc'
+          readOnly: true
         desc_operacao:
           type: string
           description: Descrição do Tipo da Operação
