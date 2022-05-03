@@ -4209,36 +4209,7 @@ components:
             usar_utrib:
               type: boolean
           readOnly: true
-        logs_legado:
-          type: array
-          items:
-            type: object
-            properties:
-              dthr_evento:
-                type: string
-                writeOnly: true
-              nome_usu:
-                type: string
-                writeOnly: true
-              historico:
-                type: string
-                writeOnly: true
-            writeOnly: true
-          writeOnly: true
-        anotacao_legado:
-          type: string
-          writeOnly: true
-        id_recepcao:
-          type: integer
-          readOnly: true
-        cpf_cnpj:
-          type: integer
-          description: CPF ou CNPJ do cliente
-          readOnly: true
         delivery_id:
-          type: number
-          readOnly: true
-        fiscdoc:
           type: number
           readOnly: true
         data_emissao:
@@ -4682,6 +4653,40 @@ components:
               type: integer
               readOnly: true
           readOnly: true
+        id_recepcao:
+          type: integer
+          readOnly: true
+        anotacao_legado:
+          type: string
+          writeOnly: true
+        logs_legado:
+          type: array
+          items:
+            type: object
+            properties:
+              dthr_evento:
+                type: string
+                writeOnly: true
+              nome_usu:
+                type: string
+                writeOnly: true
+              historico:
+                type: string
+                writeOnly: true
+            writeOnly: true
+          writeOnly: true
+        cpf_cnpj:
+          type: integer
+          description: CPF ou CNPJ do cliente
+          readOnly: true
+        fiscdoc:
+          type: integer
+          readOnly: true
+        numero_pedido:
+          type: integer
+          readOnly: true
+        '':
+          type: string
       required:
         - id_pessoa
         - num_loja
