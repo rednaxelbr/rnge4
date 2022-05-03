@@ -4685,8 +4685,6 @@ components:
         numero_pedido:
           type: integer
           readOnly: true
-        '':
-          type: string
       required:
         - id_pessoa
         - num_loja
