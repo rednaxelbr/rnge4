@@ -4207,19 +4207,22 @@ components:
           readOnly: true
         logs_legado:
           type: array
-          description: lista log_geral do pedido
           items:
             type: object
             properties:
               dthr_evento:
                 type: string
+                writeOnly: true
               nome_usu:
                 type: string
+                writeOnly: true
               historico:
                 type: string
+                writeOnly: true
+            writeOnly: true
+          writeOnly: true
         anotacao_legado:
           type: string
-          description: Semelhante a observacoes porém o texto é adicionado na aba "Andamentos"
           writeOnly: true
         id_recepcao:
           type: integer
@@ -4446,6 +4449,8 @@ components:
         id_canal:
           type: integer
           description: canal vindo no json tem prioridade sobre a regra
+        clonar_pedido:
+          type: boolean
         volumes_detalhados:
           type: boolean
           description: Quando possuir itens de volume
@@ -4590,10 +4595,10 @@ components:
             cheque:
               type: object
               properties:
-                numero:
+                acct_id:
                   type: integer
                   readOnly: true
-                acct_id:
+                numero:
                   type: integer
                   readOnly: true
               readOnly: true
@@ -4604,6 +4609,71 @@ components:
               type: integer
               readOnly: true
             id_conta:
+              type: integer
+              readOnly: true
+          readOnly: true
+        desc_canal:
+          type: string
+          readOnly: true
+        nome_razao:
+          type: string
+          readOnly: true
+        desc_tipo_ent:
+          type: string
+          readOnly: true
+        peso_total:
+          type: number
+          readOnly: true
+        sit_credito:
+          type: string
+          readOnly: true
+        status_financ:
+          type: string
+          readOnly: true
+        urgente:
+          type: boolean
+          description: Somente Leitura para saber se o pedido é urgente
+          readOnly: true
+        total_comissao:
+          type: number
+          readOnly: true
+        mktplace_brand:
+          type: string
+          readOnly: true
+        mktplace_codigo:
+          type: string
+          readOnly: true
+        finalidade:
+          type: integer
+          readOnly: true
+        zerar_frete:
+          type: boolean
+        zerar_seguro:
+          type: boolean
+        zerar_outras:
+          type: boolean
+        regiao_entrega:
+          type: string
+          readOnly: true
+        data_ult_compra:
+          type: string
+          readOnly: true
+        data_ult_atendimento:
+          type: string
+          readOnly: true
+        wms:
+          type: object
+          properties:
+            setor_origem:
+              type: integer
+              readOnly: true
+            fornecedor:
+              type: string
+              readOnly: true
+            id_categoria:
+              type: integer
+              readOnly: true
+            num_pedido:
               type: integer
               readOnly: true
           readOnly: true
