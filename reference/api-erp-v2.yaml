@@ -4075,6 +4075,9 @@ components:
             usuario_legado: ZEZINHO
       title: ''
       properties:
+        id:
+          type: integer
+          description: é o numero do pedido
         origem:
           type: string
           description: ERP externo/Marketplace de origem
@@ -4084,13 +4087,13 @@ components:
         data_hora:
           type: string
           description: Data hora exata usado no pedido externo. Na ausência de pedido externo então é a data hora de criação do pedido
+        id_pessoa:
+          type: number
+          description: ID da pessoa (cliente) do pedido
         num_loja:
           type: number
           description: ID da empresa (loja) do pedido. Somente gravação referente ao id da empresa
           writeOnly: true
-        id_pessoa:
-          type: number
-          description: ID da pessoa (cliente) do pedido
         id_vendedor:
           type: number
           description: 'ID do vendedor '
@@ -4228,7 +4231,8 @@ components:
           type: integer
           readOnly: true
         cpf_cnpj:
-          type: number
+          type: integer
+          description: CPF ou CNPJ do cliente
           readOnly: true
         delivery_id:
           type: number
@@ -4678,8 +4682,8 @@ components:
               readOnly: true
           readOnly: true
       required:
-        - num_loja
         - id_pessoa
+        - num_loja
         - flags
     Pedido-Item:
       description: Item de um pedido
