@@ -4077,7 +4077,8 @@ components:
       properties:
         id:
           type: integer
-          description: é o numero do pedido
+          description: 'é o número do pedido, usado também para informar o número para clonar o pedido'
+          readOnly: true
         origem:
           type: string
           description: ERP externo/Marketplace de origem
