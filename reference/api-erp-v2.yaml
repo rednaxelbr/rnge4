@@ -2703,6 +2703,7 @@ components:
       required:
         - id_categ
         - ativo
+        - marca
         - orig
         - cst
         - ncm
