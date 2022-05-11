@@ -2701,6 +2701,7 @@ components:
           type: string
           minLength: 1
       required:
+        - id
         - id_categ
         - ativo
         - marca
