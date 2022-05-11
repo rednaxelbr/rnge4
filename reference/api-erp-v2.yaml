@@ -2925,6 +2925,7 @@ components:
             required:
               - id_categoria
             readOnly: true
+          readOnly: true
         codigo_agrup:
           type: string
           minLength: 1
