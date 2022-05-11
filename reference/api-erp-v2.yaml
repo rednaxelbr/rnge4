@@ -2669,11 +2669,12 @@ components:
           type: number
         id_categ:
           type: number
+          description: Categoria da Taxonomia. Ao não informar aparece a mensagem "Categoria % (grade.id_categ) não localizada" e se informar uma categoria que não é do tipo taxonomia então aparecerá a mensagem "Categoria % (grade.id_categ) não é do tipo taxonomia"
+        ativo:
+          type: boolean
         caminho:
           type: string
           minLength: 1
-        ativo:
-          type: boolean
         marca:
           type: string
           minLength: 1
@@ -2700,6 +2701,7 @@ components:
           type: string
           minLength: 1
       required:
+        - id_categ
         - ativo
         - orig
         - cst
@@ -2919,6 +2921,7 @@ components:
                 type: boolean
             required:
               - id_categoria
+            readOnly: true
         codigo_agrup:
           type: string
           minLength: 1
