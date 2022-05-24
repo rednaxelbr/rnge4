@@ -2808,28 +2808,33 @@ components:
               desc_categoria: Pasta Sanfonada
               principal: false
           codigo_agrup: '*'
+      title: ''
       properties:
         id:
-          type: number
+          type: integer
         ucom:
           type: string
           minLength: 1
+          description: Para alterar a ucom é na v2/skuarticles
+          readOnly: true
         prod_xprod:
           type: string
           minLength: 1
           description: Descrição do SKU (tag <xProd> da NFe)
+          readOnly: true
         ativo:
           type: boolean
         dthr_sku:
           type: string
           minLength: 1
+          readOnly: true
         custos:
           type: object
           properties:
             custo_liquido:
               type: number
             curva:
-              type: number
+              type: integer
             vbcst_nota:
               type: number
             icms_efetivo:
@@ -2856,12 +2861,12 @@ components:
             type: object
             properties:
               id_fornec:
-                type: number
+                type: integer
               nome_fornec:
                 type: string
                 minLength: 1
               id_pessoa:
-                type: number
+                type: integer
             required:
               - id_fornec
         fotos:
@@ -2872,14 +2877,19 @@ components:
             type: object
             properties:
               id:
-                type: number
+                type: integer
+                readOnly: true
               url_foto:
                 type: string
                 minLength: 1
               primario:
                 type: string
+                readOnly: true
               secundario:
                 type: string
+                readOnly: true
+            readOnly: true
+          readOnly: true
         flags_sku:
           type: object
           properties:
@@ -2888,7 +2898,7 @@ components:
             fora_de_linha:
               type: boolean
             status_legado:
-              type: number
+              type: integer
             nao_comprar:
               type: boolean
             em_liquidacao:
@@ -2916,12 +2926,15 @@ components:
             properties:
               nome_catalogo:
                 type: string
+                readOnly: true
               id_categoria:
-                type: number
+                readOnly: true
               desc_categoria:
                 type: string
+                readOnly: true
               principal:
                 type: boolean
+                readOnly: true
             required:
               - id_categoria
             readOnly: true
@@ -2941,9 +2954,17 @@ components:
         legado:
           type: boolean
         embalagens:
+          $ref: '#/components/schemas/Embalagens'
+        composicao:
           type: array
+          description: Composição (Kits/produção)
           items:
-            $ref: '#/components/schemas/Embalagens'
+            type: object
+            properties:
+              cod_produto:
+                type: integer
+              quantidade:
+                type: number
       required:
         - id
         - ucom
@@ -3585,6 +3606,28 @@ components:
         - categorias
         - config_formas
     Pessoa-Categoria:
+      description: Cruzamento pessoa x categoria
+      type: object
+      x-examples:
+        example-1:
+          id: 5
+          desc_categoria: ATACADO
+          plu_id: 214
+          categ_mae: null
+      title: Pessoa Categoria
+      properties:
+        id:
+          type: number
+        desc_categoria:
+          type: string
+        plu_id:
+          type: number
+        categ_mae:
+          type: number
+          description: Também conhecido como a categoria pai (árvore hierárquica)
+      required:
+        - id
+    Pessoa-Categoria - copy:
       description: Cruzamento pessoa x categoria
       type: object
       x-examples:
