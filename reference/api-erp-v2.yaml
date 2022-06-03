@@ -5,6 +5,8 @@ servers:
   - url: 'https://rnge.com.br:8091/v2'
     description: Produção
 tags:
+  - name: Agrupamentos (skugroups)
+    description: Agrupamentos Comerciais
   - name: Login
     description: Login
   - name: Pessoas (customers)
@@ -27,8 +29,6 @@ tags:
     description: Fotos de Produtos
   - name: Unidades de Medida (units)
     description: Unidades de Medida
-  - name: Agrupamentos (skugroups)
-    description: Agrupamentos Comerciais
   - name: Mapeamentos (purchasemappings)
     description: Mapeamentos Produto x Fornecedor
   - name: Listas de Preços (pricelists)
@@ -161,6 +161,7 @@ paths:
         name: id
         in: path
         required: true
+        description: Id do Token
     get:
       summary: Informações do token
       tags:
@@ -902,20 +903,19 @@ paths:
               description: ''
               type: object
             examples: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
       description: Lista de distribuições para filiais
       parameters:
-        - schema:
-            type: string
-          in: query
-          name: filter
-        - schema:
-            type: array
-          in: query
-          name: range
-        - schema:
-            type: array
-          in: query
-          name: sort
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
       responses:
         '200':
           description: OK
@@ -1475,6 +1475,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do endereço do estoque
     get:
       summary: Consultando um estoque
       tags:
@@ -1523,6 +1524,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do prédio
     get:
       summary: Consultando um prédio de estoque
       responses:
@@ -1571,6 +1573,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da forma de quitação
     get:
       summary: Consultando uma forma de quitação
       responses:
@@ -1619,6 +1622,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da conta de despesa
     get:
       summary: Consultando uma conta despesa
       responses:
@@ -1687,6 +1691,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da marca
     get:
       summary: Consultando uma marca de produto
       responses:
@@ -1735,6 +1740,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da lista de preço
     get:
       summary: Consultando uma Lista de Preços (PLU)
       tags:
@@ -1809,6 +1815,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do registro
     get:
       summary: 'ITEM: Consultar produto x PLU'
       tags:
@@ -1844,6 +1851,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da pessoa
     get:
       summary: Consulta uma pessoa
       tags:
@@ -1887,6 +1895,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da empresa
     get:
       summary: Consulta uma empresa
       tags:
@@ -1922,6 +1931,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do endereço
     get:
       summary: Consultando um endereço
       tags:
@@ -2007,6 +2017,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do mapeamento
     get:
       summary: Consultando um mapeamento
       tags:
@@ -2041,8 +2052,9 @@ paths:
         name: id
         in: path
         required: true
+        description: id da classe fiscal
     get:
-      summary: ''
+      summary: Consulta uma Classe Fiscal
       tags:
         - Tributária (Classe Fiscal)
       responses:
@@ -2237,6 +2249,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id do item de um pedido
     get:
       summary: Consulta um item de um pedido
       tags:
@@ -2595,6 +2608,7 @@ paths:
         name: id
         in: path
         required: true
+        description: id da RN
     get:
       summary: Consulta uma RN
       tags:
@@ -4994,41 +5008,19 @@ components:
         - codigo_agrup
         - desc_agrupamento
     Ordem-Compra:
-      description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 229
-          id_fornec: 3730
-          cnpj_fornec: 1234
-          id_pessoa: 49698010
-          nome_fornec: PROTECT QUALITY
-          dthr_criacao: '2021-01-14T00:00:00-03:00'
-          valor_total: 0
-          codigo_legado: 47270/10
-          id_empresa: 6
-          sigla_loja: BCD
-          nome_usuario: PAPAFILA
-          status: 199
-          sigla_status: OC CANCELADA
-          itens:
-            - id: 2420
-              numero_oc: 229
-              ordem: 1
-              codigo_sku: 104960
-              ucom: UN
-              prod_xprod: CORRENTE PLASTICA SINALIZACAO ELO 63MMX34MMX9MM 10MT
-              valor_unit: 23
       properties:
         id:
-          type: number
+          type: integer
         id_fornec:
-          type: number
+          type: integer
         cnpj_fornec:
-          type: number
+          type: integer
         id_pessoa:
-          type: number
+          type: integer
         nome_fornec:
+          type: string
+        nome_fantasia:
           type: string
         dthr_criacao:
           type: string
@@ -5036,49 +5028,84 @@ components:
           type: number
         codigo_legado:
           type: string
-          description: Código no ERP externo
         id_empresa:
-          type: number
+          type: integer
         sigla_loja:
           type: string
         nome_usuario:
           type: string
         status:
-          type: number
+          type: integer
         sigla_status:
           type: string
         itens:
           type: array
-          uniqueItems: true
           items:
             type: object
             properties:
               id:
-                type: number
+                type: integer
               numero_oc:
-                type: number
+                type: integer
               ordem:
-                type: number
+                type: integer
               codigo_sku:
-                type: number
+                type: integer
               ucom:
                 type: string
               prod_xprod:
                 type: string
+              quantidade:
+                type: integer
               valor_unit:
                 type: number
-            required:
-              - ordem
-              - codigo_sku
-              - ucom
-              - valor_unit
-      required:
-        - id
-        - id_fornec
-        - cnpj_fornec
-        - id_pessoa
-        - id_empresa
-        - status
+              total_item:
+                type: number
+              observ_item:
+                type: string
+              aliq_icms:
+                type: integer
+        pagtos:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              numero_oc:
+                type: integer
+              data_vencto:
+                type: string
+              numero_parcela:
+                type: integer
+              id_despesa:
+                type: integer
+              codigo_conta:
+                type: integer
+              desc_conta:
+                type: string
+              id_centro:
+                type: integer
+              codigo_centro:
+                type: integer
+              desc_centro:
+                type: string
+              id_forma:
+                type: integer
+              sigla_forma:
+                type: string
+              desc_forma:
+                type: string
+              valor_parcela:
+                type: number
+              historico:
+                type: string
+        mod_frete:
+          type: string
+        info_ordcpa:
+          type: object
+          properties: {}
+      x-examples: {}
     Pagamentos:
       title: Pagamentos
       type: object
