@@ -7,57 +7,60 @@ servers:
 tags:
   - name: Agrupamentos (skugroups)
     description: Agrupamentos Comerciais
-  - name: Login
-    description: Login
-  - name: Pessoas (customers)
-    description: Cadastro de Pessoas
-  - name: Pessoas (customercategories)
-    description: Categorias de Pessoas
-  - name: Endereços de pessoas (addresses)
-    description: Endereços de Pessoas
-  - name: Empresas (companies)
-    description: Cadastro de Empresas
   - name: Categorias (categories)
     description: Categorias de produtos
-  - name: Produtos (skus)
-    description: Cadastro de SKUs
+  - name: Conta despesa (expenseaccounts)
+    description: Cadastro das contas de despesa
+  - name: Distribuição (distributions)
+    description: Distribuição para filiais
+  - name: Empresas (companies)
+    description: Cadastro de Empresas
+  - name: Endereços de pessoas (addresses)
+    description: Endereços de Pessoas
+  - name: Estoque (skustocks)
+    description: Controle de Estoque
+  - name: Formas de Quitação (paymentcodes)
+    description: Cadastro das formas de quitação
+  - name: Fotos de Produtos (productimages)
+    description: Fotos de Produtos
+  - name: Listas de Preços (pricelists)
+    description: Listas de Preços
+  - name: Login
+    description: Login
+  - name: Mapeamentos (purchasemappings)
+    description: Mapeamentos Produto x Fornecedor
+  - name: Marcas
+    description: Cadastro das marcas dos produtos
+  - name: Notas/Cupons Fiscais (invoices)
+    description: Notas e Cupons Fiscais (NFe/NFCe)
+  - name: Ordens de Compra (purchaseorders)
+    description: Gestão de Ordens de Compra
+  - name: PDV
+    description: Equipamento PDV
+  - name: Pedidos (orders)
+    description: Gestão de Pedidos
+  - name: Pessoas (customercategories)
+    description: Categorias de Pessoas
+  - name: Pessoas (customers)
+    description: Cadastro de Pessoas
+  - name: Prédios de Estoque
+    description: Cadastro dos prédios de estoque
   - name: Produtos (skuarticles)
     description: Cadastro de Mercadorias
   - name: Produtos (skuconfigs)
     description: Cadastro de configuração de SKU x Empresa
-  - name: Fotos de Produtos (productimages)
-    description: Fotos de Produtos
-  - name: Unidades de Medida (units)
-    description: Unidades de Medida
-  - name: Mapeamentos (purchasemappings)
-    description: Mapeamentos Produto x Fornecedor
-  - name: Listas de Preços (pricelists)
-    description: Listas de Preços
-  - name: Estoque (skustocks)
-    description: Controle de Estoque
-  - name: Pedidos (orders)
-    description: Gestão de Pedidos
-  - name: Notas/Cupons Fiscais (invoices)
-    description: Notas e Cupons Fiscais (NFe/NFCe)
-  - name: PDV
-    description: Equipamento PDV
-  - name: Distribuição (distributions)
-    description: Distribuição para filiais
-  - name: Tributária (Classe Fiscal)
-    description: Cadastro das classes fiscais
-  - name: Prédios de Estoque
-    description: Cadastro dos prédios de estoque
-  - name: Marcas
-    description: Cadastro das marcas dos produtos
-  - name: Formas de Quitação (paymentcodes)
-    description: Cadastro das formas de quitação
-  - name: Conta despesa (expenseaccounts)
-    description: Cadastro das contas de despesa
-  - name: Ordens de Compra (purchaseorders)
-    description: Gestão de Ordens de Compra
+  - name: Produtos (skus)
+    description: Cadastro de SKUs
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
+  - name: Tributária (Classe Fiscal)
+    description: Cadastro das classes fiscais
+  - name: Unidades de Medida (units)
+    description: Unidades de Medida
 info:
+  license:
+    name: Copyright (C) Rednaxel Informática
+    url: https://rednaxel.com
   description: |
     Utilizamos o **Authorization** de duas formas:
     - No `POST /login`, **Basic** com username = `usuario@tenant` e password = `senha`
@@ -3620,28 +3623,6 @@ components:
         - categorias
         - config_formas
     Pessoa-Categoria:
-      description: Cruzamento pessoa x categoria
-      type: object
-      x-examples:
-        example-1:
-          id: 5
-          desc_categoria: ATACADO
-          plu_id: 214
-          categ_mae: null
-      title: Pessoa Categoria
-      properties:
-        id:
-          type: number
-        desc_categoria:
-          type: string
-        plu_id:
-          type: number
-        categ_mae:
-          type: number
-          description: Também conhecido como a categoria pai (árvore hierárquica)
-      required:
-        - id
-    Pessoa-Categoria - copy:
       description: Cruzamento pessoa x categoria
       type: object
       x-examples:
