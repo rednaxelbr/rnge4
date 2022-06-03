@@ -2937,6 +2937,50 @@ paths:
           description: OK
       operationId: delete-receptions-id
       description: Cancela uma RN
+  '/purchaseorders/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da RN
+    get:
+      summary: Consulta uma Ordem de Compra
+      tags:
+        - Ordens de Compra (purchaseorders)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ordem-Compra'
+      operationId: get-purchaseorders-id
+      description: Consulta uma Ordem de Compra
+    put:
+      summary: Atualiza uma Ordem de Compra
+      tags:
+        - Ordens de Compra (purchaseorders)
+      responses:
+        '200':
+          description: OK
+      operationId: put-purchaseorders-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ordem-Compra'
+      description: Atualiza uma ordem compra
+    delete:
+      summary: Deleta uma Ordem de Compra
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-purchaseorders-id
+      description: Deleta uma Ordem de Compra
 components:
   securitySchemes:
     Usuário/Senha:
