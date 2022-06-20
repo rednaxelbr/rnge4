@@ -2990,6 +2990,7 @@ components:
     Token de acesso:
       type: http
       scheme: bearer
+      description: ''
   requestBodies: {}
   schemas:
     Grade:

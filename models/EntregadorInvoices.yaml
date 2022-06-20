@@ -1,0 +1,44 @@
+type: object
+x-examples:
+  example-1:
+    id: '43220199999999999999550010000147121153434094'
+    raiz_cnpj: 9999999
+    dthr_leitura: '2022-06-20T10:16:24.986223'
+    status_atual: 780
+    cfg_nota:
+      accuracy: 844
+      latitude: -30.0283298
+      longitude: -51.2285332
+    id_prestador: 123456
+properties:
+  id:
+    type: string
+  raiz_cnpj:
+    type: integer
+  dthr_leitura:
+    type: string
+  status_atual:
+    type: integer
+  cfg_nota:
+    type: object
+    required:
+      - accuracy
+      - latitude
+      - longitude
+    properties:
+      accuracy:
+        type: integer
+      latitude:
+        type: number
+      longitude:
+        type: number
+  id_prestador:
+    type: integer
+required:
+  - id
+  - raiz_cnpj
+  - dthr_leitura
+  - status_atual
+  - cfg_nota
+  - id_prestador
+description: Registro de entrega de uma NF

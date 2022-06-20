@@ -1,0 +1,16 @@
+type: object
+x-examples:
+  example-1:
+    id: 4754268
+    nome_razao: Rednaxel Informática
+    nome_fantasia: Rednaxel
+properties:
+  id:
+    type: integer
+    description: Raiz do CNPJ
+  nome_razao:
+    type: string
+  nome_fantasia:
+    type: string
+required:
+  - id

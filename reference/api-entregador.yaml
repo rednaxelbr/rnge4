@@ -1,0 +1,114 @@
+openapi: 3.1.0
+x-stoplight:
+  id: 7d5345bc11588
+info:
+  title: API do app do Entregador
+  version: '1.0'
+  summary: Entregador
+  description: API para registrar entregas
+  contact:
+    name: Suporte
+    url: 'https://suporte.rednaxel.com'
+    email: suporte@rednaxel.com
+  license:
+    name: Copyright (C) Rednaxel Informática
+    url: 'https://rednaxel.com'
+  termsOfService: 'https://rednaxel.com/termos-de-uso'
+servers:
+  - url: 'https://homolog.rnge.com.br:8091/v2'
+    description: Homologação
+  - url: 'https://rnge.com.br:8091/v2'
+    description: Produção
+tags:
+  - name: Entregador
+    description: Entregador/Prestador de Serviço
+paths:
+  /providerlogin:
+    post:
+      summary: Faz o login no app do entregador
+      operationId: post-providerlogin
+      description: |-
+        Login no app. 
+        - Username: email digitado no app
+        - Senha: senha digitada no app
+      security:
+        - Usuario_Senha: []
+      tags:
+        - Entregador
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EntregadorLogin.yaml
+  /providerstores:
+    get:
+      summary: Lista de empresas autorizadas
+      tags:
+        - Entregador
+      operationId: get-v2-providerstores
+      description: Lista de empresas que autorizaram este entregador/prestador a marcar NF como entregue.
+      security:
+        - Token_Acesso: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EntregadorStores.yaml
+    post:
+      summary: Solicita uma autorização
+      tags:
+        - Entregador
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EntregadorStores.yaml
+      operationId: post-v2-providerstores
+      description: 'Solicita autorização para uma empresa cliente da Rednaxel. Preencha apenas o "id" com a raiz (parte antes da barra) do CNPJ desejado. No app é solicitado o CNPJ por simplicidade mas a raiz é extraída e enviada no POST. Caso deseje enviar o CNPJ, para registro, coloque no campo "nome_razao".'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/EntregadorStores.yaml
+          application/xml:
+            schema:
+              $ref: ../models/EntregadorStores.yaml
+        description: ''
+    parameters: []
+  /providerinvoices:
+    post:
+      summary: Registra a entrega de uma NF
+      tags:
+        - Entregador
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EntregadorInvoices.yaml
+      operationId: post-providerinvoices
+      description: Registra a entrega de uma NF
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/EntregadorInvoices.yaml
+      security:
+        - Token_Acesso: []
+components:
+  schemas: {}
+  securitySchemes:
+    Usuario_Senha:
+      type: http
+      scheme: basic
+      description: Email e senha
+    Token_Acesso:
+      type: http
+      scheme: bearer
