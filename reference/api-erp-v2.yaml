@@ -1482,6 +1482,8 @@ paths:
             examples: {}
         description: ''
       description: Lista de produtos
+      tags:
+        - Produtos (products)
   /skustocks:
     get:
       summary: Listando endereços de estoque

@@ -2,12 +2,12 @@
   "items": [
     {
       "type": "divider",
-      "title": "ARTIGOS"
+      "title": "integracao"
     },
     {
       "type": "item",
       "title": "Integração de Estoques",
-      "uri": "docs/integracao/Integracao-de-Estoques.md"
+      "uri": "/docs/integracao/Integracao-de-Estoques.md"
     },
     {
       "type": "divider",
@@ -15,18 +15,52 @@
     },
     {
       "type": "item",
-      "title": "API do RNGE 4",
-      "uri": "reference/api-erp-v2.yaml"
+      "title": "API do PDV",
+      "uri": "/reference/api-pdv.yaml"
     },
     {
       "type": "item",
-      "title": "API do PDV",
-      "uri": "reference/api-pdv.yaml"
+      "title": "API do RNGE 4",
+      "uri": "/reference/api-erp-v2.yaml"
     },
     {
       "type": "item",
       "title": "API do app do Entregador",
-      "uri": "reference/api-tms-entregador.yaml"
+      "uri": "/reference/api-entregador.yaml"
+    },
+    {
+      "type": "divider",
+      "title": "Schemas"
+    },
+    {
+      "type": "item",
+      "title": "Fotos",
+      "uri": "/models/Fotos.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Operacoes",
+      "uri": "/models/Operacoes.yaml"
+    },
+    {
+      "type": "item",
+      "title": "RN",
+      "uri": "/models/RN.yaml"
+    },
+    {
+      "type": "item",
+      "title": "EntregadorLogin",
+      "uri": "/models/EntregadorLogin.yaml"
+    },
+    {
+      "type": "item",
+      "title": "EntregadorStores",
+      "uri": "/models/EntregadorStores.yaml"
+    },
+    {
+      "type": "item",
+      "title": "EntregadorInvoices",
+      "uri": "/models/EntregadorInvoices.yaml"
     }
   ]
 }
