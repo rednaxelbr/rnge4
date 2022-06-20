@@ -49,8 +49,6 @@ paths:
         - Entregador
       operationId: get-v2-providerstores
       description: Lista de empresas que autorizaram este entregador/prestador a marcar NF como entregue.
-      security:
-        - Token_Acesso: []
       responses:
         '200':
           description: OK
@@ -100,8 +98,6 @@ paths:
           application/json:
             schema:
               $ref: ../models/EntregadorInvoices.yaml
-      security:
-        - Token_Acesso: []
 components:
   schemas: {}
   securitySchemes:
@@ -112,3 +108,5 @@ components:
     Token_Acesso:
       type: http
       scheme: bearer
+security:
+  - Token_Acesso: []
