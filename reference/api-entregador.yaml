@@ -81,7 +81,7 @@ paths:
     parameters: []
   /providerinvoices:
     post:
-      summary: Registra a entrega de uma NF
+      summary: Modifica o status de uma NF
       tags:
         - Entregador
       responses:
@@ -98,6 +98,7 @@ paths:
 
         | Status | Descrição |
         |--------|-----------|
+        | 750 | Material na Transportadora |
         | 760 | Tentativa de Entrega Sem Sucesso |
         | 770 | 2ª Tentativa de Entrega Sem Sucesso |
         | 780 | Entregue (recebida pelo destinatário) |
