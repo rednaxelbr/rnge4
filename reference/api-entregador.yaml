@@ -92,7 +92,15 @@ paths:
               schema:
                 $ref: ../models/EntregadorInvoices.yaml
       operationId: post-providerinvoices
-      description: Registra a entrega de uma NF
+      description: |-
+        Registra a entrega (ou tentativa de entrega) de uma Nota Fiscal.
+
+
+        | Status | Descrição |
+        |--------|-----------|
+        | 760 | Tentativa de Entrega Sem Sucesso |
+        | 770 | 2ª Tentativa de Entrega Sem Sucesso |
+        | 780 | Entregue (recebida pelo destinatário) |
       requestBody:
         content:
           application/json:
