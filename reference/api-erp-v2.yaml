@@ -17,6 +17,8 @@ tags:
     description: Cadastro de Empresas
   - name: Endereços de pessoas (addresses)
     description: Endereços de Pessoas
+  - name: Entrada de NF (purchases)
+    description: Entrada de NF de Compra
   - name: Estoque (skustocks)
     description: Controle de Estoque
   - name: Formas de Quitação (paymentcodes)
@@ -2983,6 +2985,55 @@ paths:
           description: OK
       operationId: delete-purchaseorders-id
       description: Deleta uma Ordem de Compra
+  /purchases:
+    get:
+      summary: Listagem de NF de Compra
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Purchase.yaml
+      operationId: get-purchases
+      description: Lista as NF de Compra
+      tags:
+        - Entrada de NF (purchases)
+    post:
+      summary: Enviar o XML de uma NF de Compra
+      responses:
+        '200':
+          description: OK
+      operationId: post-purchases
+      description: Envia o XML de uma NF de Compra
+      tags:
+        - Entrada de NF (purchases)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                example-1:
+                  files:
+                    - conteudo: xml-da-nota-fiscal-1
+                    - conteudo: xml-da-nota-fiscal-2
+              properties:
+                files:
+                  type: array
+                  description: Vetor de notas fiscais
+                  items:
+                    type: object
+                    properties:
+                      conteudo:
+                        type: string
+                        description: XML da NFe
+                    required:
+                      - conteudo
+              required:
+                - files
 components:
   securitySchemes:
     Usuário/Senha:

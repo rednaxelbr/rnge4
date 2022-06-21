@@ -1,0 +1,50 @@
+type: object
+x-examples:
+  example-1:
+    id: 48406
+    chnfe: '43220699999999000169550010000009761973907417'
+    id_pessoa: 876543
+    serie: 1
+    numero: 976
+    status: 200
+    data_emissao: '2022-06-21T00:00:00'
+    nome_emitente: NOME DO FORNECEDOR
+    dest: VLT
+    total_vnf: 5800
+    uf_emit: RS
+    milhar_cfop: 5
+    id_empresa: 1
+    cnpj_fornec: 99999999000169
+    id_rastreamento: 416990
+properties:
+  id:
+    type: integer
+  chnfe:
+    type: string
+    description: Chave de Acesso da NFe
+  id_pessoa:
+    type: integer
+  serie:
+    type: integer
+  numero:
+    type: integer
+  status:
+    type: integer
+  data_emissao:
+    type: string
+  nome_emitente:
+    type: string
+  dest:
+    type: string
+  total_vnf:
+    type: integer
+  uf_emit:
+    type: string
+  milhar_cfop:
+    type: integer
+  id_empresa:
+    type: integer
+  cnpj_fornec:
+    type: integer
+  id_rastreamento:
+    type: integer
