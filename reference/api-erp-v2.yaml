@@ -3034,6 +3034,44 @@ paths:
                       - conteudo
               required:
                 - files
+  /pricelistarticles:
+    post:
+      summary: Grava o preço de um item de uma lista de preços
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+      operationId: post-pricelistarticles
+      description: Cria um novo preço de um produto em uma lista de preços
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLU-item'
+    get:
+      summary: Consulta os preços de uma lista de preços
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PLU-item'
+      operationId: get-pricelistarticles
+      description: |-
+        Lista os preços de uma lista de preços. Filtros:
+        - `id_plu`: ID do PLU (Lista de Preços)
+        - `cod_produto`: Código de um produto
+        - `desc_produto`: Descrição de produto
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   securitySchemes:
     Usuário/Senha:
