@@ -31,8 +31,10 @@ tags:
     description: Login
   - name: Mapeamentos (purchasemappings)
     description: Mapeamentos Produto x Fornecedor
-  - name: Marcas
+  - name: Marcas (brands)
     description: Cadastro das marcas dos produtos
+  - name: Meios de Entrega (deliverytypes)
+    description: Cadastro dos meios de entrega
   - name: Notas/Cupons Fiscais (invoices)
     description: Notas e Cupons Fiscais (NFe/NFCe)
   - name: Ordens de Compra (purchaseorders)
@@ -1741,14 +1743,14 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      tags:
-        - Marcas
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties: {}
+      tags:
+        - Marcas (brands)
     post:
       summary: Criando uma marca
       operationId: post-brands
@@ -1762,7 +1764,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Marca'
       tags:
-        - Marcas
+        - Marcas (brands)
     parameters: []
   '/skustocks/{id}':
     parameters:
@@ -2004,7 +2006,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Marcas
+        - Marcas (brands)
     put:
       summary: Atualizando um prédio de estoque
       operationId: put-brands-id
@@ -2019,7 +2021,7 @@ paths:
               $ref: '#/components/schemas/Marca'
         description: ''
       tags:
-        - Prédios de Estoque
+        - Marcas (brands)
     delete:
       summary: Excluindo uma marca de produto
       operationId: delete-brands-id
@@ -2028,7 +2030,7 @@ paths:
           description: OK
       description: Exclui uma marca de produto.
       tags:
-        - Marcas
+        - Marcas (brands)
   '/pricelists/{id}':
     parameters:
       - schema:
@@ -3072,6 +3074,36 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  /deliverytypes:
+    get:
+      summary: Lista de Meios de Entrega
+      tags:
+        - Meios de Entrega (deliverytypes)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/DeliveryType.yaml
+      operationId: get-deliverytypes
+      description: Lista de Meios de Entrega
+    post:
+      summary: Cadastra um Meio de Entrega
+      tags:
+        - Meios de Entrega (deliverytypes)
+      responses:
+        '200':
+          description: OK
+      operationId: post-deliverytypes
+      description: Cadastra um Meio de Entrega
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/DeliveryType.yaml
 components:
   securitySchemes:
     Usuário/Senha:

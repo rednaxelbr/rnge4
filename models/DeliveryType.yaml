@@ -1,0 +1,41 @@
+type: object
+x-examples:
+  example-1:
+    id: 38
+    desc_tipo_ent: CORREIOS - PAC
+    via_transp: 7
+    desc_via_transp: Rodoviária
+    id_entregador: 1213
+    nome_entregador: PAC
+    ativo: true
+    config_tpent:
+      tempo_manuseio: 0
+      retirada: false
+properties:
+  id:
+    type: integer
+  desc_tipo_ent:
+    type: string
+  via_transp:
+    type: integer
+  desc_via_transp:
+    type: string
+  id_entregador:
+    type: integer
+    description: ID cadastrado na /carriers
+  nome_entregador:
+    type: string
+  ativo:
+    type: boolean
+  config_tpent:
+    type: object
+    properties:
+      tempo_manuseio:
+        type: integer
+        description: Em minutos
+      retirada:
+        type: boolean
+required:
+  - desc_tipo_ent
+  - id_entregador
+description: 'Meio de Entrega '
