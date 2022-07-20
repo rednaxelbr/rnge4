@@ -3428,7 +3428,9 @@ components:
         legado:
           type: boolean
         embalagens:
-          $ref: '#/components/schemas/Embalagens'
+          type: array
+          items:
+            $ref: '#/components/schemas/Embalagens'
         composicao:
           type: array
           description: Composição (Kits/produção)
