@@ -3286,6 +3286,26 @@ paths:
           description: OK
       operationId: delete-suppliers-id
       description: Inativa um Fornecedor
+  /purchaseitems:
+    get:
+      summary: Lista de itens de uma NF de Fornecedor
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PurchaseItem.yaml
+      operationId: get-purchaseitems
+      description: 'Itens de uma NF de Fornecedor. Filtro obrigatório: `id_compra` (ID da purchases).'
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   securitySchemes:
     Usuário/Senha:
