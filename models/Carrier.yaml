@@ -1,0 +1,75 @@
+type: object
+x-examples:
+  example-1:
+    id: 1165
+    nome_entregador: JC TRANSPORTES
+    id_pessoa: 48195010
+    cpf_cnpj_texto: 14.143.885/0001-92
+    nome_razao: SANTOS & CUNHA LTDA
+    ativo: true
+    empresas:
+      - id_empresa: 6
+        sigla: BCD
+        nome_reduzido: BELLER_CD
+      - id_empresa: 5
+        sigla: PCD
+        nome_reduzido: PEL_CD
+      - id_empresa: 10
+        sigla: ADM
+        nome_reduzido: ADMINISTRATIVO
+      - id_empresa: 39
+        sigla: RTO
+        nome_reduzido: RELACIONAMENTO ADM
+      - id_empresa: 2
+        sigla: TLV
+        nome_reduzido: TELEVENDAS
+      - id_empresa: 4
+        sigla: MDT
+        nome_reduzido: MDSUL_TLV
+      - id_empresa: 1
+        sigla: VLT
+        nome_reduzido: VOLUNTARIOS
+    config_entreg:
+      id: 219
+      mod: 1
+    metodo: ''
+    excluir: false
+    data_hora: '2018-11-27T17:06:50-02:00'
+properties:
+  id:
+    type: integer
+  nome_entregador:
+    type: string
+  id_pessoa:
+    type: integer
+  cpf_cnpj_texto:
+    type: string
+  nome_razao:
+    type: string
+  ativo:
+    type: boolean
+  empresas:
+    type: array
+    items:
+      type: object
+      properties:
+        id_empresa:
+          type: integer
+        sigla:
+          type: string
+        nome_reduzido:
+          type: string
+      required:
+        - id_empresa
+  config_entreg:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: ID no sistema legado/externo
+      mod:
+        type: integer
+  data_hora:
+    type: string
+required:
+  - nome_entregador
