@@ -101,6 +101,7 @@ properties:
     type: boolean
   emit:
     type: array
+    description: Lista de CNPJ deste fornecedor
     items:
       type: object
       properties:
@@ -127,6 +128,7 @@ properties:
         type: integer
   id_comprador:
     type: integer
+    description: ID da pessoa do comprador
   nome_comprador:
     type: string
   ciclos:
@@ -136,6 +138,7 @@ properties:
       properties:
         status:
           type: integer
+          description: Status de OC/NF que consome tempo no TR
         str_status:
           type: string
         sigla:
@@ -144,7 +147,10 @@ properties:
           type: integer
         config_ciclo:
           type: object
+      required:
+        - status
   consumo:
     type: boolean
+    description: 'Quando TRUE, as NF destinadas vindas deste fornecedor ficam com status 202 Consumo'
 required:
   - id_pessoa
