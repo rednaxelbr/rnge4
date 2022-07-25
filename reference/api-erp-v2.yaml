@@ -2856,7 +2856,7 @@ paths:
       description: Remove uma foto
   /operations:
     get:
-      summary: Tipos de pedidos
+      summary: Tipos de pedidos (Operações)
       tags:
         - Pedidos (orders)
       responses:
