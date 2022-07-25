@@ -1,0 +1,64 @@
+type: object
+x-examples:
+  example-1:
+    id: 337334
+    seq_item: 1
+    cprod: '19000584'
+    ucom: PCT
+    ucom_nota: UN
+    xprod: 'GUARDANAPO DECORADO 32,5X32,5CM 020FL CROMUS LIMAO SICILIANO FRUIT'
+    xprod_nota: 'GUARDANAPO LIMAO SICILIANO 32,5x32,5 C/20 FOLHAS'
+    qcom: 24
+    vuncom: 5.66
+    codigo_sku: 122627
+    cod_produto: 122627
+    quant_sku: 24
+    vunit_sku: 5.66
+    vprod: 135.84
+    preco_venda: 12.9
+    custo_liquido: 7.3623
+    id_compra: 144444
+    id_grade: 3961791
+    id_fornec: 3605
+properties:
+  id:
+    type: integer
+  seq_item:
+    type: integer
+  cprod:
+    type: string
+  ucom:
+    type: string
+  ucom_nota:
+    type: string
+  xprod:
+    type: string
+  xprod_nota:
+    type: string
+  qcom:
+    type: integer
+  vuncom:
+    type: number
+  codigo_sku:
+    type: integer
+  cod_produto:
+    type: integer
+  quant_sku:
+    type: integer
+  vunit_sku:
+    type: number
+  vprod:
+    type: number
+  preco_venda:
+    type: number
+  custo_liquido:
+    type: number
+  id_compra:
+    type: integer
+  id_grade:
+    type: integer
+  id_fornec:
+    type: integer
+required:
+  - cod_produto
+  - id_compra
