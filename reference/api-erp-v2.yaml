@@ -2819,7 +2819,7 @@ paths:
         - Ordens de Compra (purchaseorders)
   /productimages:
     get:
-      summary: Fotos de Produtos
+      summary: Lista de fotos de um produto
       tags:
         - Fotos de Produtos (productimages)
       responses:
@@ -2830,32 +2830,30 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/Fotos.yaml
+                  $ref: ../models/ProductImage.yaml
       operationId: get-productimages
-      description: 'Lista as fotos, filtros `cod_produto` (mercadoria) e `codigo_sku` (SKU).'
+      description: |-
+        Lista de fotos de um produto ou SKU. Filtros:
+        - `cod_produto`: código do produto (embalagem)
+        - `codigo_sku`: código do SKU
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
     post:
-      summary: Upload de fotos
+      summary: Envia uma foto de produto
       tags:
         - Fotos de Produtos (productimages)
       responses:
         '200':
           description: OK
       operationId: post-productimages
-      description: Faz o upload de fotos
+      description: Envia uma foto (em base64) de um produto.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/Fotos.yaml
-    delete:
-      summary: Remover fotos
-      tags:
-        - Fotos de Produtos (productimages)
-      responses:
-        '200':
-          description: OK
-      operationId: delete-productimages
-      description: Remove uma foto
+              $ref: ../models/ProductImage.yaml
   /operations:
     get:
       summary: Tipos de pedidos (Operações)
