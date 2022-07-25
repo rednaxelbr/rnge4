@@ -59,6 +59,8 @@ tags:
     description: Cadastro de SKUs
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
+  - name: Transportadoras (carriers)
+    description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
     description: Cadastro das classes fiscais
   - name: Unidades de Medida (units)
@@ -3126,6 +3128,40 @@ paths:
       description: |-
         Estoque de SKU por prédio. Filtros:
         - `codigo_sku`: código do SKU
+  /carriers:
+    get:
+      summary: Consulta lista de transportadoras
+      tags:
+        - Transportadoras (carriers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Carrier.yaml
+      operationId: get-carriers
+      description: Lista de transportadoras
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria uma transportadora
+      tags:
+        - Transportadoras (carriers)
+      responses:
+        '200':
+          description: OK
+      operationId: post-carriers
+      description: Cria uma transportadora
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Carrier.yaml
 components:
   securitySchemes:
     Usuário/Senha:
