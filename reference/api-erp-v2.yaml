@@ -23,6 +23,8 @@ tags:
     description: Controle de Estoque
   - name: Formas de Quitação (paymentcodes)
     description: Cadastro das formas de quitação
+  - name: Fornecedores (suppliers)
+    description: Cadastro de Fornecedores
   - name: Fotos de Produtos (productimages)
     description: Fotos de Produtos
   - name: Listas de Preços (pricelists)
@@ -3207,6 +3209,41 @@ paths:
           description: OK
       operationId: delete-carriers-id
       description: Deleta (inativa) uma transportadora
+  /suppliers:
+    post:
+      summary: Cria um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: post-suppliers
+      description: Cria um novo fornecedor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Carrier.yaml
+        description: ''
+    get:
+      summary: Lista de Fornecedores
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Carrier.yaml
+      operationId: get-suppliers
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: Lista de Fornecedores
 components:
   securitySchemes:
     Usuário/Senha:
