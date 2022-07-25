@@ -3223,7 +3223,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../models/Carrier.yaml
+              $ref: ../models/Supplier.yaml
         description: ''
     get:
       summary: Lista de Fornecedores
@@ -3237,7 +3237,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/Carrier.yaml
+                  $ref: ../models/Supplier.yaml
       operationId: get-suppliers
       parameters:
         - $ref: '#/components/parameters/Filter'
