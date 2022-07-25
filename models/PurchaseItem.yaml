@@ -19,6 +19,32 @@ x-examples:
     custo_liquido: 7.3623
     id_compra: 144444
     id_grade: 3961791
+    impostos:
+      cfop: '6403'
+      nota:
+        ncm: '48183000'
+        cest: '2004600'
+        vbcst: 301.06
+        vprod: 135.84
+        orig_cst: '110'
+        origem: 1
+        cst: 10
+        cst_pis: '01'
+        cst_cofins: '01'
+        pipi: 5
+        vipi: 6.79
+        ppis: 1.65
+        vpis: 2.15
+        pcofins: 7.6
+        vcofins: 9.91
+        picms: 4
+        vicms: 5.43
+        pmvast: 111.08
+        vbc: 135.84
+        cliq_unit: 7.3625
+        picmsst: 17.5
+        vicmsst: 47.26
+        vunit_sku: 5.66
     id_fornec: 3605
 properties:
   id:
@@ -57,8 +83,60 @@ properties:
     type: integer
   id_grade:
     type: integer
+  impostos:
+    type: object
+    description: Campos que vieram da NFe
+    properties:
+      cfop:
+        type: string
+      nota:
+        type: object
+        properties:
+          ncm:
+            type: string
+          cest:
+            type: string
+          vbcst:
+            type: number
+          vprod:
+            type: number
+          orig_cst:
+            type: string
+          origem:
+            type: integer
+          cst:
+            type: integer
+          cst_pis:
+            type: string
+          cst_cofins:
+            type: string
+          pipi:
+            type: integer
+          vipi:
+            type: number
+          ppis:
+            type: number
+          vpis:
+            type: number
+          pcofins:
+            type: number
+          vcofins:
+            type: number
+          picms:
+            type: integer
+          vicms:
+            type: number
+          pmvast:
+            type: number
+          vbc:
+            type: number
+          cliq_unit:
+            type: number
+          picmsst:
+            type: number
+          vicmsst:
+            type: number
+          vunit_sku:
+            type: number
   id_fornec:
     type: integer
-required:
-  - cod_produto
-  - id_compra
