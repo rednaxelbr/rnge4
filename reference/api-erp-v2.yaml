@@ -3306,6 +3306,31 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  '/purchaseitems/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID do item da NF
+    put:
+      summary: Mapeamento/desdobramento de item de NF
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+      operationId: put-purchaseitems-id
+      description: |-
+        Permite fazer o mapeamento e/ou desdobramento dos itens de uma NF (que foi carregada via XML).
+        - Mapeamento: cruzamento entre `cProd` que vem no XML com `cod_produto` do sistema. O vínculo é feito em nível de SKU: quantidade (campo `quant_sku`) e valor unitário (campo `vunit_sku`) serão calculados automaticamente. 
+        - Desdobramento: quando um Fornecedor manda um único item contendo produtos diferentes, por exemplo vem na NF "100 camisetas de cores sortidas" mas na verdade vieram 20 vermelhas, 30 amarelas e 50 brancas.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PurchaseItem.yaml
 components:
   securitySchemes:
     Usuário/Senha:
