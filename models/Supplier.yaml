@@ -1,0 +1,150 @@
+type: object
+x-examples:
+  example-1:
+    id: 3453
+    nome_fornec: 3M MANAUS
+    id_pessoa: 45484001
+    nome_razao: 3M MANAUS INDUSTRIA DE PRODUTOS QUIMICOS LTDA
+    ativo: true
+    emit:
+      - cnpj: 8014346000150
+    config_fornec:
+      produto: true
+      dias_tr: 63
+      ultima_oc: '2020-05-04'
+      prazo_pagamento: 60/90/120
+      ic_padrao: 1
+      intervalo_analise: 15
+      pedido_minimo: 5000
+      id_comprador: 35789001
+    id_comprador: 35789001
+    nome_comprador: MAURICIO
+    ciclos:
+      - status: 170
+        str_status: '170'
+        sigla: OC A FATURAR
+        dias: 40
+        config_ciclo: {}
+      - status: 130
+        str_status: '130'
+        sigla: OC AGENDADA
+        dias: 0.3
+        config_ciclo: {}
+      - status: 140
+        str_status: '140'
+        sigla: OC RASCUNHO
+        dias: 0.3
+        config_ciclo: {}
+      - status: 150
+        str_status: '150'
+        sigla: OC EMITIDA
+        dias: 0.4
+        config_ciclo: {}
+      - status: 160
+        str_status: '160'
+        sigla: OC ENVIADA
+        dias: 2
+        config_ciclo: {}
+      - status: 180
+        str_status: '180'
+        sigla: OC COM SALDO
+        dias: 1
+        config_ciclo: {}
+      - status: 190
+        str_status: '190'
+        sigla: OC ATENDIDA
+        config_ciclo: {}
+      - status: 290
+        str_status: '290'
+        sigla: NF COMPRA ARQUIVADA
+        config_ciclo: {}
+      - status: 200
+        str_status: '200'
+        sigla: NF COMPRA (XML)
+        config_ciclo: {}
+      - status: 210
+        str_status: '210'
+        sigla: NF COMPRA CONFIRMADA
+        dias: 12
+        config_ciclo: {}
+      - status: 220
+        str_status: '220'
+        sigla: NF COMPRA RECEBIDA
+        dias: 1
+        config_ciclo: {}
+      - status: 230
+        str_status: '230'
+        sigla: NF CPA MERC EM CONF
+        dias: 2
+        config_ciclo: {}
+      - status: 240
+        str_status: '240'
+        sigla: NF CPA MERC DIVERGE
+        config_ciclo: {}
+      - status: 250
+        str_status: '250'
+        sigla: NF CPA MER CONFERIDA
+        dias: 4
+        config_ciclo: {}
+    consumo: false
+description: Fornecedor
+properties:
+  id:
+    type: integer
+  nome_fornec:
+    type: string
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+  ativo:
+    type: boolean
+  emit:
+    type: array
+    items:
+      type: object
+      properties:
+        cnpj:
+          type: integer
+  config_fornec:
+    type: object
+    properties:
+      produto:
+        type: boolean
+      dias_tr:
+        type: integer
+      ultima_oc:
+        type: string
+      prazo_pagamento:
+        type: string
+      ic_padrao:
+        type: integer
+      intervalo_analise:
+        type: integer
+      pedido_minimo:
+        type: integer
+      id_comprador:
+        type: integer
+  id_comprador:
+    type: integer
+  nome_comprador:
+    type: string
+  ciclos:
+    type: array
+    items:
+      type: object
+      properties:
+        status:
+          type: integer
+        str_status:
+          type: string
+        sigla:
+          type: string
+        dias:
+          type: integer
+        config_ciclo:
+          type: object
+  consumo:
+    type: boolean
+required:
+  - id_pessoa
