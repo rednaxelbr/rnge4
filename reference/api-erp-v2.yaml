@@ -3162,6 +3162,51 @@ paths:
           application/json:
             schema:
               $ref: ../models/Carrier.yaml
+  '/carriers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da transportadora
+    get:
+      summary: Consulta uma transportadora
+      tags:
+        - Transportadoras (carriers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Carrier.yaml
+      operationId: get-carriers-id
+      description: Consulta uma transportadora
+    put:
+      summary: Atualiza uma transportadora
+      tags:
+        - Transportadoras (carriers)
+      responses:
+        '200':
+          description: OK
+      operationId: put-carriers-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Carrier.yaml
+        description: ''
+      description: Atualiza uma transportadora
+    delete:
+      summary: Inativar uma transportadora
+      tags:
+        - Transportadoras (carriers)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-carriers-id
+      description: Deleta (inativa) uma transportadora
 components:
   securitySchemes:
     Usuário/Senha:
