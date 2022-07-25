@@ -3244,6 +3244,50 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       description: Lista de Fornecedores
+  '/suppliers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID do Fornecedor
+    get:
+      summary: Consulta um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Supplier.yaml
+      operationId: get-suppliers-id
+      description: Consulta um Fornecedor
+    put:
+      summary: Atualiza  um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: put-suppliers-id
+      description: Atualiza  um Fornecedor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Supplier.yaml
+    delete:
+      summary: Inativa um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-suppliers-id
+      description: Inativa um Fornecedor
 components:
   securitySchemes:
     Usuário/Senha:
