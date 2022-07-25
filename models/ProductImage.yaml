@@ -1,0 +1,47 @@
+type: object
+x-examples:
+  example-1:
+    id: 68649
+    cod_produto: 10888
+    base64: ''
+    codigo_sku: 10887
+    ordem_foto: 4
+    url_foto: ''
+    nome_usuario: NOMEUSUARIO
+    data_hora: '2022-07-25 12:09:06'
+    primario: 10888-4
+    secundario: CX com 10
+    mult_sku: 10
+description: Imagem de um produto
+properties:
+  id:
+    type: integer
+  cod_produto:
+    type: integer
+  base64:
+    type: string
+    description: Obrigatório no POST
+    writeOnly: true
+  codigo_sku:
+    type: integer
+    readOnly: true
+  ordem_foto:
+    type: integer
+  url_foto:
+    type: string
+    readOnly: true
+  nome_usuario:
+    type: string
+    readOnly: true
+  data_hora:
+    type: string
+  primario:
+    type: string
+  secundario:
+    type: string
+  mult_sku:
+    type: integer
+    readOnly: true
+required:
+  - cod_produto
+  - base64
