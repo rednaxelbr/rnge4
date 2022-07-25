@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: integer
+  id_predio:
+    type: integer
+  desc_predio:
+    type: string
+  cod_sku:
+    type: integer
+  quant_predio:
+    type: integer
+  cmm_predio:
+    type: integer
+  estoq_disp:
+    type: integer
+x-examples:
+  example-1:
+    id: 432869
+    id_predio: 35
+    desc_predio: DR FLORES
+    cod_sku: 10887
+    quant_predio: 358
+    cmm_predio: 320
+    estoq_disp: 358
+title: ''
+description: Estoque de SKU por prédio

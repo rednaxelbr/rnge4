@@ -3104,6 +3104,28 @@ paths:
           application/json:
             schema:
               $ref: ../models/DeliveryType.yaml
+  /stocksummaries:
+    get:
+      summary: Consulta estoque de SKU por prédio
+      tags:
+        - Estoque (skustocks)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/StockSummary.yaml
+      operationId: get-stocksummaries
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: |-
+        Estoque de SKU por prédio. Filtros:
+        - `codigo_sku`: código do SKU
 components:
   securitySchemes:
     Usuário/Senha:
