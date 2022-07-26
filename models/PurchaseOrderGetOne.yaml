@@ -1,0 +1,98 @@
+type: object
+properties:
+  itens:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        numero_oc:
+          type: integer
+        ordem:
+          type: integer
+        codigo_sku:
+          type: integer
+        ucom:
+          type: string
+        prod_xprod:
+          type: string
+        quantidade:
+          type: integer
+        valor_unit:
+          type: number
+        total_item:
+          type: number
+        aliq_icms:
+          type: integer
+        observ_item:
+          type: string
+  pagtos:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        numero_oc:
+          type: integer
+        data_vencto:
+          type: string
+        numero_parcela:
+          type: integer
+        id_despesa:
+          type: integer
+        codigo_conta:
+          type: integer
+        desc_conta:
+          type: string
+        id_centro:
+          type: integer
+        codigo_centro:
+          type: integer
+        desc_centro:
+          type: string
+        id_forma:
+          type: integer
+        sigla_forma:
+          type: string
+        desc_forma:
+          type: string
+        valor_parcela:
+          type: number
+        historico:
+          type: string
+        tpag:
+          type: integer
+x-examples:
+  example-1:
+    itens:
+      - id: 272201
+        numero_oc: 16731
+        ordem: 5
+        codigo_sku: 93436
+        ucom: UN
+        prod_xprod: CABECA DE IMPRESSAO (CARTUCHO HP 664) F6V29AB ORIG PRETO 2ML
+        quantidade: 120
+        valor_unit: 36.78
+        total_item: 4413.6
+        aliq_icms: 7
+        observ_item: AVULSO
+    pagtos:
+      - id: 28550
+        numero_oc: 16731
+        data_vencto: '2022-09-08'
+        numero_parcela: 5121196
+        id_despesa: 12
+        codigo_conta: 2
+        desc_conta: FORNECEDOR
+        id_centro: 4
+        codigo_centro: 5
+        desc_centro: CDP
+        id_forma: 18
+        sigla_forma: DOC
+        desc_forma: DOC BANC.
+        valor_parcela: 10380.83
+        historico: CFOP 5102 (ALLIED)
+        tpag: 15
+description: Ordem de Compra (arrays)
