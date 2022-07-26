@@ -1,0 +1,7 @@
+title: PurchaseOrderGetOne
+x-stoplight:
+  id: 9fghoy3nimhjr
+allOf:
+  - $ref: ./PurchaseOrder.yaml
+  - $ref: ./PurchaseOrderExtras.yaml
+description: Ordem de Compra (OC) completa
