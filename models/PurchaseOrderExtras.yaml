@@ -1,4 +1,6 @@
 type: object
+x-stoplight:
+  id: 85b6b76d6ed73
 properties:
   itens:
     type: array
