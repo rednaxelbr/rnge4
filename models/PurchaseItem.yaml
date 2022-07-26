@@ -49,22 +49,29 @@ x-examples:
 properties:
   id:
     type: integer
+    readOnly: true
   seq_item:
     type: integer
+    readOnly: true
   cprod:
     type: string
+    readOnly: true
   ucom:
     type: string
   ucom_nota:
     type: string
+    readOnly: true
   xprod:
     type: string
   xprod_nota:
     type: string
+    readOnly: true
   qcom:
     type: integer
+    readOnly: true
   vuncom:
     type: number
+    readOnly: true
   codigo_sku:
     type: integer
   cod_produto:
@@ -75,14 +82,17 @@ properties:
     type: number
   vprod:
     type: number
+    readOnly: true
   preco_venda:
     type: number
   custo_liquido:
     type: number
   id_compra:
     type: integer
+    readOnly: true
   id_grade:
     type: integer
+    readOnly: true
   impostos:
     type: object
     description: Campos que vieram da NFe
@@ -105,6 +115,8 @@ properties:
           origem:
             type: integer
           cst:
+            type: integer
+          csosn:
             type: integer
           cst_pis:
             type: string
@@ -132,11 +144,14 @@ properties:
             type: number
           cliq_unit:
             type: number
+          predbcst:
+            type: number
           picmsst:
             type: number
           vicmsst:
             type: number
           vunit_sku:
             type: number
+    readOnly: true
   id_fornec:
     type: integer
