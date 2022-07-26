@@ -1,42 +1,4 @@
 type: object
-properties:
-  id:
-    type: integer
-  id_fornec:
-    type: integer
-  cnpj_fornec:
-    type: integer
-  id_pessoa:
-    type: integer
-  nome_fornec:
-    type: string
-  nome_fantasia:
-    type: string
-  dthr_criacao:
-    type: string
-  valor_total:
-    type: number
-  fat_previsto:
-    type: string
-  codigo_legado:
-    type: string
-  id_empresa:
-    type: integer
-  sigla_loja:
-    type: string
-  nome_usuario:
-    type: string
-  status:
-    type: integer
-  sigla_status:
-    type: string
-  mod_frete:
-    type: string
-  observacoes_oc:
-    type: string
-  info_ordcpa:
-    type: object
-    properties: {}
 x-examples:
   example-1:
     id: 16625
@@ -59,3 +21,42 @@ x-examples:
       PRAZO: 35/45/55 DD
     info_ordcpa: {}
 description: Ordem de Compra (OC)
+properties:
+  id:
+    type: integer
+  id_fornec:
+    type: integer
+  cnpj_fornec:
+    type: integer
+  id_pessoa:
+    type: integer
+  nome_fornec:
+    type: string
+  nome_fantasia:
+    type: string
+  dthr_criacao:
+    type: string
+  valor_total:
+    type: number
+  fat_previsto:
+    type: string
+    description: Data prevista para o faturamento
+  codigo_legado:
+    type: string
+    description: Código da OC no sistema legado/externo
+  id_empresa:
+    type: integer
+  sigla_loja:
+    type: string
+  nome_usuario:
+    type: string
+  status:
+    type: integer
+  sigla_status:
+    type: string
+  mod_frete:
+    type: string
+  observacoes_oc:
+    type: string
+  info_ordcpa:
+    type: object

@@ -2800,7 +2800,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Ordem-Compra'
+                  $ref: ../models/PurchaseOrder.yaml
       operationId: get-purchaseorders
       description: Listagem de OC
     post:
@@ -2814,7 +2814,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Ordem-Compra'
+              $ref: ../models/PurchaseOrderGetOne.yaml
       tags:
         - Ordens de Compra (purchaseorders)
   /productimages:
@@ -2963,7 +2963,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ordem-Compra'
+                $ref: ../models/PurchaseOrderGetOne.yaml
       operationId: get-purchaseorders-id
       description: Consulta uma Ordem de Compra
     put:
@@ -2978,7 +2978,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Ordem-Compra'
+              $ref: ../models/PurchaseOrderGetOne.yaml
       description: Atualiza uma ordem compra
     delete:
       summary: Deleta uma Ordem de Compra
@@ -5674,105 +5674,6 @@ components:
         - id
         - codigo_agrup
         - desc_agrupamento
-    Ordem-Compra:
-      type: object
-      properties:
-        id:
-          type: integer
-        id_fornec:
-          type: integer
-        cnpj_fornec:
-          type: integer
-        id_pessoa:
-          type: integer
-        nome_fornec:
-          type: string
-        nome_fantasia:
-          type: string
-        dthr_criacao:
-          type: string
-        valor_total:
-          type: number
-        codigo_legado:
-          type: string
-        id_empresa:
-          type: integer
-        sigla_loja:
-          type: string
-        nome_usuario:
-          type: string
-        status:
-          type: integer
-        sigla_status:
-          type: string
-        itens:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              numero_oc:
-                type: integer
-              ordem:
-                type: integer
-              codigo_sku:
-                type: integer
-              ucom:
-                type: string
-              prod_xprod:
-                type: string
-              quantidade:
-                type: integer
-              valor_unit:
-                type: number
-              total_item:
-                type: number
-              observ_item:
-                type: string
-              aliq_icms:
-                type: integer
-        pagtos:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              numero_oc:
-                type: integer
-              data_vencto:
-                type: string
-              numero_parcela:
-                type: integer
-              id_despesa:
-                type: integer
-              codigo_conta:
-                type: integer
-              desc_conta:
-                type: string
-              id_centro:
-                type: integer
-              codigo_centro:
-                type: integer
-              desc_centro:
-                type: string
-              id_forma:
-                type: integer
-              sigla_forma:
-                type: string
-              desc_forma:
-                type: string
-              valor_parcela:
-                type: number
-              historico:
-                type: string
-        mod_frete:
-          type: string
-        info_ordcpa:
-          type: object
-          properties: {}
-      x-examples: {}
     Pagamentos:
       title: Pagamentos
       type: object
