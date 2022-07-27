@@ -45,6 +45,8 @@ tags:
     description: Equipamento PDV
   - name: Pedidos (orders)
     description: Gestão de Pedidos
+  - name: Pedidos por SKU (orderchecks)
+    description: Separação/Conferência de Pedidos
   - name: Pessoas (customercategories)
     description: Categorias de Pessoas
   - name: Pessoas (customers)
@@ -3331,6 +3333,24 @@ paths:
           application/json:
             schema:
               $ref: ../models/PurchaseItem.yaml
+  /ordercheckitems:
+    get:
+      summary: Lista de SKU separados/conferidos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/OrderCheckItem.yaml
+      operationId: get-ordercheckitems
+      description: Lista de SKU de um pedido para separação. O filtro `numero_pedido` é obrigatório.
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+      tags:
+        - Pedidos por SKU (orderchecks)
 components:
   securitySchemes:
     Usuário/Senha:
