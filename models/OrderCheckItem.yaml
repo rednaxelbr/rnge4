@@ -14,6 +14,7 @@ x-examples:
       - vol: 3
     conferido: true
     stat: 699
+description: 'Item para separação e conferência, agrupado por SKU'
 properties:
   id:
     type: integer
@@ -27,12 +28,14 @@ properties:
     type: string
   quant_pedido:
     type: integer
+    description: 'Quantidade do pedido, acumulada por SKU'
   quant_separada:
     type: integer
   quant_conferida:
     type: integer
   volumes:
     type: array
+    description: Lista de volumes onde a conferência colocou os produtos
     items:
       type: object
       properties:
@@ -40,4 +43,10 @@ properties:
           type: integer
   conferido:
     type: boolean
-description: Item separado/conferido
+required:
+  - id
+  - ordem
+  - ucom
+  - cod_produto
+  - prod_xprod
+  - quant_pedido
