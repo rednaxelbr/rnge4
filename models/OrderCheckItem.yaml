@@ -1,0 +1,43 @@
+type: object
+x-examples:
+  example-1:
+    id: 4390655
+    ordem: 39
+    ucom: UN
+    cod_produto: 118874
+    prod_xprod: TINTA GUACHE 250 ML ASUPER RADEX PRETO
+    quant_pedido: 15
+    quant_separada: 15
+    quant_conferida: 15
+    volumes:
+      - vol: 2
+      - vol: 3
+    conferido: true
+    stat: 699
+properties:
+  id:
+    type: integer
+  ordem:
+    type: integer
+  ucom:
+    type: string
+  cod_produto:
+    type: integer
+  prod_xprod:
+    type: string
+  quant_pedido:
+    type: integer
+  quant_separada:
+    type: integer
+  quant_conferida:
+    type: integer
+  volumes:
+    type: array
+    items:
+      type: object
+      properties:
+        vol:
+          type: integer
+  conferido:
+    type: boolean
+description: Item separado/conferido
