@@ -11,6 +11,7 @@ x-examples:
     config_tpent:
       tempo_manuseio: 0
       retirada: false
+description: 'Meio de Entrega '
 properties:
   id:
     type: integer
@@ -25,8 +26,6 @@ properties:
     description: ID cadastrado na /carriers
   nome_entregador:
     type: string
-  ativo:
-    type: boolean
   config_tpent:
     type: object
     properties:
@@ -35,7 +34,10 @@ properties:
         description: Em minutos
       retirada:
         type: boolean
+  padrao:
+    type: boolean
+  ativo:
+    type: boolean
 required:
   - desc_tipo_ent
   - id_entregador
-description: 'Meio de Entrega '
