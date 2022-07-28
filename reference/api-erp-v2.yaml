@@ -3574,6 +3574,8 @@ components:
               type: number
             cmp_principal:
               type: number
+            '':
+              type: string
         fornecedores:
           type: array
           uniqueItems: true
@@ -3688,10 +3690,16 @@ components:
                 type: integer
               quantidade:
                 type: number
+        tipo_item:
+          type: integer
+          description: 'SPED - Bloco K, Registro 0200: Tipo do item'
+          minimum: 0
+          maximum: 99
       required:
         - id
         - ucom
         - prod_xprod
+        - tipo_item
     Embalagens:
       description: ''
       type: object
