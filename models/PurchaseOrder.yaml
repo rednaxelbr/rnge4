@@ -60,3 +60,15 @@ properties:
     type: string
   info_ordcpa:
     type: object
+  valor_frete:
+    type: number
+  id_entregador:
+    type: integer
+    description: Transportadora
+  nome_entregador:
+    type: string
+  id_rastreamento:
+    type: integer
+  perc_atend:
+    type: number
+    description: '% Atendimento'
