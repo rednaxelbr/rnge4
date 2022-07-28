@@ -68,6 +68,7 @@ properties:
     readOnly: true
   qcom:
     type: integer
+    description: Quantidade da NF
     readOnly: true
   vuncom:
     type: number
@@ -77,7 +78,8 @@ properties:
   cod_produto:
     type: integer
   quant_sku:
-    type: integer
+    type: number
+    description: Quantidade do SKU após o mapeamento
   vunit_sku:
     type: number
   vprod:
@@ -155,3 +157,6 @@ properties:
     readOnly: true
   id_fornec:
     type: integer
+  quant_conf_rn:
+    type: number
+    description: Quantidade (do SKU) conferida na RN
