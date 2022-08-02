@@ -2954,7 +2954,7 @@ paths:
         name: id
         in: path
         required: true
-        description: id da RN
+        description: Número da OC
     get:
       summary: Consulta uma Ordem de Compra
       tags:
