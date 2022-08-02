@@ -1,6 +1,43 @@
 type: object
 x-stoplight:
   id: 85b6b76d6ed73
+x-examples:
+  example-1:
+    itens:
+      - id: 272201
+        numero_oc: 16731
+        ordem: 5
+        codigo_sku: 93436
+        ucom: UN
+        prod_xprod: CABECA DE IMPRESSAO (CARTUCHO HP 664) F6V29AB ORIG PRETO 2ML
+        quantidade: 120
+        valor_unit: 36.78
+        total_item: 4413.6
+        aliq_icms: 7
+        observ_item: AVULSO
+        notas_atend:
+          - numero: 0
+            data_emissao: '2022-07-22'
+            quant_sku: 0
+            id_compra: 0
+    pagtos:
+      - id: 28550
+        numero_oc: 16731
+        data_vencto: '2022-09-08'
+        numero_parcela: 5121196
+        id_despesa: 12
+        codigo_conta: 2
+        desc_conta: FORNECEDOR
+        id_centro: 4
+        codigo_centro: 5
+        desc_centro: CDP
+        id_forma: 18
+        sigla_forma: DOC
+        desc_forma: DOC BANC.
+        valor_parcela: 10380.83
+        historico: CFOP 5102 (ALLIED)
+        tpag: 15
+description: Ordem de Compra (arrays)
 properties:
   itens:
     type: array
@@ -29,6 +66,22 @@ properties:
           type: integer
         observ_item:
           type: string
+        notas_atend:
+          type: array
+          description: NF que atende(m) esta OC
+          items:
+            type: object
+            properties:
+              id_compra:
+                type: integer
+                description: Purchase ID
+              numero:
+                type: integer
+                description: Número da NF
+              data_emissao:
+                type: string
+              quant_sku:
+                type: number
   pagtos:
     type: array
     items:
@@ -66,35 +119,3 @@ properties:
           type: string
         tpag:
           type: integer
-x-examples:
-  example-1:
-    itens:
-      - id: 272201
-        numero_oc: 16731
-        ordem: 5
-        codigo_sku: 93436
-        ucom: UN
-        prod_xprod: CABECA DE IMPRESSAO (CARTUCHO HP 664) F6V29AB ORIG PRETO 2ML
-        quantidade: 120
-        valor_unit: 36.78
-        total_item: 4413.6
-        aliq_icms: 7
-        observ_item: AVULSO
-    pagtos:
-      - id: 28550
-        numero_oc: 16731
-        data_vencto: '2022-09-08'
-        numero_parcela: 5121196
-        id_despesa: 12
-        codigo_conta: 2
-        desc_conta: FORNECEDOR
-        id_centro: 4
-        codigo_centro: 5
-        desc_centro: CDP
-        id_forma: 18
-        sigla_forma: DOC
-        desc_forma: DOC BANC.
-        valor_parcela: 10380.83
-        historico: CFOP 5102 (ALLIED)
-        tpag: 15
-description: Ordem de Compra (arrays)
