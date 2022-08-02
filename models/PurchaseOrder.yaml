@@ -56,10 +56,6 @@ properties:
     type: string
   mod_frete:
     type: string
-  observacoes_oc:
-    type: string
-  info_ordcpa:
-    type: object
   valor_frete:
     type: number
   id_entregador:
@@ -67,8 +63,22 @@ properties:
     description: Transportadora
   nome_entregador:
     type: string
+  observacoes_oc:
+    type: string
+  info_ordcpa:
+    type: object
+    properties:
+      prazo:
+        type: string
+        description: No formato 30/60/90
+        writeOnly: true
   id_rastreamento:
     type: integer
+    description: Usado pelo GET /timelines
+  atualizado_erp:
+    type: boolean
+    description: Marca a OC como atualizada (sai do filtro pendentes)
+    writeOnly: true
   perc_atend:
     type: number
     description: '% Atendimento'
