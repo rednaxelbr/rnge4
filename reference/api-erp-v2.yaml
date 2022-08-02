@@ -2959,6 +2959,8 @@ paths:
       summary: Consulta uma Ordem de Compra
       tags:
         - Ordens de Compra (purchaseorders)
+      operationId: get-purchaseorders-id
+      description: Consulta uma Ordem de Compra
       responses:
         '200':
           description: OK
@@ -2966,8 +2968,6 @@ paths:
             application/json:
               schema:
                 $ref: ../models/PurchaseOrderGetOne.yaml
-      operationId: get-purchaseorders-id
-      description: Consulta uma Ordem de Compra
     put:
       summary: Atualiza uma Ordem de Compra
       tags:
