@@ -1,0 +1,47 @@
+type: object
+x-examples:
+  example-1:
+    id: 27
+    abrev_servico: RNGE4 Std
+    ucom: LIC
+    discriminacao: Serviços prestados
+    id_trib: 14
+    desc_tributacao: Customização de programas
+    cnae: 6202300
+    cidade: Porto Alegre
+    uf: RS
+    codigo_trib: '10200200'
+    valor_unitario: 99.9
+properties:
+  id:
+    type: integer
+  abrev_servico:
+    type: string
+  ucom:
+    type: string
+  discriminacao:
+    type: string
+  id_trib:
+    type: integer
+    description: Classe de Tributação do Serviço
+  desc_tributacao:
+    type: string
+  cnae:
+    type: integer
+    description: CNAE (Código Nacional de Atividade Econômica)
+  cidade:
+    type: string
+  uf:
+    type: string
+  codigo_trib:
+    type: string
+  valor_unitario:
+    type: number
+required:
+  - id
+  - abrev_servico
+  - ucom
+  - discriminacao
+  - id_trib
+description: Serviços
+title: ''
