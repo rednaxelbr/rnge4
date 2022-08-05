@@ -4952,7 +4952,7 @@ components:
         observacoes:
           type: string
         itens:
-          $ref: '#/components/schemas/Pedido-Item'
+          $ref: ../models/OrderItem.yaml
         flags:
           type: object
           description: Quando usa o mod_mesclar ele mescla com os flags já existentes no pedido
@@ -5486,71 +5486,6 @@ components:
         - id_pessoa
         - num_loja
         - flags
-    Pedido-Item:
-      description: Item de um pedido
-      type: object
-      x-examples:
-        example-1:
-          id: 6597129
-          numero_pedido: 778495
-          seq: 50
-          idprod: 125896
-          ucom: UN
-          xprod: CADERNO COLEGIAL CD 01X1 80FL 177MMX240MM FORONI COLUMBIA
-          qcom: 3
-          vuncom: 0
-          vprod: 0
-      properties:
-        id:
-          type: integer
-          description: ID do item (para edição)
-        numero_pedido:
-          type: integer
-          description: Número do pedido
-        seq:
-          description: Sequência do item no pedido
-          type: integer
-        idprod:
-          description: Código do produto
-          type: integer
-        ucom:
-          type: string
-          description: Unidade de comercialização
-        xprod:
-          type: string
-          description: Descrição do item
-        qcom:
-          type: number
-          description: Quantidade
-        vuncom:
-          type: number
-          description: Valor unitário
-        vdesc:
-          type: number
-        vprod:
-          type: number
-          description: Total do item
-        zerado:
-          type: boolean
-          description: Usado na devolução
-        motivo:
-          type: number
-        plu:
-          type: integer
-        info_adic:
-          type: object
-          properties:
-            cfop_item:
-              type: integer
-            cbenef:
-              type: string
-        imposto:
-          type: object
-        zerar_desconto:
-          type: boolean
-      required:
-        - numero_pedido
-        - idprod
     Classe-Fiscal:
       description: |
         Impostos por produto (ICMS, IPI, PIS e COFINS)
