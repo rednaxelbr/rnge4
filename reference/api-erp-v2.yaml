@@ -2522,7 +2522,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Pedido-Item'
+                  $ref: ../models/OrderItem.yaml
       operationId: get-orderitems
       description: Filtro "numero_pedido" é obrigatório.
       parameters:
@@ -2545,7 +2545,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pedido-Item'
+              $ref: ../models/OrderItem.yaml
       tags:
         - Pedidos (orders)
   '/orderitems/{id}':
@@ -2566,7 +2566,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pedido-Item'
+                $ref: ../models/OrderItem.yaml
       operationId: get-orderitems-id
       description: Consulta (para edição) um item de um pedido
     put:
@@ -2580,7 +2580,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pedido-Item'
+              $ref: ../models/OrderItem.yaml
       tags:
         - Pedidos (orders)
     delete:

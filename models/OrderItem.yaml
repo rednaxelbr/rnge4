@@ -1,0 +1,84 @@
+title: OrderItem
+x-stoplight:
+  id: vmkdyhmnbztlu
+type: object
+description: Item de um pedido
+properties:
+  id:
+    type: integer
+  numero_pedido:
+    type: integer
+  seq:
+    type: integer
+    description: Sequência do item no pedido
+  idprod:
+    type: integer
+    description: Código do Produto (ID da skuarticles)
+  ucom:
+    type: string
+    description: Unidade
+    readOnly: true
+  xprod:
+    type: string
+    description: Descrição do produto
+    readOnly: true
+  qcom:
+    type: number
+    description: Quantidade
+  vuncom:
+    type: number
+    description: Preço Unitário
+  vdesc:
+    type: number
+    description: Valor do desconto (no total do item)
+  str_desc:
+    type: string
+    description: Desconto em $ ou % (com sufixo % será calculado em percentual)
+    writeOnly: true
+  vprod:
+    type: number
+    description: Total do item
+  disp_devol:
+    type: number
+    description: Disponível para devolução (pedidos DEVCLI)
+  zerado:
+    type: boolean
+    description: Usado pela devolução (pedidos DEVCLI)
+  motivo:
+    type: integer
+    description: Motivo da devolução (pedidos DEVCLI)
+  plu:
+    type: integer
+    description: Código da Tabela de Preços (Price Lookup)
+  info_adic:
+    type: object
+    description: Informação Adicional do item
+    properties:
+      orig:
+        type: integer
+      picms_item:
+        type: number
+        description: '% de ICMS'
+      valor_comissao:
+        type: number
+      cfop_item:
+        type: integer
+      cbenef:
+        type: string
+  imposto:
+    type: object
+  zerar_desconto:
+    type: boolean
+    description: Zera o desconto
+  cod_servico:
+    type: integer
+    description: 'Código do Serviço (ID de services), para NFSe'
+  desc_tipocom:
+    type: string
+    description: Tipo de Comissão
+  quant_conf_rn:
+    type: number
+    description: Quantidade conferida na RN
+required:
+  - numero_pedido
+  - idprod
