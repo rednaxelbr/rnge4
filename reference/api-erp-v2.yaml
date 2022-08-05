@@ -63,6 +63,8 @@ tags:
     description: Cadastro de SKUs
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
+  - name: Serviços (services)
+    description: Cadastro de Serviços para NFSe
   - name: Transportadoras (carriers)
     description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
@@ -3351,6 +3353,40 @@ paths:
         - $ref: '#/components/parameters/Filter'
       tags:
         - Pedidos por SKU (orderchecks)
+  /services:
+    get:
+      summary: Listagem de serviços
+      tags:
+        - Serviços (services)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Services.yaml
+      operationId: get-services
+      description: Lista de serviços ativos
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria um novo serviço
+      tags:
+        - Serviços (services)
+      responses:
+        '200':
+          description: OK
+      operationId: post-services
+      description: Cria um novo serviço
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Services.yaml
 components:
   securitySchemes:
     Usuário/Senha:
