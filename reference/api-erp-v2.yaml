@@ -1493,7 +1493,27 @@ paths:
                   type: string
             examples: {}
         description: ''
-      description: Lista de produtos
+      description: |
+        Lista de produtos
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | Código do Produto (SKU)| 
+        | ids | []int64 | Array de códigos de Produtos (SKU)| 
+        | inativos | bool | Padrão é filtrar somente os ativos | 
+        | cod_produto | int64 | Código de produto podendo ser embalagem| 
+        | com_variacoes | bool | Somente os produtos onde há variações (cont_skus > 1) | 
+        | id_categoria | int64 | Id da categoria do produto | 
+        | codigo_descricao | string | Código de barras, Descrição ou Código do produto | 
+        | ncm_vencido | bool | Produtos onde o fim_vigencia < Data Atual) | 
+        | id_grade | int64 | ID da grade do Produto | 
+        | idpessoa_fantasia_cpf_cnpj | string | Filtro pelo código, nome ou CNPJ do fornecedor | 
+        | q | string | Descrição do produto | 
+        | numero_pedido | int64 | Produtos que estão nesse pedido | 
+        | expo_sem_arroba | bool |  Filtra os produtos que não possuem endereço no A@ | 
+        | id_empresa | int |  Ao filtrar o expo_sem_arroba é necessário informar o id_empresa | 
       tags:
         - Produtos (products)
   /skustocks:
