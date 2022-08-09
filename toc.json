@@ -2,7 +2,12 @@
   "items": [
     {
       "type": "divider",
-      "title": "integracao"
+      "title": "integração"
+    },
+    {
+      "type": "item",
+      "title": "Integração com API externa",
+      "uri": "docs/integracao/Integracao-com-API-externa.md"
     },
     {
       "type": "item",
