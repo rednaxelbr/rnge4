@@ -38,7 +38,9 @@ tags: [Integração]
 Cada recurso de cada integração possui um ID. Por exemplo, o recurso `Requisicao` da CIGAM tem o ID 174. Para enviar o que estiver na fila de exportação deve-se usar o comando (devidamente autenticado com o token):
 
 ```bash
-PUT /v2/integrationexports/174 -d '{"id":174}'
+curl -g -s -X PUT 'https://homolog.rnge.com.br:8091/v2/integrationexports/174'\
+  -d '{"id":174}'\
+  -H 'Authorization: Bearer {token}'
 ```
 
 ## Webhooks
@@ -46,7 +48,7 @@ PUT /v2/integrationexports/174 -d '{"id":174}'
 Alguns fornecedores chamam webhooks quando alguns eventos ocorrem. Por exemplo, o Mercado Livre chama o seguinte webhook quando uma encomenda é enviada:
 
 ```bash
-POST /v2/webhooks/mercadolivre
+curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/webhooks/mercadolivre'
 ```
 
 
@@ -55,7 +57,9 @@ POST /v2/webhooks/mercadolivre
 Em alguns casos existem comandos "avulsos" que podem ser chamados conforme a necessidade. Por exemplo, para verificar se há novas assinaturas recorrentes do PagSeguro deve-se usar o comando (devidamente autenticado com o token):
 
 ```bash
-POST /v2/integrationwebhooks/pagseguro/verificacao
+curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/integrationwebhooks/pagseguro/verificacao'\
+  -d '{"dias":30}'\
+  -H 'Authorization: Bearer {token}'
 ```
 
 
