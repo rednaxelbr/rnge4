@@ -43,14 +43,6 @@ curl -g -s -X PUT 'https://homolog.rnge.com.br:8091/v2/integrationexports/174'\
   -H 'Authorization: Bearer {token}'
 ```
 
-## Webhooks
-
-Alguns fornecedores chamam webhooks quando alguns eventos ocorrem. Por exemplo, o Mercado Livre chama o seguinte webhook quando uma encomenda é enviada:
-
-```bash
-curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/webhooks/mercadolivre'
-```
-
 
 ## Comandos
 
@@ -60,6 +52,18 @@ Em alguns casos existem comandos "avulsos" que podem ser chamados conforme a nec
 curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/integrationwebhooks/pagseguro/verificacao'\
   -d '{"dias":30}'\
   -H 'Authorization: Bearer {token}'
+
+curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/integrationwebhooks/cigam/requisicao'\
+  -d '{"ID_ACAO":1}'\
+  -H 'Authorization: Bearer {token}'
+
 ```
 
 
+## Webhooks
+
+Alguns fornecedores chamam webhooks quando alguns eventos ocorrem. Por exemplo, o Mercado Livre chama o seguinte webhook quando uma encomenda é enviada:
+
+```bash
+curl -g -s -X POST 'https://homolog.rnge.com.br:8091/v2/webhooks/mercadolivre'
+```
