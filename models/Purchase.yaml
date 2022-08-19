@@ -30,21 +30,76 @@ properties:
     type: integer
   status:
     type: integer
+  sigla_status:
+    type: string
   data_emissao:
+    type: string
+  data_agendamento:
     type: string
   nome_emitente:
     type: string
-  dest:
-    type: string
   total_vnf:
     type: integer
+  perc_map:
+    type: number
+    description: Percentual de mapeamento
+  perc_pago:
+    type: number
+    description: Percentual de quitação (Contas a Pagar)
+  impostos_ok:
+    type: boolean
+    readOnly: true
+  seta_impostos_ok:
+    type: string
+    enum:
+      - 'true'
+      - 'false'
+    writeOnly: true
+  precos_ok:
+    type: boolean
+    readOnly: true
+  seta_precos_ok:
+    type: string
+    enum:
+      - 'true'
+      - 'false'
+    writeOnly: true
   uf_emit:
     type: string
-  milhar_cfop:
+  valores_nulos:
     type: integer
-  id_empresa:
+    description: Quantidade de SKU dessa NF que estão sem preço de venda
+  milhar_cfop:
     type: integer
   cnpj_fornec:
     type: integer
+  pendente_erp:
+    type: boolean
+    readOnly: true
+  atualizado_erp:
+    type: boolean
+    description: Marca o pendente_erp como false
+    writeOnly: true
+  vigencia_custo:
+    type: string
+  skus_ns:
+    type: integer
+    description: Contador de SKU desta NF que requerem leitura de número de série
+  ns_lidos:
+    type: integer
+    description: Contador de números de série lidos
+  id_empresa:
+    type: integer
+    description: ID da empresa destino
+  dest:
+    type: string
+    description: Sigla da empresa destino
   id_rastreamento:
     type: integer
+    description: Usado para exibir o "timelines" de uma NF
+  ocs_vinculadas:
+    type: string
+    description: CSV com os números das OC vinculadas
+  id_fornec:
+    type: integer
+    description: ID da /suppliers (Fornecedores)
