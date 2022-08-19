@@ -75,15 +75,23 @@ properties:
     readOnly: true
   codigo_sku:
     type: integer
+    description: Código do SKU mapeado neste item (somente leitura)
+    readOnly: true
   cod_produto:
     type: integer
+    description: Código do produto a ser mapeado neste item (será convertido em SKU após ajuste da quantidade)
+    writeOnly: true
   quant_sku:
     type: number
     description: Quantidade do SKU após o mapeamento
+    readOnly: true
   vunit_sku:
     type: number
+    description: Valor unitário do SKU
+    readOnly: true
   vprod:
     type: number
+    description: Total do item
     readOnly: true
   preco_venda:
     type: number
@@ -155,7 +163,24 @@ properties:
           vunit_sku:
             type: number
     readOnly: true
+  ocs_atendidas:
+    type: array
+    items:
+      type: object
+      properties:
+        numero:
+          type: integer
+        data_emissao:
+          type: string
+        quant_sku:
+          type: number
+        id_compra:
+          type: integer
+        numero_oc:
+          type: integer
   id_fornec:
+    type: integer
+  cfop:
     type: integer
   quant_conf_rn:
     type: number
