@@ -61,8 +61,10 @@ properties:
     type: integer
   id_pessoa:
     type: integer
+    description: ID da Pessoa (cliente)
   cpf_cnpj:
     type: integer
+    description: CPF/CNPJ do cliente do pedido (ver "dest")
   data_emissao:
     type: string
   lista_cfop:
@@ -240,3 +242,7 @@ properties:
     type: string
   nfse_substituida:
     type: string
+  id_distrib:
+    type: integer
+    description: ID da Distribuição
+    readOnly: true
