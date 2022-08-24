@@ -1,0 +1,37 @@
+type: object
+properties:
+  pjuridica:
+    type: boolean
+    description: 'Se TRUE, usa "cnpj", senão usa "cpf"'
+  cnpj:
+    type: string
+  cpf:
+    type: string
+  nome_razao:
+    type: string
+  nome_fantasia:
+    type: string
+  endereco:
+    $ref: ./Endereco.yaml
+  ind_iedest:
+    type: integer
+    description: Indicador de Inscrição Estadual
+  iestadual:
+    type: string
+    description: Inscrição Estadual
+  telefone:
+    type: string
+    description: Telefone com DDD
+  email:
+    type: string
+    description: Email principal
+  telefone_fixo:
+    type: string
+    description: Ver "telefone"
+    deprecated: true
+  single_email:
+    type: string
+    description: Ver "email"
+    deprecated: true
+description: Emitente/Destinatário
+title: EmitDest

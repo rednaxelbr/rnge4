@@ -1,0 +1,40 @@
+type: object
+x-examples:
+  example-1:
+    logradouro: ''
+    numero: 0
+    complemento: ''
+    bairro: ''
+    id_municipio: 0
+    nome_municipio: ''
+    cep: ''
+    uf_sigla: ''
+description: Endereço do Emitente/Destinatário
+title: EnderecoEmitDest
+properties:
+  logradouro:
+    type: string
+    description: 'Ex: Rua Coronel Vicente'
+    readOnly: true
+  numero:
+    type: integer
+    readOnly: true
+  complemento:
+    type: string
+    readOnly: true
+  bairro:
+    type: string
+    readOnly: true
+  cep:
+    type: string
+    readOnly: true
+  id_municipio:
+    type: integer
+    description: Código IBGE do Município (cMun)
+    readOnly: true
+  nome_municipio:
+    type: string
+    readOnly: true
+  uf_sigla:
+    type: string
+    readOnly: true
