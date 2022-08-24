@@ -72,67 +72,9 @@ properties:
   id_vendedor:
     type: integer
   emit:
-    type: object
-    properties:
-      cnpj:
-        type: string
-      cpf:
-        type: string
-      nome_razao:
-        type: string
-      nome_fantasia:
-        type: string
-      iestadual:
-        type: string
-      telefone_fixo:
-        type: string
-      single_email:
-        type: string
-      telefone:
-        type: string
-      email:
-        type: string
-      danfe:
-        type: string
-      ind_iedest:
-        type: integer
-      cnae:
-        type: integer
-      ender_sede:
-        type: string
-      pjuridica:
-        type: boolean
+    $ref: ./EmitDest.yaml
   dest:
-    type: object
-    properties:
-      cnpj:
-        type: string
-      cpf:
-        type: string
-      nome_razao:
-        type: string
-      nome_fantasia:
-        type: string
-      iestadual:
-        type: string
-      telefone_fixo:
-        type: string
-      single_email:
-        type: string
-      telefone:
-        type: string
-      email:
-        type: string
-      danfe:
-        type: string
-      ind_iedest:
-        type: integer
-      cnae:
-        type: integer
-      ender_sede:
-        type: string
-      pjuridica:
-        type: boolean
+    $ref: ./EmitDest.yaml
   itens:
     type: 'null'
   pagtos:
