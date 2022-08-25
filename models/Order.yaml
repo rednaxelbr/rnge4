@@ -214,9 +214,16 @@ properties:
   xmotivo:
     type: string
   categorias:
-    type: 'null'
+    type: array
+    items:
+      $ref: ./DistribCateg.yaml
   cupons_desconto:
-    type: 'null'
+    type: array
+    items:
+      type: object
+      properties:
+        codigo_cupom:
+          type: integer
   separador:
     type: string
   conferente:

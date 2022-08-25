@@ -1,0 +1,10 @@
+title: DistribCateg
+x-stoplight:
+  id: bdvy15qvpg3u1
+type: object
+properties:
+  id_categ:
+    type: integer
+  desc_categ:
+    type: string
+description: Categorias dos itens de um(a) pedido/distribuição
