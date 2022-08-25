@@ -84,7 +84,9 @@ properties:
       $ref: ./OrderItem.yaml
     writeOnly: true
   pagtos:
-    type: 'null'
+    type: array
+    items:
+      $ref: ./OrderPayment.yaml
   nfref:
     type: 'null'
   pedref:
