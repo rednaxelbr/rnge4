@@ -88,11 +88,38 @@ properties:
     items:
       $ref: ./OrderPayment.yaml
   nfref:
-    type: 'null'
+    type: array
+    description: NF referenciadas
+    items:
+      type: object
+      properties:
+        data_emissao:
+          type: string
+        tipo_oper:
+          type: string
+        numero_pedido:
+          type: integer
+        chnfe:
+          type: string
+        total_vnf:
+          type: number
   pedref:
-    type: 'null'
+    type: array
+    description: Pedidos referenciados
+    items:
+      type: object
+      properties:
+        numero_pedido:
+          type: integer
   comref:
-    type: 'null'
+    type: array
+    description: Compras referenciadas
+    items:
+      type: object
+      properties:
+        purchase_id:
+          type: string
+          description: ID Compra
   desconto:
     type: number
   frete:
