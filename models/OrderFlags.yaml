@@ -1,0 +1,51 @@
+type: object
+description: Flags do pedido
+properties:
+  nao_separar:
+    type: boolean
+  requer_separacao:
+    type: boolean
+  requer_liberacao:
+    type: boolean
+  requer_conferencia:
+    type: boolean
+  embalagem_presente:
+    type: boolean
+  incide_ipi:
+    type: boolean
+  cliente_retira:
+    type: boolean
+  urgente:
+    type: boolean
+  especial:
+    type: boolean
+  ignorar_estoque:
+    type: boolean
+  emissao_bloqueada:
+    type: boolean
+  usar_utrib:
+    type: boolean
+  status_financ:
+    type: integer
+  doca_expedicao:
+    type: integer
+  limite_volume:
+    type: integer
+  data_emissao:
+    type: string
+  versao_calculo:
+    type: integer
+  cfop_manual:
+    type: integer
+  nat_oper:
+    type: string
+  motivo:
+    type: integer
+  troco_para:
+    type: integer
+  id_cartaz:
+    type: integer
+  limpar_flags:
+    type: string
+  usuario_legado:
+    type: string
