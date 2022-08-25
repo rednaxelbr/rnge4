@@ -391,22 +391,16 @@ paths:
       tags:
         - Pedidos (orders)
       summary: Listando pedidos
-      description: Lista de pedidos
+      description: |-
+        Lista de pedidos. Filtros:
+        - `ids_empresas`: integer[]
+        - `id_destino`: integer
+        - `meus_pedidos`: boolean
+        - `dias`: integer
       parameters:
-        - name: filter
-          in: query
-          description: |
-            - ids_empresas: `integer[]`
-            - id_destino: `integer`
-            - meus_pedidos: `boolean`
-            - dias: `integer`
-          schema:
-            type: object
-        - name: range
-          in: query
-          description: Paginação
-          schema:
-            type: array
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
       operationId: get-orders
       responses:
         '200':
