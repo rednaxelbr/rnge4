@@ -1,0 +1,59 @@
+type: object
+properties:
+  id_entregador:
+    type: integer
+  entregador_legado:
+    type: integer
+  nome_entregador:
+    type: string
+  address_id:
+    type: integer
+  id_endereco:
+    type: integer
+  data_entrega:
+    type: string
+  nome_turno:
+    type: string
+  id_vendor:
+    type: string
+  aos_cuidados:
+    type: string
+  serv_adicionais:
+    type: string
+  valor_declarado:
+    type: integer
+  aviso_recebimento:
+    type: boolean
+  mao_propria:
+    type: boolean
+  posta_restante:
+    type: boolean
+  entrega_vizinho:
+    type: boolean
+  id_meio:
+    type: integer
+  desc_meio:
+    type: string
+  frete_efetivo:
+    type: integer
+x-examples:
+  example-1:
+    id_entregador: 0
+    entregador_legado: 0
+    nome_entregador: ''
+    address_id: 0
+    id_endereco: 0
+    data_entrega: ''
+    nome_turno: ''
+    id_vendor: ''
+    aos_cuidados: ''
+    serv_adicionais: ''
+    valor_declarado: 0
+    aviso_recebimento: false
+    mao_propria: false
+    posta_restante: false
+    entrega_vizinho: false
+    id_meio: 0
+    desc_meio: ''
+    frete_efetivo: 0
+description: Dados de entrega do pedido
