@@ -1,13 +1,47 @@
-title: OrderItem
-x-stoplight:
-  id: vmkdyhmnbztlu
 type: object
-description: Item de um pedido
+x-examples:
+  example-1:
+    id: 0
+    numero_pedido: 0
+    seq: 0
+    idprod: 0
+    ucom: ''
+    xprod: ''
+    disp_devol: 0
+    qcom: 0
+    vuncom: 0
+    vdesc: 0
+    pdesc: 0
+    str_desc: ''
+    vprod: 0
+    zerado: false
+    motivo: 0
+    plu: 0
+    info_adic:
+      orig: 0
+      picms_item: 0
+      valor_comissao: 0
+      cfop_item: 0
+      cbenef: ''
+    imposto: null
+    zerar_desconto: false
+    cod_servico: 0
+    trib_esp: null
+    fracionar: false
+    desc_tipocom: ''
+    botao: ''
+    codigos: null
+    excluir: false
+    num_nota: 0
+    cod_ncm: ''
+    cod_cest: ''
+    quant_conf_rn: 0
 properties:
   id:
     type: integer
   numero_pedido:
     type: integer
+    description: Número do Pedido
   seq:
     type: integer
     description: Sequência do item no pedido
@@ -17,68 +51,104 @@ properties:
   ucom:
     type: string
     description: Unidade
-    readOnly: true
   xprod:
     type: string
     description: Descrição do produto
-    readOnly: true
   qcom:
     type: number
     description: Quantidade
   vuncom:
     type: number
-    description: Preço Unitário
+    description: Preço unitário
   vdesc:
     type: number
-    description: Valor do desconto (no total do item)
+    description: Valor total do desconto no item
+  pdesc:
+    type: number
+    description: Percentual de desconto
   str_desc:
     type: string
-    description: Desconto em $ ou % (com sufixo % será calculado em percentual)
+    description: 'Se informado, será aplicado esse desconto ao item. Com sufixo % o valor será em percentual.'
     writeOnly: true
   vprod:
     type: number
     description: Total do item
-  disp_devol:
-    type: number
-    description: Disponível para devolução (pedidos DEVCLI)
-  zerado:
-    type: boolean
-    description: Usado pela devolução (pedidos DEVCLI)
   motivo:
     type: integer
-    description: Motivo da devolução (pedidos DEVCLI)
+    description: Motivo do desconto (ou da devolução)
   plu:
     type: integer
-    description: Código da Tabela de Preços (Price Lookup)
+    description: ID do PLU (Lista de Preço)
   info_adic:
     type: object
-    description: Informação Adicional do item
+    description: Informações adicionais
     properties:
       orig:
         type: integer
       picms_item:
-        type: number
-        description: '% de ICMS'
+        type: integer
       valor_comissao:
-        type: number
+        type: integer
       cfop_item:
         type: integer
       cbenef:
         type: string
-  imposto:
-    type: object
-  zerar_desconto:
-    type: boolean
-    description: Zera o desconto
-  cod_servico:
-    type: integer
-    description: 'Código do Serviço (ID de services), para NFSe'
+  cod_ncm:
+    type: string
+    readOnly: true
+  cod_cest:
+    type: string
+    readOnly: true
   desc_tipocom:
     type: string
-    description: Tipo de Comissão
-  quant_conf_rn:
+    description: Tipo de comissão (calculada)
+    readOnly: true
+  cod_servico:
+    type: integer
+    description: Código do Serviço (pedido tipo SERVICO) para NFSe
+  codigos:
+    type: array
+    description: 'Array com códigos de produtos. Se informada, os produtos serão inseridos no pedido com quantidade 1 (um)'
+    items:
+      type: integer
+    writeOnly: true
+  zerar_desconto:
+    type: boolean
+    description: Usado para zerar um desconto anteriormente concedido
+    writeOnly: true
+  excluir:
+    type: boolean
+    description: Exclui um item
+    writeOnly: true
+  disp_devol:
     type: number
+    description: Quantidade disponível para devolução (DEVCLI)
+    readOnly: true
+  zerado:
+    type: boolean
+    description: Usado para zerar a quantidade de produtos que não serão devolvidos (DEVCLI)
+    writeOnly: true
+  fracionar:
+    type: boolean
+    description: Permite fracionar uma caixa para devolução parcial (DEVCLI)
+    writeOnly: true
+  botao:
+    type: string
+    enum:
+      - nenhum
+      - todos
+      - remover
+    description: |-
+      Usado pela devolução (DEVCLI):
+      - nenhum: limpa as quantidades
+      - todos: devolve tudo disponível
+      - remover: remove os itens que não serão devolvidos
+    writeOnly: true
+  num_nota:
+    type: integer
+    description: NF que está sendo devolvida (DEVCLI)
+    readOnly: true
+  quant_conf_rn:
+    type: integer
     description: Quantidade conferida na RN
-required:
-  - numero_pedido
-  - idprod
+    readOnly: true
