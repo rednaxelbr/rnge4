@@ -172,7 +172,9 @@ properties:
   volumes_detalhados:
     type: boolean
   volumes:
-    type: 'null'
+    type: array
+    items:
+      $ref: ./OrderVolume.yaml
   status:
     type: integer
   sigla_status:
