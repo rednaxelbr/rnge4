@@ -1,0 +1,44 @@
+type: object
+x-examples:
+  example-1:
+    cartao:
+      tband: 0
+      tpintegra: 0
+      caut: ''
+      cnpj: 0
+      qtd_parcelas: 0
+    cheque:
+      numero: 0
+    pagto_custom: 0
+    dias_prazo: 0
+    id_conta: 0
+description: Dados extras do pagamento
+properties:
+  cartao:
+    type: object
+    properties:
+      tband:
+        type: integer
+        description: Bandeira do cartão
+      tpintegra:
+        type: integer
+        description: Integração (POS/TEF)
+      caut:
+        type: string
+        description: Código de Autorização
+      cnpj:
+        type: integer
+      qtd_parcelas:
+        type: integer
+  cheque:
+    type: object
+    properties:
+      numero:
+        type: integer
+  pagto_custom:
+    type: integer
+  dias_prazo:
+    type: integer
+  id_conta:
+    type: integer
+    description: ID da conta corrente do cheque
