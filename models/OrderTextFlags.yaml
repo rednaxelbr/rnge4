@@ -1,0 +1,38 @@
+type: object
+properties:
+  requer_separacao:
+    type: string
+  embalagem_presente:
+    type: string
+  incide_ipi:
+    type: string
+  cliente_retira:
+    type: string
+  especial:
+    type: string
+  ignorar_estoque:
+    type: string
+  emissao_bloqueada:
+    type: string
+  urgente:
+    type: string
+  requer_liberacao:
+    type: string
+  requer_conferencia:
+    type: string
+  usar_utrib:
+    type: string
+x-examples:
+  example-1:
+    requer_separacao: ''
+    embalagem_presente: ''
+    incide_ipi: ''
+    cliente_retira: ''
+    especial: ''
+    ignorar_estoque: ''
+    emissao_bloqueada: ''
+    urgente: ''
+    requer_liberacao: ''
+    requer_conferencia: ''
+    usar_utrib: ''
+description: Flags (texto) do pedido

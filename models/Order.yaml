@@ -131,11 +131,19 @@ properties:
   vprod:
     type: number
   flags:
-    type: 'null'
+    $ref: ./OrderFlags.yaml
   vetor_flags:
-    type: 'null'
+    type: array
+    items:
+      type: object
+      properties:
+        flag:
+          type: string
+        valor:
+          type: string
+    readOnly: true
   text_flags:
-    type: 'null'
+    $ref: ./OrderTextFlags.yaml
   entrega:
     type: 'null'
   data_entrega:
@@ -146,6 +154,7 @@ properties:
     type: integer
   resumo_pagto:
     type: string
+    readOnly: true
   mesclar:
     type: boolean
   mod_frete:
