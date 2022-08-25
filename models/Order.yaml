@@ -78,7 +78,11 @@ properties:
   dest:
     $ref: ./EmitDest.yaml
   itens:
-    type: 'null'
+    type: array
+    description: Se informado insere os itens diretamente no pedido
+    items:
+      $ref: ./OrderItem.yaml
+    writeOnly: true
   pagtos:
     type: 'null'
   nfref:
@@ -88,15 +92,15 @@ properties:
   comref:
     type: 'null'
   desconto:
-    type: integer
+    type: number
   frete:
-    type: integer
+    type: number
   seguro:
-    type: integer
+    type: number
   outras:
-    type: integer
+    type: number
   vprod:
-    type: integer
+    type: number
   flags:
     type: 'null'
   vetor_flags:
