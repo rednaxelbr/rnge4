@@ -1,0 +1,29 @@
+type: object
+x-examples:
+  example-1:
+    id: 0
+    data_hora: ''
+    nvol: 0
+    peso: 0
+    itens: 0
+    fechado: false
+    ean13: ''
+    layout: ''
+description: Volume de um pedido
+properties:
+  id:
+    type: integer
+  data_hora:
+    type: string
+  nvol:
+    type: integer
+  peso:
+    type: number
+  itens:
+    type: integer
+  fechado:
+    type: boolean
+  ean13:
+    type: string
+  layout:
+    type: string
