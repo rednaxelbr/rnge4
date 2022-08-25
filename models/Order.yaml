@@ -145,7 +145,7 @@ properties:
   text_flags:
     $ref: ./OrderTextFlags.yaml
   entrega:
-    type: 'null'
+    $ref: ./OrderEntrega.yaml
   data_entrega:
     type: string
   transportadora:
