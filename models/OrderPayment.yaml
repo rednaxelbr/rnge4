@@ -1,0 +1,66 @@
+type: object
+x-examples:
+  example-1:
+    id: 0
+    numero_pedido: 0
+    parcela: 0
+    tpag: 0
+    valor: 0
+    total_recebido: 0
+    data_parcela: ''
+    sigla_forma: ''
+    extra: null
+    card_id: 0
+    voucher_id: 0
+    fiscdoc_id: 0
+    nome_bandeira: ''
+    nosso_numero: ''
+    excluir: false
+    limpar_pagtos: false
+    id_boleto: 0
+properties:
+  id:
+    type: integer
+  numero_pedido:
+    type: integer
+    description: Número do Pedido
+  parcela:
+    type: integer
+    description: Número da parcela
+  tpag:
+    type: integer
+    description: Forma de pagamento (tPag na NFe)
+  sigla_forma:
+    type: string
+    description: Sigla da forma de pagamento
+    readOnly: true
+  valor:
+    type: number
+  total_recebido:
+    type: number
+    deprecated: true
+  data_parcela:
+    type: string
+  extra:
+    type: 'null'
+  nome_bandeira:
+    type: string
+  card_id:
+    type: integer
+  voucher_id:
+    type: integer
+  fiscdoc_id:
+    type: integer
+  id_boleto:
+    type: integer
+  nosso_numero:
+    type: string
+  limpar_pagtos:
+    type: boolean
+    writeOnly: true
+  excluir:
+    type: boolean
+    writeOnly: true
+required:
+  - numero_pedido
+  - tpag
