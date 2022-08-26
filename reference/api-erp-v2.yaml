@@ -2341,7 +2341,7 @@ paths:
         required: true
         description: id do mapeamento
     get:
-      summary: Consultando um mapeamento
+      summary: Consultando uma memória de mapeamento
       tags:
         - Mapeamentos (purchasemappings)
       responses:
@@ -2352,9 +2352,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/SKU-Mapeamento'
       operationId: get-purchasemappings-id
-      description: Consulta um Mapeamento Produto x Fornecedor
+      description: Consulta uma memória de Mapeamento Produto x Fornecedor
     put:
-      summary: Atualizando um mapeamento
+      summary: Atualizando uma memória de mapeamento
       operationId: put-purchasemappings-id
       responses:
         '200':
@@ -2366,7 +2366,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU-Mapeamento'
-      description: Atualiza um mapeamento produto x fornecedor
+      description: Atualiza uma memória de mapeamento produto x fornecedor
   '/taxclasses/{id}':
     parameters:
       - schema:
