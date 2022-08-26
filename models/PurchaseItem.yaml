@@ -41,21 +41,30 @@ properties:
   vunit_sku:
     type: integer
     description: Valor unitário do SKU mapeado
-  quant:
-    type: integer
-  vprod:
-    type: integer
   desdobramento:
     type: array
     items:
       $ref: ./PurchaseItemDesdobramento.yaml
+  ocs_atendidas:
+    type: array
+    items:
+      $ref: ./PurchaseItemOCAtend.yaml
+  inconsistencias:
+    type: array
+    items:
+      type: object
+      properties:
+        texto:
+          type: string
+  quant:
+    type: integer
+  vprod:
+    type: integer
   preco_venda:
     type: integer
   custo_liquido:
     type: integer
   preco_promo:
-    type: integer
-  id_grade:
     type: integer
   impostos:
     type: object
@@ -115,18 +124,14 @@ properties:
             type: integer
           vunit_sku:
             type: integer
-  ocs_atendidas:
-    type: array
-    items:
-      $ref: ./PurchaseItemOCAtend.yaml
+  id_grade:
+    type: integer
   total_quant_pedido:
     type: integer
   id_fornec:
     type: integer
   vdesc:
     type: integer
-  inconsistencias:
-    type: 'null'
   cfop:
     type: integer
   quant_conf_rn:
