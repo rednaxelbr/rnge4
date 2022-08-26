@@ -17,6 +17,7 @@ properties:
     description: Chave de acesso da NFe
   raiz_cnpj:
     type: integer
+    description: Raiz do CNPJ do emitente da NF
   dthr_leitura:
     type: string
     description: Data/hora da leitura (entrega)
@@ -32,12 +33,14 @@ properties:
     properties:
       accuracy:
         type: integer
+        description: Precisão (em metros)
       latitude:
         type: number
       longitude:
         type: number
   id_prestador:
     type: integer
+    description: ID do prestador (opcional)
 required:
   - id
   - dthr_leitura
