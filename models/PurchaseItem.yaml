@@ -1,63 +1,4 @@
 type: object
-x-examples:
-  example-1:
-    id: 0
-    metodo: ''
-    seq_item: 0
-    cprod: ''
-    ucom: ''
-    ucom_nota: ''
-    xprod: ''
-    xprod_nota: ''
-    qcom: 0
-    vuncom: 0
-    codigo_sku: 0
-    cod_produto: 0
-    quant_sku: 0
-    vunit_sku: 0
-    quant: 0
-    desdobramento: null
-    vprod: 0
-    preco_venda: 0
-    custo_liquido: 0
-    preco_promo: 0
-    id_compra: 0
-    id_grade: 0
-    impostos:
-      cfop: ''
-      nota:
-        ncm: ''
-        cest: ''
-        vbcst: 0
-        vprod: 0
-        orig_cst: ''
-        origem: 0
-        cst: 0
-        csosn: 0
-        cst_pis: ''
-        cst_cofins: ''
-        pipi: 0
-        vipi: 0
-        ppis: 0
-        vpis: 0
-        pcofins: 0
-        vcofins: 0
-        picms: 0
-        vicms: 0
-        pmvast: 0
-        vbc: 0
-        cliq_unit: 0
-        predbcst: 0
-        picmsst: 0
-        vicmsst: 0
-        vunit_sku: 0
-    ocs_atendidas: null
-    total_quant_pedido: 0
-    id_fornec: 0
-    vdesc: 0
-    inconsistencias: null
-    cfop: 0
-    quant_conf_rn: 0
 description: Item de uma NF de Compra
 properties:
   id:
@@ -175,7 +116,9 @@ properties:
           vunit_sku:
             type: integer
   ocs_atendidas:
-    type: 'null'
+    type: array
+    items:
+      $ref: ./PurchaseItemOCAtend.yaml
   total_quant_pedido:
     type: integer
   id_fornec:
