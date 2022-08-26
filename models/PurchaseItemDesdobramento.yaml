@@ -1,0 +1,20 @@
+type: object
+x-examples:
+  example-1:
+    seq: 0
+    qtd: 0
+    cod_produto: 0
+description: Desobramento de um item de uma NF de Compra
+properties:
+  seq:
+    type: integer
+    description: Sequência dentro do desdobramento
+  cod_produto:
+    type: integer
+    description: Código do produto desdobrado
+  qtd:
+    type: integer
+    readOnly: true
+required:
+  - seq
+  - cod_produto
