@@ -70,26 +70,36 @@ properties:
     description: Sequencia do item na NF
   cprod:
     type: string
+    description: Tag cProd do XML
   ucom:
     type: string
   ucom_nota:
     type: string
+    description: Tag uCom do XML
   xprod:
     type: string
   xprod_nota:
     type: string
+    description: Tag xProd do XML
   qcom:
     type: integer
+    description: Tag qCom do XML
   vuncom:
     type: integer
-  codigo_sku:
-    type: integer
+    description: Tag vUnCom do XML
   cod_produto:
     type: integer
+    description: Código do produto a mapear (somente POST)
+    writeOnly: true
+  codigo_sku:
+    type: integer
+    description: Código do SKU mapeado
   quant_sku:
     type: integer
+    description: Quantidade do SKU mapeado
   vunit_sku:
     type: integer
+    description: Valor unitário do SKU mapeado
   quant:
     type: integer
   vprod:
@@ -178,3 +188,6 @@ properties:
     type: integer
   quant_conf_rn:
     type: integer
+required:
+  - id_compra
+  - seq_item
