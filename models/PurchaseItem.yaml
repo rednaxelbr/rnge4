@@ -1,111 +1,113 @@
 type: object
 x-examples:
   example-1:
-    id: 337334
-    seq_item: 1
-    cprod: '19000584'
-    ucom: PCT
-    ucom_nota: UN
-    xprod: 'GUARDANAPO DECORADO 32,5X32,5CM 020FL CROMUS LIMAO SICILIANO FRUIT'
-    xprod_nota: 'GUARDANAPO LIMAO SICILIANO 32,5x32,5 C/20 FOLHAS'
-    qcom: 24
-    vuncom: 5.66
-    codigo_sku: 122627
-    cod_produto: 122627
-    quant_sku: 24
-    vunit_sku: 5.66
-    vprod: 135.84
-    preco_venda: 12.9
-    custo_liquido: 7.3623
-    id_compra: 144444
-    id_grade: 3961791
+    id: 0
+    metodo: ''
+    seq_item: 0
+    cprod: ''
+    ucom: ''
+    ucom_nota: ''
+    xprod: ''
+    xprod_nota: ''
+    qcom: 0
+    vuncom: 0
+    codigo_sku: 0
+    cod_produto: 0
+    quant_sku: 0
+    vunit_sku: 0
+    quant: 0
+    desdobramento: null
+    vprod: 0
+    preco_venda: 0
+    custo_liquido: 0
+    preco_promo: 0
+    id_compra: 0
+    id_grade: 0
     impostos:
-      cfop: '6403'
+      cfop: ''
       nota:
-        ncm: '48183000'
-        cest: '2004600'
-        vbcst: 301.06
-        vprod: 135.84
-        orig_cst: '110'
-        origem: 1
-        cst: 10
-        cst_pis: '01'
-        cst_cofins: '01'
-        pipi: 5
-        vipi: 6.79
-        ppis: 1.65
-        vpis: 2.15
-        pcofins: 7.6
-        vcofins: 9.91
-        picms: 4
-        vicms: 5.43
-        pmvast: 111.08
-        vbc: 135.84
-        cliq_unit: 7.3625
-        picmsst: 17.5
-        vicmsst: 47.26
-        vunit_sku: 5.66
-    id_fornec: 3605
+        ncm: ''
+        cest: ''
+        vbcst: 0
+        vprod: 0
+        orig_cst: ''
+        origem: 0
+        cst: 0
+        csosn: 0
+        cst_pis: ''
+        cst_cofins: ''
+        pipi: 0
+        vipi: 0
+        ppis: 0
+        vpis: 0
+        pcofins: 0
+        vcofins: 0
+        picms: 0
+        vicms: 0
+        pmvast: 0
+        vbc: 0
+        cliq_unit: 0
+        predbcst: 0
+        picmsst: 0
+        vicmsst: 0
+        vunit_sku: 0
+    ocs_atendidas: null
+    total_quant_pedido: 0
+    id_fornec: 0
+    vdesc: 0
+    inconsistencias: null
+    cfop: 0
+    quant_conf_rn: 0
+description: Item de uma NF de Compra
 properties:
   id:
     type: integer
-    readOnly: true
+  id_compra:
+    type: integer
+    description: ID da compra (purchases)
   seq_item:
     type: integer
-    readOnly: true
+    description: Sequencia do item na NF
   cprod:
     type: string
-    readOnly: true
   ucom:
     type: string
   ucom_nota:
     type: string
-    readOnly: true
   xprod:
     type: string
   xprod_nota:
     type: string
-    readOnly: true
   qcom:
     type: integer
-    description: Quantidade da NF
-    readOnly: true
   vuncom:
-    type: number
-    readOnly: true
+    type: integer
   codigo_sku:
     type: integer
-    description: Código do SKU mapeado neste item (somente leitura)
-    readOnly: true
   cod_produto:
     type: integer
-    description: Código do produto a ser mapeado neste item (será convertido em SKU após ajuste da quantidade)
-    writeOnly: true
   quant_sku:
-    type: number
-    description: Quantidade do SKU após o mapeamento
-    readOnly: true
-  vunit_sku:
-    type: number
-    description: Valor unitário do SKU
-    readOnly: true
-  vprod:
-    type: number
-    description: Total do item
-    readOnly: true
-  preco_venda:
-    type: number
-  custo_liquido:
-    type: number
-  id_compra:
     type: integer
-    readOnly: true
+  vunit_sku:
+    type: integer
+  quant:
+    type: integer
+  vprod:
+    type: integer
+  desdobramento:
+    type: array
+    items:
+      $ref: ./PurchaseItemDesdobramento.yaml
+  preco_venda:
+    type: integer
+  custo_liquido:
+    type: integer
+  preco_promo:
+    type: integer
   id_grade:
     type: integer
-    readOnly: true
   impostos:
     type: object
-    description: Campos que vieram da NFe
     properties:
       cfop:
         type: string
@@ -117,9 +119,9 @@ properties:
           cest:
             type: string
           vbcst:
-            type: number
+            type: integer
           vprod:
-            type: number
+            type: integer
           orig_cst:
             type: string
           origem:
@@ -135,53 +137,44 @@ properties:
           pipi:
             type: integer
           vipi:
-            type: number
+            type: integer
           ppis:
-            type: number
+            type: integer
           vpis:
-            type: number
+            type: integer
           pcofins:
-            type: number
+            type: integer
           vcofins:
-            type: number
+            type: integer
           picms:
             type: integer
           vicms:
-            type: number
+            type: integer
           pmvast:
-            type: number
+            type: integer
           vbc:
-            type: number
+            type: integer
           cliq_unit:
-            type: number
+            type: integer
           predbcst:
-            type: number
+            type: integer
           picmsst:
-            type: number
+            type: integer
           vicmsst:
-            type: number
+            type: integer
           vunit_sku:
-            type: number
-    readOnly: true
+            type: integer
   ocs_atendidas:
-    type: array
-    items:
-      type: object
-      properties:
-        numero:
-          type: integer
-        data_emissao:
-          type: string
-        quant_sku:
-          type: number
-        id_compra:
-          type: integer
-        numero_oc:
-          type: integer
+    type: 'null'
+  total_quant_pedido:
+    type: integer
   id_fornec:
     type: integer
+  vdesc:
+    type: integer
+  inconsistencias:
+    type: 'null'
   cfop:
     type: integer
   quant_conf_rn:
-    type: number
-    description: Quantidade (do SKU) conferida na RN
+    type: integer
