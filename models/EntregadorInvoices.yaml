@@ -10,21 +10,25 @@ x-examples:
       latitude: -30.0283298
       longitude: -51.2285332
     id_prestador: 123456
+description: Registro de entrega de uma NF
 properties:
   id:
     type: string
+    description: Chave de acesso da NFe
   raiz_cnpj:
     type: integer
   dthr_leitura:
     type: string
+    description: Data/hora da leitura (entrega)
   status_atual:
     type: integer
+    description: Status da NF (ver tabela acima)
   cfg_nota:
     type: object
     required:
-      - accuracy
       - latitude
       - longitude
+    description: Informações do GPS
     properties:
       accuracy:
         type: integer
@@ -34,11 +38,9 @@ properties:
         type: number
   id_prestador:
     type: integer
+    readOnly: true
 required:
   - id
-  - raiz_cnpj
   - dthr_leitura
   - status_atual
   - cfg_nota
-  - id_prestador
-description: Registro de entrega de uma NF
