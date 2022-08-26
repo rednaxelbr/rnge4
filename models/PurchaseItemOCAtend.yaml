@@ -1,0 +1,20 @@
+type: object
+properties:
+  numero:
+    type: integer
+  data_emissao:
+    type: string
+  quant_sku:
+    type: integer
+  id_compra:
+    type: integer
+  numero_oc:
+    type: integer
+x-examples:
+  example-1:
+    numero: 0
+    data_emissao: ''
+    quant_sku: 0
+    id_compra: 0
+    numero_oc: 0
+description: OC que atende um item de uma NF de compra
