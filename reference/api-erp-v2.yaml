@@ -2432,7 +2432,7 @@ paths:
         - Tributária (Classe Fiscal)
   /purchasemappings:
     get:
-      summary: Listando mapeamentos
+      summary: Memória de mapeamentos
       tags:
         - Mapeamentos (purchasemappings)
       responses:
@@ -2445,13 +2445,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/SKU-Mapeamento'
       operationId: get-purchasemappings
-      description: Listagem de mapeamentos de um produto (ou fornecedor)
+      description: 'Listagem de mapeamentos memorizados de um produto (ou fornecedor). Quando um XML é carregado, o sistema pesquisa nessa memória para fazer o mapeamento automaticamente.'
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
     post:
-      summary: Criando um mapeamento
+      summary: Criando uma memória de mapeamento
       operationId: post-purchasemappings
       responses:
         '200':
@@ -2463,7 +2463,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SKU-Mapeamento'
-      description: Cria um novo mapeamento produto x fornecedor
+      description: Cria uma nova memória de mapeamento produto x fornecedor
   /taxclasses:
     get:
       summary: Listando as classes fiscais
