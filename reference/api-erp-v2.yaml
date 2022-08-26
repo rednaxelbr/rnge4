@@ -3333,6 +3333,11 @@ paths:
         name: id
         in: path
         required: true
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
         description: ID do item da NF
     put:
       summary: Mapeamento/desdobramento de item de NF
@@ -3351,6 +3356,19 @@ paths:
           application/json:
             schema:
               $ref: ../models/PurchaseItem.yaml
+    get:
+      summary: Consulta um item de uma NF
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/PurchaseItem.yaml
+      operationId: get-purchaseitems-id
+      description: 'Consulta um item de uma NF. Se ele estiver mapeado, "codigo_sku" está presente. Se ele tiver desdobramentos, o array "desdobramento" estará preenchido.'
   /ordercheckitems:
     get:
       summary: Lista de SKU separados/conferidos
