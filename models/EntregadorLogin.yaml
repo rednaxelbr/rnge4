@@ -1,9 +1,4 @@
 type: object
-x-examples:
-  example-1:
-    id: 123456
-    nome: Nome do Entregador
-    token: 7193f661-e485-44b0-91e6-755f485ea469
 description: Resposta do login do Entregador
 properties:
   id:
@@ -15,3 +10,6 @@ properties:
   token:
     type: string
     description: Token de Acesso
+  validade:
+    type: string
+    description: Data de validade do token
