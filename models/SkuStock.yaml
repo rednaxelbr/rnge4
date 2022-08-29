@@ -1,0 +1,125 @@
+type: object
+description: Estoque
+properties:
+  id:
+    type: string
+  id_estoque:
+    type: integer
+    description: ID na forma numérica
+  id_predio:
+    type: integer
+    readOnly: true
+  desc_predio:
+    type: string
+    readOnly: true
+  letras:
+    type: string
+    readOnly: true
+  setor:
+    type: integer
+    readOnly: true
+  corredor:
+    type: integer
+    readOnly: true
+  cod_sku:
+    type: integer
+  prod_xprod:
+    type: string
+    readOnly: true
+  curva:
+    type: integer
+    readOnly: true
+  quantidade:
+    type: integer
+    readOnly: true
+  zerar:
+    type: boolean
+    writeOnly: true
+  capacidade:
+    type: integer
+  capac_zero:
+    type: boolean
+    writeOnly: true
+  setor_destino:
+    type: integer
+    description: Usado na movimentação
+    writeOnly: true
+  delta:
+    type: integer
+    description: Alteração de quantidade (positiva ou negativa)
+    writeOnly: true
+  destino:
+    type: integer
+    description: ID do estoque destino (usado na movimentação)
+    writeOnly: true
+  destino_resgate:
+    type: integer
+    description: Usado na movimentação
+    writeOnly: true
+  tipo_virtual:
+    type: integer
+    readOnly: true
+  id_distrib:
+    type: integer
+  motivo_virt:
+    type: integer
+  inventario:
+    type: integer
+    description: 'Usado no inventário, substitui a quantidade atual'
+    writeOnly: true
+  tipo_manutencao:
+    type: string
+    description: Usado pelo WMS
+    writeOnly: true
+  data_checagem:
+    type: string
+    readOnly: true
+  separar:
+    type: integer
+    description: Número do pedido a separar (WMS)
+    writeOnly: true
+  insuficiente:
+    type: boolean
+  pedido:
+    type: integer
+  pedido_baixa:
+    type: integer
+  pedido_suprimento:
+    type: integer
+  bloqueado_por:
+    type: string
+    description: Nome do usuário que bloqueou este endereço
+    readOnly: true
+  bloquear:
+    type: array
+    description: Vetor de IDs a bloquear (usado pelo WMS)
+    items:
+      type: integer
+  atualizado_erp:
+    type: boolean
+    writeOnly: true
+  vetor_atualizado_erp:
+    type: array
+    description: Vetor de IDs para marcar como atualizado_erp (integração)
+    items:
+      type: number
+    writeOnly: true
+  data_hora:
+    type: string
+    description: Data/hora da última modificação
+    readOnly: true
+  numero_nota:
+    type: integer
+  ocup:
+    type: integer
+    description: Percentual de ocupação (usado pelo WMS)
+  data_suprim:
+    type: string
+    description: Data do último suprimento
+    readOnly: true
+  excluir:
+    type: boolean
+    writeOnly: true
+required:
+  - id
+  - cod_sku
