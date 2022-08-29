@@ -30,6 +30,9 @@ properties:
   nome_emitente:
     type: string
     description: Nome do fornecedor (emitente da NF)
+  uf_emit:
+    type: string
+    description: UF do emitente
   total_vnf:
     type: integer
   perc_map:
@@ -59,8 +62,6 @@ properties:
   valores_nulos:
     type: integer
     description: Quantidade de SKU dessa NF que estão sem preço de venda
-  uf_emit:
-    type: string
   milhar_cfop:
     type: integer
   pendente_erp:
@@ -138,8 +139,11 @@ properties:
   ocs_vinculadas:
     type: string
     description: CSV com os números das OC vinculadas
-  itens:
-    type: 'null'
+  ocs:
+    type: array
+    description: OCs vinculadas (array)
+    items:
+      type: integer
   pagtos:
     type: array
     items:
@@ -186,8 +190,6 @@ properties:
       properties:
         texto:
           type: string
-  ocs:
-    type: 'null'
   arquivo_xml:
     type: string
     description: Usado para baixar o XML
