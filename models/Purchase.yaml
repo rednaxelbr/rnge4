@@ -86,7 +86,7 @@ properties:
     description: ID empresa do destinatário
   dest:
     type: string
-    description: Nome da empresa do destinatário
+    description: Sigla da empresa do destinatário
   mapeamento:
     type: array
     items:
