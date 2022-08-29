@@ -1,29 +1,11 @@
 type: object
-x-examples:
-  example-1:
-    id: 48406
-    chnfe: '43220699999999000169550010000009761973907417'
-    id_pessoa: 876543
-    serie: 1
-    numero: 976
-    status: 200
-    data_emissao: '2022-06-21T00:00:00'
-    nome_emitente: NOME DO FORNECEDOR
-    dest: VLT
-    total_vnf: 5800
-    uf_emit: RS
-    milhar_cfop: 5
-    id_empresa: 1
-    cnpj_fornec: 99999999000169
-    id_rastreamento: 416990
+description: Entrada de NF de Compra
 properties:
   id:
     type: integer
   chnfe:
     type: string
-    description: Chave de Acesso da NFe
-  id_pessoa:
-    type: integer
+    description: Chave de acesso da NFe
   serie:
     type: integer
   numero:
@@ -36,17 +18,30 @@ properties:
     type: string
   data_agendamento:
     type: string
+  id_fornec:
+    type: integer
+    description: ID do fornecedor (suppliers) emitente da NF
+  id_pessoa:
+    type: integer
+    description: ID pessoa do fornecedor (emitente da NF)
+  cnpj_fornec:
+    type: integer
+    description: CNPJ do fornecedor (emitente da NF)
   nome_emitente:
     type: string
+    description: Nome do fornecedor (emitente da NF)
   total_vnf:
     type: integer
   perc_map:
-    type: number
+    type: integer
     description: Percentual de mapeamento
   perc_pago:
-    type: number
+    type: integer
     description: Percentual de quitação (Contas a Pagar)
   impostos_ok:
+    type: boolean
+    readOnly: true
+  precos_ok:
     type: boolean
     readOnly: true
   seta_impostos_ok:
@@ -55,33 +50,31 @@ properties:
       - 'true'
       - 'false'
     writeOnly: true
-  precos_ok:
-    type: boolean
-    readOnly: true
   seta_precos_ok:
     type: string
     enum:
       - 'true'
       - 'false'
     writeOnly: true
-  uf_emit:
-    type: string
   valores_nulos:
     type: integer
     description: Quantidade de SKU dessa NF que estão sem preço de venda
+  uf_emit:
+    type: string
   milhar_cfop:
-    type: integer
-  cnpj_fornec:
     type: integer
   pendente_erp:
     type: boolean
+    description: 'Pendente de integração (somente GET), para limpar use o `atualizado_erp` no POST'
     readOnly: true
   atualizado_erp:
     type: boolean
-    description: Marca o pendente_erp como false
+    description: 'Somente POST, limpa o `pendente_erp`'
     writeOnly: true
   vigencia_custo:
     type: string
+  descartar_custo:
+    type: boolean
   skus_ns:
     type: integer
     description: Contador de SKU desta NF que requerem leitura de número de série
@@ -90,16 +83,129 @@ properties:
     description: Contador de números de série lidos
   id_empresa:
     type: integer
-    description: ID da empresa destino
+    description: ID empresa do destinatário
   dest:
     type: string
-    description: Sigla da empresa destino
-  id_rastreamento:
-    type: integer
-    description: Usado para exibir o "timelines" de uma NF
+    description: Nome da empresa do destinatário
+  mapeamento:
+    type: array
+    items:
+      type: object
+      properties:
+        ordem:
+          type: integer
+        codprod:
+          type: integer
+        cliq_manual:
+          type: integer
+        aliquota_ipi_manual:
+          type: integer
+        preco_custo_manual:
+          type: integer
+        percentual_mva_manual:
+          type: integer
+        icms_compra_manual:
+          type: integer
+        icms_vbcst_manual:
+          type: integer
+        icms_predbcst_manual:
+          type: integer
+        icms_vicmsst_manual:
+          type: integer
+        picms:
+          type: integer
+        vicms:
+          type: integer
+        pmva:
+          type: integer
+        vbc:
+          type: integer
+        cliq_unit:
+          type: integer
+        predbcst:
+          type: integer
+        picmsst:
+          type: integer
+        vicmsst:
+          type: integer
+        vunit_sku:
+          type: integer
+        quant:
+          type: integer
+      required:
+        - ordem
+        - codprod
   ocs_vinculadas:
     type: string
     description: CSV com os números das OC vinculadas
-  id_fornec:
+  itens:
+    type: 'null'
+  pagtos:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        numero_pagto:
+          type: integer
+        data_vencto:
+          type: string
+        tpag:
+          type: integer
+        sigla_forma:
+          type: string
+        valor_pagto:
+          type: integer
+        dados_pagto:
+          type: object
+          properties:
+            lancar_contas:
+              type: boolean
+  id_rastreamento:
     type: integer
-    description: ID da /suppliers (Fornecedores)
+    description: Usado para exibir o andamento (timelines) de uma NF
+  observacoes:
+    type: string
+  usuario_legado:
+    type: string
+  cod_ocorrencia:
+    type: integer
+  crt:
+    type: integer
+  nfat:
+    type: string
+  qvol:
+    type: integer
+  finnfe:
+    type: integer
+  inconsistencias:
+    type: array
+    items:
+      type: object
+      properties:
+        texto:
+          type: string
+  ocs:
+    type: 'null'
+  arquivo_xml:
+    type: string
+    description: Usado para baixar o XML
+    readOnly: true
+  data_receb_financ:
+    type: string
+  data_receb_merc:
+    type: string
+  total:
+    type: object
+    properties:
+      frete:
+        type: integer
+      seguro:
+        type: integer
+      outros:
+        type: integer
+  criar_produto_auto:
+    type: boolean
+    description: Cria produtos novos automaticamente
+    writeOnly: true
