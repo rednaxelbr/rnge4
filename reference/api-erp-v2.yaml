@@ -1517,13 +1517,6 @@ paths:
       summary: Listando endereços de estoque
       tags:
         - Estoque (skustocks)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Estoque-GET'
       operationId: get-skustocks
       description: |
         Lista de endereços de estoque (SKU x Prédio x Setor)
@@ -1552,6 +1545,15 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/SkuStock.yaml
     post:
       summary: Criando um endereço
       operationId: post-skustocks
@@ -1565,7 +1567,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Estoque-GET'
+              $ref: ../models/SkuStock.yaml
   /buildings:
     get:
       summary: Listando prédios de estoque
