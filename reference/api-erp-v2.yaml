@@ -3335,11 +3335,6 @@ paths:
         name: id
         in: path
         required: true
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
         description: ID do item da NF
     put:
       summary: Mapeamento/desdobramento de item de NF
