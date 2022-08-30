@@ -3418,6 +3418,52 @@ paths:
           application/json:
             schema:
               $ref: ../models/Services.yaml
+  '/ordercheckitems/{numped}':
+    parameters:
+      - schema:
+          type: string
+        name: numped
+        in: path
+        required: true
+        description: Número do pedido
+    put:
+      summary: Conferência de saída
+      tags:
+        - Pedidos por SKU (orderchecks)
+      responses:
+        '200':
+          description: OK
+      operationId: put-ordercheckitems-numped
+      description: 'Confere um item de um pedido, colocando-o dentro de um volume.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                example-1:
+                  orderid: 0
+                  codigo: 0
+                  qtd_conf: 0
+                  volume: 0
+                  qtd_vol: 0
+              properties:
+                codigo:
+                  type: integer
+                  description: Código de barras ou código do produto
+                  writeOnly: true
+                qtd_conf:
+                  type: integer
+                  description: Quantidade conferida
+                  default: 1
+                  writeOnly: true
+                volume:
+                  type: integer
+                  description: Volume onde o SKU conferido será empacotado
+                  writeOnly: true
+              required:
+                - codigo
+                - volume
 components:
   securitySchemes:
     Usuário/Senha:
