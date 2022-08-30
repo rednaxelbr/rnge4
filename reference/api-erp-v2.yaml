@@ -944,6 +944,10 @@ paths:
                   type: array
                   description: Lista de empresas destino
                   items: {}
+                ids_categorias:
+                  type: string
+                id_fornec:
+                  type: integer
                 numero_pedido:
                   type: integer
                   description: Nº do pedido que contém os itens que serão enviados
@@ -955,18 +959,20 @@ paths:
                     - REVFND
                     - REVSNO
                   description: 'Tipo de distribuição (padrão: NORMAL)'
-                gerar_pedidos:
-                  type: boolean
-                  description: 'Se TRUE, gera os pedidos após criar a distribuição'
-                predio:
-                  type: integer
-                  description: 'Prédio de origem (padrão: CD)'
-                codigo_sku:
-                  type: integer
-                  description: Código de um SKU para testes
                 curva_minima_geral:
                   type: integer
                   description: Somente produtos desta curva para cima serão enviados
+                calendario:
+                  type: boolean
+                gerar_pedidos:
+                  type: boolean
+                  description: 'Se TRUE, gera os pedidos após criar a distribuição'
+                codigo_sku:
+                  type: integer
+                  description: Código de um SKU para testes
+                predio:
+                  type: integer
+                  description: 'Prédio de origem (padrão: CD)'
           application/xml:
             schema:
               type: object
