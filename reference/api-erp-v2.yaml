@@ -1799,7 +1799,7 @@ paths:
         name: id
         in: path
         required: true
-        description: id do endereço do estoque
+        description: ID do endereço do estoque
     get:
       summary: Consultando um estoque
       tags:
@@ -1810,7 +1810,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Estoque-GET'
+                $ref: ../models/SkuStock.yaml
       operationId: get-skustocks-id
       description: Consulta um endereço de estoque
       parameters:
@@ -1830,7 +1830,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Estoque-PUT'
+              $ref: ../models/SkuStock.yaml
         description: ''
     delete:
       summary: Excluindo um endereço
