@@ -1,0 +1,93 @@
+type: object
+x-examples:
+  example-1:
+    id: 0
+    datahora_geracao: ''
+    id_predio: 0
+    desc_predio: ''
+    user_id: 0
+    nome_usuario: ''
+    conclusao: 0
+    lista_params:
+      - key: ''
+        value: ''
+    info_suprimento:
+      cont_skus: 0
+      cont_disp: 0
+      sem_ender: 0
+      pedidos: 0
+      mensagem: ''
+      pendentes: 0
+      linhas: 0
+      emitidos: 0
+      cancelados: 0
+      notas_entregues: 0
+      falta_entregar: 0
+    tipo: ''
+    ativo: false
+    status: 0
+    sigla_status: ''
+    id_rastreamento: 0
+description: Distribuição (GET)
+properties:
+  id:
+    type: integer
+  datahora_geracao:
+    type: string
+  id_predio:
+    type: integer
+    description: Prédio de origem
+  desc_predio:
+    type: string
+  user_id:
+    type: integer
+  nome_usuario:
+    type: string
+  conclusao:
+    type: number
+    description: '% de conclusão'
+  lista_params:
+    type: array
+    description: Parâmetros usados na criação
+    items:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+  info_suprimento:
+    type: object
+    properties:
+      cont_skus:
+        type: integer
+      cont_disp:
+        type: integer
+      sem_ender:
+        type: integer
+      pedidos:
+        type: integer
+      mensagem:
+        type: string
+      pendentes:
+        type: integer
+      linhas:
+        type: integer
+      emitidos:
+        type: integer
+      cancelados:
+        type: integer
+      notas_entregues:
+        type: integer
+      falta_entregar:
+        type: integer
+  tipo:
+    type: string
+  ativo:
+    type: boolean
+  status:
+    type: integer
+  sigla_status:
+    type: string
+  id_rastreamento:
+    type: integer
