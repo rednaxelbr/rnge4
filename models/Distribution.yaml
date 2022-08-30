@@ -1,37 +1,11 @@
 type: object
-x-examples:
-  example-1:
-    id: 0
-    datahora_geracao: ''
-    id_predio: 0
-    desc_predio: ''
-    user_id: 0
-    nome_usuario: ''
-    conclusao: 0
-    lista_params:
-      - key: ''
-        value: ''
-    info_suprimento:
-      cont_skus: 0
-      cont_disp: 0
-      sem_ender: 0
-      pedidos: 0
-      mensagem: ''
-      pendentes: 0
-      linhas: 0
-      emitidos: 0
-      cancelados: 0
-      notas_entregues: 0
-      falta_entregar: 0
-    tipo: ''
-    ativo: false
-    status: 0
-    sigla_status: ''
-    id_rastreamento: 0
 description: Distribuição (GET)
 properties:
   id:
     type: integer
+  tipo:
+    type: string
+    description: Tipo de distribuição
   datahora_geracao:
     type: string
   id_predio:
@@ -81,8 +55,6 @@ properties:
         type: integer
       falta_entregar:
         type: integer
-  tipo:
-    type: string
   ativo:
     type: boolean
   status:
