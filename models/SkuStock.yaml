@@ -74,18 +74,21 @@ properties:
   data_checagem:
     type: string
     readOnly: true
-  separar:
-    type: integer
-    description: Número do pedido a separar (WMS)
-    writeOnly: true
   insuficiente:
     type: boolean
   pedido:
     type: integer
+    description: Número do pedido a separar (WMS)
+  separar:
+    type: number
+    description: Quantidade a separar (WMS)
+    writeOnly: true
   pedido_baixa:
     type: integer
+    description: Usado pelo WMS para baixar estoque de depósitos externos
   pedido_suprimento:
     type: integer
+    description: Usado pelo WMS para suprir estoque em depósitos externos
   bloqueado_por:
     type: string
     description: Nome do usuário que bloqueou este endereço
@@ -97,10 +100,11 @@ properties:
       type: integer
   atualizado_erp:
     type: boolean
+    description: Desmarca o `pendente_erp` (integração)
     writeOnly: true
   vetor_atualizado_erp:
     type: array
-    description: Vetor de IDs para marcar como atualizado_erp (integração)
+    description: Vetor para desmarcar o `pendente_erp` em lote (integração)
     items:
       type: number
     writeOnly: true
