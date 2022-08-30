@@ -1,41 +1,47 @@
 type: object
 x-examples:
   example-1:
-    id: 4390655
-    ordem: 39
-    ucom: UN
-    cod_produto: 118874
-    prod_xprod: TINTA GUACHE 250 ML ASUPER RADEX PRETO
-    quant_pedido: 15
-    quant_separada: 15
-    quant_conferida: 15
+    id: 0
+    numero_pedido: 0
+    ordem: 0
+    ucom: ''
+    cod_produto: 0
+    prod_xprod: ''
+    quant_pedido: 0
+    quant_separada: 0
+    quant_conferida: 0
     volumes:
-      - vol: 2
-      - vol: 3
-    conferido: true
-    stat: 699
-description: 'Item para separação e conferência, agrupado por SKU'
+      - vol: 0
+    orderid: 0
+    conferido: false
+    stat: 0
 properties:
   id:
     type: integer
+  numero_pedido:
+    type: integer
   ordem:
     type: integer
+    description: Sequência do SKU no pedido
   ucom:
     type: string
+    description: Unidade do SKU
   cod_produto:
     type: integer
+    description: Código do produto
   prod_xprod:
     type: string
+    description: Descrição
   quant_pedido:
     type: integer
-    description: 'Quantidade do pedido, acumulada por SKU'
+    description: Quantidade acumulada do SKU no pedido
   quant_separada:
     type: integer
   quant_conferida:
     type: integer
   volumes:
     type: array
-    description: Lista de volumes onde a conferência colocou os produtos
+    description: Lista de volumes onde o SKU foi empacotado
     items:
       type: object
       properties:
@@ -43,10 +49,7 @@ properties:
           type: integer
   conferido:
     type: boolean
-required:
-  - id
-  - ordem
-  - ucom
-  - cod_produto
-  - prod_xprod
-  - quant_pedido
+  stat:
+    type: integer
+    description: Status do pedido
+description: 'Item para separação e conferência, agrupado por SKU'
