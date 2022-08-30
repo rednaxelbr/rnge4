@@ -8,12 +8,14 @@ properties:
     description: ID na forma numérica
   id_predio:
     type: integer
+    description: Prédio (ID de buildings)
     readOnly: true
   desc_predio:
     type: string
     readOnly: true
   letras:
     type: string
+    description: 'Endereço em formato alfanumérico '
     readOnly: true
   setor:
     type: integer
@@ -23,26 +25,31 @@ properties:
     readOnly: true
   cod_sku:
     type: integer
+    description: Código do SKU (ID de skus)
   prod_xprod:
     type: string
+    description: Descrição do SKU
     readOnly: true
   curva:
     type: integer
+    description: Curva ABC
     readOnly: true
   quantidade:
     type: integer
     readOnly: true
   zerar:
     type: boolean
+    description: Zera a quantidade
     writeOnly: true
   capacidade:
     type: integer
   capac_zero:
     type: boolean
+    description: Zera a capacidade
     writeOnly: true
   setor_destino:
     type: integer
-    description: Usado na movimentação
+    description: Usado na movimentação (WMS)
     writeOnly: true
   delta:
     type: integer
