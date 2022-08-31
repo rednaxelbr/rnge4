@@ -1,0 +1,461 @@
+type: object
+x-examples:
+  example-1:
+    id: 0
+    id_legado: 0
+    cpf_cnpj: 0
+    nome_razao: ''
+    cnpj: ''
+    cpf: ''
+    nome_fantasia: ''
+    iestadual: ''
+    telefone: ''
+    type_id: 0
+    email: ''
+    fav_danfe: false
+    fav_pessoal: false
+    ind_iedest: 0
+    cnae: 0
+    ender_sede: ''
+    pjuridica: false
+    legado:
+      email_pessoa: ''
+      email_nfe: ''
+    fornec_legado:
+      produto: false
+      servico: false
+      dias_tr: 0
+      ultima_oc: ''
+      prazo_pagamento: ''
+      ic_padrao: 0
+      intervalo_analise: 0
+      pedido_minimo: 0
+      id_comprador: 0
+      ciclo: null
+      dia_semana_iso: 0
+      semana_par: false
+      semana_impar: false
+    emails:
+      - id: 0
+        id_pessoa: 0
+        email: ''
+        pessoal: false
+        danfe: false
+        favorito: false
+        excluir: false
+    enderecos:
+      - id: 0
+        id_pessoa: 0
+        address_id: 0
+        id_endereco: 0
+        id_tipo: 0
+        desc_tipo: ''
+        logradouro: ''
+        numero: 0
+        complemento: ''
+        bairro: ''
+        cidade: ''
+        cidade_atual: ''
+        uf: ''
+        cep: ''
+        cmun: 0
+        sede: false
+        ativo: false
+        excluir: false
+        codigo_pais: 0
+        nome_pais: ''
+        info_extra:
+          tipo_legado: ''
+          tipo: ''
+          referencia: ''
+          contato: ''
+          numero_documento: ''
+        sigla_loja: ''
+        nome_reduzido: ''
+    telefones:
+      - id: 0
+        id_pessoa: 0
+        phone_id: 0
+        type_id: 0
+        tipo: ''
+        numero: ''
+        observacoes: ''
+        eh_principal: false
+        excluir: false
+    contatos:
+      - id_pessoa: 0
+        nome_razao: ''
+        detalhe: ''
+        excluir: false
+    documentos:
+      - cod_identidade: ''
+        orgao_exp: ''
+        excluir: false
+    inconsistencias:
+      - texto: ''
+    categorias:
+      - id: 0
+        nome: ''
+    config_formas:
+      - desc_forma: ''
+        nome_usuario: ''
+        limite_forma: 0
+        cod_tpag: 0
+        semaforo_forma: 0
+    outras_info:
+      data_nasc: ''
+      cod_vendedor: 0
+      semaforo_credito: 0
+      limite_credito: 0
+      tpag_preferido: 0
+      inconsistente: false
+      mensagem_inconsistente: ''
+      dias_ciclagem: 0
+      isento_acrescimo: false
+      credito_loja: false
+    canal: ''
+    id_canal: 0
+    id_vendedor: 0
+    id_indicacao: 0
+    vendedor: false
+    representante: false
+    permite_duplicar: false
+    ativo: false
+    verificar: false
+    gerencial: false
+    observ_padrao: ''
+    observ_financeira: ''
+    observ_credito: ''
+    observ_gerencial: ''
+    perfis: null
+    financeiro_show: false
+    financeiro_edit: false
+    historico_show: false
+    data_cadastro: ''
+    sem_vendedor: false
+description: Cliente (pessoa)
+properties:
+  id:
+    type: integer
+  id_legado:
+    type: integer
+    description: ID do sistema externo/legado
+  pjuridica:
+    type: boolean
+    description: 'Pessoa jurídica? TRUE = Pessoa Jurídica, FALSE = Pessoa Física'
+  cpf_cnpj:
+    type: integer
+    description: CPF ou CNPJ (ver campo "pjuridica")
+  nome_razao:
+    type: string
+    description: Nome ou Razão Social
+  nome_fantasia:
+    type: string
+    description: Nome fantasia
+  cnpj:
+    type: string
+  cpf:
+    type: string
+  ind_iedest:
+    type: integer
+    description: Indicador da IE do Destinatário (ver Manual NFe)
+  iestadual:
+    type: string
+    description: Inscrição Estadual
+  telefone:
+    type: string
+    description: Telefone principal
+  type_id:
+    type: integer
+    description: Tipo do telefone principal
+  email:
+    type: string
+    description: Email favorito
+  fav_danfe:
+    type: boolean
+    description: Email favorito recebe DANFE?
+  fav_pessoal:
+    type: boolean
+    description: Email favorito é pessoal?
+  cnae:
+    type: integer
+  ender_sede:
+    type: string
+    description: Endereço completo para exibição
+    readOnly: true
+  legado:
+    type: object
+    properties:
+      email_pessoa:
+        type: string
+      email_nfe:
+        type: string
+  fornec_legado:
+    type: object
+    description: Dados do fornecedor (suppliers)
+    properties:
+      produto:
+        type: boolean
+      servico:
+        type: boolean
+      dias_tr:
+        type: integer
+      ultima_oc:
+        type: string
+      prazo_pagamento:
+        type: string
+      ic_padrao:
+        type: integer
+      intervalo_analise:
+        type: integer
+      pedido_minimo:
+        type: integer
+      id_comprador:
+        type: integer
+      ciclo:
+        type: 'null'
+      dia_semana_iso:
+        type: integer
+      semana_par:
+        type: boolean
+      semana_impar:
+        type: boolean
+  emails:
+    type: array
+    description: Lista de emails da pessoa
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_pessoa:
+          type: integer
+        email:
+          type: string
+        pessoal:
+          type: boolean
+        danfe:
+          type: boolean
+        favorito:
+          type: boolean
+        excluir:
+          type: boolean
+  enderecos:
+    type: array
+    description: Lista de endereços da pessoa
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_pessoa:
+          type: integer
+        address_id:
+          type: integer
+        id_endereco:
+          type: integer
+        id_tipo:
+          type: integer
+        desc_tipo:
+          type: string
+        logradouro:
+          type: string
+        numero:
+          type: integer
+        complemento:
+          type: string
+        bairro:
+          type: string
+        cidade:
+          type: string
+        cidade_atual:
+          type: string
+        uf:
+          type: string
+        cep:
+          type: string
+        cmun:
+          type: integer
+        sede:
+          type: boolean
+        ativo:
+          type: boolean
+        excluir:
+          type: boolean
+        codigo_pais:
+          type: integer
+        nome_pais:
+          type: string
+        info_extra:
+          type: object
+          properties:
+            tipo_legado:
+              type: string
+            tipo:
+              type: string
+            referencia:
+              type: string
+            contato:
+              type: string
+            numero_documento:
+              type: string
+        sigla_loja:
+          type: string
+        nome_reduzido:
+          type: string
+  telefones:
+    type: array
+    description: Lista de telefones da pessoa
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_pessoa:
+          type: integer
+        phone_id:
+          type: integer
+        type_id:
+          type: integer
+        tipo:
+          type: string
+        numero:
+          type: string
+        observacoes:
+          type: string
+        eh_principal:
+          type: boolean
+        excluir:
+          type: boolean
+  contatos:
+    type: array
+    description: Lista de contatos da pessoa
+    items:
+      type: object
+      properties:
+        id_pessoa:
+          type: integer
+        nome_razao:
+          type: string
+        detalhe:
+          type: string
+        excluir:
+          type: boolean
+  documentos:
+    type: array
+    description: 'Documentos (ex: RG, CNH, etc)'
+    items:
+      type: object
+      properties:
+        cod_identidade:
+          type: string
+        orgao_exp:
+          type: string
+        excluir:
+          type: boolean
+  inconsistencias:
+    type: array
+    items:
+      type: object
+      properties:
+        texto:
+          type: string
+  categorias:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+  config_formas:
+    type: array
+    description: Configuração de crédito por forma de pagamento
+    items:
+      type: object
+      properties:
+        cod_tpag:
+          type: integer
+          description: Código da Forma de Pagamento (tPag)
+        desc_forma:
+          type: string
+        nome_usuario:
+          type: string
+        limite_forma:
+          type: integer
+        semaforo_forma:
+          type: integer
+  outras_info:
+    type: object
+    properties:
+      data_nasc:
+        type: string
+      cod_vendedor:
+        type: integer
+        description: Vendedor que atende esse cliente (CRM)
+      semaforo_credito:
+        type: integer
+        description: Semáforo de crédito (números negativos bloqueiam venda)
+      limite_credito:
+        type: integer
+        description: Limite de crédito (R$)
+      tpag_preferido:
+        type: integer
+        description: Forma de pagamento preferida
+      inconsistente:
+        type: boolean
+      mensagem_inconsistente:
+        type: string
+        description: Inconsistência de cadastro (integração)
+      dias_ciclagem:
+        type: integer
+        description: Dias de Ciclo (CRM)
+      isento_acrescimo:
+        type: boolean
+        description: Isenção de boleto
+      credito_loja:
+        type: boolean
+  id_canal:
+    type: integer
+    description: Canal (channels) de cadastro
+  canal:
+    type: string
+  id_vendedor:
+    type: integer
+    description: Vendedor que atende esse cliente (CRM)
+  id_indicacao:
+    type: integer
+  vendedor:
+    type: boolean
+  representante:
+    type: boolean
+  permite_duplicar:
+    type: boolean
+  ativo:
+    type: boolean
+  verificar:
+    type: boolean
+  gerencial:
+    type: boolean
+  observ_padrao:
+    type: string
+    description: Observações gerais
+  observ_financeira:
+    type: string
+  observ_credito:
+    type: string
+  observ_gerencial:
+    type: string
+  perfis:
+    type: 'null'
+  financeiro_show:
+    type: boolean
+  financeiro_edit:
+    type: boolean
+  historico_show:
+    type: boolean
+  data_cadastro:
+    type: string
+  sem_vendedor:
+    type: boolean
