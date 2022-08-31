@@ -448,7 +448,24 @@ properties:
   observ_gerencial:
     type: string
   perfis:
-    type: 'null'
+    type: array
+    uniqueItems: true
+    description: Perfis da pessoa no sistema
+    items:
+      type: object
+      properties:
+        perfil:
+          type: string
+          minLength: 1
+          enum:
+            - cliente
+            - almoxarifado
+            - colaborador
+            - comprador
+            - fornecedor
+            - representante
+            - vendedor
+            - transportadora
   financeiro_show:
     type: boolean
   financeiro_edit:
