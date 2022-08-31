@@ -1,0 +1,208 @@
+type: object
+properties:
+  id:
+    type: integer
+  data_cadastro:
+    type: string
+  ucom:
+    type: string
+  prod_xprod:
+    type: string
+  sufixo_desc:
+    type: string
+  sufixo_extra:
+    type: string
+  mult_sku:
+    type: integer
+  codigo_sku:
+    type: integer
+  preco_tabela:
+    type: integer
+  barcodes:
+    type: array
+    items:
+      type: object
+      properties:
+        gtin:
+          type: integer
+        flags:
+          type: object
+          properties:
+            deletar:
+              type: boolean
+        invalido:
+          type: boolean
+  ativo:
+    type: boolean
+  url_foto:
+    type: string
+  preco_promo:
+    type: integer
+  preco_venda:
+    type: integer
+  disponivel:
+    type: integer
+  reserva:
+    type: integer
+  parent_sku:
+    type: object
+    properties:
+      id_categ:
+        type: integer
+      marca:
+        type: string
+      orig:
+        type: integer
+      id_classe:
+        type: integer
+  atualizado_erp:
+    type: object
+    properties:
+      preco:
+        type: boolean
+      cadastro:
+        type: boolean
+  desc_web:
+    type: object
+    properties:
+      longa:
+        type: string
+      nome:
+        type: string
+      reduzida:
+        type: string
+      curta:
+        type: string
+  peso_kg:
+    type: integer
+  largura_m:
+    type: integer
+  altura_m:
+    type: integer
+  profundidade_m:
+    type: integer
+  cubagem_kg:
+    type: integer
+  id_package:
+    type: integer
+  nome_embalagem:
+    type: string
+  capac_package:
+    type: integer
+  embalagem_fragil:
+    type: boolean
+  embalagem_venda:
+    type: boolean
+  embalagem_compra:
+    type: boolean
+  preco_atacado_legado:
+    type: integer
+  margem_atacado_legado:
+    type: integer
+  margem_padrao:
+    type: integer
+  margem_promo:
+    type: integer
+  pendente_erp:
+    type: object
+    properties:
+      preco:
+        type: boolean
+      cadastro:
+        type: boolean
+  promo_inicio:
+    type: string
+  promo_termino:
+    type: string
+  legado:
+    type: boolean
+  sem_remessa:
+    type: boolean
+  memoria_mapeamento:
+    type: 'null'
+  esmin_padrao:
+    type: integer
+  automatico:
+    type: boolean
+  csv_barcodes:
+    type: string
+  referencia:
+    type: string
+  tags:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome_tag:
+          type: string
+  codigo_agrup:
+    type: string
+x-examples:
+  example-1:
+    id: 0
+    data_cadastro: ''
+    ucom: ''
+    prod_xprod: ''
+    sufixo_desc: ''
+    sufixo_extra: ''
+    mult_sku: 0
+    codigo_sku: 0
+    preco_tabela: 0
+    barcodes:
+      - gtin: 0
+        flags:
+          deletar: false
+        invalido: false
+    ativo: false
+    url_foto: ''
+    preco_promo: 0
+    preco_venda: 0
+    disponivel: 0
+    reserva: 0
+    parent_sku:
+      id_categ: 0
+      marca: ''
+      orig: 0
+      id_classe: 0
+    atualizado_erp:
+      preco: false
+      cadastro: false
+    desc_web:
+      longa: ''
+      nome: ''
+      reduzida: ''
+      curta: ''
+    peso_kg: 0
+    largura_m: 0
+    altura_m: 0
+    profundidade_m: 0
+    cubagem_kg: 0
+    id_package: 0
+    nome_embalagem: ''
+    capac_package: 0
+    embalagem_fragil: false
+    embalagem_venda: false
+    embalagem_compra: false
+    preco_atacado_legado: 0
+    margem_atacado_legado: 0
+    margem_padrao: 0
+    margem_promo: 0
+    pendente_erp:
+      preco: false
+      cadastro: false
+    promo_inicio: ''
+    promo_termino: ''
+    legado: false
+    sem_remessa: false
+    memoria_mapeamento: null
+    esmin_padrao: 0
+    automatico: false
+    csv_barcodes: ''
+    referencia: ''
+    tags:
+      - id: 0
+        nome_tag: ''
+    codigo_agrup: ''
+description: Mercadoria (apresentação/embalagem de produto)
