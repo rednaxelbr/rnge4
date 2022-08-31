@@ -3253,6 +3253,41 @@ paths:
               required:
                 - codigo
                 - volume
+  '/purchases/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da compra
+    put:
+      summary: Atualiza uma NF de Compra
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+      operationId: put-purchases-id
+      description: Atualiza uma NF de compra
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Purchase.yaml
+    get:
+      summary: Carrega uma NF de Compra
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Purchase.yaml
+      operationId: get-purchases-id
+      description: Consulta uma NF de compra
 components:
   securitySchemes:
     Usuário/Senha:
