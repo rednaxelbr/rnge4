@@ -769,7 +769,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Embalagens'
+                $ref: ../models/SkuArticle.yaml
         '400':
           description: Bad Request
           content:
@@ -796,6 +796,11 @@ paths:
       tags:
         - Produtos (skuarticles)
       description: Atualiza uma mercadoria já existente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/SkuArticle.yaml
     delete:
       summary: Excluindo uma mercadoria
       operationId: delete-skuarticles-id
@@ -818,13 +823,6 @@ paths:
       summary: Listando mercadorias
       tags:
         - Produtos (skuarticles)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Embalagens'
       operationId: get-skuarticles
       description: |
         Lista de mercadorias (SKUs e suas embalagens)
@@ -853,20 +851,29 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/SkuArticle.yaml
     post:
       summary: Criando uma mercadoria
       operationId: post-skuarticles
       responses:
         '200':
           description: OK
+      description: Cria uma mercadoria (embalagem de um SKU)
+      tags:
+        - Produtos (skuarticles)
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Embalagens'
-      description: Cria uma mercadoria (embalagem de um SKU)
-      tags:
-        - Produtos (skuarticles)
+              $ref: ../models/SkuArticle.yaml
     parameters: []
   '/orders/{id}':
     put:
