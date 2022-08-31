@@ -205,4 +205,4 @@ x-examples:
       - id: 0
         nome_tag: ''
     codigo_agrup: ''
-description: Mercadoria (apresentação/embalagem de produto)
+description: Mercadoria (apresentação/embalagem de um SKU)
