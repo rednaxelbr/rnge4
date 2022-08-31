@@ -21,7 +21,7 @@ properties:
     readOnly: true
   num_loja:
     type: integer
-    description: ID da empresa onde o pedido será criado (somente POST)
+    description: ID da empresa onde o pedido será criado (somente POST); se omitido será usada a empresa do usuário logado
     writeOnly: true
   id_empresa:
     type: integer
@@ -68,7 +68,9 @@ properties:
   data_emissao:
     type: string
   lista_cfop:
-    type: 'null'
+    type: array
+    items:
+      type: integer
   id_romaneio:
     type: integer
   id_vendedor:

@@ -1,4 +1,71 @@
 type: object
+x-examples:
+  example-1:
+    id: 0
+    data_cadastro: ''
+    ucom: ''
+    prod_xprod: ''
+    sufixo_desc: ''
+    sufixo_extra: ''
+    mult_sku: 0
+    codigo_sku: 0
+    preco_tabela: 0
+    barcodes:
+      - gtin: 0
+        flags:
+          deletar: false
+        invalido: false
+    ativo: false
+    url_foto: ''
+    preco_promo: 0
+    preco_venda: 0
+    disponivel: 0
+    reserva: 0
+    parent_sku:
+      id_categ: 0
+      marca: ''
+      orig: 0
+      id_classe: 0
+    atualizado_erp:
+      preco: false
+      cadastro: false
+    desc_web:
+      longa: ''
+      nome: ''
+      reduzida: ''
+      curta: ''
+    peso_kg: 0
+    largura_m: 0
+    altura_m: 0
+    profundidade_m: 0
+    cubagem_kg: 0
+    id_package: 0
+    nome_embalagem: ''
+    capac_package: 0
+    embalagem_fragil: false
+    embalagem_venda: false
+    embalagem_compra: false
+    preco_atacado_legado: 0
+    margem_atacado_legado: 0
+    margem_padrao: 0
+    margem_promo: 0
+    pendente_erp:
+      preco: false
+      cadastro: false
+    promo_inicio: ''
+    promo_termino: ''
+    legado: false
+    sem_remessa: false
+    memoria_mapeamento: null
+    esmin_padrao: 0
+    automatico: false
+    csv_barcodes: ''
+    referencia: ''
+    tags:
+      - id: 0
+        nome_tag: ''
+    codigo_agrup: ''
+description: Mercadoria (apresentação/embalagem de um SKU)
 properties:
   id:
     type: integer
@@ -118,8 +185,6 @@ properties:
     type: boolean
   sem_remessa:
     type: boolean
-  memoria_mapeamento:
-    type: 'null'
   esmin_padrao:
     type: integer
   automatico:
@@ -139,70 +204,3 @@ properties:
           type: string
   codigo_agrup:
     type: string
-x-examples:
-  example-1:
-    id: 0
-    data_cadastro: ''
-    ucom: ''
-    prod_xprod: ''
-    sufixo_desc: ''
-    sufixo_extra: ''
-    mult_sku: 0
-    codigo_sku: 0
-    preco_tabela: 0
-    barcodes:
-      - gtin: 0
-        flags:
-          deletar: false
-        invalido: false
-    ativo: false
-    url_foto: ''
-    preco_promo: 0
-    preco_venda: 0
-    disponivel: 0
-    reserva: 0
-    parent_sku:
-      id_categ: 0
-      marca: ''
-      orig: 0
-      id_classe: 0
-    atualizado_erp:
-      preco: false
-      cadastro: false
-    desc_web:
-      longa: ''
-      nome: ''
-      reduzida: ''
-      curta: ''
-    peso_kg: 0
-    largura_m: 0
-    altura_m: 0
-    profundidade_m: 0
-    cubagem_kg: 0
-    id_package: 0
-    nome_embalagem: ''
-    capac_package: 0
-    embalagem_fragil: false
-    embalagem_venda: false
-    embalagem_compra: false
-    preco_atacado_legado: 0
-    margem_atacado_legado: 0
-    margem_padrao: 0
-    margem_promo: 0
-    pendente_erp:
-      preco: false
-      cadastro: false
-    promo_inicio: ''
-    promo_termino: ''
-    legado: false
-    sem_remessa: false
-    memoria_mapeamento: null
-    esmin_padrao: 0
-    automatico: false
-    csv_barcodes: ''
-    referencia: ''
-    tags:
-      - id: 0
-        nome_tag: ''
-    codigo_agrup: ''
-description: Mercadoria (apresentação/embalagem de um SKU)

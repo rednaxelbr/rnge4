@@ -212,8 +212,6 @@ properties:
         type: integer
       id_comprador:
         type: integer
-      ciclo:
-        type: 'null'
       dia_semana_iso:
         type: integer
       semana_par:
