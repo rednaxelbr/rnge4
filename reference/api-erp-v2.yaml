@@ -1981,7 +1981,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pessoa'
+                $ref: ../models/Customer.yaml
       operationId: get-customers-id
       description: 'Consulta uma pessoa física ou jurídica (cliente, fornecedor, colaborador, etc)'
     put:
@@ -1995,7 +1995,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pessoa'
+              $ref: ../models/Customer.yaml
       tags:
         - Pessoas (customers)
     delete:
@@ -2410,13 +2410,6 @@ paths:
       summary: Listando pessoas
       tags:
         - Pessoas (customers)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pessoa'
       operationId: get-customers
       description: |
         Filtros:
@@ -2434,6 +2427,15 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Customer.yaml
     post:
       summary: Cria uma pessoa
       operationId: post-customers
@@ -2441,13 +2443,13 @@ paths:
         '200':
           description: OK
       description: Cadastra uma nova pessoa
+      tags:
+        - Pessoas (customers)
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pessoa'
-      tags:
-        - Pessoas (customers)
+              $ref: ../models/Customer.yaml
   /catalogs:
     get:
       summary: Listagem de catálogos
@@ -3457,243 +3459,6 @@ components:
         - id
         - id_plu
         - cod_produto
-    Pessoa:
-      description: Pessoa física ou jurídica
-      type: object
-      x-examples:
-        example-1:
-          id: 31266002
-          cpf_cnpj: 69229154000156
-          nome_razao: TESTE
-          nome_fantasia: FANTASIA
-          telefone: '5130217888'
-          type_id: 6
-          email: teste@casadopapel.com
-          fav_danfe: true
-          ind_iedest: 9
-          ender_sede: 'AV. OTTO NIEMEYER, 1234 - TRISTEZA/CAVALHADA - Porto Alegre/RS'
-          pjuridica: true
-          emails:
-            - email: maisteste@cdp.com
-              pessoal: false
-              danfe: false
-              favorito: false
-          telefones:
-            - id: 2552347
-              phone_id: 2552347
-              type_id: 3
-              tipo: CELULAR
-              numero: (51) 9999-9999
-          categorias:
-            - id: 3
-              nome: ESCRITORIO
-          config_formas:
-            - desc_forma: Cartão de Crédito
-              nome_usuario: ALEXSANDER
-              limite_forma: 2000
-              cod_tpag: 3
-              semaforo_forma: 0
-            - desc_forma: Cheque
-              nome_usuario: ALEXSANDER
-              limite_forma: 1000
-              cod_tpag: 2
-              semaforo_forma: 0
-          outras_info:
-            semaforo_credito: 1
-            limite_credito: 500
-            tpag_preferido: 15
-            mensagem_inconsistente: ''
-            dias_ciclagem: 30
-            isento_acrescimo: false
-            credito_loja: false
-          canal: TLV
-          id_canal: 71
-          id_vendedor: 9778001
-          ativo: true
-          observ_padrao: Texto longo das observações
-          observ_financeira: Texto das observações financeiras
-          perfis:
-            - perfil: cliente
-          data_cadastro: '2006-01-19T00:00:00'
-      properties:
-        id:
-          type: number
-        nome_razao:
-          type: string
-          description: Nome ou Razão Social
-        nome_fantasia:
-          type: string
-          description: Nome fantasia
-        cpf_cnpj:
-          type: number
-          description: CPF ou CNPJ (ver campo "pjuridica")
-        pjuridica:
-          type: boolean
-          description: 'Pessoa jurídica? TRUE = Pessoa Jurídica, FALSE = Pessoa Física'
-        ind_iedest:
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 9
-          description: Indicador da IE do Destinatário (Manual NFe)
-        telefone:
-          type: string
-          description: Telefone principal
-        type_id:
-          type: number
-          description: Tipo do telefone principal
-        email:
-          type: string
-          description: Email favorito
-        fav_danfe:
-          type: boolean
-          description: Email favorito recebe DANFE?
-        ender_sede:
-          type: string
-          description: Endereço-sede (somente leitura)
-          readOnly: true
-        emails:
-          type: array
-          uniqueItems: true
-          description: Lista de emails (somente um pode ser favorito)
-          items:
-            type: object
-            properties:
-              email:
-                type: string
-              favorito:
-                type: boolean
-              pessoal:
-                type: boolean
-              danfe:
-                type: boolean
-            required:
-              - email
-        telefones:
-          type: array
-          uniqueItems: true
-          description: Lista de telefones (somente um pode ser principal)
-          items:
-            type: object
-            properties:
-              id:
-                type: number
-              type_id:
-                type: number
-              tipo:
-                type: string
-              numero:
-                type: string
-            required:
-              - id
-              - type_id
-              - tipo
-              - numero
-        categorias:
-          type: array
-          uniqueItems: true
-          description: Lista de categorias
-          items:
-            type: object
-            properties:
-              id:
-                type: number
-              nome:
-                type: string
-            required:
-              - id
-        config_formas:
-          type: array
-          uniqueItems: true
-          description: Configuração de crédito por forma de pagamento
-          items:
-            type: object
-            properties:
-              cod_tpag:
-                type: number
-                description: Código da Forma de Pagamento (tPag)
-              desc_forma:
-                type: string
-              nome_usuario:
-                type: string
-              limite_forma:
-                type: number
-              semaforo_forma:
-                type: number
-                description: Semáforo de crédito específico
-            required:
-              - cod_tpag
-        outras_info:
-          type: object
-          properties:
-            semaforo_credito:
-              type: number
-              description: Semáforo de crédito (números negativos bloqueiam venda)
-            limite_credito:
-              type: number
-              description: Limite de crédito (R$)
-            tpag_preferido:
-              type: number
-              description: Forma de pagamento preferida
-            mensagem_inconsistente:
-              type: string
-              description: Inconsistência de cadastro (integração)
-            dias_ciclagem:
-              type: number
-              description: Dias de Ciclo (CRM)
-            isento_acrescimo:
-              type: boolean
-              description: Isenção de boleto
-            credito_loja:
-              type: boolean
-        canal:
-          type: string
-        id_canal:
-          type: number
-          description: Canal por onde essa pessoa foi cadastrada
-        id_vendedor:
-          type: number
-          description: 'ID do vendedor da carteira da pessoa. Se a pessoa fizer parte de mais de uma carteira, é o vendedor dono da carteira favorita dessa pessoa.'
-        ativo:
-          type: boolean
-          description: Ativo/inativo
-        observ_padrao:
-          type: string
-          description: Observações (padrão)
-        observ_financeira:
-          type: string
-          description: Observações financeiras (visível somente para usuários autorizados)
-        perfis:
-          type: array
-          uniqueItems: true
-          description: Perfis da pessoa no sistema
-          items:
-            type: object
-            properties:
-              perfil:
-                type: string
-                minLength: 1
-                enum:
-                  - cliente
-                  - almoxarifado
-                  - colaborador
-                  - comprador
-                  - fornecedor
-                  - representante
-                  - vendedor
-                  - transportadora
-        data_cadastro:
-          type: string
-          minLength: 1
-          description: ''
-      required:
-        - id
-        - nome_razao
-        - cpf_cnpj
-        - pjuridica
-        - categorias
-        - config_formas
     Pessoa-Categoria:
       description: Cruzamento pessoa x categoria
       type: object
