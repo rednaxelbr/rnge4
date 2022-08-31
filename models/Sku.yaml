@@ -1,0 +1,242 @@
+type: object
+x-examples:
+  example-1:
+    id: 0
+    ucom: ''
+    prod_xprod: ''
+    grade:
+      id: 0
+      id_marca: 0
+      id_categ: 0
+      caminho: ''
+      ativo: false
+      marca: ''
+      orig: 0
+      id_classe: 0
+      trib: ''
+      cst: 0
+      aliq_ipi: 0
+      pmva_st: 0
+      ncm: ''
+      cest: ''
+      codigo_alfa: ''
+      desc_basica: ''
+      cod_legado: 0
+      excluir: false
+    ativo: false
+    referencia: ''
+    variacao: ''
+    dthr_sku: ''
+    custos:
+      custo_liquido: 0
+      curva: 0
+      vbcst_nota: 0
+      icms_efetivo: 0
+      reducao_bcst: 0
+      vicmsst_ret: 0
+      vicms_substituto: 0
+      vunit_compra: 0
+      pst_compra: 0
+      custo_merc_vend: 0
+      cmp_principal: 0
+    fornecedores:
+      - id_fornec: 0
+        nome_fornec: ''
+        id_pessoa: 0
+    fotos:
+      - id: 0
+        url_foto: ''
+        primario: ''
+        secundario: ''
+    flags_sku:
+      selo_inmetro: false
+      status_legado: 0
+    desc_comercial: ''
+    desc_curta: ''
+    desc_longa: ''
+    categorias:
+      - nome_catalogo: ''
+        id_categoria: 0
+        desc_categoria: ''
+        principal: false
+    codigo_agrup: ''
+    excluir: false
+    legado: false
+    embalagens: null
+    info_extra:
+      exibir_website: false
+    tipo_item: 0
+    composicao:
+      - id: 0
+        prod_xprod: ''
+        cod_produto: 0
+        quantidade: 0
+    data_cadastro: ''
+    preco_tabela: 0
+    principal: false
+description: SKU (base)
+properties:
+  id:
+    type: integer
+  ucom:
+    type: string
+  prod_xprod:
+    type: string
+  grade:
+    type: object
+    properties:
+      id:
+        type: integer
+      id_marca:
+        type: integer
+      id_categ:
+        type: integer
+      caminho:
+        type: string
+      ativo:
+        type: boolean
+      marca:
+        type: string
+      orig:
+        type: integer
+      id_classe:
+        type: integer
+      trib:
+        type: string
+      cst:
+        type: integer
+      aliq_ipi:
+        type: integer
+      pmva_st:
+        type: integer
+      ncm:
+        type: string
+      cest:
+        type: string
+      codigo_alfa:
+        type: string
+      desc_basica:
+        type: string
+      cod_legado:
+        type: integer
+      excluir:
+        type: boolean
+  ativo:
+    type: boolean
+  referencia:
+    type: string
+  variacao:
+    type: string
+  dthr_sku:
+    type: string
+  custos:
+    type: object
+    properties:
+      custo_liquido:
+        type: integer
+      curva:
+        type: integer
+      vbcst_nota:
+        type: integer
+      icms_efetivo:
+        type: integer
+      reducao_bcst:
+        type: integer
+      vicmsst_ret:
+        type: integer
+      vicms_substituto:
+        type: integer
+      vunit_compra:
+        type: integer
+      pst_compra:
+        type: integer
+      custo_merc_vend:
+        type: integer
+      cmp_principal:
+        type: integer
+  fornecedores:
+    type: array
+    items:
+      type: object
+      properties:
+        id_fornec:
+          type: integer
+        nome_fornec:
+          type: string
+        id_pessoa:
+          type: integer
+  fotos:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        url_foto:
+          type: string
+        primario:
+          type: string
+        secundario:
+          type: string
+  flags_sku:
+    type: object
+    properties:
+      selo_inmetro:
+        type: boolean
+      status_legado:
+        type: integer
+  desc_comercial:
+    type: string
+  desc_curta:
+    type: string
+  desc_longa:
+    type: string
+  categorias:
+    type: array
+    items:
+      type: object
+      properties:
+        nome_catalogo:
+          type: string
+        id_categoria:
+          type: integer
+        desc_categoria:
+          type: string
+        principal:
+          type: boolean
+  codigo_agrup:
+    type: string
+  excluir:
+    type: boolean
+  legado:
+    type: boolean
+  embalagens:
+    type: array
+    items:
+      $ref: ./SkuArticle.yaml
+  info_extra:
+    type: object
+    properties:
+      exibir_website:
+        type: boolean
+  tipo_item:
+    type: integer
+  composicao:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        prod_xprod:
+          type: string
+        cod_produto:
+          type: integer
+        quantidade:
+          type: integer
+  data_cadastro:
+    type: string
+  preco_tabela:
+    type: integer
+  principal:
+    type: boolean
