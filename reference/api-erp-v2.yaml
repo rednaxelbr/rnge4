@@ -9,6 +9,8 @@ tags:
     description: Agrupamentos Comerciais
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Composição Sku (skuparts)
+    description: Composição Sku
   - name: Conta despesa (expenseaccounts)
     description: Cadastro das contas de despesa
   - name: Distribuição (distributions)
@@ -1467,6 +1469,56 @@ paths:
       tags:
         - Formas de Quitação (paymentcodes)
     parameters: []
+  /skuparts:
+    get:
+      summary: Listando Composição SKU
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sku-Composicao'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    sigla_forma: DIN
+                    desc_forma: DINHEIRO
+                    tpag: 1
+                    forma_ativa: true
+      operationId: get-skuparts
+      description: |
+        Lista de formas de quitação
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | id da Composição SKU| 
+        | codigo_sku | int64 | Código do SKU | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Composição Sku (skuparts)
+    post:
+      summary: 'Criando uma Composição SKU (Ex: Display)'
+      operationId: post-skuparts
+      responses:
+        '200':
+          description: OK
+      description: Cria uma nova SKU Composição
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sku-Composicao'
+        description: ''
+      tags:
+        - Composição Sku (skuparts)
+    parameters: []
   /expenseaccounts:
     get:
       summary: Listando as contas de despesa
@@ -1734,6 +1786,53 @@ paths:
       description: Exclui uma forma de quitação.
       tags:
         - Formas de Quitação (paymentcodes)
+  '/skuparts/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da forma de quitação
+    get:
+      summary: Consultando uma Composição SKU
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sku-Composicao'
+      operationId: get-skuparts-id
+      description: 'Consulta uma composição SKU (Ex:  Display)'
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Composição Sku (skuparts)
+    put:
+      summary: Atualizando uma forma de quitação
+      operationId: put-skuparts-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma forma de quitação
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sku-Composicao'
+        description: ''
+    delete:
+      summary: Excluindo uma forma de quitação
+      operationId: delete-skuparts-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui uma forma de quitação.
+      tags:
+        - Composição Sku (skuparts)
   '/expenseaccounts/{id}':
     parameters:
       - schema:
@@ -3676,6 +3775,27 @@ components:
         - sigla_forma
         - desc_forma
         - forma_ativa
+    Sku-Composicao:
+      type: object
+      x-examples:
+        example-1:
+          id: 16930
+          codigo_sku: 134106
+          cod_produto: 134010
+          prod_xprod: MARCA TEXTO CIS LUMINI INK AMARELO
+          quantidade: 370
+      properties:
+        id:
+          type: integer
+        codigo_sku:
+          type: integer
+        cod_produto:
+          type: integer
+        prod_xprod:
+          type: string
+        quantidade:
+          type: number
+      description: 'Composição de um SKU. Ex: Display'
     Conta-Despesa:
       description: ''
       type: object
