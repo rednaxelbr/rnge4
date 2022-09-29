@@ -1812,25 +1812,27 @@ paths:
       tags:
         - Composição Sku (skuparts)
     put:
-      summary: Atualizando uma forma de quitação
+      summary: Atualizando uma composição SKU
       operationId: put-skuparts-id
       responses:
         '200':
           description: OK
-      description: Atualiza uma forma de quitação
+      description: Atualiza uma composição SKU
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Sku-Composicao'
         description: ''
+      tags:
+        - Composição Sku (skuparts)
     delete:
-      summary: Excluindo uma forma de quitação
+      summary: Excluindo uma Composição SKU
       operationId: delete-skuparts-id
       responses:
         '200':
           description: OK
-      description: Exclui uma forma de quitação.
+      description: Exclui uma Composição SKU
       tags:
         - Composição Sku (skuparts)
   '/expenseaccounts/{id}':
