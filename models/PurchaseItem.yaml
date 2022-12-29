@@ -126,16 +126,30 @@ properties:
             type: integer
   id_grade:
     type: integer
+    readOnly: true
   total_quant_pedido:
     type: integer
+    readOnly: true
   id_fornec:
     type: integer
   vdesc:
     type: integer
+    readOnly: true
   cfop:
     type: integer
+    readOnly: true
   quant_conf_rn:
     type: integer
+    readOnly: true
+  vigencia_custo:
+    type: string
+    readOnly: true
+  data_receb_merc:
+    type: string
+    readOnly: true
+  data_emissao:
+    type: string
+    readOnly: true
 required:
   - id_compra
   - seq_item
