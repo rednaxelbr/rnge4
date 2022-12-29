@@ -150,6 +150,12 @@ properties:
   data_emissao:
     type: string
     readOnly: true
+  impostos_ok:
+    type: boolean
+    readOnly: true
+  numero:
+    type: integer
+    readOnly: true
 required:
   - id_compra
   - seq_item
