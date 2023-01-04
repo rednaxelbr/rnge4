@@ -3416,6 +3416,22 @@ paths:
                 $ref: ../models/Purchase.yaml
       operationId: get-purchases-id
       description: Consulta uma NF de compra
+  '/invoices/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Faz o download de um XML
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      responses:
+        '200':
+          description: OK
+      operationId: get-invoices-id
+      description: Faz o dowload de um XML
 components:
   securitySchemes:
     Usuário/Senha:

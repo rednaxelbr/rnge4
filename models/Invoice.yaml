@@ -1,51 +1,4 @@
 type: array
-items:
-  type: object
-  properties:
-    id:
-      type: string
-    modelo:
-      type: integer
-    cnpj_emit:
-      type: integer
-    data_emissao:
-      type: string
-    dhemi:
-      type: string
-    tipo:
-      type: string
-    serie:
-      type: integer
-    numero:
-      type: integer
-    id_pessoa:
-      type: integer
-    nome_razao:
-      type: string
-    cpf_cnpj:
-      type: integer
-    fiscdoc_id:
-      type: integer
-    total_vnf:
-      type:
-        - integer
-        - number
-    id_empresa:
-      type: integer
-    nome_reduzido:
-      type: string
-    nome_usuario:
-      type: string
-    stat:
-      type: integer
-    sigla_status:
-      type: string
-    numero_pedido:
-      type: integer
-    sigla_loja:
-      type: string
-    historico:
-      type: string
 x-examples:
   Example 1:
     - id: '43221205563868000113550020000126491242362405'
@@ -233,3 +186,69 @@ x-examples:
         1090619
         710 NF EMITIDA
 description: Nota/Cupom Fiscal
+items:
+  type: object
+  properties:
+    id:
+      type: string
+    modelo:
+      type: integer
+    cnpj_emit:
+      type: integer
+    data_emissao:
+      type: string
+    dhemi:
+      type: string
+    tipo:
+      type: string
+    serie:
+      type: integer
+    numero:
+      type: integer
+    id_pessoa:
+      type: integer
+    nome_razao:
+      type: string
+    cpf_cnpj:
+      type: integer
+    total_vnf:
+      type:
+        - integer
+        - number
+    id_empresa:
+      type: integer
+    nome_reduzido:
+      type: string
+    nome_usuario:
+      type: string
+    stat:
+      type: integer
+    sigla_status:
+      type: string
+    numero_pedido:
+      type: integer
+    sigla_loja:
+      type: string
+    historico:
+      type: string
+    arquivo_xml:
+      type: string
+      description: XML da NF (somente no GET por id)
+  required:
+    - id
+    - modelo
+    - cnpj_emit
+    - data_emissao
+    - dhemi
+    - tipo
+    - serie
+    - numero
+    - id_pessoa
+    - nome_razao
+    - cpf_cnpj
+    - total_vnf
+    - id_empresa
+    - nome_reduzido
+    - nome_usuario
+    - stat
+    - sigla_status
