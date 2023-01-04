@@ -3430,6 +3430,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Invoice.yaml
       operationId: get-invoices-id
       description: |-
         Consulta uma NF/Cupom, colocando o conteúdo do arquivo XML no campo `arquivo_xml` do JSON. Para extrar somente o XML via curl, sugerimos usar o aplicativo "jq" na linha de comando:
