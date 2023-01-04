@@ -2424,7 +2424,7 @@ paths:
               required:
                 - xml
     get:
-      summary: ''
+      summary: Lista de NF/Cupons
       operationId: get-invoices
       responses:
         '200':
@@ -2435,7 +2435,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Invoice.yaml
-      description: Lista de notas/cupons
+      description: Lista de notas/cupons. O filtro "modelo" é obrigatório.
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
