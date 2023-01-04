@@ -3424,14 +3424,19 @@ paths:
         in: path
         required: true
     get:
-      summary: Faz o download de um XML
+      summary: Consulta uma Nota/Cupom
       tags:
         - Notas/Cupons Fiscais (invoices)
       responses:
         '200':
           description: OK
       operationId: get-invoices-id
-      description: Faz o dowload de um XML
+      description: |-
+        Consulta uma NF/Cupom, colocando o conteúdo do arquivo XML no campo `arquivo_xml` do JSON. Para extrar somente o XML via curl, sugerimos usar o aplicativo "jq" na linha de comando:
+
+        ```bash
+        curl ... | jq --raw-output .arquivo_xml
+        ```
 components:
   securitySchemes:
     Usuário/Senha:
