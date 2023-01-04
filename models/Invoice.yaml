@@ -1,0 +1,235 @@
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: string
+    modelo:
+      type: integer
+    cnpj_emit:
+      type: integer
+    data_emissao:
+      type: string
+    dhemi:
+      type: string
+    tipo:
+      type: string
+    serie:
+      type: integer
+    numero:
+      type: integer
+    id_pessoa:
+      type: integer
+    nome_razao:
+      type: string
+    cpf_cnpj:
+      type: integer
+    fiscdoc_id:
+      type: integer
+    total_vnf:
+      type:
+        - integer
+        - number
+    id_empresa:
+      type: integer
+    nome_reduzido:
+      type: string
+    nome_usuario:
+      type: string
+    stat:
+      type: integer
+    sigla_status:
+      type: string
+    numero_pedido:
+      type: integer
+    sigla_loja:
+      type: string
+    historico:
+      type: string
+x-examples:
+  Example 1:
+    - id: '43221205563868000113550020000126491242362405'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T12:34:21-03:00'
+      tipo: Z
+      serie: 2
+      numero: 12649
+      id_pessoa: 49919010
+      nome_razao: BELLER COMERCIO DE PAPEIS LTDA
+      cpf_cnpj: 5563868002400
+      fiscdoc_id: 11302603
+      total_vnf: 200
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: ANDRER
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090346
+      sigla_loja: VLT
+      historico: |-
+        1090346
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126511074115599'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T12:49:17-03:00'
+      tipo: D
+      serie: 2
+      numero: 12651
+      id_pessoa: 666440005
+      nome_razao: cézar odorito fornari de baz
+      cpf_cnpj: 63485796034
+      fiscdoc_id: 11302725
+      total_vnf: 55.9
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: JOSIANEA
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090353
+      sigla_loja: VLT
+      historico: |-
+        1090353
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126521869186345'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T13:37:16-03:00'
+      tipo: Z
+      serie: 2
+      numero: 12652
+      id_pessoa: 38112001
+      nome_razao: BELLER COMERCIO DE PAPEIS LTDA
+      cpf_cnpj: 5563868000547
+      fiscdoc_id: 11303058
+      total_vnf: 17400
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: RODRIGOF
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090250
+      sigla_loja: VLT
+      historico: |-
+        1090250
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126531131877868'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T14:25:42-03:00'
+      tipo: Z
+      serie: 2
+      numero: 12653
+      id_pessoa: 38112001
+      nome_razao: BELLER COMERCIO DE PAPEIS LTDA
+      cpf_cnpj: 5563868000547
+      fiscdoc_id: 11303454
+      total_vnf: 90
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: RODRIGOF
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090451
+      sigla_loja: VLT
+      historico: |-
+        1090451
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126541306704336'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T14:49:36-03:00'
+      tipo: D
+      serie: 2
+      numero: 12654
+      id_pessoa: 666506005
+      nome_razao: franciso junior ferraz de lima
+      cpf_cnpj: 87315718087
+      fiscdoc_id: 11303655
+      total_vnf: 19.98
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: JOSIANEA
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090467
+      sigla_loja: VLT
+      historico: |-
+        1090467
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126551520526750'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T17:03:15-03:00'
+      tipo: D
+      serie: 2
+      numero: 12655
+      id_pessoa: 666585005
+      nome_razao: KAROLINE DOS SANTOS RAMOS
+      cpf_cnpj: 87951029068
+      fiscdoc_id: 11304691
+      total_vnf: 7.98
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: ASHILEYL
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090580
+      sigla_loja: VLT
+      historico: |-
+        1090580
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126561723236371'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T17:46:15-03:00'
+      tipo: Z
+      serie: 2
+      numero: 12656
+      id_pessoa: 332900034
+      nome_razao: BELLER COMERCIO DE PAPEIS LTDA
+      cpf_cnpj: 5563868002833
+      fiscdoc_id: 11304950
+      total_vnf: 1900
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: RODRIGOF
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090566
+      sigla_loja: VLT
+      historico: |-
+        1090566
+        710 NF EMITIDA
+    - id: '43221205563868000113550020000126571251421330'
+      modelo: 55
+      cnpj_emit: 5563868000113
+      data_emissao: '2022-12-30T00:00:00'
+      dhemi: '2022-12-30T18:00:08-03:00'
+      tipo: Z
+      serie: 2
+      numero: 12657
+      id_pessoa: 60721001
+      nome_razao: ALEXANDRE DA SILVA
+      cpf_cnpj: 65223535049
+      fiscdoc_id: 11305030
+      total_vnf: 142.49
+      id_empresa: 1
+      nome_reduzido: VOLUNTARIOS
+      nome_usuario: JOSIANEA
+      stat: 710
+      sigla_status: NF EMITIDA
+      numero_pedido: 1090619
+      sigla_loja: VLT
+      historico: |-
+        1090619
+        710 NF EMITIDA
+description: Nota/Cupom Fiscal

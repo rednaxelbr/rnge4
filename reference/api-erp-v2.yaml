@@ -2423,6 +2423,25 @@ paths:
                   writeOnly: true
               required:
                 - xml
+    get:
+      summary: ''
+      operationId: get-invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Invoice.yaml
+      description: Lista de notas/cupons
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Notas/Cupons Fiscais (invoices)
   /orderitems:
     get:
       summary: Lista de itens de um pedido
