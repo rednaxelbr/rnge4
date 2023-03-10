@@ -35,57 +35,24 @@ x-examples:
     categorias:
       - id: 13
         nome: PESSOA FISICA
-    inconsistencias: null
-    data_hora: '2001-02-15T00:00:00'
-    criado_por: usuario
-    duplicar_cadastro: true
-    outras_info:
-      data_nasc: '1971-06-25'
-      cod_vendedor: 48210010
-      credito_loja: false
-      dias_ciclagem: 23
-      isento_acrescimo: false
-      semaforo_credito: 0
-      mensagem_inconsistente: ''
-    ids_perfis:
-      - 2
-      - 4
-      - 6
-    ids_categorias:
-      - 13
-    telefones:
-      - id: 2683033
-        tipo: RNX3F
-        numero: (51) 3021-7888
-        type_id: 13
-        observacoes: null
-      - id: 2982937
-        tipo: CELULAR
-        numero: (51) 99179-0979
-        type_id: 3
-        observacoes: null
-    emails:
-      - danfe: false
-        email: cristianogd@gmail.com
-        pessoal: true
-    documentos:
-      - id: 30859
-        uf: null
-        id_tipo: RG
-        observacoes: null
-        num_documento: '5025615245'
+    inconsistencias:
+      - texto: blab
 description: Pessoas
 properties:
   id:
     type: integer
+    readOnly: true
   ativo:
     type: boolean
   data_cadastro:
     type: string
+    readOnly: true
   pjuridica:
     type: boolean
+    readOnly: true
   cnpj:
-    type: 'null'
+    type:
+      - string
   cpf:
     type: string
   nome_razao:
@@ -108,6 +75,7 @@ properties:
     type: integer
   desc_canal:
     type: string
+    readOnly: true
   address_id:
     type: integer
   logradouro:
@@ -138,87 +106,15 @@ properties:
         nome:
           type: string
   inconsistencias:
-    type: 'null'
-  data_hora:
-    type: string
-    description: Aparece somente no GetOne
-  criado_por:
-    type: string
-    description: Aparece somente no GetOne
-  duplicar_cadastro:
-    type: boolean
-    description: Aparece somente no GetOne
-  outras_info:
-    type: object
-    description: Aparece somente no GetOne
-    properties:
-      data_nasc:
-        type: string
-      cod_vendedor:
-        type: integer
-      credito_loja:
-        type: boolean
-      dias_ciclagem:
-        type: integer
-      isento_acrescimo:
-        type: boolean
-      semaforo_credito:
-        type: integer
-      mensagem_inconsistente:
-        type: string
-  ids_perfis:
     type: array
-    description: Aparece somente no GetOne
     items:
-      type: integer
-  ids_categorias:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: integer
-  telefones:
-    type: array
-    description: Aparece somente no GetOne
-    items:
+      x-stoplight:
+        id: s6cato8azog6z
       type: object
       properties:
-        id:
-          type: integer
-        tipo:
+        texto:
           type: string
-        numero:
-          type: string
-        type_id:
-          type: integer
-        observacoes:
-          type: 'null'
-  emails:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: object
-      properties:
-        danfe:
-          type: boolean
-        email:
-          type: string
-        pessoal:
-          type: boolean
-  documentos:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: object
-      properties:
-        id:
-          type: integer
-        uf:
-          type: 'null'
-        id_tipo:
-          type: string
-        observacoes:
-          type: 'null'
-        num_documento:
-          type: string
+          x-stoplight:
+            id: r1388xic32qi7
 required:
   - ativo

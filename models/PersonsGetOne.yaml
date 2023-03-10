@@ -1,0 +1,7 @@
+title: PersonsGetOne
+x-stoplight:
+  id: w7xcmogqfdtbn
+allOf:
+  - $ref: ./Persons.yaml
+  - $ref: ./PersonsExtras.yaml
+description: Cadastro de Pessoa completa

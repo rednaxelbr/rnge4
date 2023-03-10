@@ -50,6 +50,7 @@ properties:
     type: string
   nome_usuario:
     type: string
+    readOnly: true
   status:
     type: integer
   sigla_status:

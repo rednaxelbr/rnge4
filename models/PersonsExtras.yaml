@@ -1,0 +1,106 @@
+type: object
+x-stoplight:
+  id: 0a5cffb7b2e74
+x-examples: null
+description: Pessoas Extras
+properties:
+  outras_info:
+    type: object
+    description: Aparece somente no GetOne
+    properties:
+      data_nasc:
+        type: string
+      cod_vendedor:
+        type: integer
+      credito_loja:
+        type: boolean
+      dias_ciclagem:
+        type: integer
+      isento_acrescimo:
+        type: boolean
+      semaforo_credito:
+        type: integer
+      mensagem_inconsistente:
+        type: string
+  ids_perfis:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: integer
+  ids_categorias:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: integer
+  telefones:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo:
+          type: string
+        numero:
+          type: string
+        type_id:
+          type: integer
+        observacoes:
+          type:
+            - string
+            - 'null'
+      required:
+        - observacoes
+  emails:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        danfe:
+          type: boolean
+        email:
+          type: string
+        pessoal:
+          type: boolean
+  documentos:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        uf:
+          type: string
+        id_tipo:
+          type: string
+        observacoes:
+          type: string
+        num_documento:
+          type: string
+  observ_padrao:
+    type: string
+  observ_financeira:
+    type: string  
+  observ_credito:
+    type: string 
+  observ_gerencial:
+    type: string 
+  duplicar_cadastro:
+    type: boolean
+    description: Somente pode ser modificado no POST
+  data_hora:
+    type: string
+    readOnly: true
+  criado_por:
+    type: string
+  financeiro:
+    type: boolean
+    description: 'se TRUE, exibe observ_financeira'
+    readOnly: true
+  gerencial:
+    type: boolean
+    description: 'se TRUE, exibe observ_credito e observ_gerencial'
+    readOnly: true    
