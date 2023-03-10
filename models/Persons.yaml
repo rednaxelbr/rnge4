@@ -1,0 +1,224 @@
+type: object
+x-examples:
+  Example 1:
+    id: 5359001
+    rnx_tenant_fk: 5563868
+    person_id: 100005
+    ativo: true
+    data_cadastro: '2001-02-15T00:00:00'
+    pjuridica: false
+    cpf_cnpj: 60502002034
+    sexo: M
+    cnpj: null
+    cpf: '60502002034'
+    nome_razao: Cristiano Guilherme Dienstmann
+    nome_fantasia: CRISTIANO - GERENCIA CDP
+    ind_iedest: 9
+    iestadual: null
+    imunicipal: null
+    email: cristiano.dienstmann@casadopapel.com.br
+    id_telefone: 6
+    telefone: '51981117960'
+    id_canal: 65
+    desc_canal: ECM Supriagora
+    address_id: 591674
+    logradouro: RUA PROFESSORA DOUTORA HEBE TOURINHO
+    numero: 151
+    complemento: FINAL DA HERMES PACHECO
+    bairro: HÍPICA
+    cep: '91755122'
+    cmun: 4314902
+    nome_municipio: Porto Alegre
+    uf: RS
+    id_vendedor: 49666010
+    busca_texto: '''cdp'':6 ''cristian'':1,4 ''dienstmann'':3 ''gerenc'':5 ''guilherm'':2'
+    categorias:
+      - id: 13
+        nome: PESSOA FISICA
+    inconsistencias: null
+    data_hora: '2001-02-15T00:00:00'
+    criado_por: usuario
+    duplicar_cadastro: true
+    outras_info:
+      data_nasc: '1971-06-25'
+      cod_vendedor: 48210010
+      credito_loja: false
+      dias_ciclagem: 23
+      isento_acrescimo: false
+      semaforo_credito: 0
+      mensagem_inconsistente: ''
+    ids_perfis:
+      - 2
+      - 4
+      - 6
+    ids_categorias:
+      - 13
+    telefones:
+      - id: 2683033
+        tipo: RNX3F
+        numero: (51) 3021-7888
+        type_id: 13
+        observacoes: null
+      - id: 2982937
+        tipo: CELULAR
+        numero: (51) 99179-0979
+        type_id: 3
+        observacoes: null
+    emails:
+      - danfe: false
+        email: cristianogd@gmail.com
+        pessoal: true
+    documentos:
+      - id: 30859
+        uf: null
+        id_tipo: RG
+        observacoes: null
+        num_documento: '5025615245'
+description: Pessoas
+properties:
+  id:
+    type: integer
+  ativo:
+    type: boolean
+  data_cadastro:
+    type: string
+  pjuridica:
+    type: boolean
+  cnpj:
+    type: 'null'
+  cpf:
+    type: string
+  nome_razao:
+    type: string
+  nome_fantasia:
+    type: string
+  ind_iedest:
+    type: integer
+  iestadual:
+    type: 'null'
+  imunicipal:
+    type: 'null'
+  email:
+    type: string
+  id_telefone:
+    type: integer
+  telefone:
+    type: string
+  id_canal:
+    type: integer
+  desc_canal:
+    type: string
+  address_id:
+    type: integer
+  logradouro:
+    type: string
+  numero:
+    type: integer
+  complemento:
+    type: string
+  bairro:
+    type: string
+  cep:
+    type: string
+  cmun:
+    type: integer
+  nome_municipio:
+    type: string
+  uf:
+    type: string
+  id_vendedor:
+    type: integer
+  categorias:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+  inconsistencias:
+    type: 'null'
+  data_hora:
+    type: string
+    description: Aparece somente no GetOne
+  criado_por:
+    type: string
+    description: Aparece somente no GetOne
+  duplicar_cadastro:
+    type: boolean
+    description: Aparece somente no GetOne
+  outras_info:
+    type: object
+    description: Aparece somente no GetOne
+    properties:
+      data_nasc:
+        type: string
+      cod_vendedor:
+        type: integer
+      credito_loja:
+        type: boolean
+      dias_ciclagem:
+        type: integer
+      isento_acrescimo:
+        type: boolean
+      semaforo_credito:
+        type: integer
+      mensagem_inconsistente:
+        type: string
+  ids_perfis:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: integer
+  ids_categorias:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: integer
+  telefones:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo:
+          type: string
+        numero:
+          type: string
+        type_id:
+          type: integer
+        observacoes:
+          type: 'null'
+  emails:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        danfe:
+          type: boolean
+        email:
+          type: string
+        pessoal:
+          type: boolean
+  documentos:
+    type: array
+    description: Aparece somente no GetOne
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        uf:
+          type: 'null'
+        id_tipo:
+          type: string
+        observacoes:
+          type: 'null'
+        num_documento:
+          type: string
+required:
+  - ativo
