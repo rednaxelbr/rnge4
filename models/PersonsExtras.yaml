@@ -83,11 +83,11 @@ properties:
   observ_padrao:
     type: string
   observ_financeira:
-    type: string  
+    type: string
   observ_credito:
-    type: string 
+    type: string
   observ_gerencial:
-    type: string 
+    type: string
   duplicar_cadastro:
     type: boolean
     description: Somente pode ser modificado no POST
@@ -96,11 +96,16 @@ properties:
     readOnly: true
   criado_por:
     type: string
-  financeiro:
-    type: boolean
-    description: 'se TRUE, exibe observ_financeira'
     readOnly: true
   gerencial:
     type: boolean
     description: 'se TRUE, exibe observ_credito e observ_gerencial'
-    readOnly: true    
+    readOnly: true
+  financeiro:
+    type: boolean
+    description: '//--- se TRUE, exibe observ_financeira'
+    readOnly: true
+  financeiro_readonly:
+    type: boolean
+    description: '//--- se TRUE, permite editar observ_financeira'
+    readOnly: true

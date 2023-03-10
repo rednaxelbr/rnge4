@@ -73,6 +73,8 @@ tags:
     description: Cadastro das classes fiscais
   - name: Unidades de Medida (units)
     description: Unidades de Medida
+  - name: Pessoas (persons)
+    description: Cadastro de Pessoas  
 info:
   license:
     name: Copyright (C) Rednaxel Informática
@@ -3416,6 +3418,32 @@ paths:
                 $ref: ../models/Purchase.yaml
       operationId: get-purchases-id
       description: Consulta uma NF de compra
+  '/persons/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da Pessoa
+    put:
+      summary: Atualiza uma Pessoa
+      tags:
+        - Pessoas (persons)
+      responses:
+        '200':
+          description: OK
+      operationId: put-persons-id
+      description: Atualiza uma Pessoa
+    get:
+      summary: Carrega uma Pessoa
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+      operationId: get-persons-id
+      description: Consulta uma Pessoa
   '/invoices/{id}':
     parameters:
       - schema:
@@ -3423,6 +3451,7 @@ paths:
         name: id
         in: path
         required: true
+        description: ID da compra
     get:
       summary: Consulta uma Nota/Cupom
       tags:

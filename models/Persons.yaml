@@ -1,42 +1,5 @@
 type: object
-x-examples:
-  Example 1:
-    id: 5359001
-    rnx_tenant_fk: 5563868
-    person_id: 100005
-    ativo: true
-    data_cadastro: '2001-02-15T00:00:00'
-    pjuridica: false
-    cpf_cnpj: 60502002034
-    sexo: M
-    cnpj: null
-    cpf: '60502002034'
-    nome_razao: Cristiano Guilherme Dienstmann
-    nome_fantasia: CRISTIANO - GERENCIA CDP
-    ind_iedest: 9
-    iestadual: null
-    imunicipal: null
-    email: cristiano.dienstmann@casadopapel.com.br
-    id_telefone: 6
-    telefone: '51981117960'
-    id_canal: 65
-    desc_canal: ECM Supriagora
-    address_id: 591674
-    logradouro: RUA PROFESSORA DOUTORA HEBE TOURINHO
-    numero: 151
-    complemento: FINAL DA HERMES PACHECO
-    bairro: HÍPICA
-    cep: '91755122'
-    cmun: 4314902
-    nome_municipio: Porto Alegre
-    uf: RS
-    id_vendedor: 49666010
-    busca_texto: '''cdp'':6 ''cristian'':1,4 ''dienstmann'':3 ''gerenc'':5 ''guilherm'':2'
-    categorias:
-      - id: 13
-        nome: PESSOA FISICA
-    inconsistencias:
-      - texto: blab
+x-examples: null
 description: Pessoas
 properties:
   id:
@@ -118,3 +81,4 @@ properties:
             id: r1388xic32qi7
 required:
   - ativo
+  - pjuridica
