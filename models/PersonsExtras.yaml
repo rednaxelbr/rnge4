@@ -62,9 +62,7 @@ properties:
         pessoal:
           type: boolean
       required:
-        - danfe
         - email
-        - pessoal
   documentos:
     type: array
     description: Aparece somente no GetOne
