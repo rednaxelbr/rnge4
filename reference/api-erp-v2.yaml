@@ -2758,6 +2758,37 @@ paths:
               $ref: ../models/PurchaseOrderGetOne.yaml
       tags:
         - Ordens de Compra (purchaseorders)
+  /persons:
+    get:
+      summary: Lista de Pessoas
+      tags:
+        - Pessoas (persons)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PurchaseOrder.yaml
+      operationId: get-persons
+      description: Listagem de Pessoas
+    post:
+      summary: Cria uma nova Pessoa
+      operationId: post-persons
+      responses:
+        '200':
+          description: OK
+      description: Criação de uma nova Pessoa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PersonsGetOne.yaml
+      tags:
+        - Ordens de Compra (purchaseorders)
+    parameters: []
   /productimages:
     get:
       summary: Lista de fotos de um produto
