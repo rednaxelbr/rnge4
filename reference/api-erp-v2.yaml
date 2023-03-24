@@ -3450,7 +3450,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/PurchaseOrderGetOne.yaml
+                $ref: ../models/PersonsGetOne.yaml
       operationId: get-persons-id
       description: Consulta uma Pessoa
   '/invoices/{id}':

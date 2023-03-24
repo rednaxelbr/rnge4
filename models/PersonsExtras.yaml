@@ -1,7 +1,6 @@
 type: object
 x-stoplight:
   id: 0a5cffb7b2e74
-x-examples: null
 description: Pessoas Extras
 properties:
   outras_info:
@@ -47,9 +46,7 @@ properties:
         type_id:
           type: integer
         observacoes:
-          type:
-            - string
-            - 'null'
+          type: string
       required:
         - observacoes
   emails:
