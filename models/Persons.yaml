@@ -37,8 +37,6 @@ properties:
   desc_canal:
     type: string
     readOnly: true
-  address_id:
-    type: integer
   logradouro:
     type: string
   numero:
