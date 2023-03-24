@@ -2774,6 +2774,12 @@ paths:
                   $ref: ../models/PurchaseOrder.yaml
       operationId: get-persons
       description: Listagem de Pessoas
+      requestBody:
+        content: {}
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
     post:
       summary: Cria uma nova Pessoa
       operationId: post-persons
