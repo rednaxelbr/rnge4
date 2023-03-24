@@ -41,8 +41,10 @@ properties:
           type: integer
         tipo:
           type: string
-        numero:
+        numero_telefone:
           type: string
+          x-stoplight:
+            id: a8vk0db5fxxpz
         type_id:
           type: integer
         observacoes:
