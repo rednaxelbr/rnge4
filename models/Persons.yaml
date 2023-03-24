@@ -75,6 +75,12 @@ properties:
           type: string
           x-stoplight:
             id: r1388xic32qi7
+  limpar_inconsistencias:
+    type: boolean
+    x-stoplight:
+      id: onf0cwmg2wmuw
+    description: somente PUT
+    writeOnly: true
 required:
   - ativo
   - pjuridica
