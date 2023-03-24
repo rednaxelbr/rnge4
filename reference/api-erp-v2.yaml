@@ -2771,9 +2771,14 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/PurchaseOrder.yaml
+                  $ref: ../models/Persons.yaml
       operationId: get-persons
-      description: Listagem de Pessoas
+      description: |
+        Listagem de Pessoas. Principais filtros:
+        - `Pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
+        - `inativos` (bool) Incluir na visualização as pessoas inativas
+        - `id_canal` (integer) id do canal
+        - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
       requestBody:
         content: {}
       parameters:
