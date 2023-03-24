@@ -49,8 +49,6 @@ properties:
           type: integer
         observacoes:
           type: string
-      required:
-        - observacoes
   emails:
     type: array
     description: Aparece somente no GetOne
@@ -63,6 +61,10 @@ properties:
           type: string
         pessoal:
           type: boolean
+      required:
+        - danfe
+        - email
+        - pessoal
   documentos:
     type: array
     description: Aparece somente no GetOne
