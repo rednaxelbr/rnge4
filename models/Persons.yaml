@@ -1,5 +1,4 @@
 type: object
-x-examples: null
 description: Pessoas
 properties:
   id:
@@ -14,8 +13,7 @@ properties:
     type: boolean
     readOnly: true
   cnpj:
-    type:
-      - string
+    type: string
   cpf:
     type: string
   nome_razao:
@@ -25,9 +23,9 @@ properties:
   ind_iedest:
     type: integer
   iestadual:
-    type: 'null'
+    type: string
   imunicipal:
-    type: 'null'
+    type: string
   email:
     type: string
   id_telefone:
