@@ -4376,7 +4376,12 @@ components:
         type: array
         minItems: 2
         maxItems: 2
+        items:
+          type: integer
+          format: int32
       description: Paginação
+      explode: true
+      style: form
     Sort:
       name: sort
       in: query
