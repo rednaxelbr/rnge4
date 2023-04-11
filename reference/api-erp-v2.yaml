@@ -4375,9 +4375,9 @@ components:
       required: true
       schema:
         type: array
-        default:
-          - 0
-          - 9
+        uniqueItems: true
+        minItems: 2
+        maxItems: 2
       description: Paginação
     Sort:
       name: sort
