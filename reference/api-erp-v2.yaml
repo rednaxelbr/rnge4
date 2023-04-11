@@ -4372,10 +4372,8 @@ components:
     Range:
       name: range
       in: query
-      required: true
       schema:
         type: array
-        uniqueItems: true
         minItems: 2
         maxItems: 2
       description: Paginação
