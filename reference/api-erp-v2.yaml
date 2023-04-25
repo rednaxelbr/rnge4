@@ -3506,6 +3506,8 @@ paths:
               schema:
                 $ref: ../models/PersonsGetOne.yaml
       description: Inativa uma Pessoa
+      tags:
+        - Pessoas (persons)
   '/invoices/{id}':
     parameters:
       - schema:
