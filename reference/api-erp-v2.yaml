@@ -53,8 +53,8 @@ tags:
     description: Categorias de Pessoas
   - name: Pessoas (persons)
     description: Cadastro de Pessoas  
-  - name: Pessoas-OLD (customers)
-    description: Cadastro de Pessoas
+  - name: Pessoas (customers)
+    description: Cadastro de Pessoas (OLD)
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
