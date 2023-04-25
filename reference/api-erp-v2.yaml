@@ -52,7 +52,7 @@ tags:
   - name: Pessoas (customercategories)
     description: Categorias de Pessoas
   - name: Pessoas (persons)
-    description: Cadastro de Pessoas  
+    description: Cadastro de Pessoas
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
@@ -72,7 +72,7 @@ tags:
   - name: Tributária (Classe Fiscal)
     description: Cadastro das classes fiscais
   - name: Unidades de Medida (units)
-    description: Unidades de Medida  
+    description: Unidades de Medida
 info:
   license:
     name: Copyright (C) Rednaxel Informática
@@ -3405,7 +3405,7 @@ paths:
       operationId: get-persons-id
       description: Consulta uma Pessoa
     delete:
-      summary: ''
+      summary: Deleta uma Pessoa
       operationId: delete-persons-id
       responses:
         '200':
