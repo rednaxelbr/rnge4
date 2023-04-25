@@ -51,6 +51,8 @@ tags:
     description: Separação/Conferência de Pedidos
   - name: Pessoas (customercategories)
     description: Categorias de Pessoas
+  - name: Pessoas-OLD (persons)
+    description: Cadastro de Pessoas  
   - name: Pessoas (customers)
     description: Cadastro de Pessoas
   - name: Prédios de Estoque
@@ -72,9 +74,7 @@ tags:
   - name: Tributária (Classe Fiscal)
     description: Cadastro das classes fiscais
   - name: Unidades de Medida (units)
-    description: Unidades de Medida
-  - name: Pessoas (persons)
-    description: Cadastro de Pessoas
+    description: Unidades de Medida  
 info:
   license:
     name: Copyright (C) Rednaxel Informática
