@@ -53,8 +53,6 @@ tags:
     description: Categorias de Pessoas
   - name: Pessoas (persons)
     description: Cadastro de Pessoas  
-  - name: Pessoas (customers)
-    description: Cadastro de Pessoas (OLD)
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
@@ -2066,50 +2064,6 @@ paths:
         description: ''
       tags:
         - Listas de Preços (pricelists)
-  '/customers/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: id da pessoa
-    get:
-      summary: Consulta uma pessoa
-      tags:
-        - Pessoas (customers)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Customer.yaml
-      operationId: get-customers-id
-      description: 'Consulta uma pessoa física ou jurídica (cliente, fornecedor, colaborador, etc)'
-    put:
-      summary: Atualiza uma pessoa
-      operationId: put-customers-id
-      responses:
-        '200':
-          description: OK
-      description: Atualiza uma pessoa física ou jurídica
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Customer.yaml
-      tags:
-        - Pessoas (customers)
-    delete:
-      summary: Inativa uma pessoa
-      operationId: delete-customers-id
-      responses:
-        '200':
-          description: OK
-      description: Inativa uma pessoa física ou jurídica
-      tags:
-        - Pessoas (customers)
   '/companies/{id}':
     parameters:
       - schema:
@@ -2527,51 +2481,6 @@ paths:
       description: Remove um item de um pedido
       tags:
         - Pedidos (orders)
-  /customers:
-    get:
-      summary: Listando pessoas
-      tags:
-        - Pessoas (customers)
-      operationId: get-customers
-      description: |
-        Filtros:
-        - `nome` (string): Nome ou Razão Social
-        - `nome_fantasia` (string): Nome Fantasia
-        - `inativos` (bool): Inclui os inativos
-        - `inconsistentes` (bool): Inclui os inconsistentes
-        - `id_canal` (integer): canal onde foi criado
-        - `telefone` (integer): telefone (sem DDD)
-        - `email` (string): email
-        - `comprador` (bool): Somente os compradores
-        - `credito_loja` (bool): Somente clientes que podem pagar depois
-        - `todos` (bool): Inclui todos (inativos e todos os canais)
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Customer.yaml
-    post:
-      summary: Cria uma pessoa
-      operationId: post-customers
-      responses:
-        '200':
-          description: OK
-      description: Cadastra uma nova pessoa
-      tags:
-        - Pessoas (customers)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Customer.yaml
   /catalogs:
     get:
       summary: Listagem de catálogos
