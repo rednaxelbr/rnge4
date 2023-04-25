@@ -51,9 +51,9 @@ tags:
     description: Separação/Conferência de Pedidos
   - name: Pessoas (customercategories)
     description: Categorias de Pessoas
-  - name: Pessoas-OLD (persons)
+  - name: Pessoas (persons)
     description: Cadastro de Pessoas  
-  - name: Pessoas (customers)
+  - name: Pessoas-OLD (customers)
     description: Cadastro de Pessoas
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
