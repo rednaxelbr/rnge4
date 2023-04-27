@@ -2684,10 +2684,13 @@ paths:
       operationId: get-persons
       description: |
         Listagem de Pessoas. Principais filtros:
-        - `Pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
+        - `pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
+        - `nome_exato` (bool) Pesquisa exata da descrição em conjunto com o filtro "pesquisa"
         - `inativos` (bool) Incluir na visualização as pessoas inativas
         - `id_canal` (integer) id do canal
         - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
+        - `logradouro` (string) Rua/Avenida/etc do endereço
+        - `credito_loja` (bool) Possuir crédito Loja
       requestBody:
         content: {}
       parameters:
