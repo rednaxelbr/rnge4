@@ -81,6 +81,14 @@ properties:
       id: onf0cwmg2wmuw
     description: somente PUT
     writeOnly: true
+  crm_etapa:
+    type: integer
+    x-stoplight:
+      id: xp3ye4jmz6wul
+  crm_motivo:
+    type: integer
+    x-stoplight:
+      id: 0uqjdu662t0tm
 required:
   - ativo
   - pjuridica

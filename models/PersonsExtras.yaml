@@ -108,3 +108,23 @@ properties:
     type: boolean
     description: '//--- se TRUE, permite editar observ_financeira'
     readOnly: true
+  tipo_email:
+    type: array
+    x-stoplight:
+      id: 31xakz5u5bw4x
+    description: 'Email principal pode ser: 1=Pessoal e/ou 2=DANFE. '
+    items:
+      x-stoplight:
+        id: r2g0ukv2j2d85
+      type: integer
+  tipo_chave:
+    type: string
+    x-stoplight:
+      id: ehbs3ecpncjwr
+    minLength: 1
+    maxLength: 1
+    description: 'Tipo PIX: C=CPF/CNPJ, E=E-mail, T=Telefone, A=Aleatória'
+  chave_pix:
+    type: string
+    x-stoplight:
+      id: e2g4wi5affy8p
