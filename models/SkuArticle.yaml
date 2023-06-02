@@ -80,48 +80,48 @@ properties:
   sufixo_extra:
     type: string
   mult_sku:
-    type: integer
+    type: number
   codigo_sku:
     type: integer
   preco_tabela:
-    type: integer
+    type: number
   barcodes:
     type: array
     items:
+      x-stoplight:
+        id: h6fq3l1kar9jm
       type: object
       properties:
         gtin:
           type: integer
+          x-stoplight:
+            id: ktp9f6i6yohsw
         flags:
           type: object
+          x-stoplight:
+            id: s7if5vuo3kbg9
           properties:
             deletar:
               type: boolean
+              x-stoplight:
+                id: p97dt5xwlwewl
+              writeOnly: true
         invalido:
           type: boolean
+          x-stoplight:
+            id: txswj6138uyub
   ativo:
     type: boolean
   url_foto:
     type: string
   preco_promo:
-    type: integer
+    type: number
   preco_venda:
-    type: integer
+    type: number
   disponivel:
-    type: integer
+    type: number
   reserva:
-    type: integer
-  parent_sku:
-    type: object
-    properties:
-      id_categ:
-        type: integer
-      marca:
-        type: string
-      orig:
-        type: integer
-      id_classe:
-        type: integer
+    type: number
   atualizado_erp:
     type: object
     properties:
@@ -156,6 +156,7 @@ properties:
     type: string
   capac_package:
     type: integer
+    description: Capacidade do Pacote (mercadoria_detalhe)
   embalagem_fragil:
     type: boolean
   embalagem_venda:
@@ -163,13 +164,13 @@ properties:
   embalagem_compra:
     type: boolean
   preco_atacado_legado:
-    type: integer
+    type: number
   margem_atacado_legado:
-    type: integer
+    type: number
   margem_padrao:
-    type: integer
+    type: number
   margem_promo:
-    type: integer
+    type: number
   pendente_erp:
     type: object
     properties:
