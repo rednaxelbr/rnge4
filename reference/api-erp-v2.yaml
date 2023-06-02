@@ -67,6 +67,8 @@ tags:
     description: Recepção de Nota (RN)
   - name: Serviços (services)
     description: Cadastro de Serviços para NFSe
+  - name: Sku Reserva Prédio (skureservations)
+    description: Lista dos Sku's Reserva Prédio
   - name: Transportadoras (carriers)
     description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
@@ -388,6 +390,69 @@ paths:
         in: path
         required: true
         description: ID do PDV
+  '/skureservations/{id}':
+    get:
+      tags:
+        - PDV
+      summary: Consultando um Sku Reserva Prédio
+      description: Consulta Sku Reserva Prédio
+      parameters:
+        - schema:
+            type: string
+            default: Basic MTIzNDp1dWlkLXRva2Vu
+          in: header
+          description: 'ID:TOKEN'
+          required: true
+          name: Authorization
+      operationId: get-skureservations-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/SkuReservations.yaml
+    parameters:
+      - schema:
+          type: integer
+          minimum: 1
+          default: 1
+        name: id
+        in: path
+        required: true
+        description: ID do PDV
+  /skureservations:
+    get:
+      summary: Listando Sku's Reserva Prédio
+      tags:
+        - Produtos (skus)
+      operationId: get-skureservations
+      description: |
+        Lista dos estoques dos produtos reservados por prédio
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_predio | int64 | código do Prédio (id_predio) | 
+        | cod_produto | int64 | código do produto | 
+        | codigo_sku | int64 |  código do sku | 
+        | numero_pedido | int64 |  filtra os itens pelo número do Pedido | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Sku.yaml
+    parameters: []
   /orders:
     get:
       tags:
