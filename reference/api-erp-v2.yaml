@@ -848,6 +848,7 @@ paths:
         | user_id | int64 | ID do usuário que criou a mercadoria|
         | data_preco | string |  Data/Hora da ultima alteração do preco promocional ou mercadoria |
         | id_empresa | int |  utilizado para filtrar o estoque do predio |
+        | dias_alteracao | int |  quantidade de dias em que houve alguma alteração |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'

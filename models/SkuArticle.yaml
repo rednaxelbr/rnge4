@@ -204,3 +204,7 @@ properties:
           type: string
   codigo_agrup:
     type: string
+  data_hora:
+    type: string
+    x-stoplight:
+      id: 76yx46jg8k2yx
