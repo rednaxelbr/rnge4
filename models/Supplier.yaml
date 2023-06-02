@@ -113,13 +113,13 @@ properties:
       produto:
         type: boolean
       dias_tr:
-        type: integer
+        type: number
       ultima_oc:
         type: string
       prazo_pagamento:
         type: string
       ic_padrao:
-        type: integer
+        type: number
       intervalo_analise:
         type: integer
       pedido_minimo:
