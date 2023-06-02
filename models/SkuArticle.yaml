@@ -195,6 +195,10 @@ properties:
     type: string
   referencia:
     type: string
+  nome_marca:
+    type: string
+    x-stoplight:
+      id: bcx77rgpd2q0i
   tags:
     type: array
     items:
@@ -207,22 +211,18 @@ properties:
   codigo_agrup:
     type: string
     description: 'Exemplos: P=Preço,Q=Qualidade,V=Variedade,B=Básico,L=LICENCIADOS,I=Icone'
-  nome_marca:
-    type: string
-    x-stoplight:
-      id: bcx77rgpd2q0i
-  aliq_ipi:
-    type: number
-    x-stoplight:
-      id: wcgb7eqctf78a
-  icms_efetivo:
-    type: number
-    x-stoplight:
-      id: pdpzqcqjertba
   vunit_compra:
     type: number
     x-stoplight:
       id: yzfku7g8yo4yb
+  icms_efetivo:
+    type: number
+    x-stoplight:
+      id: pdpzqcqjertba
+  aliq_ipi:
+    type: number
+    x-stoplight:
+      id: wcgb7eqctf78a
   pmva_st:
     type: number
     x-stoplight:
