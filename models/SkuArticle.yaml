@@ -190,6 +190,7 @@ properties:
     type: integer
   automatico:
     type: boolean
+    writeOnly: true
   csv_barcodes:
     type: string
   referencia:
@@ -222,13 +223,13 @@ properties:
     type: number
     x-stoplight:
       id: yzfku7g8yo4yb
-  data_hora:
-    type: string
-    x-stoplight:
-      id: 76yx46jg8k2yx
-    description: Data da última alteração
   pmva_st:
     type: number
     x-stoplight:
       id: 3yb2ly3re76zl
     description: MVA
+  data_hora:
+    type: string
+    x-stoplight:
+      id: 76yx46jg8k2yx
+    description: Data da última alteração
