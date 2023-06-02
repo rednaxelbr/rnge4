@@ -392,8 +392,6 @@ paths:
         description: ID do PDV
   '/skureservations/{id}':
     get:
-      tags:
-        - PDV
       summary: Consultando um Sku Reserva Prédio
       description: Consulta Sku Reserva Prédio
       parameters:
@@ -413,6 +411,8 @@ paths:
           application/json:
             schema:
               $ref: ../models/SkuReservations.yaml
+      tags:
+        - Sku Reserva Prédio (skureservations)
     parameters:
       - schema:
           type: integer
@@ -425,8 +425,6 @@ paths:
   /skureservations:
     get:
       summary: Listando Sku's Reserva Prédio
-      tags:
-        - Produtos (skus)
       operationId: get-skureservations
       description: |
         Lista dos estoques dos produtos reservados por prédio
@@ -452,6 +450,8 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Sku.yaml
+      tags:
+        - Sku Reserva Prédio (skureservations)
     parameters: []
   /orders:
     get:
