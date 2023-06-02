@@ -141,15 +141,15 @@ properties:
       curta:
         type: string
   peso_kg:
-    type: integer
+    type: number
   largura_m:
-    type: integer
+    type: number
   altura_m:
-    type: integer
+    type: number
   profundidade_m:
-    type: integer
+    type: number
   cubagem_kg:
-    type: integer
+    type: number
   id_package:
     type: integer
   nome_embalagem:
@@ -209,3 +209,7 @@ properties:
     type: string
     x-stoplight:
       id: 76yx46jg8k2yx
+  nome_marca:
+    type: string
+    x-stoplight:
+      id: bcx77rgpd2q0i
