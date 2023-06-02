@@ -421,7 +421,7 @@ paths:
         name: id
         in: path
         required: true
-        description: ID do PDV
+        description: ID da reserva pedido
   /skureservations:
     get:
       summary: Listando Sku's Reserva Prédio
@@ -449,7 +449,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/Sku.yaml
+                  $ref: ../models/SkuReservations.yaml
       tags:
         - Sku Reserva Prédio (skureservations)
     parameters: []
