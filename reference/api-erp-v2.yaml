@@ -3615,6 +3615,18 @@ components:
           type: string
         percentual_desconto:
           type: number
+        id_catalogo:
+          type: integer
+          x-stoplight:
+            id: w92bj0fr47bm8
+        comissao_lista:
+          type: number
+          x-stoplight:
+            id: pdzbz9ur2s2cx
+        margem_lista:
+          type: number
+          x-stoplight:
+            id: jjn91cekfyz1o
         canais:
           type: array
           uniqueItems: true
@@ -3623,9 +3635,13 @@ components:
           items:
             type: object
             properties:
+              id:
+                type: integer
+                x-stoplight:
+                  id: 9z7traaxohtdp
+                readOnly: true
               id_canal:
                 type: number
-                description: ''
               desc_canal:
                 type: string
             required:
