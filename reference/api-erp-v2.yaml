@@ -2988,21 +2988,18 @@ paths:
                 $ref: '#/components/schemas/PLU-item'
       operationId: get-pricelistarticles-id
       description: Consulta um preço de um PLU
-    post:
-      summary: 'ITEM: Inserir produto x PLU'
-      operationId: post-pricelistarticles-id
+    put:
+      summary: ''
+      operationId: put-pricelistarticles-id
       responses:
         '200':
           description: OK
-      description: Insere um registro na lista de preços
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PLU-item'
-        description: ''
-      tags:
-        - Listas de Preços (pricelists)
+      description: Altera um registro na lista de preços
   /pricelistarticles:
     post:
       summary: Grava o preço de um item de uma lista de preços
@@ -3670,10 +3667,12 @@ components:
         preco_tabela:
           type: number
           description: Preço de tabela
+          readOnly: true
         perc_desconto:
           type: number
           x-stoplight:
             id: q4qcgq5o6s9ss
+          readOnly: true
         margem_cliente:
           type: number
         preco_cliente:
@@ -3683,6 +3682,7 @@ components:
           type: number
           x-stoplight:
             id: 08t4uojwdmcia
+          readOnly: true
         sku_ativo:
           type: boolean
           readOnly: true
