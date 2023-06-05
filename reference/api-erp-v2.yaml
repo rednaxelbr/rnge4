@@ -2098,42 +2098,6 @@ paths:
               $ref: '#/components/schemas/PLU'
       tags:
         - Listas de Preços (pricelists)
-  '/pricelistarticles/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: id do registro
-    get:
-      summary: 'ITEM: Consultar produto x PLU'
-      tags:
-        - Listas de Preços (pricelists)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PLU-item'
-      operationId: get-pricelistarticles-id
-      description: Consulta um preço de um PLU
-    post:
-      summary: 'ITEM: Inserir produto x PLU'
-      operationId: post-pricelistarticles-id
-      responses:
-        '200':
-          description: OK
-      description: Insere um registro na lista de preços
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PLU-item'
-        description: ''
-      tags:
-        - Listas de Preços (pricelists)
   '/companies/{id}':
     parameters:
       - schema:
@@ -3003,6 +2967,42 @@ paths:
                       - conteudo
               required:
                 - files
+  '/pricelistarticles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id do registro
+    get:
+      summary: 'ITEM: Consultar produto x PLU'
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PLU-item'
+      operationId: get-pricelistarticles-id
+      description: Consulta um preço de um PLU
+    post:
+      summary: 'ITEM: Inserir produto x PLU'
+      operationId: post-pricelistarticles-id
+      responses:
+        '200':
+          description: OK
+      description: Insere um registro na lista de preços
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLU-item'
+        description: ''
+      tags:
+        - Listas de Preços (pricelists)
   /pricelistarticles:
     post:
       summary: Grava o preço de um item de uma lista de preços
@@ -3663,18 +3663,39 @@ components:
           type: number
         ucom:
           type: string
+          readOnly: true
         prod_xprod:
           type: string
+          readOnly: true
         preco_tabela:
           type: number
           description: Preço de tabela
+        perc_desconto:
+          type: number
+          x-stoplight:
+            id: q4qcgq5o6s9ss
+        margem_cliente:
+          type: number
         preco_cliente:
           type: number
           description: Preço do produto nesse PLU
-        margem_cliente:
+        preco_calc:
           type: number
+          x-stoplight:
+            id: 08t4uojwdmcia
         sku_ativo:
           type: boolean
+          readOnly: true
+        pendente_erp_plu:
+          type: boolean
+          x-stoplight:
+            id: u39oghhc94xk0
+          readOnly: true
+        atualizado_erp:
+          type: boolean
+          x-stoplight:
+            id: h8jl053fp18ak
+          writeOnly: true
       required:
         - id
         - id_plu
