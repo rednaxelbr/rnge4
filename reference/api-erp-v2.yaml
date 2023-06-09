@@ -1041,6 +1041,41 @@ paths:
         in: path
         required: true
         description: Número do Pedido
+  '/sales/{id}':
+    put:
+      tags:
+        - Pedidos (orders)
+      summary: Atualizando um pedido de venda
+      description: Atualiza um pedido de venda
+      operationId: put-sales-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Order.yaml
+    get:
+      summary: Consultando um pedido de Venda
+      description: Consulta um pedido de venda
+      operationId: get-sales-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Order.yaml
+      tags:
+        - Pedidos Venda (sales)
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
   /distributions:
     get:
       summary: Listando distribuições
