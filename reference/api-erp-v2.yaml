@@ -543,7 +543,7 @@ paths:
       tags:
         - Pedidos Venda (sales)
     post:
-      summary: Criando um novo pedido
+      summary: Criando um novo pedido de Venda
       description: Cria um novo pedido Venda
       operationId: post-sales
       responses:
