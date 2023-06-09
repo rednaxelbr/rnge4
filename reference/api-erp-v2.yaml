@@ -539,7 +539,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/Order.yaml
+                  $ref: ../models/Sales.yaml
       tags:
         - Pedidos Venda (sales)
     post:
@@ -553,7 +553,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../models/Order.yaml
+              $ref: ../models/Sales.yaml
       tags:
         - Pedidos Venda (sales)
     parameters: []
@@ -1055,7 +1055,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../models/Order.yaml
+              $ref: ../models/Sales.yaml
     get:
       summary: Consultando um pedido de Venda
       description: Consulta um pedido de venda
@@ -1066,7 +1066,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/Order.yaml
+                $ref: ../models/Sales.yaml
       tags:
         - Pedidos Venda (sales)
     parameters:
