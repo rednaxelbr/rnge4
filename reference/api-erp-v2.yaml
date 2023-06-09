@@ -502,16 +502,30 @@ paths:
   /sales:
     get:
       summary: Listando pedidos de Venda
-      description: |-
+      description: |
         Lista de pedidos tipo VENDA 
 
         ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | dias | int | se nulo ou 0 pega 10 dias para trás. Tem prioridade sobre o filtro dias_alteracao| 
-        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual| 
-        | ------ | ------ | ------ |
+        | dias | int | se nulo ou 0 pega 10 dias para trás. Tem prioridade sobre o filtro dias_alteracao | 
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
+        | etapa | int | ID da etapa Ex: 500 = Edição, 600 = Manuseio ou 700 = Expedição |
+        | pesquisa | string | Pesquisa tanto por id_pessoa, Nome Razão ou CPF/CNPJ |
+        | id_externo | string | ID do pedido Externo |
+        | id_vendedor | int64 | ID do Vendedor |
+        | valor | number | Valor exato do total da venda (vtotal) |
+        | criados_por_mim | bool | Somentes os pedidos criados por mim |
+        | meus_clientes | bool | Somentes os pedidos dos meus clientes |
+        | meus_pedidos | bool | Somentes os meus pedidos, onde internamente filtra pelo id_vendedor do usuário que fez a requisição, porém se não achar filtra os pedidos cujo a última alteração do pedido fora feita por mim  |
+        | chnfe_gerada | string | Chave de acesso gerada|
+        | lista_num_nf | string | Somentes os pedidos criados por mim |
+        | vetor_num_nf | []int | Vetor de Número NF's com o objetivo de filtrar uma ou mais NF's |
+        | vetor_empresa | []int64 | Vetor de id_empresa com o objetivo de filtrar uma ou mais empresas |
+        | vetor_status | []int64 | Vetor de Status do pedido, podendo ser mais de um status |
+        | id_mesa | int64 | ID da mesa |
+        | todos | bool | Traz também os pedidos cancelados |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
