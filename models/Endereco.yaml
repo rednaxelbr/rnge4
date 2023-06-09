@@ -27,6 +27,8 @@ properties:
     readOnly: true
   cep:
     type: string
+    x-stoplight:
+      id: o4rpnm6z9xt20
     readOnly: true
   id_municipio:
     type: integer
