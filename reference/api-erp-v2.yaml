@@ -49,6 +49,8 @@ tags:
     description: Gestão de Pedidos
   - name: Pedidos por SKU (orderchecks)
     description: Separação/Conferência de Pedidos
+  - name: Pedidos Venda (sales)
+    description: Pedidos Venda
   - name: Pessoas (customercategories)
     description: Categorias de Pessoas
   - name: Pessoas (persons)
@@ -496,6 +498,50 @@ paths:
           application/json:
             schema:
               $ref: ../models/Order.yaml
+    parameters: []
+  /sales:
+    get:
+      summary: Listando pedidos de Venda
+      description: |-
+        Lista de pedidos tipo VENDA 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | dias | int | se nulo ou 0 pega 10 dias para trás. Tem prioridade sobre o filtro dias_alteracao| 
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual| 
+        | ------ | ------ | ------ |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      operationId: get-sales
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Order.yaml
+      tags:
+        - Pedidos Venda (sales)
+    post:
+      summary: Criando um novo pedido
+      description: Cria um novo pedido Venda
+      operationId: post-sales
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Order.yaml
+      tags:
+        - Pedidos Venda (sales)
     parameters: []
   /skus:
     get:
