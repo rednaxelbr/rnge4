@@ -1,90 +1,79 @@
 type: object
 x-stoplight:
   id: 0k8brq716s7ml
-description: Pedido
+description: Pedido de Venda
 properties:
   id:
     type: integer
     description: Número do Pedido
     x-stoplight:
       id: drdrfiqqs5nn2
-  numero_pedido:
-    type: integer
-    description: Número do pedido
-    deprecated: true
-    x-stoplight:
-      id: ebvwp1aw2lwue
-  tipo:
-    type: string
-    description: Tipo de operação do pedido que será criado (apenas POST)
-    writeOnly: true
-    x-stoplight:
-      id: khohwge9t0eo1
   tipo_oper:
     type: string
     description: Tipo de operação do pedido (usado apenas no GET)
-    readOnly: true
     x-stoplight:
       id: cdknagus25p24
-  desc_operacao:
-    type: string
     readOnly: true
+  data_hora:
+    type: string
+    description: Data/hora de criação/alteração do pedido
     x-stoplight:
-      id: xqzpcugxmxpkb
-  num_loja:
-    type: integer
-    description: ID da empresa onde o pedido será criado (somente POST); se omitido será usada a empresa do usuário logado
-    writeOnly: true
-    x-stoplight:
-      id: ug3iyobkgr6su
-  id_empresa:
-    type: integer
-    description: ID da empresa do pedido (somente GET)
+      id: mpkbpon1avjv8
     readOnly: true
-    x-stoplight:
-      id: 1g74ya71zbej0
-  sigla_loja:
-    type: string
-    description: Sigla da empresa/loja do pedido
-    readOnly: true
-    x-stoplight:
-      id: yxvex13demrvs
-  nome_reduzido:
-    type: string
-    description: Nome reduzido da empresa/loja do pedido
-    readOnly: true
-    x-stoplight:
-      id: frr1n2dpsym61
-  origem:
-    type: string
-    description: Origem/Aplicativo externo (somente POST)
-    writeOnly: true
-    x-stoplight:
-      id: yq65210hlxbe4
-  identificador:
-    type: string
-    description: Identificador/ID Externo (somente POST)
-    writeOnly: true
-    x-stoplight:
-      id: 337jrr1cncoan
   aplicativo:
     type: string
     description: Origem/Aplicativo externo (somente GET)
-    readOnly: true
     x-stoplight:
       id: f54dullviosnb
+    readOnly: true
   id_externo:
     type: string
     description: Identificador/ID Externo (somente GET)
-    readOnly: true
     x-stoplight:
       id: k77zqxjnornut
-  data_hora:
-    type: string
-    description: Data/hora de criação do pedido
     readOnly: true
+  id_pessoa:
+    type: integer
+    description: ID da Pessoa (cliente)
     x-stoplight:
-      id: mpkbpon1avjv8
+      id: um1al98m0hpte
+  nome_razao:
+    type: string
+    x-stoplight:
+      id: yrfb3vfoamf24
+  cpf_cnpj:
+    type: integer
+    description: CPF/CNPJ do cliente do pedido (ver "dest")
+    x-stoplight:
+      id: zks46h2grtaed
+  id_empresa:
+    type: integer
+    description: ID da empresa do pedido (somente GET)
+    x-stoplight:
+      id: 1g74ya71zbej0
+    readOnly: true
+  sigla_loja:
+    type: string
+    description: Sigla da empresa/loja do pedido
+    x-stoplight:
+      id: yxvex13demrvs
+    readOnly: true
+  nome_reduzido:
+    type: string
+    description: Nome reduzido da empresa/loja do pedido
+    x-stoplight:
+      id: frr1n2dpsym61
+    readOnly: true
+  emit:
+    $ref: ./EmitDest.yaml
+    x-stoplight:
+      id: 6c59umh9bjvuu
+  identificador:
+    type: string
+    description: Identificador/ID Externo (somente POST)
+    x-stoplight:
+      id: 337jrr1cncoan
+    writeOnly: true
   delivery_id:
     type: integer
     x-stoplight:
@@ -93,28 +82,18 @@ properties:
     type: integer
     x-stoplight:
       id: 08480kncd2c7b
-  id_pessoa:
-    type: integer
-    description: ID da Pessoa (cliente)
-    x-stoplight:
-      id: um1al98m0hpte
-  cpf_cnpj:
-    type: integer
-    description: CPF/CNPJ do cliente do pedido (ver "dest")
-    x-stoplight:
-      id: zks46h2grtaed
   data_emissao:
     type: string
     x-stoplight:
       id: w8ed2dmg6cfnl
   lista_cfop:
     type: array
+    x-stoplight:
+      id: fkh3ekuee5eqc
     items:
       type: integer
       x-stoplight:
         id: nxqqy05j5ucyq
-    x-stoplight:
-      id: fkh3ekuee5eqc
   id_romaneio:
     type: integer
     x-stoplight:
@@ -123,10 +102,6 @@ properties:
     type: integer
     x-stoplight:
       id: wlajxzw7hitcq
-  emit:
-    $ref: ./EmitDest.yaml
-    x-stoplight:
-      id: 6c59umh9bjvuu
   dest:
     $ref: ./EmitDest.yaml
     x-stoplight:
@@ -134,26 +109,30 @@ properties:
   itens:
     type: array
     description: Se informado insere os itens diretamente no pedido
+    x-stoplight:
+      id: 5t61oz8anjr93
     items:
       $ref: ./OrderItem.yaml
       x-stoplight:
         id: nmdpeuixxhoge
     writeOnly: true
-    x-stoplight:
-      id: 5t61oz8anjr93
   pagtos:
     type: array
+    x-stoplight:
+      id: via15krb929zn
     items:
       $ref: ./OrderPayment.yaml
       x-stoplight:
         id: bd3oxz3kxb3rw
-    x-stoplight:
-      id: via15krb929zn
   nfref:
     type: array
     description: NF referenciadas
+    x-stoplight:
+      id: p4wgm7g2h31sw
     items:
       type: object
+      x-stoplight:
+        id: b2vv4ngpxb500
       properties:
         data_emissao:
           type: string
@@ -175,39 +154,35 @@ properties:
           type: number
           x-stoplight:
             id: l9h5jqs2o5kjl
-      x-stoplight:
-        id: b2vv4ngpxb500
-    x-stoplight:
-      id: p4wgm7g2h31sw
   pedref:
     type: array
     description: Pedidos referenciados
+    x-stoplight:
+      id: h4fvrbi2r68ip
     items:
       type: object
+      x-stoplight:
+        id: dqffsuj7bynub
       properties:
         numero_pedido:
           type: integer
           x-stoplight:
             id: b6p7dyux0rml0
-      x-stoplight:
-        id: dqffsuj7bynub
-    x-stoplight:
-      id: h4fvrbi2r68ip
   comref:
     type: array
     description: Compras referenciadas
+    x-stoplight:
+      id: mnii54hfvhooi
     items:
       type: object
+      x-stoplight:
+        id: qnhfs05s1ucpd
       properties:
         purchase_id:
           type: string
           description: ID Compra
           x-stoplight:
             id: 129jlkkkl39ty
-      x-stoplight:
-        id: qnhfs05s1ucpd
-    x-stoplight:
-      id: mnii54hfvhooi
   desconto:
     type: number
     x-stoplight:
@@ -234,8 +209,12 @@ properties:
       id: exvfg8iha81am
   vetor_flags:
     type: array
+    x-stoplight:
+      id: 0ynbtqx6k1ao4
     items:
       type: object
+      x-stoplight:
+        id: acvj3tq3lgojj
       properties:
         flag:
           type: string
@@ -245,11 +224,7 @@ properties:
           type: string
           x-stoplight:
             id: vfew7chjuk4td
-      x-stoplight:
-        id: acvj3tq3lgojj
     readOnly: true
-    x-stoplight:
-      id: 0ynbtqx6k1ao4
   text_flags:
     $ref: ./OrderTextFlags.yaml
     x-stoplight:
@@ -272,9 +247,9 @@ properties:
       id: lcnq05xzdqj1r
   resumo_pagto:
     type: string
-    readOnly: true
     x-stoplight:
       id: 53aqiswcfjz7i
+    readOnly: true
   mesclar:
     type: boolean
     x-stoplight:
@@ -309,12 +284,12 @@ properties:
       id: 67gd5ys2tl1m1
   volumes:
     type: array
+    x-stoplight:
+      id: fll2859n39kps
     items:
       $ref: ./OrderVolume.yaml
       x-stoplight:
         id: wlqopr0wt24se
-    x-stoplight:
-      id: fll2859n39kps
   status:
     type: integer
     x-stoplight:
@@ -393,25 +368,25 @@ properties:
       id: 3ubkrfqfbnb9w
   categorias:
     type: array
+    x-stoplight:
+      id: g70q0rzrzxcuv
     items:
       $ref: ./DistribCateg.yaml
       x-stoplight:
         id: 3iahwldfjs61u
-    x-stoplight:
-      id: g70q0rzrzxcuv
   cupons_desconto:
     type: array
+    x-stoplight:
+      id: r3knh7i9zbgsf
     items:
       type: object
+      x-stoplight:
+        id: 3rfvdqtymcan4
       properties:
         codigo_cupom:
           type: integer
           x-stoplight:
             id: skeydsjjcrphr
-      x-stoplight:
-        id: 3rfvdqtymcan4
-    x-stoplight:
-      id: r3knh7i9zbgsf
   separador:
     type: string
     x-stoplight:
@@ -430,6 +405,8 @@ properties:
       id: fk5h77p5p5nuo
   atraso:
     type: object
+    x-stoplight:
+      id: uxr8bffzdw8bn
     properties:
       atrasado:
         type: boolean
@@ -443,8 +420,6 @@ properties:
         type: string
         x-stoplight:
           id: j5hghp7aiol3r
-    x-stoplight:
-      id: uxr8bffzdw8bn
   id_canal:
     type: integer
     x-stoplight:
@@ -453,10 +428,6 @@ properties:
     type: string
     x-stoplight:
       id: htoppcc433kho
-  nome_razao:
-    type: string
-    x-stoplight:
-      id: yrfb3vfoamf24
   desc_tipo_ent:
     type: string
     x-stoplight:
@@ -552,6 +523,6 @@ properties:
   id_distrib:
     type: integer
     description: ID da Distribuição
-    readOnly: true
     x-stoplight:
       id: 4i70noigaks81
+    readOnly: true

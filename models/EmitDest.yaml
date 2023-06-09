@@ -1,4 +1,6 @@
 type: object
+description: Emitente/Destinatário
+title: EmitDest
 properties:
   pjuridica:
     type: boolean
@@ -13,6 +15,10 @@ properties:
     type: string
   endereco:
     $ref: ./Endereco.yaml
+  ender_sede:
+    type: string
+    x-stoplight:
+      id: 5g4vseudp1jyn
   ind_iedest:
     type: integer
     description: Indicador de Inscrição Estadual
@@ -33,5 +39,12 @@ properties:
     type: string
     description: Ver "email"
     deprecated: true
-description: Emitente/Destinatário
-title: EmitDest
+  danfe:
+    type: string
+    x-stoplight:
+      id: 9ble9sb2qgapi
+    description: email Danfe
+  cnae:
+    type: integer
+    x-stoplight:
+      id: hc6m8ktgtj0av
