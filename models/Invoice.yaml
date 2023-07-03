@@ -69,6 +69,26 @@ properties:
     type: string
   historico:
     type: string
+  id_canal:
+    type: integer
+    x-stoplight:
+      id: qk5hz3fy9afs8
+  data_hora:
+    type: string
+    x-stoplight:
+      id: t8jjekfco133f
+  id_vendedor:
+    type: integer
+    x-stoplight:
+      id: vj622egxzu8t3
+  nome_vendedor:
+    type: string
+    x-stoplight:
+      id: m1mqbjxjncbqn
+  total_comissao:
+    type: number
+    x-stoplight:
+      id: tcrg98aanohva
 required:
   - id
   - modelo
@@ -87,3 +107,4 @@ required:
   - nome_usuario
   - stat
   - sigla_status
+description: 'Documento fiscal (NFe, NFCe)'
