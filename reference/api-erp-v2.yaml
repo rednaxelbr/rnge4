@@ -2543,9 +2543,9 @@ paths:
         | notas | string | NFs separados por vírgula |
         | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
         | total_vnf | float64 | Valor exato do total da NF |
-        | cupons_cancelados | bool | Filtros as notas cancelados |
-        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (Tpag) |
-        | vetor_status | []int64 | Array dos status (Ex: [590, 590]) |
+        | cupons_cancelados | bool | Filtra as notas canceladas |
+        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (TPAG) |
+        | vetor_status | []int64 | Array dos status (Ex: [500, 590]) |
         | codigo_descricao | string | Tanto pelo código como pela descrição do produto  |
         | nome_usuario | string | Usuário do documento  |
         | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
