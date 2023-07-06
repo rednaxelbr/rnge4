@@ -2520,7 +2520,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Invoice.yaml
-      description: |
+      description: |-
         Lista de notas/cupons. O filtro "modelo" é obrigatório.
 
         ### Filtros disponíveis
@@ -2529,12 +2529,19 @@ paths:
         | ------ | ------ | ------ |
         | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
         | datafim | string | Formato: YYYY/MM/DD  | 
-        | modelo | int | Geralmente 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
+        | modelo | int | Ex.: 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
         | id_empresa | int64 | se não informar o id_empresa usa a empresa logada | 
         | chnfe | string | Chave de acesso com os 44 caracteres | 
         | id_pessoa | int64 | ID da Pessoa |
-        | idpessoa_razao_cpf_cnpj  | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
-        | cnpj_emit  | int64 | CNPJ do Emitente |
+        | idpessoa_razao_cpf_cnpj | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
+        | cnpj_emit | int64 | CNPJ do Emitente |
+        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | numero_pedido | int64 | Número do pedido |
+        | pdv | int64 | Número de série (pdv) |
+        | id_romaneio | int64 | Número do Romaneio, necessita também do filtro do modelo |
+        | notas | string | NFs separados por vírgula |
+        | total_vnf | float64 | Valor exato do total da NF |
+        | cupons_cancelados | bool | Filtros as notas cancelados |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
