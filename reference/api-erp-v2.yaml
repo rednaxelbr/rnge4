@@ -2526,6 +2526,7 @@ paths:
         Filtros:
         dataini / datafim: se não informar é filtrado a data atual;
         modelo: Geralmente 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe;
+        id_empresa: se não informar empresa usa a empresa logada;
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
