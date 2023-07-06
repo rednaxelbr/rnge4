@@ -2542,6 +2542,11 @@ paths:
         | notas | string | NFs separados por vírgula |
         | total_vnf | float64 | Valor exato do total da NF |
         | cupons_cancelados | bool | Filtros as notas cancelados |
+        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (Tpag) |
+        | vetor_status | []int64 | Array dos status (Ex: [590, 590]) |
+        | codigo_descricao | string | Tanto pelo código como pela descrição do produto  |
+
+        *DataIni - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
