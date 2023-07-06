@@ -2520,19 +2520,21 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Invoice.yaml
-      description: |+
+      description: |
         Lista de notas/cupons. O filtro "modelo" é obrigatório.
 
         ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual | 
-        | datafim | string |  Formato: YYYY/MM/DD  | 
+        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
+        | datafim | string | Formato: YYYY/MM/DD  | 
         | modelo | int | Geralmente 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
         | id_empresa | int64 | se não informar o id_empresa usa a empresa logada | 
         | chnfe | string | Chave de acesso com os 44 caracteres | 
-
+        | id_pessoa | int64 | ID da Pessoa |
+        | idpessoa_razao_cpf_cnpj  | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
+        | cnpj_emit  | int64 | CNPJ do Emitente |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
