@@ -2521,7 +2521,7 @@ paths:
                 items:
                   $ref: ../models/Invoice.yaml
       description: |-
-        Lista de notas/cupons. O filtro "modelo" é obrigatório.
+        Lista de notas/cupons. O filtro "modelo" é obrigatório caso não filtrar por "chnfe".
 
         ### Filtros disponíveis
 
@@ -2538,8 +2538,8 @@ paths:
         | cpf_cnpj | int64 | CPF ou CNPJ |
         | numero_pedido | int64 | Número do pedido |
         | pdv | int64 | Número de série (pdv) |
-        | id_romaneio | int64 | Número do Romaneio, necessita também do filtro do modelo |
-        | numero | int | Número da NF, necessita também do filtro do modelo  |
+        | id_romaneio | int64 | Número do Romaneio |
+        | numero | int | Número da NF |
         | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
         | notas | string | NFs separados por vírgula |
         | total_vnf | float64 | Valor exato do total da NF |
@@ -2550,7 +2550,7 @@ paths:
         | nome_usuario | string | Usuário do documento  |
         | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
 
-        *DataIni - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
+        *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
