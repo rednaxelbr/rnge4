@@ -2540,8 +2540,8 @@ paths:
         | pdv | int64 | Número de série (pdv) |
         | id_romaneio | int64 | Número do Romaneio |
         | numero | int | Número da NF |
-        | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
         | notas | string | NFs separados por vírgula |
+        | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
         | total_vnf | float64 | Valor exato do total da NF |
         | cupons_cancelados | bool | Filtros as notas cancelados |
         | vetor_pagtos | []int64 | Array dos tipos de pagamentos (Tpag) |
