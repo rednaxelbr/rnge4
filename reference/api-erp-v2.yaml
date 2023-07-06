@@ -2520,11 +2520,12 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Invoice.yaml
-      description: |-
+      description: |
         Lista de notas/cupons. O filtro "modelo" é obrigatório.
 
         Filtros:
         dataini / datafim: se não informar é filtrado a data atual;
+        modelo: Geralmente 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe;
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
