@@ -2522,6 +2522,7 @@ paths:
                   $ref: ../models/Invoice.yaml
       description: |-
         Lista de notas/cupons. O filtro "modelo" é obrigatório caso não filtrar por "chnfe".
+        Para listar os itens utilize o recurso GET v2/invoiceitems.
 
         ### Filtros disponíveis
 
