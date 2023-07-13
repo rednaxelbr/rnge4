@@ -3116,7 +3116,7 @@ paths:
       operationId: get-pricelistarticles-id
       description: Consulta um preço de um PLU
     put:
-      summary: ''
+      summary: Atualiza um item de lista de preços
       operationId: put-pricelistarticles-id
       responses:
         '200':
@@ -3127,6 +3127,8 @@ paths:
             schema:
               $ref: '#/components/schemas/PLU-item'
       description: Altera um registro na lista de preços
+      tags:
+        - Listas de Preços (pricelists)
   /pricelistarticles:
     post:
       summary: Grava o preço de um item de uma lista de preços
