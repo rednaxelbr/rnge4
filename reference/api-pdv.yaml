@@ -8,7 +8,7 @@ servers:
   - url: 'https://rnge.com.br:8080'
     description: Produção
 paths:
-  '/login/{conta}':
+  '/login/{conta}/{pdv}':
     post:
       summary: Faz login no PDV
       operationId: post-login
@@ -71,6 +71,12 @@ paths:
         in: path
         required: true
         description: Conta do RNGE4
+      - schema:
+          type: integer
+        name: pdv
+        in: path
+        required: true
+        description: Número do PDV (Caixa)
 components:
   schemas: {}
   securitySchemes:
