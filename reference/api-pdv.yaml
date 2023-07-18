@@ -3,7 +3,10 @@ info:
   title: API do PDV
   version: '1.0'
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'https://homolog.rnge.com.br:8080'
+    description: Sandbox
+  - url: 'https://rnge.com.br:8080'
+    description: Produção
 paths:
   '/login/{conta}':
     post:
@@ -59,6 +62,8 @@ paths:
                   dateOfBirth: '1996-08-24'
         description: Post the necessary fields for the API to create a new user.
       description: Faz login no PDV
+      security:
+        - AuthBasic: []
     parameters:
       - schema:
           type: string
@@ -68,3 +73,7 @@ paths:
         description: Conta do RNGE4
 components:
   schemas: {}
+  securitySchemes:
+    AuthBasic:
+      type: http
+      scheme: basic
