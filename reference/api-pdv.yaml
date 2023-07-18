@@ -2,6 +2,16 @@ openapi: 3.1.0
 info:
   title: API do PDV
   version: '1.0'
+  summary: PDV Rednaxel
+  description: Retaguarda do PDV da Rednaxel
+  termsOfService: 'https://rednaxel.com/termos-de-uso'
+  contact:
+    url: 'https://suporte.rednaxel.com/'
+    email: suporte@rednaxel.com
+    name: Suporte Rednaxel
+  license:
+    name: Copyright (C) Rednaxel Informática
+    url: 'https://rednaxel.com'
 servers:
   - url: 'https://homolog.rnge.com.br:8080'
     description: Sandbox
@@ -14,56 +24,77 @@ paths:
       operationId: post-login
       responses:
         '200':
-          description: User Created
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                New User Bob Fellow:
-                  value:
-                    id: 12
-                    firstName: Bob
-                    lastName: Fellow
-                    email: bob.fellow@gmail.com
-                    dateOfBirth: '1996-08-24'
-                    emailVerified: false
-                    createDate: '2020-11-18'
-        '400':
-          description: Missing Required Information
-        '409':
-          description: Email Already Taken
+                type: object
+                properties:
+                  resp:
+                    type: string
+                  conta:
+                    type: string
+                  user_id:
+                    type: integer
+                  usuario:
+                    type: string
+                  avatar:
+                    type: string
+                  token:
+                    type: string
+                  id_empresa:
+                    type: integer
+                  nome_reduzido:
+                    type: string
+                  url_logo:
+                    type: string
+                  versao:
+                    type: integer
+                  fundo_logo:
+                    type: string
+                  cor_fonte:
+                    type: string
+                  data_nuvem:
+                    type: string
+                  cmun:
+                    type: integer
+                  uf:
+                    type: string
+                  fechamento_requer_retirada:
+                    type: boolean
+                  cod_loja_sitef:
+                    type: string
+                x-examples:
+                  Example 1:
+                    resp: OK
+                    conta: cdp
+                    user_id: 6789
+                    usuario: CAIXA27
+                    avatar: ''
+                    token: fd7f4a4e-9587-431d-8e4d-e233bdfabf0f
+                    id_empresa: 1
+                    nome_reduzido: CENTRO
+                    url_logo: 'https://storage.googleapis.com/rednaxel-dados/logo-tenant/logo-rednaxel.png'
+                    versao: 23061646
+                    fundo_logo: '#005484'
+                    cor_fonte: '#FFFFFF'
+                    data_nuvem: '2023-07-12 10:22:55-0300'
+                    cmun: 4314902
+                    uf: RS
+                    fechamento_requer_retirada: true
+                    cod_loja_sitef: '00007611'
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                dateOfBirth:
-                  type: string
-                  format: date
-              required:
-                - firstName
-                - lastName
-                - email
-                - dateOfBirth
-            examples:
-              Create User Bob Fellow:
-                value:
-                  firstName: Bob
-                  lastName: Fellow
-                  email: bob.fellow@gmail.com
-                  dateOfBirth: '1996-08-24'
+        content: {}
         description: Post the necessary fields for the API to create a new user.
       description: Faz login no PDV
       security:
         - AuthBasic: []
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: emp
+          description: Empresa
     parameters:
       - schema:
           type: string
@@ -83,3 +114,5 @@ components:
     AuthBasic:
       type: http
       scheme: basic
+security:
+  - AuthBasic: []
