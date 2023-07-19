@@ -3232,10 +3232,7 @@ paths:
               schema:
                 $ref: ../models/Status.yaml
       operationId: get-status
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
+      parameters: []
       description: |
         Versão da API
       x-stoplight:
