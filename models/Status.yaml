@@ -1,0 +1,8 @@
+type: object
+properties:
+  versao_api:
+    type: string
+x-examples:
+  Example 1:
+    versao_api: 2.00.942
+description: Versão de atualização da API GOLANG

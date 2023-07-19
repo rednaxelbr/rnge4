@@ -71,6 +71,8 @@ tags:
     description: Cadastro de Serviços para NFSe
   - name: Sku Reserva Prédio (skureservations)
     description: Lista dos Sku's Reserva Prédio
+  - name: Status (status)
+    description: Versão API
   - name: Transportadoras (carriers)
     description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
@@ -3219,6 +3221,28 @@ paths:
       description: |-
         Estoque de SKU por prédio. Filtros:
         - `codigo_sku`: código do SKU
+  /status:
+    get:
+      summary: Consulta o Status da API
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Status.yaml
+      operationId: get-status
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: |
+        Versão da API
+      x-stoplight:
+        id: nbr1kcqezj9q4
+      tags:
+        - Status (status)
+    parameters: []
   /carriers:
     get:
       summary: Consulta lista de transportadoras
