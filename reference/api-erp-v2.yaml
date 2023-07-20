@@ -1254,105 +1254,6 @@ paths:
             schema:
               $ref: ../models/Order.yaml
     parameters: []
-  /ping:
-    get:
-      summary: Verificando servidor
-      tags:
-        - Login
-      operationId: get-ping
-      description: Verifica se o servidor está online
-      security: []
-      responses:
-        '200':
-          description: Sucesso
-          headers: {}
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    resp: OK
-                properties:
-                  resp:
-                    type: string
-                    minLength: 1
-                    description: Resposta (OK)
-                required:
-                  - resp
-              examples:
-                JSON:
-                  value:
-                    resp: OK
-    parameters: []
-  '/skureservations/{id}':
-    get:
-      summary: Consultando um Sku Reserva Prédio
-      description: Consulta Sku Reserva Prédio
-      parameters:
-        - schema:
-            type: string
-            default: Basic MTIzNDp1dWlkLXRva2Vu
-          in: header
-          description: 'ID:TOKEN'
-          required: true
-          name: Authorization
-      operationId: get-skureservations-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/SkuReservations.yaml
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/SkuReservations.yaml
-      tags:
-        - Sku Reserva Prédio (skureservations)
-    parameters:
-      - schema:
-          type: integer
-          minimum: 1
-          default: 1
-        name: id
-        in: path
-        required: true
-        description: ID da reserva pedido
-  /skureservations:
-    get:
-      summary: Listando Sku's Reserva Prédio
-      operationId: get-skureservations
-      description: |
-        Lista dos estoques dos produtos reservados por prédio
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id_predio | int64 | código do Prédio (id_predio) | 
-        | cod_produto | int64 | código do produto | 
-        | codigo_sku | int64 |  código do sku | 
-        | numero_pedido | int64 |  filtra os itens pelo número do Pedido | 
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/SkuReservations.yaml
-      tags:
-        - Sku Reserva Prédio (skureservations)
-    parameters: []
   '/orders/{id}':
     put:
       tags:
@@ -1489,22 +1390,6 @@ paths:
         - $ref: '#/components/parameters/Filter'
       tags:
         - Pedidos por SKU (orderchecks)
-  /operations:
-    get:
-      summary: Tipos de pedidos (Operações)
-      tags:
-        - Pedidos (orders)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Operacoes.yaml
-      operationId: get-operations
-      description: Operações (tipos de pedidos)
   '/ordercheckitems/{numped}':
     parameters:
       - schema:
@@ -1551,6 +1436,54 @@ paths:
               required:
                 - codigo
                 - volume
+  /operations:
+    get:
+      summary: Tipos de pedidos (Operações)
+      tags:
+        - Pedidos (orders)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Operacoes.yaml
+      operationId: get-operations
+      description: Operações (tipos de pedidos)
+  /ping:
+    get:
+      summary: Verificando servidor
+      tags:
+        - Login
+      operationId: get-ping
+      description: Verifica se o servidor está online
+      security: []
+      responses:
+        '200':
+          description: Sucesso
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    resp: OK
+                properties:
+                  resp:
+                    type: string
+                    minLength: 1
+                    description: Resposta (OK)
+                required:
+                  - resp
+              examples:
+                JSON:
+                  value:
+                    resp: OK
+    parameters: []
   /paymentcodes:
     get:
       summary: Listando formas de quitação
@@ -1649,6 +1582,99 @@ paths:
       description: Exclui uma forma de quitação.
       tags:
         - Formas de Quitação (paymentcodes)
+  /persons:
+    get:
+      summary: Lista de Pessoas
+      tags:
+        - Pessoas (persons)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Persons.yaml
+      operationId: get-persons
+      description: |
+        Listagem de Pessoas. Principais filtros:
+        - `pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
+        - `nome_exato` (bool) Pesquisa exata da descrição em conjunto com o filtro "pesquisa"
+        - `inativos` (bool) Incluir na visualização as pessoas inativas
+        - `id_canal` (integer) id do canal
+        - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
+        - `logradouro` (string) Rua/Avenida/etc do endereço
+        - `credito_loja` (bool) Possuir crédito Loja
+      requestBody:
+        content: {}
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Cria uma nova Pessoa
+      operationId: post-persons
+      responses:
+        '200':
+          description: OK
+      description: Criação de uma nova Pessoa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PersonsGetOne.yaml
+      tags:
+        - Ordens de Compra (purchaseorders)
+    parameters: []
+  '/persons/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da Pessoa
+    put:
+      summary: Atualiza uma Pessoa
+      tags:
+        - Pessoas (persons)
+      responses:
+        '200':
+          description: OK
+      operationId: put-persons-id
+      description: Atualiza uma Pessoa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Persons.yaml
+    get:
+      summary: Carrega uma Pessoa
+      tags:
+        - Pessoas (persons)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/PersonsGetOne.yaml
+      operationId: get-persons-id
+      description: Consulta uma Pessoa
+    delete:
+      summary: Deleta uma Pessoa
+      operationId: delete-persons-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/PersonsGetOne.yaml
+      description: Inativa uma Pessoa
+      tags:
+        - Pessoas (persons)
   '/pricelists/{id}':
     parameters:
       - schema:
@@ -2134,51 +2160,6 @@ paths:
               $ref: ../models/PurchaseOrderGetOne.yaml
       tags:
         - Ordens de Compra (purchaseorders)
-  /persons:
-    get:
-      summary: Lista de Pessoas
-      tags:
-        - Pessoas (persons)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Persons.yaml
-      operationId: get-persons
-      description: |
-        Listagem de Pessoas. Principais filtros:
-        - `pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
-        - `nome_exato` (bool) Pesquisa exata da descrição em conjunto com o filtro "pesquisa"
-        - `inativos` (bool) Incluir na visualização as pessoas inativas
-        - `id_canal` (integer) id do canal
-        - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
-        - `logradouro` (string) Rua/Avenida/etc do endereço
-        - `credito_loja` (bool) Possuir crédito Loja
-      requestBody:
-        content: {}
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Cria uma nova Pessoa
-      operationId: post-persons
-      responses:
-        '200':
-          description: OK
-      description: Criação de uma nova Pessoa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/PersonsGetOne.yaml
-      tags:
-        - Ordens de Compra (purchaseorders)
-    parameters: []
   /productimages:
     get:
       summary: Lista de fotos de um produto
@@ -2344,54 +2325,6 @@ paths:
                 $ref: ../models/Purchase.yaml
       operationId: get-purchases-id
       description: Consulta uma NF de compra
-  '/persons/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: ID da Pessoa
-    put:
-      summary: Atualiza uma Pessoa
-      tags:
-        - Pessoas (persons)
-      responses:
-        '200':
-          description: OK
-      operationId: put-persons-id
-      description: Atualiza uma Pessoa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Persons.yaml
-    get:
-      summary: Carrega uma Pessoa
-      tags:
-        - Pessoas (persons)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/PersonsGetOne.yaml
-      operationId: get-persons-id
-      description: Consulta uma Pessoa
-    delete:
-      summary: Deleta uma Pessoa
-      operationId: delete-persons-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/PersonsGetOne.yaml
-      description: Inativa uma Pessoa
-      tags:
-        - Pessoas (persons)
   '/pricelistarticles/{id}':
     parameters:
       - schema:
@@ -2523,6 +2456,174 @@ paths:
                 $ref: ../models/PurchaseItem.yaml
       operationId: get-purchaseitems-id
       description: 'Consulta um item de uma NF. Se ele estiver mapeado, "codigo_sku" está presente. Se ele tiver desdobramentos, o array "desdobramento" estará preenchido.'
+  /receptions:
+    get:
+      summary: Listagem de RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/RN.yaml
+      operationId: get-receptions
+      description: Lista as RN
+    post:
+      summary: Criar uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: post-receptions
+      description: Cria uma nova RN
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/RN.yaml
+    parameters: []
+  '/receptions/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da RN
+    get:
+      summary: Consulta uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/RN.yaml
+      operationId: get-receptions-id
+      description: Consulta uma RN
+    put:
+      summary: Atualiza uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: put-receptions-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/RN.yaml
+      description: Atualiza uma RN
+    delete:
+      summary: Cancela uma RN
+      tags:
+        - Recepção de Nota (receptions)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-receptions-id
+      description: Cancela uma RN
+  /sales:
+    get:
+      summary: Listando pedidos de Venda
+      description: |
+        Lista de pedidos tipo VENDA 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | dias | int | se nulo ou 0 pega 10 dias para trás. Tem prioridade sobre o filtro dias_alteracao | 
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
+        | etapa | int | ID da etapa Ex: 500 = Edição, 600 = Manuseio ou 700 = Expedição |
+        | pesquisa | string | Pesquisa tanto por id_pessoa, Nome Razão ou CPF/CNPJ |
+        | id_externo | string | ID do pedido Externo |
+        | id_vendedor | int64 | ID do Vendedor |
+        | valor | number | Valor exato do total da venda (vtotal) |
+        | criados_por_mim | bool | Somentes os pedidos criados por mim |
+        | meus_clientes | bool | Somentes os pedidos dos meus clientes |
+        | meus_pedidos | bool | Somentes os meus pedidos, onde internamente filtra pelo id_vendedor do usuário que fez a requisição, porém se não achar filtra os pedidos cujo a última alteração do pedido fora feita por mim  |
+        | chnfe_gerada | string | Chave de acesso gerada|
+        | lista_num_nf | string | Somentes os pedidos criados por mim |
+        | vetor_num_nf | []int | Vetor de Número NF's com o objetivo de filtrar uma ou mais NF's |
+        | vetor_empresa | []int64 | Vetor de id_empresa com o objetivo de filtrar uma ou mais empresas |
+        | vetor_status | []int64 | Vetor de Status do pedido, podendo ser mais de um status |
+        | id_mesa | int64 | ID da mesa |
+        | todos | bool | Traz também os pedidos cancelados |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      operationId: get-sales
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Sales.yaml
+      tags:
+        - Pedidos Venda (sales)
+    post:
+      summary: Criando um novo pedido de Venda
+      description: Cria um novo pedido Venda
+      operationId: post-sales
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Sales.yaml
+      tags:
+        - Pedidos Venda (sales)
+    parameters: []
+  '/sales/{id}':
+    put:
+      tags:
+        - Pedidos (orders)
+      summary: Atualizando um pedido de venda
+      description: Atualiza um pedido de venda
+      operationId: put-sales-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Sales.yaml
+    get:
+      summary: Consultando um pedido de Venda
+      description: Consulta um pedido de venda
+      operationId: get-sales-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Sales.yaml
+      tags:
+        - Pedidos Venda (sales)
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
   /skus:
     get:
       summary: Listando produtos (SKUs)
@@ -2572,6 +2673,69 @@ paths:
       description: Cria um SKU
       tags:
         - Produtos (skus)
+  '/skus/{id}':
+    get:
+      summary: Consultando um produto (SKU)
+      tags:
+        - Produtos (skus)
+      operationId: get-skus-id
+      parameters: []
+      description: Mostra um produto já existente
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Sku.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    message: Nenhum registro encontrado
+                properties:
+                  message:
+                    type: string
+                    minLength: 1
+                    description: Mensagem de Erro
+                required:
+                  - message
+    put:
+      summary: Atualizando um produto (SKU)
+      operationId: put-skus-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Atualiza um produto já existente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Sku.yaml
+    delete:
+      summary: Excluindo um produto (SKU)
+      operationId: delete-skus-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Exclui um produto já existente
+    parameters:
+      - schema:
+          type: integer
+          default: 5
+        name: id
+        in: path
+        description: Código do produto (SKU)
+        required: true
   /skuconfigs:
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
@@ -2694,69 +2858,64 @@ paths:
         in: path
         description: ID que representa a configuração do sku x empresa
         required: true
-  '/skus/{id}':
+  /skuarticles:
     get:
-      summary: Consultando um produto (SKU)
+      summary: Listando mercadorias
       tags:
-        - Produtos (skus)
-      operationId: get-skus-id
-      parameters: []
-      description: Mostra um produto já existente
+        - Produtos (skuarticles)
+      operationId: get-skuarticles
+      description: |
+        Lista de mercadorias (SKUs e suas embalagens)
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | codigo_sku | int64 | código da mercadoria (ver filtro por embalagens)| 
+        | embalagens | bool | deverá informar true para visualizar também as embalagens | 
+        | numero_pedido | int64 | produtos que estão nesse pedido| 
+        | codigo_descricao | string | Descrição da mercadoria, ou Se for numero então Se > 9999999 filtra por codigo de barras, senão pelo codigo mercadoria | 
+        | fornecedor | string |  nome do fornecedor| 
+        | marca | string |  nome da marca| 
+        | ids_categ | []int64 | array de IDs de categorias | 
+        | nivel | int | nivel da categoria | 
+        | categoria | string | nome da categoria | 
+        | fora_venda | bool |  incluir produtos que estão fora de venda? (padrão: false) |
+        | referencia | string |  referência do código da mercadoria do fornecedor |
+        | ncm | string |  código ncm |
+        | barcode | int64 | código de barras|
+        | user_id | int64 | ID do usuário que criou a mercadoria|
+        | data_preco | string |  Data/Hora da ultima alteração do preco promocional ou mercadoria |
+        | id_empresa | int |  utilizado para filtrar o estoque do predio |
+        | dias_alteracao | int |  quantidade de dias em que houve alguma alteração |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ../models/Sku.yaml
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    message: Nenhum registro encontrado
-                properties:
-                  message:
-                    type: string
-                    minLength: 1
-                    description: Mensagem de Erro
-                required:
-                  - message
-    put:
-      summary: Atualizando um produto (SKU)
-      operationId: put-skus-id
+                type: array
+                items:
+                  $ref: ../models/SkuArticle.yaml
+    post:
+      summary: Criando uma mercadoria
+      operationId: post-skuarticles
       responses:
         '200':
           description: OK
+      description: Cria uma mercadoria (embalagem de um SKU)
       tags:
-        - Produtos (skus)
-      description: Atualiza um produto já existente
+        - Produtos (skuarticles)
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/Sku.yaml
-    delete:
-      summary: Excluindo um produto (SKU)
-      operationId: delete-skus-id
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos (skus)
-      description: Exclui um produto já existente
-    parameters:
-      - schema:
-          type: integer
-          default: 5
-        name: id
-        in: path
-        description: Código do produto (SKU)
-        required: true
+              $ref: ../models/SkuArticle.yaml
+    parameters: []
   '/skuarticles/{id}':
     get:
       summary: Consultando uma mercadoria
@@ -2820,157 +2979,73 @@ paths:
         in: path
         description: Código da mercadoria
         required: true
-  /skuarticles:
+  '/skureservations/{id}':
     get:
-      summary: Listando mercadorias
-      tags:
-        - Produtos (skuarticles)
-      operationId: get-skuarticles
-      description: |
-        Lista de mercadorias (SKUs e suas embalagens)
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | codigo_sku | int64 | código da mercadoria (ver filtro por embalagens)| 
-        | embalagens | bool | deverá informar true para visualizar também as embalagens | 
-        | numero_pedido | int64 | produtos que estão nesse pedido| 
-        | codigo_descricao | string | Descrição da mercadoria, ou Se for numero então Se > 9999999 filtra por codigo de barras, senão pelo codigo mercadoria | 
-        | fornecedor | string |  nome do fornecedor| 
-        | marca | string |  nome da marca| 
-        | ids_categ | []int64 | array de IDs de categorias | 
-        | nivel | int | nivel da categoria | 
-        | categoria | string | nome da categoria | 
-        | fora_venda | bool |  incluir produtos que estão fora de venda? (padrão: false) |
-        | referencia | string |  referência do código da mercadoria do fornecedor |
-        | ncm | string |  código ncm |
-        | barcode | int64 | código de barras|
-        | user_id | int64 | ID do usuário que criou a mercadoria|
-        | data_preco | string |  Data/Hora da ultima alteração do preco promocional ou mercadoria |
-        | id_empresa | int |  utilizado para filtrar o estoque do predio |
-        | dias_alteracao | int |  quantidade de dias em que houve alguma alteração |
+      summary: Consultando um Sku Reserva Prédio
+      description: Consulta Sku Reserva Prédio
       parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
+        - schema:
+            type: string
+            default: Basic MTIzNDp1dWlkLXRva2Vu
+          in: header
+          description: 'ID:TOKEN'
+          required: true
+          name: Authorization
+      operationId: get-skureservations-id
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ../models/SkuArticle.yaml
-    post:
-      summary: Criando uma mercadoria
-      operationId: post-skuarticles
-      responses:
-        '200':
-          description: OK
-      description: Cria uma mercadoria (embalagem de um SKU)
-      tags:
-        - Produtos (skuarticles)
+                $ref: ../models/SkuReservations.yaml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/SkuArticle.yaml
-    parameters: []
-  /sales:
-    get:
-      summary: Listando pedidos de Venda
-      description: |
-        Lista de pedidos tipo VENDA 
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | dias | int | se nulo ou 0 pega 10 dias para trás. Tem prioridade sobre o filtro dias_alteracao | 
-        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
-        | etapa | int | ID da etapa Ex: 500 = Edição, 600 = Manuseio ou 700 = Expedição |
-        | pesquisa | string | Pesquisa tanto por id_pessoa, Nome Razão ou CPF/CNPJ |
-        | id_externo | string | ID do pedido Externo |
-        | id_vendedor | int64 | ID do Vendedor |
-        | valor | number | Valor exato do total da venda (vtotal) |
-        | criados_por_mim | bool | Somentes os pedidos criados por mim |
-        | meus_clientes | bool | Somentes os pedidos dos meus clientes |
-        | meus_pedidos | bool | Somentes os meus pedidos, onde internamente filtra pelo id_vendedor do usuário que fez a requisição, porém se não achar filtra os pedidos cujo a última alteração do pedido fora feita por mim  |
-        | chnfe_gerada | string | Chave de acesso gerada|
-        | lista_num_nf | string | Somentes os pedidos criados por mim |
-        | vetor_num_nf | []int | Vetor de Número NF's com o objetivo de filtrar uma ou mais NF's |
-        | vetor_empresa | []int64 | Vetor de id_empresa com o objetivo de filtrar uma ou mais empresas |
-        | vetor_status | []int64 | Vetor de Status do pedido, podendo ser mais de um status |
-        | id_mesa | int64 | ID da mesa |
-        | todos | bool | Traz também os pedidos cancelados |
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      operationId: get-sales
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Sales.yaml
+              $ref: ../models/SkuReservations.yaml
       tags:
-        - Pedidos Venda (sales)
-    post:
-      summary: Criando um novo pedido de Venda
-      description: Cria um novo pedido Venda
-      operationId: post-sales
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Sales.yaml
-      tags:
-        - Pedidos Venda (sales)
-    parameters: []
-  '/sales/{id}':
-    put:
-      tags:
-        - Pedidos (orders)
-      summary: Atualizando um pedido de venda
-      description: Atualiza um pedido de venda
-      operationId: put-sales-id
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Sales.yaml
-    get:
-      summary: Consultando um pedido de Venda
-      description: Consulta um pedido de venda
-      operationId: get-sales-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Sales.yaml
-      tags:
-        - Pedidos Venda (sales)
+        - Sku Reserva Prédio (skureservations)
     parameters:
       - schema:
           type: integer
+          minimum: 1
+          default: 1
         name: id
         in: path
         required: true
-        description: Número do Pedido
+        description: ID da reserva pedido
+  /skureservations:
+    get:
+      summary: Listando Sku's Reserva Prédio
+      operationId: get-skureservations
+      description: |
+        Lista dos estoques dos produtos reservados por prédio
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_predio | int64 | código do Prédio (id_predio) | 
+        | cod_produto | int64 | código do produto | 
+        | codigo_sku | int64 |  código do sku | 
+        | numero_pedido | int64 |  filtra os itens pelo número do Pedido | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/SkuReservations.yaml
+      tags:
+        - Sku Reserva Prédio (skureservations)
+    parameters: []
   /skustocks:
     get:
       summary: Listando endereços de estoque
@@ -3027,6 +3102,55 @@ paths:
           application/json:
             schema:
               $ref: ../models/SkuStock.yaml
+  '/skustocks/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID do endereço do estoque
+    get:
+      summary: Consultando um estoque
+      tags:
+        - Estoque (skustocks)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SkuStock.yaml
+      operationId: get-skustocks-id
+      description: Consulta um endereço de estoque
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    put:
+      summary: Atualizando um endereço
+      operationId: put-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza um endereço de estoque
+      tags:
+        - Estoque (skustocks)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/SkuStock.yaml
+        description: ''
+    delete:
+      summary: Excluindo um endereço
+      operationId: delete-skustocks-id
+      responses:
+        '200':
+          description: OK
+      description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
+      tags:
+        - Estoque (skustocks)
   /skuparts:
     get:
       summary: Listando Composição SKU
@@ -3077,55 +3201,6 @@ paths:
       tags:
         - Composição Sku (skuparts)
     parameters: []
-  '/skustocks/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: ID do endereço do estoque
-    get:
-      summary: Consultando um estoque
-      tags:
-        - Estoque (skustocks)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/SkuStock.yaml
-      operationId: get-skustocks-id
-      description: Consulta um endereço de estoque
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    put:
-      summary: Atualizando um endereço
-      operationId: put-skustocks-id
-      responses:
-        '200':
-          description: OK
-      description: Atualiza um endereço de estoque
-      tags:
-        - Estoque (skustocks)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/SkuStock.yaml
-        description: ''
-    delete:
-      summary: Excluindo um endereço
-      operationId: delete-skustocks-id
-      responses:
-        '200':
-          description: OK
-      description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
-      tags:
-        - Estoque (skustocks)
   '/skuparts/{id}':
     parameters:
       - schema:
@@ -3175,232 +3250,6 @@ paths:
       description: Exclui uma Composição SKU
       tags:
         - Composição Sku (skuparts)
-  '/taxclasses/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: id da classe fiscal
-    get:
-      summary: Consulta uma Classe Fiscal
-      tags:
-        - Tributária (Classe Fiscal)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Classe-Fiscal'
-      operationId: get-taxclasses-id
-      description: Consulta uma classe fiscal
-    put:
-      summary: Atualizando uma classe fiscal
-      operationId: put-taxclasses-id
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Tributária (Classe Fiscal)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Classe-Fiscal'
-      description: Atualiza uma classe fiscal
-    delete:
-      summary: Excluindo uma classe fiscal
-      operationId: delete-taxclasses-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-            application/xml:
-              schema:
-                type: object
-                properties: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Classe-Fiscal'
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-        description: ''
-      description: Exclui uma classe fiscal
-      tags:
-        - Tributária (Classe Fiscal)
-  '/tokens/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: Id do Token
-    get:
-      summary: Informações do token
-      tags:
-        - Login
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    id: 1564931602
-                    user_id: 10023
-                    nome_razao: Alexsander Da Rosa
-                    loja: 10
-                    nome_loja: ADMINISTRATIVO
-                    id_predio: 13
-                    nome_usuario: ALEXSANDER
-                    conta: cdp
-                    url_logo: 'https://storage.googleapis.com/rednaxel-fotos/cdp/logo/web.png'
-                    user_email: alexsander.rosa@gmail.com
-                    picture_url: 'https://lh6.googleusercontent.com/-1_ZMsIBah1w/AAAAAAAAAAI/AAAAAAAAkkk/0C-voD9hwsk/photo.jpg'
-                    ip_externo: 177.101.216.158
-                    versao: (Linux 64) Chrome/92
-                    ult_oper: '2021-08-19T18:25:30-03:00'
-                    cmun: 4314902
-                    nome_municipio: Porto Alegre
-                    uf: RS
-                properties:
-                  id:
-                    type: integer
-                  user_id:
-                    type: integer
-                  nome_usuario:
-                    type: string
-                    description: Nome do usuário logado
-                  user_email:
-                    type: string
-                    description: Email do usuário logado
-                  picture_url:
-                    type: string
-                    description: URL da foto do usuário logado
-                  loja:
-                    description: ID da empresa onde foi efetuado o login
-                    type: integer
-                  nome_razao:
-                    type: string
-                    description: Nome/Razão Social da empresa onde foi efetuado o login
-                  nome_loja:
-                    type: string
-                    description: Nome reduzido da empresa onde foi efetuado o login
-                  id_predio:
-                    type: integer
-                    description: ID do prédio da empresa logada
-                  cmun:
-                    type: integer
-                    description: Código do município (IBGE) da sede da empresa logada
-                  uf:
-                    type: string
-                    description: UF (estado) da sede da empresa logada
-                  nome_municipio:
-                    type: string
-                    description: Nome do município da sede da empresa logada
-                  conta:
-                    type: string
-                    description: Conta (tenant) do usuário
-                  url_logo:
-                    type: string
-                    description: URL do logotipo do tenant
-                  ip_externo:
-                    type: string
-                    description: IP de onde foi efetuado o login
-                  versao:
-                    type: string
-                    description: Versão do navegador (ou outro app frontend)
-                  ult_oper:
-                    type: string
-                    description: Data/hora da última requisição
-        '201':
-          description: Created
-      operationId: get-tokens-id
-      description: Obtém informações do login atual
-      parameters: []
-  /taxclasses:
-    get:
-      summary: Listando as classes fiscais
-      tags:
-        - Tributária (Classe Fiscal)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Classe-Fiscal'
-      operationId: get-taxclasses
-      description: |
-        Listagem das classes fiscais
-
-        Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Criando um mapeamento
-      operationId: post-taxclasses
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Tributária (Classe Fiscal)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Classe-Fiscal'
-      description: Cria uma nova classe fiscal
-    parameters: []
-  /receptions:
-    get:
-      summary: Listagem de RN
-      tags:
-        - Recepção de Nota (receptions)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/RN.yaml
-      operationId: get-receptions
-      description: Lista as RN
-    post:
-      summary: Criar uma RN
-      tags:
-        - Recepção de Nota (receptions)
-      responses:
-        '200':
-          description: OK
-      operationId: post-receptions
-      description: Cria uma nova RN
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/RN.yaml
-    parameters: []
   /status:
     get:
       summary: Consulta o Status da API GOLANG
@@ -3416,8 +3265,7 @@ paths:
                 items:
                   $ref: ../models/Status.yaml
       operationId: get-status
-      description: |-
-        Consulta Status
+      description: Consulta Status
   /stocksummaries:
     get:
       summary: Consulta estoque de SKU por prédio
@@ -3440,50 +3288,6 @@ paths:
       description: |-
         Estoque de SKU por prédio. Filtros:
         - `codigo_sku`: código do SKU
-  '/receptions/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: id da RN
-    get:
-      summary: Consulta uma RN
-      tags:
-        - Recepção de Nota (receptions)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/RN.yaml
-      operationId: get-receptions-id
-      description: Consulta uma RN
-    put:
-      summary: Atualiza uma RN
-      tags:
-        - Recepção de Nota (receptions)
-      responses:
-        '200':
-          description: OK
-      operationId: put-receptions-id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/RN.yaml
-      description: Atualiza uma RN
-    delete:
-      summary: Cancela uma RN
-      tags:
-        - Recepção de Nota (receptions)
-      responses:
-        '200':
-          description: OK
-      operationId: delete-receptions-id
-      description: Cancela uma RN
   /services:
     get:
       summary: Listagem de serviços
@@ -3661,6 +3465,201 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Grade'
+  /taxclasses:
+    get:
+      summary: Listando as classes fiscais
+      tags:
+        - Tributária (Classe Fiscal)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Classe-Fiscal'
+      operationId: get-taxclasses
+      description: |
+        Listagem das classes fiscais
+
+        Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criando um mapeamento
+      operationId: post-taxclasses
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Tributária (Classe Fiscal)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+      description: Cria uma nova classe fiscal
+    parameters: []
+  '/taxclasses/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da classe fiscal
+    get:
+      summary: Consulta uma Classe Fiscal
+      tags:
+        - Tributária (Classe Fiscal)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classe-Fiscal'
+      operationId: get-taxclasses-id
+      description: Consulta uma classe fiscal
+    put:
+      summary: Atualizando uma classe fiscal
+      operationId: put-taxclasses-id
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Tributária (Classe Fiscal)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+      description: Atualiza uma classe fiscal
+    delete:
+      summary: Excluindo uma classe fiscal
+      operationId: delete-taxclasses-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Classe-Fiscal'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      description: Exclui uma classe fiscal
+      tags:
+        - Tributária (Classe Fiscal)
+  '/tokens/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Id do Token
+    get:
+      summary: Informações do token
+      tags:
+        - Login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    id: 1564931602
+                    user_id: 10023
+                    nome_razao: Alexsander Da Rosa
+                    loja: 10
+                    nome_loja: ADMINISTRATIVO
+                    id_predio: 13
+                    nome_usuario: ALEXSANDER
+                    conta: cdp
+                    url_logo: 'https://storage.googleapis.com/rednaxel-fotos/cdp/logo/web.png'
+                    user_email: alexsander.rosa@gmail.com
+                    picture_url: 'https://lh6.googleusercontent.com/-1_ZMsIBah1w/AAAAAAAAAAI/AAAAAAAAkkk/0C-voD9hwsk/photo.jpg'
+                    ip_externo: 177.101.216.158
+                    versao: (Linux 64) Chrome/92
+                    ult_oper: '2021-08-19T18:25:30-03:00'
+                    cmun: 4314902
+                    nome_municipio: Porto Alegre
+                    uf: RS
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  nome_usuario:
+                    type: string
+                    description: Nome do usuário logado
+                  user_email:
+                    type: string
+                    description: Email do usuário logado
+                  picture_url:
+                    type: string
+                    description: URL da foto do usuário logado
+                  loja:
+                    description: ID da empresa onde foi efetuado o login
+                    type: integer
+                  nome_razao:
+                    type: string
+                    description: Nome/Razão Social da empresa onde foi efetuado o login
+                  nome_loja:
+                    type: string
+                    description: Nome reduzido da empresa onde foi efetuado o login
+                  id_predio:
+                    type: integer
+                    description: ID do prédio da empresa logada
+                  cmun:
+                    type: integer
+                    description: Código do município (IBGE) da sede da empresa logada
+                  uf:
+                    type: string
+                    description: UF (estado) da sede da empresa logada
+                  nome_municipio:
+                    type: string
+                    description: Nome do município da sede da empresa logada
+                  conta:
+                    type: string
+                    description: Conta (tenant) do usuário
+                  url_logo:
+                    type: string
+                    description: URL do logotipo do tenant
+                  ip_externo:
+                    type: string
+                    description: IP de onde foi efetuado o login
+                  versao:
+                    type: string
+                    description: Versão do navegador (ou outro app frontend)
+                  ult_oper:
+                    type: string
+                    description: Data/hora da última requisição
+        '201':
+          description: Created
+      operationId: get-tokens-id
+      description: Obtém informações do login atual
+      parameters: []
   /units:
     get:
       summary: Listar unidades
