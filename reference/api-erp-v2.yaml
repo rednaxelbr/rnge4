@@ -2487,80 +2487,6 @@ paths:
               $ref: '#/components/schemas/Classe-Fiscal'
       description: Cria uma nova classe fiscal
     parameters: []
-  /invoices:
-    post:
-      summary: Criando Nota/Cupom Fiscal
-      operationId: post-invoices
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Notas/Cupons Fiscais (invoices)
-      parameters: []
-      description: 'Envia o XML de uma NFe/NFCe '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                xml:
-                  type: string
-                  description: XML codificado em Base64
-                  writeOnly: true
-              required:
-                - xml
-    get:
-      summary: Lista de NF/Cupons
-      operationId: get-invoices
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Invoice.yaml
-      description: |-
-        Lista de notas/cupons. O filtro "modelo" é obrigatório caso não filtrar por "chnfe".
-        Para listar os itens utilize o recurso GET v2/invoiceitems.
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
-        | datafim | string | Formato: YYYY/MM/DD  | 
-        | modelo | int | Ex.: 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
-        | id_empresa | int64 | se não informar o id_empresa usa a empresa logada | 
-        | chnfe | string | Chave de acesso com os 44 caracteres | 
-        | id_pessoa | int64 | ID da Pessoa |
-        | idpessoa_razao_cpf_cnpj | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
-        | cnpj_emit | int64 | CNPJ do Emitente |
-        | cpf_cnpj | int64 | CPF ou CNPJ |
-        | numero_pedido | int64 | Número do pedido |
-        | pdv | int64 | Número de série (pdv) |
-        | id_romaneio | int64 | Número do Romaneio |
-        | numero | int | Número da NF |
-        | notas | string | NFs separados por vírgula |
-        | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
-        | total_vnf | float64 | Valor exato do total da NF |
-        | cupons_cancelados | bool | Filtra as notas canceladas |
-        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (TPAG) |
-        | vetor_status | []int64 | Array dos status (Ex: [500, 590]) |
-        | codigo_descricao | string | Tanto pelo código como pela descrição do produto  |
-        | nome_usuario | string | Usuário do documento  |
-        | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
-        | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
-
-        *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      tags:
-        - Notas/Cupons Fiscais (invoices)
   /orderitems:
     get:
       summary: Lista de itens de um pedido
@@ -3223,7 +3149,7 @@ paths:
         - `codigo_sku`: código do SKU
   /status:
     get:
-      summary: Consulta o Status da API
+      summary: Consulta o Status da API GOLANG
       responses:
         '200':
           description: OK
@@ -3637,6 +3563,80 @@ paths:
       description: Inativa uma Pessoa
       tags:
         - Pessoas (persons)
+  /invoices:
+    post:
+      summary: Criando Nota/Cupom Fiscal
+      operationId: post-invoices
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      parameters: []
+      description: 'Envia o XML de uma NFe/NFCe '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                xml:
+                  type: string
+                  description: XML codificado em Base64
+                  writeOnly: true
+              required:
+                - xml
+    get:
+      summary: Lista de NF/Cupons
+      operationId: get-invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Invoice.yaml
+      description: |-
+        Lista de notas/cupons. O filtro "modelo" é obrigatório caso não filtrar por "chnfe".
+        Para listar os itens utilize o recurso GET v2/invoiceitems.
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
+        | datafim | string | Formato: YYYY/MM/DD  | 
+        | modelo | int | Ex.: 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
+        | id_empresa | int64 | se não informar o id_empresa usa a empresa logada | 
+        | chnfe | string | Chave de acesso com os 44 caracteres | 
+        | id_pessoa | int64 | ID da Pessoa |
+        | idpessoa_razao_cpf_cnpj | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
+        | cnpj_emit | int64 | CNPJ do Emitente |
+        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | numero_pedido | int64 | Número do pedido |
+        | pdv | int64 | Número de série (pdv) |
+        | id_romaneio | int64 | Número do Romaneio |
+        | numero | int | Número da NF |
+        | notas | string | NFs separados por vírgula |
+        | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
+        | total_vnf | float64 | Valor exato do total da NF |
+        | cupons_cancelados | bool | Filtra as notas canceladas |
+        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (TPAG) |
+        | vetor_status | []int64 | Array dos status (Ex: [500, 590]) |
+        | codigo_descricao | string | Tanto pelo código como pela descrição do produto  |
+        | nome_usuario | string | Usuário do documento  |
+        | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
+        | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
+
+        *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Notas/Cupons Fiscais (invoices)
   '/invoices/{id}':
     parameters:
       - schema:
@@ -3663,6 +3663,36 @@ paths:
         ```bash
         curl ... | jq --raw-output .arquivo_xml
         ```
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
+        | datafim | string | Formato: YYYY/MM/DD  | 
+        | modelo | int | Ex.: 55 (NFe) ou 65 (NFCe), obrigatório se não filtrar por chnfe | 
+        | id_empresa | int64 | se não informar o id_empresa usa a empresa logada | 
+        | chnfe | string | Chave de acesso com os 44 caracteres | 
+        | id_pessoa | int64 | ID da Pessoa |
+        | idpessoa_razao_cpf_cnpj | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
+        | cnpj_emit | int64 | CNPJ do Emitente |
+        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | numero_pedido | int64 | Número do pedido |
+        | pdv | int64 | Número de série (pdv) |
+        | id_romaneio | int64 | Número do Romaneio |
+        | numero | int | Número da NF |
+        | notas | string | NFs separados por vírgula |
+        | ocultar_5929 | bool | Oculta notas CFOP 5929, modelo = 65 (NFCe) |
+        | total_vnf | float64 | Valor exato do total da NF |
+        | cupons_cancelados | bool | Filtra as notas canceladas |
+        | vetor_pagtos | []int64 | Array dos tipos de pagamentos (TPAG) |
+        | vetor_status | []int64 | Array dos status (Ex: [500, 590]) |
+        | codigo_descricao | string | Tanto pelo código como pela descrição do produto  |
+        | nome_usuario | string | Usuário do documento  |
+        | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
+        | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
+
+        *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
 components:
   securitySchemes:
     Usuário/Senha:
