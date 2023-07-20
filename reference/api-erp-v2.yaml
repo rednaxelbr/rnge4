@@ -1452,38 +1452,6 @@ paths:
                   $ref: ../models/Operacoes.yaml
       operationId: get-operations
       description: Operações (tipos de pedidos)
-  /ping:
-    get:
-      summary: Verificando servidor
-      tags:
-        - Login
-      operationId: get-ping
-      description: Verifica se o servidor está online
-      security: []
-      responses:
-        '200':
-          description: Sucesso
-          headers: {}
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    resp: OK
-                properties:
-                  resp:
-                    type: string
-                    minLength: 1
-                    description: Resposta (OK)
-                required:
-                  - resp
-              examples:
-                JSON:
-                  value:
-                    resp: OK
-    parameters: []
   /paymentcodes:
     get:
       summary: Listando formas de quitação
@@ -1675,6 +1643,38 @@ paths:
       description: Inativa uma Pessoa
       tags:
         - Pessoas (persons)
+  /ping:
+    get:
+      summary: Verificando servidor
+      tags:
+        - Login
+      operationId: get-ping
+      description: Verifica se o servidor está online
+      security: []
+      responses:
+        '200':
+          description: Sucesso
+          headers: {}
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    resp: OK
+                properties:
+                  resp:
+                    type: string
+                    minLength: 1
+                    description: Resposta (OK)
+                required:
+                  - resp
+              examples:
+                JSON:
+                  value:
+                    resp: OK
+    parameters: []
   '/pricelists/{id}':
     parameters:
       - schema:
@@ -1750,6 +1750,43 @@ paths:
               $ref: '#/components/schemas/PLU'
       tags:
         - Listas de Preços (pricelists)
+  /productimages:
+    get:
+      summary: Lista de fotos de um produto
+      tags:
+        - Fotos de Produtos (productimages)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/ProductImage.yaml
+      operationId: get-productimages
+      description: |-
+        Lista de fotos de um produto ou SKU. Filtros:
+        - `cod_produto`: código do produto (embalagem)
+        - `codigo_sku`: código do SKU
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Envia uma foto de produto
+      tags:
+        - Fotos de Produtos (productimages)
+      responses:
+        '200':
+          description: OK
+      operationId: post-productimages
+      description: Envia uma foto (em base64) de um produto.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ProductImage.yaml
   /products:
     parameters: []
     get:
@@ -2160,43 +2197,6 @@ paths:
               $ref: ../models/PurchaseOrderGetOne.yaml
       tags:
         - Ordens de Compra (purchaseorders)
-  /productimages:
-    get:
-      summary: Lista de fotos de um produto
-      tags:
-        - Fotos de Produtos (productimages)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/ProductImage.yaml
-      operationId: get-productimages
-      description: |-
-        Lista de fotos de um produto ou SKU. Filtros:
-        - `cod_produto`: código do produto (embalagem)
-        - `codigo_sku`: código do SKU
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Envia uma foto de produto
-      tags:
-        - Fotos de Produtos (productimages)
-      responses:
-        '200':
-          description: OK
-      operationId: post-productimages
-      description: Envia uma foto (em base64) de um produto.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/ProductImage.yaml
   '/purchaseorders/{id}':
     parameters:
       - schema:
@@ -3266,28 +3266,6 @@ paths:
                   $ref: ../models/Status.yaml
       operationId: get-status
       description: Consulta Status
-  /stocksummaries:
-    get:
-      summary: Consulta estoque de SKU por prédio
-      tags:
-        - Estoque (skustocks)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/StockSummary.yaml
-      operationId: get-stocksummaries
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      description: |-
-        Estoque de SKU por prédio. Filtros:
-        - `codigo_sku`: código do SKU
   /services:
     get:
       summary: Listagem de serviços
@@ -3322,6 +3300,92 @@ paths:
           application/json:
             schema:
               $ref: ../models/Services.yaml
+  /skugroups:
+    get:
+      summary: Listar Agrupamentos Comerciais
+      tags:
+        - Agrupamentos (skugroups)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agrup-Comercial'
+      operationId: get-skugroups
+      description: Listagem de Agrupamentos Comerciais (AC)
+    post:
+      summary: Criar Agrupamento Comercial
+      operationId: post-skugroups
+      responses:
+        '200':
+          description: OK
+      description: Cria um novo AC (Agrupamento Comercial)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Agrup-Comercial'
+      tags:
+        - Agrupamentos (skugroups)
+  /skugrids:
+    get:
+      summary: Lista de grades
+      tags:
+        - Produtos (skus)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grade'
+      operationId: get-skugrids
+      description: 'Lista de grades. Filtros: `codigo_sku` (number) e `codigo_alfa` (string).'
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criar nova grade
+      operationId: post-skugrids
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Produtos (skus)
+      description: Criar nova grade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Grade'
+  /stocksummaries:
+    get:
+      summary: Consulta estoque de SKU por prédio
+      tags:
+        - Estoque (skustocks)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/StockSummary.yaml
+      operationId: get-stocksummaries
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: |-
+        Estoque de SKU por prédio. Filtros:
+        - `codigo_sku`: código do SKU
   /suppliers:
     post:
       summary: Cria um Fornecedor
@@ -3401,70 +3465,6 @@ paths:
           description: OK
       operationId: delete-suppliers-id
       description: Inativa um Fornecedor
-  /skugroups:
-    get:
-      summary: Listar Agrupamentos Comerciais
-      tags:
-        - Agrupamentos (skugroups)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Agrup-Comercial'
-      operationId: get-skugroups
-      description: Listagem de Agrupamentos Comerciais (AC)
-    post:
-      summary: Criar Agrupamento Comercial
-      operationId: post-skugroups
-      responses:
-        '200':
-          description: OK
-      description: Cria um novo AC (Agrupamento Comercial)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Agrup-Comercial'
-      tags:
-        - Agrupamentos (skugroups)
-  /skugrids:
-    get:
-      summary: Lista de grades
-      tags:
-        - Produtos (skus)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Grade'
-      operationId: get-skugrids
-      description: 'Lista de grades. Filtros: `codigo_sku` (number) e `codigo_alfa` (string).'
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Criar nova grade
-      operationId: post-skugrids
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Produtos (skus)
-      description: Criar nova grade
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Grade'
   /taxclasses:
     get:
       summary: Listando as classes fiscais
