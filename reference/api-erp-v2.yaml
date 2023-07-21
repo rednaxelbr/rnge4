@@ -213,20 +213,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Predio-Estoque'
-              examples:
-                example-1:
-                  value:
-                    id: 0
-                    desc_predio: string
-                    address_id: 0
-                    logradouro: string
-                    numero: 0
-                    nome_municipio: string
-                    uf: string
-                    empresas:
-                      - id: 0
-                        sigla_loja: string
-                    config_predio: {}
       operationId: get-buildings
       description: |
         Lista de prédios de estoque 
@@ -317,13 +303,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Marca'
-              examples:
-                example-1:
-                  value:
-                    id: 5766
-                    nome_marca: REGISPEL
-                    marca_ativa: true
-                    produtos: 16
       operationId: get-brands
       description: |-
         Lista de marcas de produto 
@@ -899,16 +878,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Conta-Despesa'
-              examples:
-                example-1:
-                  value:
-                    id: 0
-                    codigo_conta: 0
-                    conta_contabil: string
-                    desc_conta: string
-                    conta_ativa: true
-                    config_conta: null
-                    padrao_compra: true
       operationId: get-expenseaccounts
       description: |
         Lista de contas de despesa
@@ -940,16 +909,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Conta-Despesa'
-            examples:
-              example-1:
-                value:
-                  id: 0
-                  codigo_conta: 0
-                  conta_contabil: string
-                  desc_conta: string
-                  conta_ativa: true
-                  config_conta: null
-                  padrao_compra: true
       tags:
         - Conta despesa (expenseaccounts)
     parameters: []
@@ -970,16 +929,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Conta-Despesa'
-              examples:
-                example-1:
-                  value:
-                    id: 0
-                    codigo_conta: 0
-                    conta_contabil: string
-                    desc_conta: string
-                    conta_ativa: true
-                    config_conta: null
-                    padrao_compra: true
       operationId: get-expenseaccounts-id
       description: Consulta uma conta despesa
       parameters:
@@ -1000,16 +949,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Conta-Despesa'
-            examples:
-              example-1:
-                value:
-                  id: 0
-                  codigo_conta: 0
-                  conta_contabil: string
-                  desc_conta: string
-                  conta_ativa: true
-                  config_conta: null
-                  padrao_compra: true
         description: ''
       tags:
         - Conta despesa (expenseaccounts)
@@ -1025,7 +964,7 @@ paths:
   /invoicetypes:
     get:
       summary: Tipos de Documentos Fiscais
-      operationId: get-invoices
+      operationId: get-invoicetypes
       responses:
         '200':
           description: OK
@@ -1196,14 +1135,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                x-examples:
-                  example-1:
-                    id: 1561144325
-                    user_id: 10023
-                    token: 89a1e75e-87da-400a-9899-7ca1a170667c
-                    logo_color: '#404040'
-                    font_color: '#FFFFFF'
-                    homologacao: true
                 properties:
                   id:
                     type: number
@@ -1443,13 +1374,6 @@ paths:
           application/json:
             schema:
               type: object
-              x-examples:
-                example-1:
-                  orderid: 0
-                  codigo: 0
-                  qtd_conf: 0
-                  volume: 0
-                  qtd_vol: 0
               properties:
                 codigo:
                   type: integer
@@ -1493,14 +1417,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Forma-Quitacao'
-              examples:
-                example-1:
-                  value:
-                    id: 1
-                    sigla_forma: DIN
-                    desc_forma: DINHEIRO
-                    tpag: 1
-                    forma_ativa: true
       operationId: get-paymentcodes
       description: |
         Lista de formas de quitação
@@ -1691,9 +1607,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                x-examples:
-                  example-1:
-                    resp: OK
                 properties:
                   resp:
                     type: string
@@ -1701,10 +1614,6 @@ paths:
                     description: Resposta (OK)
                 required:
                   - resp
-              examples:
-                JSON:
-                  value:
-                    resp: OK
     parameters: []
   /pricelists:
     get:
@@ -1904,136 +1813,6 @@ paths:
           application/json:
             schema:
               type: object
-              x-examples:
-                example-1:
-                  id: 10887
-                  sku_id: 18441
-                  tipo_item: 0
-                  ativo: true
-                  referencia: OFC075CA4
-                  config_sku: {}
-                  custo_liquido: 15.8021
-                  curva: 12
-                  vbcst_nota: 20.6758
-                  icms_efetivo: 17
-                  vicmsst_ret: 0.7915
-                  vunit_compra: 15.69
-                  cmv: 16.1999
-                  flags_sku: {}
-                  ids_tags:
-                    - 118
-                  cmp_principal: 13.4146
-                  ptotal_padrao: 7.585
-                  id_grade: 4213740
-                  codigo_alfa: '10887'
-                  desc_basica: 'PAPEL CHAMEX A4 21CMX29,7CM 75G 500 FL BRANCO'
-                  grade_ativa: true
-                  orig: 5
-                  aliq_ipi: 3.25
-                  pmva_st: 25
-                  cod_ncm: '48025610'
-                  cod_cest: '1903100'
-                  config_meta:
-                    taxonomia: IMPRIMÍVEL > PAPEIS > PAPEL SULFITE IMPRIMIVEL > PAPEL SULFITE A4 075GR BRANCO 500FL
-                  cont_skus: 1
-                  id_categoria: 4273
-                  desc_categoria: PAPEL SULFITE A4 075GR BRANCO 500FL
-                  id_marca: 122
-                  nome_marca: CHAMEX
-                  id_classe: 3
-                  desc_trib: SUBST. TRIB.
-                  id_agrup: 14
-                  codigo_agrup: I
-                  desc_agrupamento: ICONE
-                  user_id: 54865
-                  nome_usuario: INTEGSKU
-                  id_unidade: 22
-                  ucom: PCT
-                  prod_xprod: 'PAPEL CHAMEX A4 21CMX29,7CM 75G 500 FL BRANCO'
-                  margem_padrao: 31.29
-                  preco_venda: 25.98
-                  embalagem_venda: true
-                  data_cadastro: '2002-05-31T00:00:00'
-                  nome_sku: 'Papel Chamex A4 21cm x 29,7cm 75g 500 Folhas Branco'
-                  desc_curta: 'Pacote com 500 folhas de papel sulfite 75g branco, tamanho A4. A melhor solução para suas impressões, com garantia de qualidade profissional Chamex.'
-                  desc_longa: |-
-                    - Cor do Papel: Branco
-                    - Gramatura: 75 g/m2 
-                    - Formato: A4 (210mm x 297mm)
-                    - Quantidade por pacote: 500 folhas
-
-                    O melhor para uso PROFISSIONAL, o Chamex Office oferece a melhor solução para suas impressões, com garantia de qualidade profissional. Superfície resistente, corte perfeito e absorção equilibrada que permite o melhor deslizamento na impressora evitando desperdício de tinta.
-                    O sulfite Chamex é produzido a partir de florestas 100% plantadas e renováveis e suas fibras são tratadas para obter o mais alto grau de brancura. Garante 99,99% não atolamento em impressoras.
-                  info_extra:
-                    exibir_website: true
-                  esmin_padrao: 100
-                  ultima_compra: '2022-05-27T00:00:00'
-                  medidas:
-                    - mult_sku: 1
-                      peso_kg: 2.34
-                      largura_m: 0.297
-                      altura_m: 0.21
-                      profundidade_m: 0.048
-                    - mult_sku: 5
-                      peso_kg: 11.5
-                      largura_m: 0.32
-                      altura_m: 0.227
-                      profundidade_m: 0.24
-                    - mult_sku: 10
-                      peso_kg: 23.4
-                      largura_m: 0.445
-                      altura_m: 0.315
-                      profundidade_m: 0.24
-                    - mult_sku: 20
-                      peso_kg: 46.8
-                      largura_m: 0.445
-                      altura_m: 0.315
-                      profundidade_m: 0.5
-                    - mult_sku: 50
-                      peso_kg: 117
-                      largura_m: 0.45
-                      altura_m: 0.63
-                      profundidade_m: 0.5
-                    - mult_sku: 100
-                      peso_kg: 230
-                      largura_m: 1.07
-                      altura_m: 1.07
-                      profundidade_m: 1.6
-                    - mult_sku: 427.4265
-                      peso_kg: 983.081
-                      largura_m: 1.07
-                      altura_m: 1.07
-                      profundidade_m: 1.6
-                  fotos:
-                    - id: 7167800
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/71678.JPG'
-                      primario: 71678-0
-                      secundario: TON com 427
-                    - id: 1088700
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/10887.JPG'
-                      primario: 10887-0
-                      secundario: 'PCT '
-                    - id: 1088701
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/10887-1.JPG'
-                      primario: 10887-1
-                      secundario: 'PCT '
-                    - id: 7227000
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/72270.JPG'
-                      primario: 72270-0
-                      secundario: CX com 100
-                    - id: 12037800
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/120378.JPG'
-                      primario: 120378-0
-                      secundario: CX com 5
-                    - id: 1088800
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/10888.JPG'
-                      primario: 10888-0
-                      secundario: CX com 10
-                    - id: 1088809
-                      url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/10888-9.JPG'
-                      primario: 10888-9
-                      secundario: CX com 10
-                  url_foto_principal: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/10887.JPG'
               properties:
                 id:
                   type: integer
@@ -2177,7 +1956,6 @@ paths:
                         type: string
                 url_foto_principal:
                   type: string
-            examples: {}
         description: ''
       description: |
         Lista de produtos
@@ -2375,11 +2153,6 @@ paths:
           application/json:
             schema:
               type: object
-              x-examples:
-                example-1:
-                  files:
-                    - conteudo: xml-da-nota-fiscal-1
-                    - conteudo: xml-da-nota-fiscal-2
               properties:
                 files:
                   type: array
@@ -2760,9 +2533,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                x-examples:
-                  example-1:
-                    message: Nenhum registro encontrado
                 properties:
                   message:
                     type: string
@@ -2868,27 +2638,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SKU-Configs'
-              examples:
-                example-1:
-                  value:
-                    id: 80095
-                    id_empresa: 0
-                    sigla_loja: string
-                    nome_reduzido: string
-                    codigo_sku: 0
-                    dias_estoq: 0
-                    quant_mes: 0
-                    ticket_mes: 0
-                    valor_mes: 0
-                    quant_natural: 0
-                    expo: 0
-                    sazo_efet: 0
-                    total_sazo: 0
-                    es_minimo: 0
-                    cmmf_quant: 0
-                    cmmf_validade: string
-                    ultima_venda: string
-                    data_hora: string
       tags:
         - Produtos (skuconfigs)
     put:
@@ -3003,9 +2752,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                x-examples:
-                  example-1:
-                    message: Nenhum registro encontrado
                 properties:
                   message:
                     type: string
@@ -3226,14 +2972,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Sku-Composicao'
-              examples:
-                example-1:
-                  value:
-                    id: 1
-                    sigla_forma: DIN
-                    desc_forma: DINHEIRO
-                    tpag: 1
-                    forma_ativa: true
       operationId: get-skuparts
       description: |
         Lista de formas de quitação
@@ -3617,25 +3355,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                x-examples:
-                  example-1:
-                    id: 1564931602
-                    user_id: 10023
-                    nome_razao: Alexsander Da Rosa
-                    loja: 10
-                    nome_loja: ADMINISTRATIVO
-                    id_predio: 13
-                    nome_usuario: ALEXSANDER
-                    conta: cdp
-                    url_logo: 'https://storage.googleapis.com/rednaxel-fotos/cdp/logo/web.png'
-                    user_email: alexsander.rosa@gmail.com
-                    picture_url: 'https://lh6.googleusercontent.com/-1_ZMsIBah1w/AAAAAAAAAAI/AAAAAAAAkkk/0C-voD9hwsk/photo.jpg'
-                    ip_externo: 177.101.216.158
-                    versao: (Linux 64) Chrome/92
-                    ult_oper: '2021-08-19T18:25:30-03:00'
-                    cmun: 4314902
-                    nome_municipio: Porto Alegre
-                    uf: RS
                 properties:
                   id:
                     type: integer
@@ -3720,7 +3439,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Unidade'
+              $ref: '#/components/schemas/Grade'
 components:
   securitySchemes:
     Usuário/Senha:
@@ -3734,25 +3453,8 @@ components:
   requestBodies: {}
   schemas:
     Grade:
-      description: ''
+      description: Grade
       type: object
-      x-examples:
-        example-1:
-          id: 209711
-          id_marca: 1464
-          id_categ: 4563
-          caminho: PASTA > PASTAS SANFONADAS > PASTA SANFONADA DUPLICATA > PASTA SANFONADA DUPLICATA 31 DIVI PERCALUX
-          ativo: false
-          marca: '-'
-          orig: 0
-          id_classe: 3
-          trib: ICMS
-          cst: 60
-          aliq_ipi: 10
-          ncm: '00000000'
-          cest: ''
-          codigo_alfa: G31013
-          desc_basica: PASTA SANFONADA TRANSP DUPLIC 31DIV FUME COD31013
       properties:
         id:
           type: number
@@ -3804,15 +3506,6 @@ components:
     PLU:
       description: Lista de Preços (Price LookUp)
       type: object
-      x-examples:
-        example-1:
-          id: 212
-          precedencia: 150
-          nome_lista: Preço Amazon
-          percentual_desconto: 0
-          canais:
-            - id_canal: 114
-              desc_canal: Amazon Supriagora
       properties:
         id:
           type: number
@@ -3863,17 +3556,6 @@ components:
     PLU-item:
       description: Item de um PLU (cruzamento Produto x PLU)
       type: object
-      x-examples:
-        example-1:
-          id: 631220
-          id_plu: 201
-          cod_produto: 126924
-          ucom: CX
-          prod_xprod: CAFE MELITTA CAPSULA COMPATIVEL 50G 10UN AUDACCE
-          preco_tabela: 21.25
-          margem_cliente: 15
-          preco_cliente: 21.25
-          sku_ativo: true
       properties:
         id:
           type: number
@@ -3927,12 +3609,6 @@ components:
     Pessoa-Categoria:
       description: Cruzamento pessoa x categoria
       type: object
-      x-examples:
-        example-1:
-          id: 5
-          desc_categoria: ATACADO
-          plu_id: 214
-          categ_mae: null
       title: Pessoa Categoria
       properties:
         id:
@@ -3949,24 +3625,6 @@ components:
     Empresa:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 1
-          nome_reduzido: VOLUNTARIOS
-          sigla_loja: VLT
-          id_pessoa: 9778001
-          nome_razao: BELLER COMERCIO DE PAPEIS LTDA.
-          nome_municipio: Porto Alegre
-          uf: RS
-          utiliza_pdv: true
-          cnpj_padrao: 5563868000113
-          loja_aberta: true
-          id_canal: 49
-          desc_canal: VLT
-          lista_pedidos:
-            - id_empresa: 1
-              sigla: VLT
-          id_predio: 5
       properties:
         id:
           type: number
@@ -4030,12 +3688,6 @@ components:
     Marca:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 5766
-          nome_marca: REGISPEL
-          marca_ativa: true
-          produtos: 16
       properties:
         id:
           type: number
@@ -4052,19 +3704,6 @@ components:
     Predio-Estoque:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 7
-          desc_predio: PADRE CHAGAS
-          address_id: 1052519
-          logradouro: Rua Padre Chagas
-          numero: 52
-          nome_municipio: Porto Alegre
-          uf: RS
-          empresas:
-            - id: 7
-              sigla_loja: PCH
-          config_predio: {}
       properties:
         id:
           type: number
@@ -4108,14 +3747,6 @@ components:
     Forma-Quitacao:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 1
-          sigla_forma: DIN
-          desc_forma: DINHEIRO
-          tpag: 1
-          forma_ativa: true
-          config_forma: {}
       properties:
         id:
           type: number
@@ -4143,13 +3774,6 @@ components:
         - forma_ativa
     Sku-Composicao:
       type: object
-      x-examples:
-        example-1:
-          id: 16930
-          codigo_sku: 134106
-          cod_produto: 134010
-          prod_xprod: MARCA TEXTO CIS LUMINI INK AMARELO
-          quantidade: 370
       properties:
         id:
           type: integer
@@ -4165,15 +3789,6 @@ components:
     Conta-Despesa:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 12
-          codigo_conta: 2
-          conta_contabil: '2.20'
-          desc_conta: FORNECEDOR
-          conta_ativa: true
-          config_conta: null
-          padrao_compra: true
       properties:
         id:
           type: number
@@ -4201,27 +3816,6 @@ components:
     Endereco:
       description: Endereço de uma pessoa
       type: object
-      x-examples:
-        example-1:
-          id: 984115
-          id_pessoa: 9778001
-          id_endereco: 132189034
-          id_tipo: 24
-          desc_tipo: SEDE
-          logradouro: RUA VOLUNTÁRIOS DA PÁTRIA
-          numero: 547
-          complemento: LOJA CASA DO PAPEL
-          bairro: CENTRO HISTÓRICO
-          cidade: Porto Alegre
-          uf: RS
-          cep: '90030003'
-          cmun: 4314902
-          sede: true
-          ativo: true
-          codigo_pais: 1058
-          nome_pais: BRASIL
-          sigla_loja: VLT
-          nome_reduzido: VOLUNTARIOS
       properties:
         id:
           type: number
@@ -4283,14 +3877,6 @@ components:
     SKU-Mapeamento:
       description: ''
       type: object
-      x-examples:
-        example-1:
-          id: 2150
-          cnpj_fornec: 4402277000100
-          cod_produto: 43091
-          referencia: '930819'
-          variacao: ''
-          codigo_sku: 282
       properties:
         id:
           type: number
@@ -4318,24 +3904,6 @@ components:
     SKU-Configs:
       description: Configuração logística de um SKU
       type: object
-      x-examples:
-        example-1:
-          id: 105840
-          id_empresa: 7
-          sigla_loja: XXX
-          nome_reduzido: NOME FILIAL
-          codigo_sku: 123456
-          quant_mes: 278
-          ticket_mes: 206
-          valor_mes: 6606.44
-          quant_natural: 278
-          sazo_efet: 360
-          expo: 1
-          total_sazo: 1200
-          cmmf_quant: 150
-          cmmf_validade: '2022-02-11'
-          ultima_venda: '2021-11-01'
-          data_hora: '2021-11-04T00:13:46-03:00'
       properties:
         id:
           type: number
@@ -4406,21 +3974,8 @@ components:
     Classe-Fiscal:
       description: |
         Impostos por produto (ICMS, IPI, PIS e COFINS)
-
         Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview
       type: object
-      x-examples:
-        example-1:
-          id: 2
-          id_tributo_fk: ICMS
-          cst: 0
-          desc_trib: TRIB. INTEGRAL
-          cfop_nfce: 5102
-          modbc: 3
-          modbc_st: 4
-          predbc_st: 100
-          csosn: 102
-          config_classe: {}
       properties:
         id:
           type: number
@@ -4475,13 +4030,6 @@ components:
     Catalogo:
       description: Catálogo de categorias
       type: object
-      x-examples:
-        example-1:
-          id: 21
-          nome_catalogo: Taxonomia
-          padrao: true
-          eh_taxonomia: true
-          ativo: true
       properties:
         id:
           type: number
@@ -4505,15 +4053,6 @@ components:
     Categoria:
       description: Categoria de produto
       type: object
-      x-examples:
-        example-1:
-          id: 10005
-          nivel_categ: 1
-          breadcrumb: Festas > Natal
-          desc_categoria: Natal
-          parent_id: 20929
-          ativa: true
-          id_catalogo: 27
       properties:
         id:
           type: number
@@ -4542,12 +4081,6 @@ components:
     Unidade:
       description: Unidade de medida
       type: object
-      x-examples:
-        example-1:
-          id: 187
-          ucom: AA
-          desc_unidade: teaaa
-          casas_decimais: 4
       properties:
         id:
           type: number
@@ -4569,12 +4102,6 @@ components:
     Agrup-Comercial:
       description: Agrupamento Comercial
       type: object
-      x-examples:
-        example-1:
-          id: 14
-          codigo_agrup: I
-          desc_agrupamento: ICONE
-          unico: true
       properties:
         id:
           type: number
