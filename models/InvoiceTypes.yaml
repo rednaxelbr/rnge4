@@ -1,0 +1,124 @@
+type: array
+x-examples:
+  Example 1:
+    - id: '*'
+      desc_doc: Indeterminado
+      tipo_oper: null
+      ordem_tipo: null
+    - id: A
+      desc_doc: Almoxarifado (consumo)
+      tipo_oper: CONSUMO
+      ordem_tipo: null
+    - id: D
+      desc_doc: Devolução de Cliente
+      tipo_oper: DEVCLI
+      ordem_tipo: 30
+    - id: F
+      desc_doc: Devolução para Fornecedor
+      tipo_oper: DEVFORNEC
+      ordem_tipo: 40
+    - id: G
+      desc_doc: Venda dentro do Grupo
+      tipo_oper: TR/VENDA
+      ordem_tipo: null
+    - id: H
+      desc_doc: Homologação
+      tipo_oper: null
+      ordem_tipo: null
+    - id: I
+      desc_doc: Importação
+      tipo_oper: IMPORT
+      ordem_tipo: null
+    - id: 'N'
+      desc_doc: Denegada
+      tipo_oper: null
+      ordem_tipo: null
+    - id: S
+      desc_doc: Serviço
+      tipo_oper: SERVICO
+      ordem_tipo: null
+    - id: T
+      desc_doc: Transferência
+      tipo_oper: TRANSF
+      ordem_tipo: 20
+    - id: V
+      desc_doc: Venda
+      tipo_oper: VENDAS
+      ordem_tipo: 10
+    - id: X
+      desc_doc: Cancelada
+      tipo_oper: null
+      ordem_tipo: null
+    - id: Z
+      desc_doc: Outras
+      tipo_oper: null
+      ordem_tipo: 90
+examples:
+  - - id: '*'
+      desc_doc: Indeterminado
+      tipo_oper: null
+      ordem_tipo: null
+    - id: A
+      desc_doc: Almoxarifado (consumo)
+      tipo_oper: CONSUMO
+      ordem_tipo: null
+    - id: D
+      desc_doc: Devolução de Cliente
+      tipo_oper: DEVCLI
+      ordem_tipo: 30
+    - id: F
+      desc_doc: Devolução para Fornecedor
+      tipo_oper: DEVFORNEC
+      ordem_tipo: 40
+    - id: G
+      desc_doc: Venda dentro do Grupo
+      tipo_oper: TR/VENDA
+      ordem_tipo: null
+    - id: H
+      desc_doc: Homologação
+      tipo_oper: null
+      ordem_tipo: null
+    - id: I
+      desc_doc: Importação
+      tipo_oper: IMPORT
+      ordem_tipo: null
+    - id: 'N'
+      desc_doc: Denegada
+      tipo_oper: null
+      ordem_tipo: null
+    - id: S
+      desc_doc: Serviço
+      tipo_oper: SERVICO
+      ordem_tipo: null
+    - id: T
+      desc_doc: Transferência
+      tipo_oper: TRANSF
+      ordem_tipo: 20
+    - id: V
+      desc_doc: Venda
+      tipo_oper: VENDAS
+      ordem_tipo: 10
+    - id: X
+      desc_doc: Cancelada
+      tipo_oper: null
+      ordem_tipo: null
+    - id: Z
+      desc_doc: Outras
+      tipo_oper: null
+      ordem_tipo: 90
+description: Tipos da Documentos Fiscais (tipo_doc)
+items:
+  type: object
+  properties:
+    id:
+      type: string
+      description: tipo_doc
+    desc_doc:
+      type: string
+    tipo_oper:
+      $ref: ./Operacoes.yaml
+      description: tipo de operação
+    ordem_tipo:
+      type:
+        - integer
+        - 'null'

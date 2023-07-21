@@ -1022,6 +1022,37 @@ paths:
       description: Exclui uma conta despesa.
       tags:
         - Conta despesa (expenseaccounts)
+  /invoicetypes:
+    get:
+      summary: Tipos de Documentos Fiscais
+      operationId: get-invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Invoice.yaml
+      description: |
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id  | string | é o tipo_doc | 
+        | ids | []string | Pode filtrar mais de um tipo separados por vírgula  | 
+        | ordem_tipo | int64 | Ordenação para listagem |
+        | tipo_oper | string | Tipo de Operação |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      x-stoplight:
+        id: fq6d8c37qbtc9
+    parameters: []
   /invoices:
     post:
       summary: Criando Nota/Cupom Fiscal
