@@ -677,7 +677,6 @@ paths:
           description: Filtro
           schema:
             default: '{"id":5}'
-            example: '{"id":5}'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       responses:
@@ -746,7 +745,6 @@ paths:
       - schema:
           type: integer
           default: 100
-          example: 100
         name: id
         in: path
         description: ID que representa a configuração do sku x empresa
@@ -2597,7 +2595,6 @@ paths:
           description: Filtro
           schema:
             default: '{"codigo_sku":5}'
-            example: '{"codigo_sku":5,"id_empresa":1}'
           required: true
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
@@ -2667,7 +2664,6 @@ paths:
       - schema:
           type: integer
           default: 100
-          example: 100
         name: id
         in: path
         description: ID que representa a configuração do sku x empresa
@@ -3908,7 +3904,6 @@ components:
         id:
           type: number
           default: 0
-          example: 80095
         id_empresa:
           type: number
         sigla_loja:
@@ -3982,12 +3977,10 @@ components:
         id_tributo_fk:
           type: string
           minLength: 1
-          example: ICMS
           description: 'Campo em conjunto como cst. Pode ser: ICMS, CSOSN, PIS, COFINS, IPI, ISSQN'
         cst:
           type: number
           description: Campo em conjunto com o id_tributo_fk
-          example: 51
         desc_trib:
           type: string
           minLength: 1
