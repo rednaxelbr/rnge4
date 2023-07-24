@@ -212,7 +212,7 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: ../models/Predio-Estoque.yaml
+                $ref: ../models/Predio-Estoque.yaml
       operationId: get-buildings
       description: |
         Lista de prédios de estoque 
@@ -240,7 +240,7 @@ paths:
         content:
           application/json:
             schema:
-               $ref: ../models/Predio-Estoque.yaml
+              $ref: ../models/Predio-Estoque.yaml
       tags:
         - Prédios de Estoque
     parameters: []
@@ -260,7 +260,7 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: ../models/Predio-Estoque.yaml
+                $ref: ../models/Predio-Estoque.yaml
       operationId: get-buildings-id
       description: Consulta um prédio de estoque
       parameters:
@@ -280,7 +280,7 @@ paths:
         content:
           application/json:
             schema:
-               $ref: ../models/Predio-Estoque.yaml
+              $ref: ../models/Predio-Estoque.yaml
         description: ''
       tags:
         - Prédios de Estoque
@@ -682,7 +682,7 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: ../models/Pessoa-Categoria.yaml
+                $ref: ../models/Pessoa-Categoria.yaml
       tags:
         - Pessoas (customercategories)
     post:
@@ -695,7 +695,7 @@ paths:
         content:
           application/json:
             schema:
-               $ref: ../models/Pessoa-Categoria.yaml
+              $ref: ../models/Pessoa-Categoria.yaml
       description: Cria uma pessoa categoria
       tags:
         - Pessoas (customercategories)
@@ -714,7 +714,7 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: ../models/Pessoa-Categoria.yaml
+                $ref: ../models/Pessoa-Categoria.yaml
     put:
       summary: Atualizando uma Pessoa Categoria  (customercategories)
       operationId: put-customercategories-id
@@ -728,7 +728,7 @@ paths:
         content:
           application/json:
             schema:
-               $ref: ../models/Pessoa-Categoria.yaml
+              $ref: ../models/Pessoa-Categoria.yaml
     delete:
       summary: Excluindo uma Pessoa Categoria (customercategories)
       operationId: delete-customercategories-id
@@ -1389,8 +1389,6 @@ paths:
   /operations:
     get:
       summary: Tipos de pedidos (Operações)
-      tags:
-        - Pedidos (orders)
       responses:
         '200':
           description: OK
@@ -1402,6 +1400,10 @@ paths:
                   $ref: ../models/Operacoes.yaml
       operationId: get-operations
       description: Operações (tipos de pedidos)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+      tags:
+        - Pedidos (orders)
   /paymentcodes:
     get:
       summary: Listando formas de quitação
@@ -1754,7 +1756,7 @@ paths:
         content:
           application/json:
             schema:
-               $ref: ../models/PLU-Item.yaml
+              $ref: ../models/PLU-Item.yaml
       description: Altera um registro na lista de preços
       tags:
         - Listas de Preços (pricelists)
