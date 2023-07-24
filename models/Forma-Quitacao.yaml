@@ -1,0 +1,31 @@
+type: object
+x-stoplight:
+  id: frsx8l6qhuudk
+description: Forma Quitação
+x-examples: null
+properties:
+  id:
+    type: number
+  sigla_forma:
+    type: string
+  desc_forma:
+    type: string
+    minLength: 1
+  codigo_forma:
+    type: integer
+    description: Esse campo não é obrigatório (campo opcional)
+  tpag:
+    type: number
+  forma_ativa:
+    type: boolean
+  config_forma:
+    type: object
+    properties:
+      '':
+        type: string
+required:
+  - id
+  - sigla_forma
+  - desc_forma
+  - forma_ativa
+

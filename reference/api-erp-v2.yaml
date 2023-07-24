@@ -1411,7 +1411,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Forma-Quitacao'
+                $ref: ../models/Forma-Quitacao.yaml
       operationId: get-paymentcodes
       description: |
         Lista de formas de quitação
@@ -1439,7 +1439,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Forma-Quitacao'
+              $ref: ../models/Forma-Quitacao.yaml
       tags:
         - Formas de Quitação (paymentcodes)
     parameters: []
@@ -1459,7 +1459,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Forma-Quitacao'
+                $ref: ../models/Forma-Quitacao.yaml
       operationId: get-paymentcodes-id
       description: Consulta uma forma de pagamento
       parameters:
@@ -1479,7 +1479,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Forma-Quitacao'
+              $ref: ../models/Forma-Quitacao.yaml
         description: ''
       tags:
         - Formas de Quitação (paymentcodes)
@@ -3434,34 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Forma-Quitacao:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        sigla_forma:
-          type: string
-        desc_forma:
-          type: string
-          minLength: 1
-        codigo_forma:
-          type: integer
-          description: Esse campo não é obrigatório (campo opcional)
-        tpag:
-          type: number
-        forma_ativa:
-          type: boolean
-        config_forma:
-          type: object
-          properties:
-            '':
-              type: string
-      required:
-        - id
-        - sigla_forma
-        - desc_forma
-        - forma_ativa
     Sku-Composicao:
       type: object
       properties:
