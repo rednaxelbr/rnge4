@@ -1,0 +1,19 @@
+type: object
+x-stoplight:
+  id: q02e680b1o30m
+description: Cruzamento pessoa x categoria
+title: Pessoa Categoria
+x-examples: null
+properties:
+  id:
+    type: number
+  desc_categoria:
+    type: string
+  plu_id:
+    type: number
+  categ_mae:
+    type: number
+    description: Também conhecido como a categoria pai (árvore hierárquica)
+required:
+  - id
+

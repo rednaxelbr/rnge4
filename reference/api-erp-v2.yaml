@@ -682,7 +682,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pessoa-Categoria'
+                 $ref: ../models/Pessoa-Categoria.yaml
       tags:
         - Pessoas (customercategories)
     post:
@@ -695,7 +695,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pessoa-Categoria'
+               $ref: ../models/Pessoa-Categoria.yaml
       description: Cria uma pessoa categoria
       tags:
         - Pessoas (customercategories)
@@ -714,7 +714,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pessoa-Categoria'
+                 $ref: ../models/Pessoa-Categoria.yaml
     put:
       summary: Atualizando uma Pessoa Categoria  (customercategories)
       operationId: put-customercategories-id
@@ -728,7 +728,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pessoa-Categoria'
+               $ref: ../models/Pessoa-Categoria.yaml
     delete:
       summary: Excluindo uma Pessoa Categoria (customercategories)
       operationId: delete-customercategories-id
@@ -1699,7 +1699,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PLU-item'
+              $ref: ../models/PLU-Item.yaml
     get:
       summary: Consulta os preços de uma lista de preços
       tags:
@@ -1712,7 +1712,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PLU-item'
+                  $ref: ../models/PLU-Item.yaml
       operationId: get-pricelistarticles
       description: |-
         Lista os preços de uma lista de preços. Filtros:
@@ -1741,7 +1741,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PLU-item'
+                $ref: ../models/PLU-Item.yaml
       operationId: get-pricelistarticles-id
       description: Consulta um preço de um PLU
     put:
@@ -1754,7 +1754,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PLU-item'
+               $ref: ../models/PLU-Item.yaml
       description: Altera um registro na lista de preços
       tags:
         - Listas de Preços (pricelists)
@@ -3434,75 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    PLU-item:
-      description: Item de um PLU (cruzamento Produto x PLU)
-      type: object
-      properties:
-        id:
-          type: number
-        id_plu:
-          type: number
-          description: ID do PLU
-        cod_produto:
-          type: number
-        ucom:
-          type: string
-          readOnly: true
-        prod_xprod:
-          type: string
-          readOnly: true
-        preco_tabela:
-          type: number
-          description: Preço de tabela
-          readOnly: true
-        perc_desconto:
-          type: number
-          x-stoplight:
-            id: q4qcgq5o6s9ss
-          readOnly: true
-        margem_cliente:
-          type: number
-        preco_cliente:
-          type: number
-          description: Preço do produto nesse PLU
-        preco_calc:
-          type: number
-          x-stoplight:
-            id: 08t4uojwdmcia
-          readOnly: true
-        sku_ativo:
-          type: boolean
-          readOnly: true
-        pendente_erp_plu:
-          type: boolean
-          x-stoplight:
-            id: u39oghhc94xk0
-          readOnly: true
-        atualizado_erp:
-          type: boolean
-          x-stoplight:
-            id: h8jl053fp18ak
-          writeOnly: true
-      required:
-        - id
-        - id_plu
-        - cod_produto
-    Pessoa-Categoria:
-      description: Cruzamento pessoa x categoria
-      type: object
-      title: Pessoa Categoria
-      properties:
-        id:
-          type: number
-        desc_categoria:
-          type: string
-        plu_id:
-          type: number
-        categ_mae:
-          type: number
-          description: Também conhecido como a categoria pai (árvore hierárquica)
-      required:
-        - id
     Empresa:
       description: ''
       type: object

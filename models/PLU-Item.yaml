@@ -1,0 +1,55 @@
+type: object
+description: Item de um PLU (cruzamento Produto x PLU)
+x-stoplight:
+  id: vevf7tzccdu3f
+x-examples: null
+properties:
+  id:
+    type: number
+  id_plu:
+    type: number
+    description: ID do PLU
+  cod_produto:
+    type: number
+  ucom:
+    type: string
+    readOnly: true
+  prod_xprod:
+    type: string
+    readOnly: true
+  preco_tabela:
+    type: number
+    description: Preço de tabela
+    readOnly: true
+  perc_desconto:
+    type: number
+    x-stoplight:
+      id: q4qcgq5o6s9ss
+    readOnly: true
+  margem_cliente:
+    type: number
+  preco_cliente:
+    type: number
+    description: Preço do produto nesse PLU
+  preco_calc:
+    type: number
+    x-stoplight:
+      id: 08t4uojwdmcia
+    readOnly: true
+  sku_ativo:
+    type: boolean
+    readOnly: true
+  pendente_erp_plu:
+    type: boolean
+    x-stoplight:
+      id: u39oghhc94xk0
+    readOnly: true
+  atualizado_erp:
+    type: boolean
+    x-stoplight:
+      id: h8jl053fp18ak
+    writeOnly: true
+required:
+  - id
+  - id_plu
+  - cod_produto
