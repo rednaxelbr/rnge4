@@ -1,0 +1,24 @@
+type: object
+x-stoplight:
+  id: l9o9gg3bf6403
+description: Catálogo de categorias
+x-examples: null
+properties:
+  id:
+    type: number
+  nome_catalogo:
+    type: string
+    minLength: 1
+  padrao:
+    type: boolean
+    description: Somente um catálogo pode ser o padrão
+  eh_taxonomia:
+    type: boolean
+    description: Quando um catálogo é do tipo Taxonomia suas categorias podem ser usadas na taxonomia dos produtos
+  ativo:
+    type: boolean
+required:
+  - nome_catalogo
+  - padrao
+  - eh_taxonomia
+  - ativo

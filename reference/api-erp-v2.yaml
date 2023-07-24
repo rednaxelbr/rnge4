@@ -569,7 +569,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Catalogo'
+                  $ref: ../models/Catalogo.yaml
       operationId: get-catalogs
       description: Lista de catálogos
       parameters:
@@ -3434,29 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Catalogo:
-      description: Catálogo de categorias
-      type: object
-      properties:
-        id:
-          type: number
-        nome_catalogo:
-          type: string
-          minLength: 1
-        padrao:
-          type: boolean
-          description: Somente um catálogo pode ser o padrão
-        eh_taxonomia:
-          type: boolean
-          description: Quando um catálogo é do tipo Taxonomia suas categorias podem ser usadas na taxonomia dos produtos
-        ativo:
-          type: boolean
-      required:
-        - id
-        - nome_catalogo
-        - padrao
-        - eh_taxonomia
-        - ativo
     Categoria:
       description: Categoria de produto
       type: object
