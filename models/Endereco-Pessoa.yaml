@@ -1,0 +1,62 @@
+type: object
+x-stoplight:
+  id: vzzj8kv81z334
+description: Endereço de uma Pessoa
+x-examples: null
+properties:
+  id:
+    type: number
+  id_pessoa:
+    type: number
+  id_endereco:
+    type: number
+    description: ID numérico do endereço no sistema legado (opcional)
+  id_tipo:
+    type: number
+    description: ID do Tipo de endereço
+  desc_tipo:
+    type: string
+    description: ID do Tipo de endereço
+  logradouro:
+    type: string
+  numero:
+    type: number
+  complemento:
+    type: string
+  bairro:
+    type: string
+  cidade:
+    type: string
+  uf:
+    type: string
+  cep:
+    type: string
+    minLength: 8
+    maxLength: 8
+  cmun:
+    type: number
+    description: Código IBGE do Município
+  sede:
+    type: boolean
+    description: Informar TRUE se for a SEDE da pessoa física ou jurídica
+  ativo:
+    type: boolean
+  codigo_pais:
+    type: number
+  nome_pais:
+    type: string
+  sigla_loja:
+    type: string
+    description: 'Se for a sede de uma empresa (loja), traz a sigla'
+  nome_reduzido:
+    type: string
+    description: 'Se for a sede de uma empresa (loja), traz o nome'
+required:
+  - id_pessoa
+  - id_tipo
+  - logradouro
+  - bairro
+  - cep
+  - cmun
+  - sede
+  - ativo

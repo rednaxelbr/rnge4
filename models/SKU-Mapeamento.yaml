@@ -1,0 +1,29 @@
+type: object
+x-stoplight:
+  id: w104c9g44jznp
+description: Mapeamento do SKU usado no compras
+x-examples: null
+properties:
+  id:
+    type: number
+  cnpj_fornec:
+    type: number
+    description: CNPJ do fornecedor (emitente da NF)
+  cod_produto:
+    type: number
+    description: Código do produto
+  referencia:
+    type: string
+    minLength: 1
+    description: Referência (tag cProd da NF)
+  variacao:
+    type: string
+    description: Variação na descrição (pode estar em branco)
+  codigo_sku:
+    type: number
+    description: Código do SKU deste produto
+required:
+  - cnpj_fornec
+  - cod_produto
+  - referencia
+  - variacao

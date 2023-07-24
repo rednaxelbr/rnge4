@@ -135,7 +135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Endereco'
+                $ref: ../models/Endereco-Pessoa.yaml
       operationId: get-addresses-id
       description: Consulta um endereço de uma pessoa
     put:
@@ -148,7 +148,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Endereco'
+              $ref: ../models/Endereco-Pessoa.yaml
       description: Atualiza um endereço
       tags:
         - Endereços de pessoas (addresses)
@@ -174,7 +174,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Endereco'
+                  $ref: ../models/Endereco-Pessoa.yaml
       operationId: get-addresses
       description: |
         Listagem de endereços
@@ -201,7 +201,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Endereco'
+              $ref: ../models/Endereco-Pessoa.yaml
         description: ''
   /buildings:
     get:
@@ -1993,7 +1993,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SKU-Mapeamento'
+                $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings-id
       description: Consulta uma memória de Mapeamento Produto x Fornecedor
     put:
@@ -2008,7 +2008,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SKU-Mapeamento'
+              $ref: ../models/SKU-Mapeamento.yaml
       description: Atualiza uma memória de mapeamento produto x fornecedor
   /purchasemappings:
     get:
@@ -2023,7 +2023,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SKU-Mapeamento'
+                  $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings
       description: 'Listagem de mapeamentos memorizados de um produto (ou fornecedor). Quando um XML é carregado, o sistema pesquisa nessa memória para fazer o mapeamento automaticamente.'
       parameters:
@@ -2042,7 +2042,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SKU-Mapeamento'
+              $ref: ../models/SKU-Mapeamento.yaml
       description: Cria uma nova memória de mapeamento produto x fornecedor
   /purchaseorders:
     get:
@@ -3434,94 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Endereco:
-      description: Endereço de uma pessoa
-      type: object
-      properties:
-        id:
-          type: number
-        id_pessoa:
-          type: number
-        id_endereco:
-          type: number
-          description: ID numérico do endereço no sistema legado (opcional)
-        id_tipo:
-          type: number
-          description: ID do Tipo de endereço
-        desc_tipo:
-          type: string
-          description: ID do Tipo de endereço
-        logradouro:
-          type: string
-        numero:
-          type: number
-        complemento:
-          type: string
-        bairro:
-          type: string
-        cidade:
-          type: string
-        uf:
-          type: string
-        cep:
-          type: string
-          minLength: 8
-          maxLength: 8
-        cmun:
-          type: number
-          description: Código IBGE do Município
-        sede:
-          type: boolean
-          description: Informar TRUE se for a SEDE da pessoa física ou jurídica
-        ativo:
-          type: boolean
-        codigo_pais:
-          type: number
-        nome_pais:
-          type: string
-        sigla_loja:
-          type: string
-          description: 'Se for a sede de uma empresa (loja), traz a sigla'
-        nome_reduzido:
-          type: string
-          description: 'Se for a sede de uma empresa (loja), traz o nome'
-      required:
-        - id_pessoa
-        - id_tipo
-        - logradouro
-        - bairro
-        - cep
-        - cmun
-        - sede
-        - ativo
-      title: ''
-    SKU-Mapeamento:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        cnpj_fornec:
-          type: number
-          description: CNPJ do fornecedor (emitente da NF)
-        cod_produto:
-          type: number
-          description: Código do produto
-        referencia:
-          type: string
-          minLength: 1
-          description: Referência (tag cProd da NF)
-        variacao:
-          type: string
-          description: Variação na descrição (pode estar em branco)
-        codigo_sku:
-          type: number
-          description: Código do SKU deste produto
-      required:
-        - cnpj_fornec
-        - cod_produto
-        - referencia
-        - variacao
     SKU-Configs:
       description: Configuração logística de um SKU
       type: object
