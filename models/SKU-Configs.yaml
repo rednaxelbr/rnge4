@@ -1,0 +1,70 @@
+type: object
+x-stoplight:
+  id: d9oyibgrsx8f9
+description: Configuração logística de um SKU
+x-examples: null
+properties:
+  id:
+    type: number
+    default: 0
+  id_empresa:
+    type: number
+  sigla_loja:
+    type: string
+    minLength: 1
+    readOnly: true
+  nome_reduzido:
+    type: string
+    minLength: 1
+    readOnly: true
+  codigo_sku:
+    type: number
+    description: Código do produto SKU base
+  dias_estoq:
+    type: number
+    description: Dias Com Estoque (DCE)  (Campo calculado / Somente Leitura)
+    readOnly: true
+  quant_mes:
+    type: number
+    description: CMM efetivo (CMM ou CMMF) - (Campo calculado / Somente Leitura)
+    readOnly: true
+  ticket_mes:
+    type: number
+    description: Quantidade de Tickets (ajustada) - (Campo calculado / Somente Leitura)
+    readOnly: true
+  valor_mes:
+    type: number
+    description: Valor Acumulado vendido - (Campo calculado / Somente Leitura)
+    readOnly: true
+  quant_natural:
+    type: number
+    description: CMM natural (calculado) - (Campo calculado / Somente Leitura)
+    readOnly: true
+  expo:
+    type: number
+    description: 'Exposição (EXPO), geralmente 1 ou 0'
+  sazo_efet:
+    type: number
+    description: Sazonal efetivo (já com potência sazonal aplicada)
+  total_sazo:
+    type: number
+    description: Sazonal 100% (SAZO)
+  es_minimo:
+    type: integer
+    description: Estoque de Segurança Mínimo (por loja)
+  cmmf_quant:
+    type: number
+  cmmf_validade:
+    type: string
+    minLength: 1
+  ultima_venda:
+    type: string
+    minLength: 1
+    readOnly: true
+  data_hora:
+    type: string
+    minLength: 1
+    readOnly: true
+required:
+    - id_empresa
+    - codigo_sku
