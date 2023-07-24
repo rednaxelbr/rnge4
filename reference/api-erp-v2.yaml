@@ -636,7 +636,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Empresa'
+                $ref: ../models/Empresa.yaml
       operationId: get-companies-id
       description: Consulta uma empresa
     put:
@@ -649,7 +649,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Empresa'
+              $ref: ../models/Empresa.yaml
         description: ''
       description: Atualiza uma empresa
       tags:
@@ -3434,69 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Empresa:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        nome_reduzido:
-          type: string
-          maxLength: 20
-          description: ''
-        sigla_loja:
-          type: string
-          maxLength: 6
-        id_pessoa:
-          type: number
-          description: ID da pessoa (geralmente jurídica) da empresa
-        nome_razao:
-          type: string
-          description: Nome/Razão Social da pessoa da empresa
-        nome_municipio:
-          type: string
-          description: Município do endereço-sede da pessoa da empresa
-        uf:
-          type: string
-          description: UF do endereço-sede da pessoa da empresa
-        utiliza_pdv:
-          type: boolean
-          description: Utiliza o aplicativo PDV (emite NFCe)
-        cnpj_padrao:
-          type: number
-          description: 'Ao carregar um XML a empresa emitente é determinada por este campo, que é UNIQUE se preenchido.'
-        loja_aberta:
-          type: boolean
-          description: Quando FALSE nenhum usuário pode fazer login nela.
-        id_canal:
-          type: number
-          description: Canal padrão das vendas feitas por esta loja
-        desc_canal:
-          type: string
-        lista_pedidos:
-          type: array
-          uniqueItems: true
-          description: Lista (opcional) de outras empresas cujos pedidos serão visualizados juntamente com os pedidos dessa empresa
-          items:
-            type: object
-            properties:
-              id_empresa:
-                type: number
-              sigla:
-                type: string
-            required:
-              - id_empresa
-        id_predio:
-          type: number
-          description: 'Prédio do Estoque (vendas, separação, etc)'
-      required:
-        - id
-        - nome_reduzido
-        - sigla_loja
-        - id_pessoa
-        - utiliza_pdv
-        - id_canal
-        - lista_pedidos
     Predio-Estoque:
       description: ''
       type: object
