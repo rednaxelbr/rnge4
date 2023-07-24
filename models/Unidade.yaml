@@ -1,0 +1,22 @@
+type: object
+x-stoplight:
+  id: k74maoz8imort
+description: Unidade de medida
+x-examples: null
+properties:
+  id:
+    type: number
+  ucom:
+    type: string
+    minLength: 1
+    description: 'Abreviatura (ex: PCT)'
+  desc_unidade:
+    type: string
+    minLength: 1
+    description: 'Descrição (ex: PACOTE)'
+  casas_decimais:
+    type: number
+    description: 'Quando informado, permite quantidades fracionadas'
+required:
+  - ucom
+  - desc_unidade

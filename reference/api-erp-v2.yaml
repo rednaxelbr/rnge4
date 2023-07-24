@@ -3414,7 +3414,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unidade'
+                  $ref: ../models/Unidade.yaml
       operationId: get-units
       description: Lista as unidades de medida
     post:
@@ -3430,31 +3430,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Unidade'
+              $ref: ../models/Unidade.yaml
     parameters: []
 components:
   schemas:
-    Unidade:
-      description: Unidade de medida
-      type: object
-      properties:
-        id:
-          type: number
-        ucom:
-          type: string
-          minLength: 1
-          description: 'Abreviatura (ex: PCT)'
-        desc_unidade:
-          type: string
-          minLength: 1
-          description: 'Descrição (ex: PACOTE)'
-        casas_decimais:
-          type: number
-          description: 'Quando informado, permite quantidades fracionadas'
-      required:
-        - id
-        - ucom
-        - desc_unidade
     Agrup-Comercial:
       description: Agrupamento Comercial
       type: object
