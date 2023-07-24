@@ -2964,7 +2964,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Sku-Composicao'
+                $ref: ../models/Sku-Composicao.yaml
       operationId: get-skuparts
       description: |
         Lista de formas de quitação
@@ -2992,7 +2992,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Sku-Composicao'
+              $ref: ../models/Sku-Composicao.yaml
         description: ''
       tags:
         - Composição Sku (skuparts)
@@ -3013,7 +3013,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Sku-Composicao'
+                $ref: ../models/Sku-Composicao.yaml
       operationId: get-skuparts-id
       description: 'Consulta uma composição SKU (Ex:  Display)'
       parameters:
@@ -3033,7 +3033,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Sku-Composicao'
+              $ref: ../models/Sku-Composicao.yaml
         description: ''
       tags:
         - Composição Sku (skuparts)
@@ -3434,20 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Sku-Composicao:
-      type: object
-      properties:
-        id:
-          type: integer
-        codigo_sku:
-          type: integer
-        cod_produto:
-          type: integer
-        prod_xprod:
-          type: string
-        quantidade:
-          type: number
-      description: 'Composição de um SKU. Ex: Display'
     Conta-Despesa:
       description: ''
       type: object

@@ -1,0 +1,18 @@
+type: object
+x-stoplight:
+  id: zmjrn7s5h4swo
+description: 'Composição de um SKU. Ex: Display'
+x-examples: null
+properties:
+  id:
+    type: integer
+  codigo_sku:
+    type: integer
+  cod_produto:
+    type: integer
+  prod_xprod:
+    type: string
+  quantidade:
+    type: number  
+required:
+  - codigo_sku
