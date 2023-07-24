@@ -212,7 +212,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Predio-Estoque'
+                 $ref: ../models/Predio-Estoque.yaml
       operationId: get-buildings
       description: |
         Lista de prédios de estoque 
@@ -240,7 +240,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Predio-Estoque'
+               $ref: ../models/Predio-Estoque.yaml
       tags:
         - Prédios de Estoque
     parameters: []
@@ -260,7 +260,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Predio-Estoque'
+                 $ref: ../models/Predio-Estoque.yaml
       operationId: get-buildings-id
       description: Consulta um prédio de estoque
       parameters:
@@ -280,7 +280,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Predio-Estoque'
+               $ref: ../models/Predio-Estoque.yaml
         description: ''
       tags:
         - Prédios de Estoque
@@ -3434,49 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Predio-Estoque:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        desc_predio:
-          type: string
-          minLength: 1
-        address_id:
-          type: number
-        logradouro:
-          type: string
-          minLength: 1
-        numero:
-          type: number
-        nome_municipio:
-          type: string
-          minLength: 1
-        uf:
-          type: string
-          minLength: 1
-        empresas:
-          type: array
-          uniqueItems: true
-          minItems: 1
-          items:
-            type: object
-            properties:
-              id:
-                type: number
-              sigla_loja:
-                type: string
-                minLength: 1
-        config_predio:
-          type: object
-        cdist:
-          type: boolean
-        legado:
-          type: boolean
-      required:
-        - id
-        - desc_predio
     Forma-Quitacao:
       description: ''
       type: object

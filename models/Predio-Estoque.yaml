@@ -1,0 +1,45 @@
+type: object
+x-stoplight:
+  id: mscjxqz3sp5kh
+description: Prédio Estoque
+x-examples: null
+properties:
+  id:
+    type: number
+  desc_predio:
+    type: string
+    minLength: 1
+  address_id:
+    type: number
+  logradouro:
+    type: string
+    minLength: 1
+  numero:
+    type: number
+  nome_municipio:
+    type: string
+    minLength: 1
+  uf:
+    type: string
+    minLength: 1
+  empresas:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    items:
+      type: object
+      properties:
+        id:
+          type: number
+        sigla_loja:
+          type: string
+          minLength: 1
+  config_predio:
+    type: object
+  cdist:
+    type: boolean
+  legado:
+    type: boolean
+required:
+  - id
+  - desc_predio
