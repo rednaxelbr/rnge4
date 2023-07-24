@@ -1,0 +1,28 @@
+type: object
+x-stoplight:
+  id: mybo147tdd85x
+description: Conta Despesa
+x-examples: null
+properties:
+ id:
+   type: number
+ codigo_conta:
+   type: number
+ conta_contabil:
+   type: string
+   minLength: 1
+   maxLength: 20
+ desc_conta:
+   type: string
+   minLength: 1
+   maxLength: 40
+ conta_ativa:
+   type: boolean
+ config_conta: {}
+ padrao_compra:
+   type: boolean
+   description: Somente uma conta pode ser padrão
+required:
+  - conta_contabil
+  - desc_conta
+  - conta_ativ

@@ -872,7 +872,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Conta-Despesa'
+                $ref: ../models/Conta-Despesa.yaml
       operationId: get-expenseaccounts
       description: |
         Lista de contas de despesa
@@ -903,7 +903,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Conta-Despesa'
+              $ref: ../models/Conta-Despesa.yaml
       tags:
         - Conta despesa (expenseaccounts)
     parameters: []
@@ -923,7 +923,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Conta-Despesa'
+                $ref: ../models/Conta-Despesa.yaml
       operationId: get-expenseaccounts-id
       description: Consulta uma conta despesa
       parameters:
@@ -943,7 +943,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Conta-Despesa'
+              $ref: ../models/Conta-Despesa.yaml
         description: ''
       tags:
         - Conta despesa (expenseaccounts)
@@ -3434,33 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Conta-Despesa:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        codigo_conta:
-          type: number
-        conta_contabil:
-          type: string
-          minLength: 1
-          maxLength: 20
-        desc_conta:
-          type: string
-          minLength: 1
-          maxLength: 40
-        conta_ativa:
-          type: boolean
-        config_conta: {}
-        padrao_compra:
-          type: boolean
-          description: Somente uma conta pode ser padrão
-      required:
-        - id
-        - conta_contabil
-        - desc_conta
-        - conta_ativa
     Endereco:
       description: Endereço de uma pessoa
       type: object
