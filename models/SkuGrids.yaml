@@ -1,0 +1,86 @@
+type: object
+x-stoplight:
+  id: 71349j0j2n3ik
+x-examples:
+  example-1:
+    id: 432869
+    id_predio: 35
+    desc_predio: DR FLORES
+    cod_sku: 10887
+    quant_predio: 358
+    cmm_predio: 320
+    estoq_disp: 358
+description: Grade do SKU
+properties:
+  id:
+    type: integer
+    x-stoplight:
+      id: mbq4rcofpx5bl
+  id_marca:
+    type: integer
+    x-stoplight:
+      id: ox0nke3sijzha
+  id_categ:
+    type: integer
+    x-stoplight:
+      id: 7h531cwxckk8r
+    description: Categoria da Taxonomia. Ao não informar aparece a mensagem "Categoria % (grade.id_categ) não localizada" e se informar uma categoria que não é do tipo taxonomia então aparecerá a mensagem "Categoria % (grade.id_categ) não é do tipo taxonomia"
+  ativo:
+    type: boolean
+    x-stoplight:
+      id: 3wgva1q97cym0
+  caminho:
+    type: string
+    x-stoplight:
+      id: 2aueih6g9vjjl
+    minLength: 1
+  marca:
+    type: string
+    x-stoplight:
+      id: wx57my5h305ft
+    minLength: 1
+  orig:
+    type: integer
+    x-stoplight:
+      id: v19smp84d87rq
+  id_classe:
+    type: integer
+    x-stoplight:
+      id: arw1ty90cmgku
+  trib:
+    type: string
+    x-stoplight:
+      id: oac9kcnrnkrui
+  cst:
+    type: integer
+    x-stoplight:
+      id: rue9csufw8oag
+  aliq_ipi:
+    type: number
+    x-stoplight:
+      id: j62t52bv0pd8s
+  ncm:
+    type: string
+    x-stoplight:
+      id: v1z7szp6todee
+  cest:
+    type: string
+    x-stoplight:
+      id: nzszamb6hhdo8
+  codigo_alfa:
+    type: string
+    x-stoplight:
+      id: jz1w48r7wa2ob
+  desc_basica:
+    type: string
+    x-stoplight:
+      id: k4103n8ujdjrz
+required:
+  - id_categ
+  - ativo
+  - marca
+  - orig
+  - id_classe
+  - cst
+  - ncm
+  - cest

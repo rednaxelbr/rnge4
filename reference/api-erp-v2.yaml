@@ -299,10 +299,11 @@ paths:
       responses:
         '200':
           description: OK
+          headers: {}
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Marca'
+                $ref: ../models/Brands.yaml
       operationId: get-brands
       description: |-
         Lista de marcas de produto 
@@ -320,11 +321,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
+        content: {}
       tags:
         - Marcas (brands)
     post:
@@ -338,7 +335,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Marca'
+              $ref: ../models/Brands.yaml
       tags:
         - Marcas (brands)
     parameters: []
@@ -358,7 +355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Marca'
+                $ref: ../models/Brands.yaml
       operationId: get-brands-id
       description: Consulta uma marca de produto
       parameters:
@@ -378,7 +375,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Marca'
+              $ref: ../models/Brands.yaml
         description: ''
       tags:
         - Marcas (brands)
@@ -1626,7 +1623,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PLU'
+                  $ref: ../models/PLU.yaml
       operationId: get-pricelists
       description: Lista os PLUs
     post:
@@ -1640,7 +1637,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PLU'
+              $ref: ../models/PLU.yaml
       tags:
         - Listas de Preços (pricelists)
   '/pricelists/{id}':
@@ -1661,7 +1658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PLU'
+                $ref: ../models/PLU.yaml
       operationId: get-pricelists-id
       parameters: []
       description: Consulta uma lista de preços
@@ -1676,7 +1673,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PLU'
+              $ref: ../models/PLU.yaml
       tags:
         - Listas de Preços (pricelists)
     delete:
@@ -3106,9 +3103,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Grade'
+                $ref: ../models/SkuGrids.yaml
       operationId: get-skugrids
       description: 'Lista de grades. Filtros: `codigo_sku` (number) e `codigo_alfa` (string).'
       parameters:
@@ -3128,7 +3123,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Grade'
+              $ref: ../models/SkuGrids.yaml
   /stocksummaries:
     get:
       summary: Consulta estoque de SKU por prédio
@@ -3435,120 +3430,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Grade'
+              $ref: '#/components/schemas/Unidade'
+    parameters: []
 components:
-  securitySchemes:
-    Usuário/Senha:
-      type: http
-      scheme: basic
-      description: 'Usuário, Conta(tenant) e senha, ex: admin@zezinho:zeus'
-    Token de acesso:
-      type: http
-      scheme: bearer
-      description: ''
-  requestBodies: {}
   schemas:
-    Grade:
-      description: Grade
-      type: object
-      properties:
-        id:
-          type: number
-        id_marca:
-          type: number
-        id_categ:
-          type: number
-          description: Categoria da Taxonomia. Ao não informar aparece a mensagem "Categoria % (grade.id_categ) não localizada" e se informar uma categoria que não é do tipo taxonomia então aparecerá a mensagem "Categoria % (grade.id_categ) não é do tipo taxonomia"
-        ativo:
-          type: boolean
-        caminho:
-          type: string
-          minLength: 1
-        marca:
-          type: string
-          minLength: 1
-        orig:
-          type: number
-        id_classe:
-          type: number
-        trib:
-          type: string
-          minLength: 1
-        cst:
-          type: number
-        aliq_ipi:
-          type: number
-        ncm:
-          type: string
-          minLength: 1
-        cest:
-          type: string
-        codigo_alfa:
-          type: string
-          minLength: 1
-        desc_basica:
-          type: string
-          minLength: 1
-      required:
-        - id
-        - id_categ
-        - ativo
-        - marca
-        - orig
-        - id_classe
-        - cst
-        - ncm
-        - cest
-    PLU:
-      description: Lista de Preços (Price LookUp)
-      type: object
-      properties:
-        id:
-          type: number
-        precedencia:
-          type: number
-          description: Ordem de precedência em caso de empate
-        nome_lista:
-          type: string
-        percentual_desconto:
-          type: number
-        id_catalogo:
-          type: integer
-          x-stoplight:
-            id: w92bj0fr47bm8
-        comissao_lista:
-          type: number
-          x-stoplight:
-            id: pdzbz9ur2s2cx
-        margem_lista:
-          type: number
-          x-stoplight:
-            id: jjn91cekfyz1o
-        canais:
-          type: array
-          uniqueItems: true
-          minItems: 1
-          description: Lista de canais atendidos
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                x-stoplight:
-                  id: 9z7traaxohtdp
-                readOnly: true
-              id_canal:
-                type: number
-              desc_canal:
-                type: string
-            required:
-              - id_canal
-              - desc_canal
-      required:
-        - id
-        - precedencia
-        - nome_lista
-        - canais
     PLU-item:
       description: Item de um PLU (cruzamento Produto x PLU)
       type: object
@@ -3681,22 +3566,6 @@ components:
         - utiliza_pdv
         - id_canal
         - lista_pedidos
-    Marca:
-      description: ''
-      type: object
-      properties:
-        id:
-          type: number
-        nome_marca:
-          type: string
-          minLength: 1
-        marca_ativa:
-          type: boolean
-        produtos:
-          type: number
-      required:
-        - id
-        - nome_marca
     Predio-Estoque:
       description: ''
       type: object
@@ -4141,5 +4010,14 @@ components:
           - id
           - DESC
       description: Ordenação
+  securitySchemes:
+    Usuário/Senha:
+      type: http
+      scheme: basic
+      description: 'Usuário, Conta(tenant) e senha, ex: admin@zezinho:zeus'
+    Token de acesso:
+      type: http
+      scheme: bearer
+      description: ''
 security:
   - Token de acesso: []

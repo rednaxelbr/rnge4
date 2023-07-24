@@ -1,0 +1,52 @@
+type: object
+description: Lista de Preços (Price LookUp)
+x-stoplight:
+  id: pnty7ug4yo1i2
+x-examples:
+properties:
+  id:
+    type: number
+  precedencia:
+    type: number
+    description: Ordem de precedência em caso de empate
+  nome_lista:
+    type: string
+  percentual_desconto:
+    type: number
+  id_catalogo:
+    type: integer
+    x-stoplight:
+      id: w92bj0fr47bm8
+  comissao_lista:
+    type: number
+    x-stoplight:
+      id: pdzbz9ur2s2cx
+  margem_lista:
+    type: number
+    x-stoplight:
+      id: jjn91cekfyz1o
+  canais:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    description: Lista de canais atendidos
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          x-stoplight:
+            id: 9z7traaxohtdp
+          readOnly: true
+        id_canal:
+          type: number
+        desc_canal:
+          type: string
+      required:
+        - id_canal
+        - desc_canal
+required:
+  - id
+  - precedencia
+  - nome_lista
+  - canais

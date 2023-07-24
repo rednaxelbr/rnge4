@@ -1,0 +1,18 @@
+type: object
+x-examples:
+  Example 1:
+    id: 5762
+    nome_marca: LUXCEL
+    marca_ativa: true
+    produtos: 555
+properties:
+  id:
+    type: integer
+  nome_marca:
+    type: string
+  marca_ativa:
+    type: boolean
+  produtos:
+    type: integer
+required:
+  - nome_marca
