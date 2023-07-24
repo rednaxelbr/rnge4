@@ -1,0 +1,54 @@
+type: object
+x-stoplight:
+  id: tpzz3nfby9nsf
+description: 'Impostos por produto (ICMS, IPI, PIS e COFINS)
+    Ver regra das prioridades do CFOP em: https://rednaxel.freshdesk.com/support/solutions/articles/47001200096-regras-do-cfop/preview'
+x-examples: null
+properties:
+  id:
+    type: number
+  id_tributo_fk:
+    type: string
+    minLength: 1
+    description: 'Campo em conjunto como cst. Pode ser: ICMS, CSOSN, PIS, COFINS, IPI, ISSQN'
+  cst:
+    type: number
+    description: Campo em conjunto com o id_tributo_fk
+  desc_trib:
+    type: string
+    minLength: 1
+  cfop_nfce:
+    type: number
+  modbc:
+    type: number
+  modbc_st:
+    type: number
+  predbc_st:
+    type: number
+  csosn:
+    type: number
+  config_classe:
+    type: object
+    properties:
+      texto_legislacao:
+        type: string
+      nfe_cbenef:
+        type: string
+      sem_credito_pis_cofins:
+        type: boolean
+      cfop:
+        type: integer
+  csosn_manual:
+    type: integer
+  picms:
+    type: number
+  predbc:
+    type: number
+  cst_ipi:
+    type: number
+  cst_pis:
+    type: number
+  cst_cofins:
+    type: number
+required:
+  - id_tributo_fk
