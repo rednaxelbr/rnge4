@@ -3075,7 +3075,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Agrup-Comercial'
+                  $ref: ../models/Agrup-Comercial.yaml
       operationId: get-skugroups
       description: Listagem de Agrupamentos Comerciais (AC)
     post:
@@ -3089,7 +3089,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Agrup-Comercial'
+              $ref: ../models/Agrup-Comercial.yaml
       tags:
         - Agrupamentos (skugroups)
   /skugrids:
@@ -3433,25 +3433,7 @@ paths:
               $ref: ../models/Unidade.yaml
     parameters: []
 components:
-  schemas:
-    Agrup-Comercial:
-      description: Agrupamento Comercial
-      type: object
-      properties:
-        id:
-          type: number
-        codigo_agrup:
-          type: string
-          minLength: 1
-        desc_agrupamento:
-          type: string
-          minLength: 1
-        unico:
-          type: boolean
-      required:
-        - id
-        - codigo_agrup
-        - desc_agrupamento
+  schemas: {}
   parameters:
     Filter:
       name: filter

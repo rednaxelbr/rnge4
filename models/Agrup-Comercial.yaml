@@ -1,0 +1,19 @@
+type: object
+x-stoplight:
+  id: 8or336inpmqh2
+description: Agrupamento Comercial
+x-examples: null
+properties:
+  id:
+    type: number
+  codigo_agrup:
+    type: string
+    minLength: 1
+  desc_agrupamento:
+    type: string
+    minLength: 1
+  unico:
+    type: boolean
+required:
+  - codigo_agrup
+  - desc_agrupamento
