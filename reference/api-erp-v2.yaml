@@ -589,7 +589,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Categoria'
+                  $ref: ../models/Categoria.yaml
       operationId: get-categories
       description: |-
         Listagem de categorias de produtos. Se o catálogo não for informado é listado o catálogo padrão (Taxonomia). Principais filtros:
@@ -615,7 +615,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Categoria'
+              $ref: ../models/Categoria.yaml
       tags:
         - Categorias (categories)
   '/companies/{id}':
@@ -3434,34 +3434,6 @@ paths:
     parameters: []
 components:
   schemas:
-    Categoria:
-      description: Categoria de produto
-      type: object
-      properties:
-        id:
-          type: number
-        nivel_categ:
-          type: number
-          description: Nível na árvore (automático)
-        breadcrumb:
-          type: string
-          minLength: 1
-          description: Caminho desde a raiz
-        desc_categoria:
-          type: string
-          minLength: 1
-          description: Descrição
-        parent_id:
-          type: number
-          description: ID da categoria da qual essa categoria é filha
-        ativa:
-          type: boolean
-        id_catalogo:
-          type: number
-          description: ID do catálogo ao qual essa categoria pertence
-      required:
-        - desc_categoria
-        - id_catalogo
     Unidade:
       description: Unidade de medida
       type: object

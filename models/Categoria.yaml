@@ -1,0 +1,30 @@
+type: object
+x-stoplight:
+  id: r0cpbc98ularq
+description: Categoria de produto
+x-examples: null
+properties:
+  id:
+    type: number
+  nivel_categ:
+    type: number
+    description: Nível na árvore (automático)
+  breadcrumb:
+    type: string
+    minLength: 1
+    description: Caminho desde a raiz
+  desc_categoria:
+    type: string
+    minLength: 1
+    description: Descrição
+  parent_id:
+    type: number
+    description: ID da categoria da qual essa categoria é filha
+  ativa:
+    type: boolean
+  id_catalogo:
+    type: number
+    description: ID do catálogo ao qual essa categoria pertence
+required:
+  - desc_categoria
+  - id_catalogo
