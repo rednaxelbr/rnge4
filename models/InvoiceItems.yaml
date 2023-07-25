@@ -1,0 +1,68 @@
+type: object
+x-examples:
+  Example 1:
+    id: 12637692001
+    fiscdoc_id: 12637692
+    seq: 1
+    idprod: 120284
+    xprod: CARTAO FELICITACAO DALLEC COLECAO FASHION
+    cfop_item: 5102
+    custo_liq_unit: 1.893
+    perc_imp_venda: 24.6775
+    qcom: 1
+    vuncom: 4.98
+    vprod: 4.98
+    qtrib: 1
+    vuntrib: 4.98
+    indtotot: 1
+    cmv_unit: 2.08
+    chnfe: '43230705563868001357652040000261211906838461'
+    cnpj_emit: 5563868001357
+    config_item:
+      vmc: 1.86
+      pmc: 37.31
+properties:
+  fiscdoc_id:
+    type: integer
+  id:
+    type: integer
+  seq:
+    type: integer
+  idprod:
+    type: integer
+  xprod:
+    type: string
+  cfop_item:
+    type: integer
+  custo_liq_unit:
+    type: number
+  perc_imp_venda:
+    type: number
+  qcom:
+    type: integer
+  vuncom:
+    type: number
+  vprod:
+    type: number
+  qtrib:
+    type: integer
+  vuntrib:
+    type: number
+  indtotot:
+    type: integer
+  cmv_unit:
+    type: number
+  chnfe:
+    type: string
+  cnpj_emit:
+    type: integer
+  config_item:
+    type: object
+    properties:
+      vmc:
+        type: number
+      pmc:
+        type: number
+required:
+  - fiscdoc_id
+description: ''
