@@ -1156,13 +1156,9 @@ paths:
         | fiscdoc_id | integer | Filtro principal para visualizar os itens de uma nota | 
         | cnpj_emit | integer | CNPJ do Emitente  | 
       parameters:
-        - schema:
-            example: '"fiscdoc_id":123456'
-          in: query
-          name: filter
-          required: true
-          description: Filtro
-          style: form
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: aubp53omnb6cw
   /login:
