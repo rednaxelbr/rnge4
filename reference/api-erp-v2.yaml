@@ -1142,7 +1142,7 @@ paths:
               schema:
                 $ref: ../models/InvoiceItems.yaml
       operationId: get-invoiceitems-id
-      description: |+
+      description: |
         Consulta os itens de uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar, via curl, sugerimos usar o aplicativo "jq" na linha de comando:
 
         ```bash
@@ -1155,22 +1155,9 @@ paths:
         | ------ | ------ | ------ |
         | fiscdoc_id | integer | Filtro principal para visualizar os itens de uma nota | 
         | cnpj_emit | integer | CNPJ do Emitente  | 
-
       parameters:
-        - in: query
-          name: filter
-          description: Filtros
-          schema:
-            default: '{"fiscdoc_id":999999}'
-          required: true
-        - schema:
-            example: '[0,99]'
-            default: '[0,99]'
-          in: query
-          name: range
-          description: Range
-          required: true
-          allowEmptyValue: true
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
       x-stoplight:
         id: aubp53omnb6cw
   /login:
@@ -3504,15 +3491,17 @@ components:
       name: range
       in: query
       schema:
-        type: array
         minItems: 1
         maxItems: 2
         items:
           type: integer
           format: int32
+        default: '[0,99]'
+        example: '[0,99]'
       description: Paginação
       explode: true
       style: form
+      required: true
     Sort:
       name: sort
       in: query
