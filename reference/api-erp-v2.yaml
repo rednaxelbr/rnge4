@@ -1061,14 +1061,14 @@ paths:
         - $ref: '#/components/parameters/Sort'
       tags:
         - Notas/Cupons Fiscais (invoices)
-  '/invoices/{id}':
+  '/invoices/{chnfe}':
     parameters:
       - schema:
           type: string
-        name: id
+        name: chnfe
         in: path
         required: true
-        description: ID da compra
+        description: Chave de acesso (44 dígitos)
     get:
       summary: Consulta uma Nota/Cupom
       tags:
@@ -1117,14 +1117,25 @@ paths:
         | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
 
         *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
+      parameters:
+        - in: query
+          name: filter
+          description: Filtros
+          required: true
+          schema:
+            default: '{"chnfe":"99999999999999999999999999999999999999999999", "modelo":55}'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      x-stoplight:
+        id: n5pjq9nvfqm51
   '/invoiceitems/{id}':
     parameters:
       - schema:
-          type: string
+          type: integer
         name: id
         in: path
         required: true
-        description: ID da compra
+        description: Composto de fiscdoc_id*1000+seq
     get:
       summary: Consulta itens de uma Nota/Cupom
       tags:
@@ -1138,7 +1149,7 @@ paths:
                 $ref: ../models/InvoiceItems.yaml
       operationId: get-invoiceitems-id
       description: |
-        Consulta os itens uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar via curl, sugerimos usar o aplicativo "jq" na linha de comando:
+        Consulta os itens de uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar via curl, sugerimos usar o aplicativo "jq" na linha de comando:
 
         ```bash
         curl ... | jq .
@@ -1150,6 +1161,15 @@ paths:
         | ------ | ------ | ------ |
         | fiscdoc_id | integer | Filtro principal para visualizar os itens de uma nota | 
         | cnpj_emit | integer | CNPJ do Emitente  | 
+      parameters:
+        - in: query
+          name: filter
+          description: Filtros
+          required: true
+          schema:
+            default: '{"fiscdoc_id":999999}'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: aubp53omnb6cw
   /login:

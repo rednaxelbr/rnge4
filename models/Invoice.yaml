@@ -29,6 +29,7 @@ description: 'Documento fiscal (NFe, NFCe)'
 properties:
   id:
     type: string
+    description: é a chave de acesso
   fiscdoc_id:
     type: integer
     x-stoplight:
