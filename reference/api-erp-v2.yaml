@@ -3497,21 +3497,14 @@ components:
       in: query
       schema:
         type: array
-        minItems: 2
+        minItems: 1
         maxItems: 2
         items:
           type: integer
           format: int32
-        example:
-          - 0
-          - 99
-        default:
-          - 0
-          - 99
       description: Paginação
       explode: true
       style: form
-      required: true
     Sort:
       name: sort
       in: query
