@@ -1164,13 +1164,6 @@ paths:
           required: true
           description: Filtro
           style: form
-        - schema:
-            default: '[0,99]'
-            example: '[0,99]'
-          in: query
-          name: range
-          description: Paginação
-          required: true
       x-stoplight:
         id: aubp53omnb6cw
   /login:
