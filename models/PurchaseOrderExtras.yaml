@@ -119,3 +119,15 @@ properties:
           type: string
         tpag:
           type: integer
+        valor_original:
+          type: number
+          x-stoplight:
+            id: jmzd1nzvm6mkj
+        cta_contab:
+          type: integer
+          x-stoplight:
+            id: zs26uxc0w5jvc
+        nome_conta:
+          type: string
+          x-stoplight:
+            id: 404krzoa9ag9j
