@@ -104,6 +104,10 @@ properties:
           x-stoplight:
             id: l7ee8gqz1nsza
           readOnly: true
+        itens:
+          type: integer
+          x-stoplight:
+            id: 1zly4dzq3xgiw
   tipo:
     type: string
     minLength: 1
@@ -114,6 +118,7 @@ properties:
     minLength: 1
     x-stoplight:
       id: oxwlibsinnqbe
+    readOnly: true
   config_recep:
     type: object
     x-stoplight:
@@ -145,6 +150,10 @@ properties:
     type: number
     x-stoplight:
       id: lysyw9436j1bl
+  finalizada:
+    type: boolean
+    x-stoplight:
+      id: tdw70bz2ner8h
   itens:
     x-stoplight:
       id: gn4uyv39ugx7q
@@ -153,6 +162,10 @@ properties:
       $ref: ./ReceptionSku.yaml
       x-stoplight:
         id: 126cth4j8056x
+  prioridade:
+    type: integer
+    x-stoplight:
+      id: dzzzc36q1h56x
 required:
   - id
   - dthr_geracao
