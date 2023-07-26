@@ -1162,7 +1162,14 @@ paths:
           schema:
             default: '{"fiscdoc_id":999999}'
           required: true
-        - $ref: '#/components/parameters/Range'
+        - schema:
+            example: '[0,99]'
+            default: '[0,99]'
+          in: query
+          name: range
+          description: Range
+          required: true
+          allowEmptyValue: true
       x-stoplight:
         id: aubp53omnb6cw
   /login:
