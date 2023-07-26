@@ -48,6 +48,7 @@ properties:
     type: integer
   sigla_loja:
     type: string
+    readOnly: true
   nome_usuario:
     type: string
     readOnly: true
@@ -57,6 +58,7 @@ properties:
     type: string
   mod_frete:
     type: string
+    description: é string porque pode ter valor 0
   valor_frete:
     type: number
   id_entregador:
@@ -73,6 +75,10 @@ properties:
         type: string
         description: No formato 30/60/90
         writeOnly: true
+      prazo_efet:
+        type: string
+        x-stoplight:
+          id: 8ygks9lltds17
   id_rastreamento:
     type: integer
     description: Usado pelo GET /timelines
@@ -83,3 +89,17 @@ properties:
   perc_atend:
     type: number
     description: '% Atendimento'
+  materia_prima:
+    type: boolean
+    x-stoplight:
+      id: nprxktxj7tmsn
+  usuario_legado:
+    type: string
+    x-stoplight:
+      id: zue7ahljwvmtd
+    description: Usuário que criou a OC no ERP Legado
+  entregador_legado:
+    type: string
+    x-stoplight:
+      id: wziz05fvjho0u
+    description: Transportadora (legado/externo)

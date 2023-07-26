@@ -2,12 +2,12 @@ type: object
 description: Lista de Preços (Price LookUp)
 x-stoplight:
   id: pnty7ug4yo1i2
-x-examples:
+x-examples: null
 properties:
   id:
     type: number
   precedencia:
-    type: number
+    type: integer
     description: Ordem de precedência em caso de empate
   nome_lista:
     type: string

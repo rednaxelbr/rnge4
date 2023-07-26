@@ -1662,6 +1662,79 @@ paths:
                 required:
                   - resp
     parameters: []
+  /pricelistarticles:
+    post:
+      summary: Grava o preço de um item de uma lista de preços
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+      operationId: post-pricelistarticles
+      description: Cria um novo preço de um produto em uma lista de preços
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PLU-Item.yaml
+    get:
+      summary: Consulta os preços de uma lista de preços
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PLU-Item.yaml
+      operationId: get-pricelistarticles
+      description: |-
+        Lista os preços de uma lista de preços. Filtros:
+        - `id_plu`: ID do PLU (Lista de Preços)
+        - `cod_produto`: Código de um produto
+        - `desc_produto`: Descrição de produto
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+  '/pricelistarticles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id do registro
+    get:
+      summary: 'ITEM: Consultar produto x PLU'
+      tags:
+        - Listas de Preços (pricelists)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/PLU-Item.yaml
+      operationId: get-pricelistarticles-id
+      description: Consulta um preço de um PLU
+    put:
+      summary: Atualiza um item de lista de preços
+      operationId: put-pricelistarticles-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PLU-Item.yaml
+      description: Altera um registro na lista de preços
+      tags:
+        - Listas de Preços (pricelists)
   /pricelists:
     get:
       summary: Listando as Listas de Preços (PLU)
@@ -1737,79 +1810,6 @@ paths:
       tags:
         - Listas de Preços (pricelists)
       description: Exclui uma lista de preços
-  /pricelistarticles:
-    post:
-      summary: Grava o preço de um item de uma lista de preços
-      tags:
-        - Listas de Preços (pricelists)
-      responses:
-        '200':
-          description: OK
-      operationId: post-pricelistarticles
-      description: Cria um novo preço de um produto em uma lista de preços
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/PLU-Item.yaml
-    get:
-      summary: Consulta os preços de uma lista de preços
-      tags:
-        - Listas de Preços (pricelists)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/PLU-Item.yaml
-      operationId: get-pricelistarticles
-      description: |-
-        Lista os preços de uma lista de preços. Filtros:
-        - `id_plu`: ID do PLU (Lista de Preços)
-        - `cod_produto`: Código de um produto
-        - `desc_produto`: Descrição de produto
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-  '/pricelistarticles/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: id do registro
-    get:
-      summary: 'ITEM: Consultar produto x PLU'
-      tags:
-        - Listas de Preços (pricelists)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/PLU-Item.yaml
-      operationId: get-pricelistarticles-id
-      description: Consulta um preço de um PLU
-    put:
-      summary: Atualiza um item de lista de preços
-      operationId: put-pricelistarticles-id
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/PLU-Item.yaml
-      description: Altera um registro na lista de preços
-      tags:
-        - Listas de Preços (pricelists)
   /productimages:
     get:
       summary: Lista de fotos de um produto
