@@ -1161,8 +1161,8 @@ paths:
           description: Filtros
           schema:
             default: '{"fiscdoc_id":999999}'
+          required: true
         - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: aubp53omnb6cw
   /login:
@@ -3502,9 +3502,13 @@ components:
         items:
           type: integer
           format: int32
+        example:
+          - 0
+          - 99
       description: Paginação
       explode: true
       style: form
+      required: true
     Sort:
       name: sort
       in: query
