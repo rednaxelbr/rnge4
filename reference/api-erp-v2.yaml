@@ -1157,7 +1157,6 @@ paths:
         | cnpj_emit | integer | CNPJ do Emitente  | 
       parameters:
         - schema:
-            type: string
             default: '"fiscdoc_id":123456'
             example: '"fiscdoc_id":123456'
           in: query
