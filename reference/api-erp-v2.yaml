@@ -2047,7 +2047,18 @@ paths:
               schema:
                 $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings-id
-      description: Consulta uma memória de Mapeamento Produto x Fornecedor
+      description: |-
+        Consulta uma memória de Mapeamento Produto x Fornecedor
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | codigo_sku | int | Código SKU do produto | 
+        | cod_produto | int | Código do Produto  | 
+        | referencia | string | Referência | 
+        | variacao | string | Variação | 
+        | cnpj_fornec | int | CNPJ do Fornecedor | 
     put:
       summary: Atualizando uma memória de mapeamento
       operationId: put-purchasemappings-id

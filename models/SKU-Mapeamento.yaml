@@ -22,6 +22,11 @@ properties:
   codigo_sku:
     type: number
     description: Código do SKU deste produto
+  data_hora:
+    type: string
+    x-stoplight:
+      id: qq24bnn1epkey
+    description: Data Hora da última modificação
 required:
   - cnpj_fornec
   - cod_produto
