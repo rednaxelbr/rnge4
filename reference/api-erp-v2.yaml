@@ -1158,6 +1158,7 @@ paths:
       parameters:
         - schema:
             example: '"fiscdoc_id":123456'
+            type: integer
           in: query
           name: filter
           required: true
