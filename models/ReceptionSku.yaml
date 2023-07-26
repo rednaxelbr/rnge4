@@ -1,0 +1,40 @@
+type: object
+x-stoplight:
+  id: wty7kz5ku46in
+description: Lista de Preços (Price LookUp)
+x-examples: null
+properties:
+  id:
+    type: integer
+  id_recepcao:
+    type: integer
+  codigo_sku:
+    type: integer
+  prod_xprod:
+    type: string
+  quant_acum:
+    type: number
+  quant_conf:
+    type: number
+  delta_conf:
+    type: number
+  diferenca:
+    type: number
+  perda:
+    type: number
+  ajuste:
+    type: string
+  acum_efet:
+    type: number
+  conf_efet:
+    type: number
+  efetivo:
+    type: string
+  registro:
+    type: string
+  msg_conf:
+    type: string
+  excluir:
+    type: boolean
+required:
+  - id

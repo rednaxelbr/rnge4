@@ -2320,7 +2320,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/RN.yaml
+                  $ref: ../models/Reception.yaml
       operationId: get-receptions
       description: |-
         Lista as RN
@@ -2348,7 +2348,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../models/RN.yaml
+              $ref: ../models/Reception.yaml
     parameters: []
   '/receptions/{id}':
     parameters:
@@ -2368,7 +2368,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/RN.yaml
+                $ref: ../models/Reception.yaml
       operationId: get-receptions-id
       description: Consulta uma RN
     put:
@@ -2383,7 +2383,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ../models/RN.yaml
+              $ref: ../models/Reception.yaml
       description: Atualiza uma RN
     delete:
       summary: Cancela uma RN

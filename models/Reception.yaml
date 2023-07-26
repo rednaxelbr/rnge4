@@ -72,6 +72,8 @@ properties:
       id: uii0qipbfnw4n
   notas:
     type: array
+    x-stoplight:
+      id: irh4ek3bcfmc4
     items:
       x-stoplight:
         id: f2ltieszxy4q9
@@ -102,8 +104,6 @@ properties:
           x-stoplight:
             id: l7ee8gqz1nsza
           readOnly: true
-    x-stoplight:
-      id: irh4ek3bcfmc4
   tipo:
     type: string
     minLength: 1
@@ -116,6 +116,8 @@ properties:
       id: oxwlibsinnqbe
   config_recep:
     type: object
+    x-stoplight:
+      id: iusy2xshrst8g
     required:
       - setor_destino
     properties:
@@ -131,8 +133,6 @@ properties:
         type: integer
         x-stoplight:
           id: mnzxwcgcf7x56
-    x-stoplight:
-      id: iusy2xshrst8g
   id_rastreamento:
     type: number
     x-stoplight:
@@ -146,13 +146,13 @@ properties:
     x-stoplight:
       id: lysyw9436j1bl
   itens:
-    type: array
     x-stoplight:
-      id: x6u74kq04rakj
+      id: gn4uyv39ugx7q
+    type: array
     items:
-      $ref: ./ReceptionSKU.yaml
+      $ref: ./ReceptionSku.yaml
       x-stoplight:
-        id: x3vr2c3q7sto0
+        id: 126cth4j8056x
 required:
   - id
   - dthr_geracao
