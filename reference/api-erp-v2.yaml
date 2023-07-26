@@ -2322,7 +2322,19 @@ paths:
                 items:
                   $ref: ../models/RN.yaml
       operationId: get-receptions
-      description: Lista as RN
+      description: |-
+        Lista as RN
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_empresa | int | ID da Empresa | 
+        | status | int | Status / Status Inicial  | 
+        | status_max | int | Status Final  | 
+        | numero_nf | int | Número NF | 
+        | conferir | bool | Conferir | 
+        | inativos | bool | Por padrão traz somente os ativos, ou seja, status < 399 | 
     post:
       summary: Criar uma RN
       tags:

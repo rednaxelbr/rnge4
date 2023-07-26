@@ -1,0 +1,171 @@
+description: RN (Recepção de Nota)
+x-stoplight:
+  id: 163356c313e8f
+type: object
+x-examples:
+  example-1:
+    id: 3023
+    dthr_geracao: '2022-04-19T16:30:10-03:00'
+    id_empresa: 1
+    sigla_loja: VLT
+    nome_reduzido: VOLUNTARIOS
+    stat: 330
+    sigla_status: RN CONFERIDA
+    nome_usuario: SIJIUHEY
+    notas:
+      - chnfe: 432204xxxxxxxxxxxxxxxxxxxxxxxxxxxxx075299869
+        data_emissao: '2022-04-14T00:00:00-03:00'
+        numero: 4418
+        itens: 1
+        status: 780
+        sigla_status: NF ENTREGUE
+      - chnfe: 432204xxxxxxxxxxxxxxxxxxxxxxxxxxxxx026410618
+        data_emissao: '2022-04-18T00:00:00-03:00'
+        numero: 5324
+        itens: 1
+        status: 780
+        sigla_status: NF ENTREGUE
+    tipo: D
+    desc_tiporn: NF de Distribuição
+    config_recep:
+      setor_destino: 20
+    id_rastreamento: 2157626
+    confirmada: true
+    linhas: 2
+properties:
+  id:
+    type: number
+    x-stoplight:
+      id: 71bxfgiy0yzdr
+  dthr_geracao:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: m7kwxti4u7rbt
+  id_empresa:
+    type: number
+    x-stoplight:
+      id: ya0fe1in3kl7f
+  sigla_loja:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: lct629g6reoe4
+  nome_reduzido:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: rnk5zep4ls7ir
+  stat:
+    type: number
+    x-stoplight:
+      id: qeca43v26sib5
+  sigla_status:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: f94a6besu5wql
+  nome_usuario:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: uii0qipbfnw4n
+  notas:
+    type: array
+    items:
+      x-stoplight:
+        id: f2ltieszxy4q9
+      type: object
+      properties:
+        chnfe:
+          type: string
+          x-stoplight:
+            id: 94hxa74yq7oz7
+          readOnly: true
+        data_emissao:
+          type: string
+          x-stoplight:
+            id: 1mp4wccoba6u5
+          readOnly: true
+        numero:
+          type: integer
+          x-stoplight:
+            id: x9i283rccyf4r
+          readOnly: true
+        status:
+          type: string
+          x-stoplight:
+            id: 18xpriwcgo475
+          readOnly: true
+        sigla_status:
+          type: string
+          x-stoplight:
+            id: l7ee8gqz1nsza
+          readOnly: true
+    x-stoplight:
+      id: irh4ek3bcfmc4
+  tipo:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: xqrh9fwbyshs3
+  desc_tiporn:
+    type: string
+    minLength: 1
+    x-stoplight:
+      id: oxwlibsinnqbe
+  config_recep:
+    type: object
+    required:
+      - setor_destino
+    properties:
+      setor_destino:
+        type: integer
+        x-stoplight:
+          id: jnijqy1umrrqn
+      abertura_loja:
+        type: boolean
+        x-stoplight:
+          id: svhid2uqp62vw
+      emp_logada:
+        type: integer
+        x-stoplight:
+          id: mnzxwcgcf7x56
+    x-stoplight:
+      id: iusy2xshrst8g
+  id_rastreamento:
+    type: number
+    x-stoplight:
+      id: lij3qk6ea58nu
+  confirmada:
+    type: boolean
+    x-stoplight:
+      id: p18iz3qhzafre
+  linhas:
+    type: number
+    x-stoplight:
+      id: lysyw9436j1bl
+  itens:
+    type: array
+    x-stoplight:
+      id: x6u74kq04rakj
+    items:
+      $ref: ./ReceptionSKU.yaml
+      x-stoplight:
+        id: x3vr2c3q7sto0
+required:
+  - id
+  - dthr_geracao
+  - id_empresa
+  - sigla_loja
+  - nome_reduzido
+  - stat
+  - sigla_status
+  - nome_usuario
+  - notas
+  - tipo
+  - desc_tiporn
+  - config_recep
+  - id_rastreamento
+  - confirmada
+  - linhas
