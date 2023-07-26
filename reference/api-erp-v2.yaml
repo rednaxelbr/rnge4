@@ -1134,7 +1134,6 @@ paths:
           type: integer
         name: id
         in: path
-        required: true
         description: Composto de fiscdoc_id*1000+seq
     get:
       summary: Consulta itens de uma Nota/Cupom
