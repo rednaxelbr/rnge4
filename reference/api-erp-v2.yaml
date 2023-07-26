@@ -1161,6 +1161,7 @@ paths:
           schema:
             default: '{"fiscdoc_id":123456}'
             example: '{"fiscdoc_id":123456}'
+            type: string
           description: Filtro
           required: true
         - $ref: '#/components/parameters/Range'
