@@ -1161,7 +1161,6 @@ paths:
           schema:
             example: '{"fiscdoc_id":123456}'
             type: string
-            default: '{"fiscdoc_id":123456}'
             format: iri-reference
           description: Filtro
           required: true
