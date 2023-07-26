@@ -2047,18 +2047,9 @@ paths:
               schema:
                 $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings-id
-      description: |-
+      description: |+
         Consulta uma memória de Mapeamento Produto x Fornecedor
 
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | codigo_sku | int | Código SKU do produto | 
-        | cod_produto | int | Código do Produto  | 
-        | referencia | string | Referência | 
-        | variacao | string | Variação | 
-        | cnpj_fornec | int | CNPJ do Fornecedor | 
     put:
       summary: Atualizando uma memória de mapeamento
       operationId: put-purchasemappings-id
@@ -2088,7 +2079,18 @@ paths:
                 items:
                   $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings
-      description: 'Listagem de mapeamentos memorizados de um produto (ou fornecedor). Quando um XML é carregado, o sistema pesquisa nessa memória para fazer o mapeamento automaticamente.'
+      description: |-
+        Listagem de mapeamentos memorizados de um produto (ou fornecedor). Quando um XML é carregado, o sistema pesquisa nessa memória para fazer o mapeamento automaticamente.
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | codigo_sku | int | Código SKU do produto | 
+        | cod_produto | int | Código do Produto  | 
+        | referencia | string | Referência | 
+        | variacao | string | Variação | 
+        | cnpj_fornec | int | CNPJ do Fornecedor | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
