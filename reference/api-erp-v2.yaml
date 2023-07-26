@@ -1159,9 +1159,13 @@ paths:
         - schema:
             default: '"fiscdoc_id":123456'
             example: '"fiscdoc_id":123456'
+            type: string
+            format: uri-reference
           in: query
           name: filter
           required: true
+          description: Filtro
+          style: form
         - $ref: '#/components/parameters/Range'
       x-stoplight:
         id: aubp53omnb6cw
