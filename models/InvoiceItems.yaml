@@ -26,18 +26,23 @@ properties:
     type: integer
   id:
     type: integer
+    description: 'id = fiscdoc_id* 1000 + seq '
   seq:
     type: integer
   idprod:
     type: integer
+    readOnly: true
   xprod:
     type: string
+    readOnly: true
   cfop_item:
     type: integer
   custo_liq_unit:
     type: number
+    readOnly: true
   perc_imp_venda:
     type: number
+    readOnly: true
   qcom:
     type: integer
   vuncom:
@@ -50,12 +55,24 @@ properties:
     type: number
   indtotot:
     type: integer
+  vtottrib:
+    type: number
+    x-stoplight:
+      id: utbiml4so575z
   cmv_unit:
     type: number
-  chnfe:
-    type: string
   cnpj_emit:
     type: integer
+  quant_devolvida:
+    type: number
+    x-stoplight:
+      id: sdfss35k175tx
+  chnfe:
+    type: string
+  vuncom_manual:
+    type: number
+    x-stoplight:
+      id: gan8wt7aojoce
   config_item:
     type: object
     properties:
@@ -63,6 +80,46 @@ properties:
         type: number
       pmc:
         type: number
+      tipo_comissao:
+        type: integer
+        x-stoplight:
+          id: nd4q52qt6xk0x
+      desc_tipocom:
+        type: string
+        x-stoplight:
+          id: saqzyi23zzxtk
+      valor_comissao:
+        type: number
+        x-stoplight:
+          id: acoqbzqnpbldt
+  nitemped:
+    type: integer
+    x-stoplight:
+      id: m24ob1izx9yea
+    readOnly: true
+  xped:
+    type: integer
+    x-stoplight:
+      id: k18l7p0gnetie
+  nome_autorizador:
+    type: string
+    x-stoplight:
+      id: uh4eg7oudx8or
+  voutro:
+    type: number
+    x-stoplight:
+      id: tfz9q7t7hcogn
+  vdesc:
+    type: number
+    x-stoplight:
+      id: gp1h4vi3q26a1
+  vfrete:
+    type: number
+    x-stoplight:
+      id: yyijgus5zsfdn
+  quant_conf_rn:
+    type: number
+    x-stoplight:
+      id: kqxzw2f6n93fs
 required:
   - fiscdoc_id
-description: ''
