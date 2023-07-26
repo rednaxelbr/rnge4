@@ -35,7 +35,7 @@ properties:
     maxLength: 8
   cmun:
     type: number
-    description: Código IBGE do Município
+    description: 'Código IBGE do Município. '
   sede:
     type: boolean
     description: Informar TRUE se for a SEDE da pessoa física ou jurídica
@@ -51,6 +51,31 @@ properties:
   nome_reduzido:
     type: string
     description: 'Se for a sede de uma empresa (loja), traz o nome'
+  info_extra:
+    type: object
+    x-stoplight:
+      id: saj5nkg03a0hv
+    properties:
+      tipo_legado:
+        type: string
+        x-stoplight:
+          id: 2aihlqhwckves
+      tipo:
+        type: string
+        x-stoplight:
+          id: 10rcy4cygedlf
+      referencia:
+        type: string
+        x-stoplight:
+          id: 2fa09q9ezso1q
+      contato:
+        type: string
+        x-stoplight:
+          id: kdy4st6lfwa5t
+      numero_documento:
+        type: string
+        x-stoplight:
+          id: vgd1vbser78jt
 required:
   - id_pessoa
   - id_tipo
