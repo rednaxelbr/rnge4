@@ -1128,13 +1128,8 @@ paths:
         - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: n5pjq9nvfqm51
-  '/invoiceitems/{id}':
-    parameters:
-      - schema:
-          type: integer
-        name: id
-        in: path
-        description: Composto de fiscdoc_id*1000+seq
+  /invoiceitems:
+    parameters: []
     get:
       summary: Consulta itens de uma Nota/Cupom
       tags:
@@ -1164,7 +1159,6 @@ paths:
         - in: query
           name: filter
           description: Filtros
-          required: true
           schema:
             default: '{"fiscdoc_id":999999}'
         - $ref: '#/components/parameters/Range'
