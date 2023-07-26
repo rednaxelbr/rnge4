@@ -1143,7 +1143,7 @@ paths:
                 $ref: ../models/InvoiceItems.yaml
       operationId: get-invoiceitems-id
       description: |
-        Consulta os itens de uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar via curl, sugerimos usar o aplicativo "jq" na linha de comando:
+        Consulta os itens de uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar, via curl, sugerimos usar o aplicativo "jq" na linha de comando:
 
         ```bash
         curl ... | jq .
@@ -3503,6 +3503,9 @@ components:
           type: integer
           format: int32
         example:
+          - 0
+          - 99
+        default:
           - 0
           - 99
       description: Paginação
