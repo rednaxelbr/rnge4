@@ -1082,7 +1082,7 @@ paths:
                 $ref: ../models/Invoice.yaml
       operationId: get-invoices-id
       description: |-
-        Consulta uma NF/Cupom, colocando o conteúdo do arquivo XML no campo `arquivo_xml` do JSON. Para extrar somente o XML via curl, sugerimos usar o aplicativo "jq" na linha de comando:
+        Consulta uma NF/Cupom, colocando o conteúdo do arquivo XML no campo `arquivo_xml` do JSON. Para extrair somente o XML via curl, sugerimos usar o aplicativo "jq" na linha de comando:
 
         ```bash
         curl ... | jq --raw-output .arquivo_xml
@@ -1117,6 +1117,41 @@ paths:
         | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
 
         *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
+  '/invoiceitems/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da compra
+    get:
+      summary: Consulta itens de uma Nota/Cupom
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/InvoiceItems.yaml
+      operationId: get-invoiceitems-id
+      description: |
+        Consulta os itens uma NF/Cupom, colocando o filtro por fiscdoc_id do #/invoices. Para visualizar via curl, sugerimos usar o aplicativo "jq" na linha de comando:
+
+        ```bash
+        curl ... | jq .
+        ```
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | fiscdoc_id | integer | Filtro principal para visualizar os itens de uma nota | 
+        | cnpj_emit | integer | CNPJ do Emitente  | 
+      x-stoplight:
+        id: aubp53omnb6cw
   /login:
     parameters: []
     post:

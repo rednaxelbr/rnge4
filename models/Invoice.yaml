@@ -25,9 +25,15 @@ x-examples:
     historico: |-
       1090619
       710 NF EMITIDA
+description: 'Documento fiscal (NFe, NFCe)'
 properties:
   id:
     type: string
+  fiscdoc_id:
+    type: integer
+    x-stoplight:
+      id: 0zgce70to5p8q
+    readOnly: true
   modelo:
     type: integer
   cnpj_emit:
@@ -107,4 +113,3 @@ required:
   - nome_usuario
   - stat
   - sigla_status
-description: 'Documento fiscal (NFe, NFCe)'
