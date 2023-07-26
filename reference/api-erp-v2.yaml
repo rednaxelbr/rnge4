@@ -1159,7 +1159,6 @@ paths:
         - in: query
           name: filter
           schema:
-            default: '{"fiscdoc_id":123456}'
             example: '{"fiscdoc_id":123456}'
             type: string
           description: Filtro
