@@ -799,6 +799,62 @@ paths:
       x-stoplight:
         id: n7feq4ttgoqg8
     parameters: []
+  '/deals/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da conta de despesa
+    get:
+      summary: Consultando uma Oportunidade CRM
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Deals.yaml
+      operationId: get-deals-id
+      description: Consulta uma Oportunidade CRM
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Conta despesa (expenseaccounts)
+      x-stoplight:
+        id: t1m3n69a46rx8
+    put:
+      summary: Atualizando uma Oportunidade CRM
+      operationId: put-deals-id
+      responses:
+        '200':
+          description: OK
+      description: Atualiza uma Oportunidade CRM
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Deals.yaml
+        description: ''
+      tags:
+        - Conta despesa (expenseaccounts)
+      x-stoplight:
+        id: h5wgm2izn11f3
+    delete:
+      summary: Excluindo uma Oportunidade CRM
+      operationId: delete-deals-id
+      responses:
+        '200':
+          description: ID
+          content: {}
+      description: Exclui uma Oportunidade CRM
+      tags:
+        - Conta despesa (expenseaccounts)
+      x-stoplight:
+        id: pusk1xugwmgoc
   /deliverytypes:
     get:
       summary: Lista de Meios de Entrega
