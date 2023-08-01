@@ -746,6 +746,59 @@ paths:
         in: path
         description: ID que representa a configuração do sku x empresa
         required: true
+  /deals:
+    post:
+      summary: Criando CRM Oportunidade
+      operationId: post-deals
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      parameters: []
+      description: Criando uma CRM Oportunidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Deals.yaml
+      x-stoplight:
+        id: c7uqnajaz6b38
+    get:
+      summary: CRM Oportunidades
+      operationId: get-deals
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Deals.yaml
+      description: |
+        Lista de crm oportunidades. 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID do deals| 
+        | id_etapa | int64 | Ex: 1- PROSPECÇÃO, 2-DESCOBERTA, 3-PROPOSTA, etc  | 
+        | id_pessoa | int64 | ID da Pessoa | 
+        | id_vendedor | int64 | ID do Vendedor | 
+        | pesquisa | string |Filtro tanto pelo nome, id, cpf ou cnpj da pessoa | 
+        | numero_pedido | int64 | Número Pedido |
+        | contato_ativo | bool | Contato Ativo (Somente CC - Contato Comercial, um por cliente) |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Notas/Cupons Fiscais (invoices)
+      x-stoplight:
+        id: n7feq4ttgoqg8
+    parameters: []
   /deliverytypes:
     get:
       summary: Lista de Meios de Entrega
@@ -2047,9 +2100,8 @@ paths:
               schema:
                 $ref: ../models/SKU-Mapeamento.yaml
       operationId: get-purchasemappings-id
-      description: |+
+      description: |
         Consulta uma memória de Mapeamento Produto x Fornecedor
-
     put:
       summary: Atualizando uma memória de mapeamento
       operationId: put-purchasemappings-id

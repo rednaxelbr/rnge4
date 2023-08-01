@@ -1,0 +1,56 @@
+type: object
+x-stoplight:
+  id: ph9zqk3rkgj46
+x-examples:
+  Example 1:
+    id: 18269
+    id_etapa: 27
+    nome_etapa: PROSPECÇÃO
+    id_pessoa: 25375003
+    nome_razao: INDÚSTRIA DE PLÁSTICOS HERC LTDA.
+    dthr_agendamento: '2023-08-28T00:00:00-03:00'
+    id_vendedor: 48760010
+    descricao: (Automático)
+    nome_usuario: COLETOR_NUVEM
+    contato_ativo: true
+    ident_alfa: 582655/2
+    itens: null
+    data_hora: '2023-07-29T02:03:38-03:00'
+properties:
+  numero_pedido:
+    type: integer
+    x-stoplight:
+      id: flb3tzsd6hhwk
+  valor:
+    type: number
+    x-stoplight:
+      id: scja4qdd5fl44
+  percentual:
+    type: number
+    x-stoplight:
+      id: 57zshykh9d07d
+  preco:
+    type: number
+    x-stoplight:
+      id: klz4ipdurq4n4
+  margem:
+    type: number
+    x-stoplight:
+      id: qlfaxe5svkzo5
+    writeOnly: true
+  comentario:
+    type: string
+    x-stoplight:
+      id: dwkh6shntbaqn
+  tipo:
+    type: string
+    x-stoplight:
+      id: umk1n9vnjfvqs
+  solicitar:
+    type: boolean
+    x-stoplight:
+      id: d23jef14jbato
+  aumentar:
+    type: boolean
+    x-stoplight:
+      id: rm7vpzwm6uec9

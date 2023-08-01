@@ -1,0 +1,97 @@
+type: object
+x-examples:
+  Example 1:
+    id: 18269
+    id_etapa: 27
+    nome_etapa: PROSPECÇÃO
+    id_pessoa: 25375003
+    nome_razao: INDÚSTRIA DE PLÁSTICOS HERC LTDA.
+    dthr_agendamento: '2023-08-28T00:00:00-03:00'
+    id_vendedor: 48760010
+    descricao: (Automático)
+    nome_usuario: COLETOR_NUVEM
+    contato_ativo: true
+    ident_alfa: 582655/2
+    itens: null
+    data_hora: '2023-07-29T02:03:38-03:00'
+properties:
+  id:
+    type: integer
+  id_etapa:
+    type: integer
+  nome_etapa:
+    type: string
+    readOnly: true
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+    readOnly: true
+  dthr_agendamento:
+    type: string
+  id_vendedor:
+    type: integer
+  descricao:
+    type: string
+  nome_usuario:
+    type: string
+    readOnly: true
+  contato_ativo:
+    type: boolean
+    description: Identifica se é Contato Comercial (CC)
+  ident_alfa:
+    type: string
+  itens:
+    x-stoplight:
+      id: 8ag1srakcddyc
+    type: array
+    items:
+      $ref: ./OrderItem.yaml
+      x-stoplight:
+        id: tl1mgiq79sixt
+  data_hora:
+    type: string
+  justificativa:
+    type: string
+    x-stoplight:
+      id: b6i5bhi9u2cff
+    writeOnly: true
+  valor_oport:
+    type: number
+    x-stoplight:
+      id: eunh659k1g0vq
+  vdesc:
+    type: number
+    x-stoplight:
+      id: la2u0hzx4r4tg
+  data_prevista:
+    type: string
+    x-stoplight:
+      id: ce5stg5v6i5y0
+  gerar_pedido:
+    type: boolean
+    x-stoplight:
+      id: xioh7w2hr4on8
+    writeOnly: true
+  id_empresa:
+    type: integer
+    x-stoplight:
+      id: 6qz8avuzmbtnx
+  desconto_subtotal:
+    $ref: ./Desconto.yaml
+    x-stoplight:
+      id: 1cazvr62b4314
+  pmc_pedido:
+    type: number
+    x-stoplight:
+      id: nkb3658vk2dux
+    description: carregado somente no getOne
+  vmc_pedido:
+    type: number
+    x-stoplight:
+      id: q2t4fj4dw71bp
+    description: carregado somente no getOne
+required:
+  - id_etapa
+  - id_pessoa
+  - dthr_agendamento
