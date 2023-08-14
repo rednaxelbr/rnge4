@@ -2999,6 +2999,43 @@ paths:
       tags:
         - Sku Reserva Prédio (skureservations)
     parameters: []
+  /timelines:
+    get:
+      summary: Listando os registros de alterações
+      operationId: get-timelines
+      description: |-
+        Lista dos registros de alterações 
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_pessoa | int64 | ID da pessoa do lead (contato) | 
+        | numero_pedido | int64 | Número do pedido | 
+        | codigo_alfa | string | Código Grade | 
+        | cod_produto | int64 | Código Produto | 
+        | id_boleto | int64 | ID do Boleto | 
+        | id_pix | int64 | ID do Pix | 
+        | id_rastreamento | int64 | ID do Rastreamento | 
+        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Timelines.yaml
+      tags:
+        - Sku Reserva Prédio (skureservations)
+      x-stoplight:
+        id: 0rwpm0aph5vhg
+    parameters: []
   '/skureservations/{id}':
     get:
       summary: Consultando um Sku Reserva Prédio

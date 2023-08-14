@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: integer
+  data_hora:
+    type: string
+  nome_usuario:
+    type: string
+  codigo:
+    type: integer
+  sigla:
+    type: string
+x-examples:
+  Example 1:
+    id: 11
+    data_hora: '2023-08-14T15:34:06-03:00'
+    nome_usuario: ALEXSANDER
+    codigo: 26
+    sigla: NUTRIÇÃO
