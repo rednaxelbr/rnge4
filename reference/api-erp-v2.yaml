@@ -3019,6 +3019,7 @@ paths:
         | id_pix | int64 | ID do Pix | 
         | id_rastreamento | int64 | ID do Rastreamento | 
         | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório | 
+        | tipo | string | Em conjunto com o filtro dias_alteracao, podendo ser tipo: RASTREAMENTO, PEDIDO, GRADE, PRODUTO, BOLETO, PIX ou PESSOA  | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
