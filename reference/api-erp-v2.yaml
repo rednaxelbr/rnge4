@@ -73,6 +73,8 @@ tags:
     description: Lista dos Sku's Reserva Prédio
   - name: Status (status)
     description: Versão API
+  - name: Timelines (timelines)
+    description: Histórico dos registros
   - name: Transportadoras (carriers)
     description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
@@ -3033,10 +3035,10 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Timelines.yaml
-      tags:
-        - Sku Reserva Prédio (skureservations)
       x-stoplight:
         id: 0rwpm0aph5vhg
+      tags:
+        - Timelines (timelines)
     parameters: []
   '/skureservations/{id}':
     get:
