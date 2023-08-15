@@ -776,7 +776,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Deals.yaml
-      description: |
+      description: |-
         Lista de crm oportunidades. 
 
         ### Filtros disponíveis
@@ -790,6 +790,7 @@ paths:
         | pesquisa | string |Filtro tanto pelo nome, id, cpf ou cnpj da pessoa | 
         | numero_pedido | int64 | Número Pedido |
         | contato_ativo | bool | Contato Ativo (Somente CC - Contato Comercial, um por cliente) |
+        | sem_vendedor | bool | Leads que estão sem vendedor associado |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
