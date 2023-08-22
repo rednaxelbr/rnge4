@@ -277,7 +277,10 @@ paths:
       responses:
         '200':
           description: OK
-      description: Atualiza um prédio de estoque
+      description: |
+        Atualiza um prédio de estoque
+
+        Existe a possibilidade de Zerar o estoque tendo a permissão 4620
       requestBody:
         content:
           application/json:
