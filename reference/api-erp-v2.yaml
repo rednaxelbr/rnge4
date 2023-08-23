@@ -982,6 +982,36 @@ paths:
         '200':
           description: OK
     parameters: []
+  /distribskus:
+    get:
+      summary: Listando SKUs de uma distribuição
+      tags:
+        - Distribuição (distributions)
+      operationId: get-distribskus
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      description: Listando SKUs de uma distribuição
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/DistribSku.yaml
+      x-stoplight:
+        id: aut02r4v3vh8a
+    parameters: []
   /expenseaccounts:
     get:
       summary: Listando as contas de despesa

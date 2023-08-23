@@ -1,0 +1,58 @@
+type: object
+x-examples:
+  Example 1:
+    id: 10887
+    prod_xprod: 'PAPEL CHAMEX A4 21CMX29,7CM 75G 500 FL BRANCO'
+    estoque: 17800
+    reserva: 265
+    consumo: 23132
+    cmm: 0
+    disponivel: -5597
+    falta: 6109
+    tipo: Z
+    categorias:
+      - desc_categ: Ordinário
+        id_categ: 0
+    tags:
+      - id: 118
+        nome_tag: Ordinário
+properties:
+  id:
+    type: integer
+  prod_xprod:
+    type: string
+  estoque:
+    type: integer
+  reserva:
+    type: integer
+  consumo:
+    type: integer
+    description: Soma do CMM das empresas que utilizam o prédio de origem da distribuição (geralmente o CD)
+  cmm:
+    type: integer
+  disponivel:
+    type: integer
+  falta:
+    type: integer
+  tipo:
+    type: string
+  categorias:
+    type: array
+    items:
+      type: object
+      properties:
+        desc_categ:
+          type: string
+        id_categ:
+          type: integer
+  tags:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome_tag:
+          type: string
+description: Listando SKUs de uma distribuição
+title: ''
