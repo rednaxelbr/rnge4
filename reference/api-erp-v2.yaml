@@ -280,6 +280,8 @@ paths:
       description: |
         Atualiza um prédio de estoque
 
+        <b>Resetar Estoque Prédio: </b>
+
         Existe a possibilidade de Zerar o estoque de TODOS os produtos com a permissão 4620. Campos a serem passado no PUT ("resetar_estoque" (bool) e "confirmar_reset" (string)). Ex.: Zerando o estoque do prédio 99:
 
         curl -g -X PUT 'https://rnge.com.br/v2/buildings/99' -u userid:token -d '{"id":99,"metodo":"PUT","desc_predio":"xxx","resetar_estoque":true,"confirmar_reset":"xxxx"}'
