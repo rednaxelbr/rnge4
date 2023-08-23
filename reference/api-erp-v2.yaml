@@ -272,7 +272,7 @@ paths:
       tags:
         - Prédios de Estoque
     put:
-      summary: Atualizando um prédio de estoque / Resetar Estoque Prédio
+      summary: Atualizando um prédio de estoque
       operationId: put-buildings-id
       responses:
         '200':
