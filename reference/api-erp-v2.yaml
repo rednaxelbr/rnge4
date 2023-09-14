@@ -3735,6 +3735,56 @@ paths:
             schema:
               $ref: ../models/Leads.yaml
     parameters: []
+  '/leads/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da pessoa
+    get:
+      summary: Consulta um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Leads.yaml
+      operationId: get-leads-id
+      x-stoplight:
+        id: c6vwb0zxh3emj
+      description: Consulta um lead
+    put:
+      summary: Atualiza um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: put-leads-id
+      x-stoplight:
+        id: 3oryyp10x4zdl
+      description: Atualiza um lead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Leads.yaml
+    delete:
+      summary: Remove a etapa de um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-leads-id
+      x-stoplight:
+        id: 9p5x8ui1xyj34
+      description: Remove a etapa de um lead
 components:
   schemas: {}
   parameters:
