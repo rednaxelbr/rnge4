@@ -9,6 +9,8 @@ tags:
     description: Agrupamentos Comerciais
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Clientes em Potencial (leads)
+    description: Clientes em Potencial
   - name: Composição Sku (skuparts)
     description: Composição Sku
   - name: Conta despesa (expenseaccounts)
@@ -3693,6 +3695,45 @@ paths:
           application/json:
             schema:
               $ref: ../models/Unidade.yaml
+    parameters: []
+  /leads:
+    get:
+      summary: Listagem de Leads
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Leads.yaml
+      operationId: get-leads
+      x-stoplight:
+        id: xmrg5bv33nkdo
+      description: Lista de Leads
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criar um novo Lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: post-leads
+      x-stoplight:
+        id: fo8yggrnb184r
+      description: Criar um novo Lead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Leads.yaml
     parameters: []
 components:
   schemas: {}
