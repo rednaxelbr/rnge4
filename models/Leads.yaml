@@ -1,0 +1,63 @@
+type: object
+description: Leads do CRM (Clientes em Potencial)
+properties:
+  id:
+    type: integer
+  data_cadastro:
+    type: string
+  dthr_agendamento:
+    type: string
+  ativo:
+    type: boolean
+  nome_lead:
+    type: string
+  tipo_pessoa:
+    type: string
+  email:
+    type: string
+  id_canal:
+    type: integer
+  desc_canal:
+    type: string
+  id_vendedor:
+    type: integer
+    description: ID do vendedor da carteira favorita
+  nome_vendedor:
+    type: string
+    description: Vendedor da carteira favorita
+  id_etapa:
+    type: integer
+    description: ID da Etapa do Lead
+  nome_etapa:
+    type: string
+    description: Etapa do Lead (Sales Development Process)
+  status_code:
+    type: integer
+  nome_status:
+    type: string
+  descricao_status:
+    type: string
+  categorias:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+  incidencia:
+    type: integer
+    description: Número de compras do cliente no período
+  recorrencia:
+    type: integer
+    description: Ciclo de contato (em dias)
+  id_carteira:
+    type: integer
+    description: ID da carteira favorita
+  nome_carteira:
+    type: string
+    description: Carteira Favorita
+  id_cc:
+    type: integer
+    description: ID da Oportunidade de contato (CC)
