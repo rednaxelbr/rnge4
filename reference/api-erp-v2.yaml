@@ -107,7 +107,7 @@ info:
      | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
 
 
-    Esta API utiliza o padrão REST e autenticação HTTP AuthBasic (RFC 7617) em todos os recursos. O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
+    Esta API utiliza o padrão REST e autenticação HTTP Bearer (RFC 6750) em todos os recursos, exceto no login, que usa AuthBasic (RFC 7617). O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
