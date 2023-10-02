@@ -9,6 +9,8 @@ tags:
     description: Agrupamentos Comerciais
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Clientes em Potencial (leads)
+    description: Clientes em Potencial
   - name: Composição Sku (skuparts)
     description: Composição Sku
   - name: Conta despesa (expenseaccounts)
@@ -107,7 +109,7 @@ info:
      | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
 
 
-    Esta API utiliza o padrão REST e autenticação HTTP AuthBasic (RFC 7617) em todos os recursos. O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
+    Esta API utiliza o padrão REST e autenticação HTTP Bearer (RFC 6750) em todos os recursos, exceto no login, que usa AuthBasic (RFC 7617). O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
   version: 2.0.0
   title: API do RNGE 4
   termsOfService: 'https://rednaxel.com/termos-de-uso'
@@ -785,7 +787,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Deals.yaml
-      description: |-
+      description: |
         Lista de crm oportunidades. 
 
         ### Filtros disponíveis
@@ -799,7 +801,6 @@ paths:
         | pesquisa | string |Filtro tanto pelo nome, id, cpf ou cnpj da pessoa | 
         | numero_pedido | int64 | Número Pedido |
         | contato_ativo | bool | Contato Ativo (Somente CC - Contato Comercial, um por cliente) |
-        | sem_vendedor | bool | Leads que estão sem vendedor associado |
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
@@ -3696,6 +3697,95 @@ paths:
             schema:
               $ref: ../models/Unidade.yaml
     parameters: []
+  /leads:
+    get:
+      summary: Listagem de Leads
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Leads.yaml
+      operationId: get-leads
+      x-stoplight:
+        id: xmrg5bv33nkdo
+      description: Lista de Leads
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Criar um novo Lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: post-leads
+      x-stoplight:
+        id: fo8yggrnb184r
+      description: Criar um novo Lead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Leads.yaml
+    parameters: []
+  '/leads/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da pessoa
+    get:
+      summary: Consulta um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Leads.yaml
+      operationId: get-leads-id
+      x-stoplight:
+        id: c6vwb0zxh3emj
+      description: Consulta um lead
+    put:
+      summary: Atualiza um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: put-leads-id
+      x-stoplight:
+        id: 3oryyp10x4zdl
+      description: Atualiza um lead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Leads.yaml
+    delete:
+      summary: Remove a etapa de um lead
+      tags:
+        - Clientes em Potencial (leads)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-leads-id
+      x-stoplight:
+        id: 9p5x8ui1xyj34
+      description: Remove a etapa de um lead
 components:
   schemas: {}
   parameters:
