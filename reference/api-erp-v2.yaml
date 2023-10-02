@@ -2795,7 +2795,7 @@ paths:
     get:
       summary: Listando Configuração do sku X empresa (SkuConfigs)
       operationId: get-skuconfigs
-      description: |
+      description: |-
         Lista de configuração de sku x empresa (mostra também o cmm (consumo médio mensal))
 
         A entidade é constituída de duas partes:
@@ -2811,6 +2811,7 @@ paths:
         | ------ | ------ | ------ |
         | codigo_sku | int64 | código do Produto (SKU)| 
         | id_empresa | int64 | ID da empresa | 
+        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
       parameters:
         - in: query
           name: filter
