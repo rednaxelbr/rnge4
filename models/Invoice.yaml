@@ -45,14 +45,15 @@ properties:
     type: string
   tipo:
     type: string
+    description: Tipo Documento
   serie:
     type: integer
   numero:
     type: integer
-  id_pessoa:
-    type: integer
   nome_razao:
     type: string
+  id_pessoa:
+    type: integer
   cpf_cnpj:
     type: integer
   total_vnf:
@@ -80,6 +81,11 @@ properties:
     type: integer
     x-stoplight:
       id: qk5hz3fy9afs8
+  desc_canal:
+    type: string
+    x-stoplight:
+      id: rx1tg0sxx6ipq
+    readOnly: true
   data_hora:
     type: string
     x-stoplight:
@@ -96,6 +102,12 @@ properties:
     type: number
     x-stoplight:
       id: tcrg98aanohva
+  tipo_oper:
+    type: string
+    x-stoplight:
+      id: ms15vly4ih62w
+    description: Tipo Operação
+    readOnly: true
 required:
   - id
   - modelo
@@ -105,8 +117,8 @@ required:
   - tipo
   - serie
   - numero
-  - id_pessoa
   - nome_razao
+  - id_pessoa
   - cpf_cnpj
   - total_vnf
   - id_empresa
