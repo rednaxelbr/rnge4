@@ -17,6 +17,8 @@ tags:
     description: Cadastro das contas de despesa
   - name: Distribuição (distributions)
     description: Distribuição para filiais
+  - name: Edição em Lote de Pessoas (bulkpersons)
+    description: Edição em Lote de Pessoas  
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Endereços de pessoas (addresses)
@@ -307,6 +309,25 @@ paths:
       description: Exclui um prédio de estoque.
       tags:
         - Prédios de Estoque
+  /bulkpersons:
+    post:
+      summary: Edição em lote
+      operationId: post-bulkpersons
+      responses:
+        '200':
+          description: OK
+      description: Edição em lote de pessoas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/BulkPersons.yaml
+        description: ''
+      x-stoplight:
+        id: 7rqsqkws4wp49
+      tags:
+        - Edição em Lote de Pessoas (bulkpersons)
+    parameters: []
   /brands:
     get:
       summary: Listando as marcas

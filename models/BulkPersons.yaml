@@ -1,0 +1,46 @@
+type: object
+x-stoplight:
+  id: kuikkqq4ysaiw
+x-examples:
+  Example 1:
+    id: 5762
+    nome_marca: LUXCEL
+    marca_ativa: true
+    produtos: 555
+properties:
+  ids:
+    type: array
+    x-stoplight:
+      id: kjgysr4qma5qr
+    items:
+      x-stoplight:
+        id: 8nj9vlvbkyifl
+      type: integer
+  ids_categorias:
+    type: array
+    x-stoplight:
+      id: xlo66yg7vhd2a
+    items:
+      x-stoplight:
+        id: sivlz9x7uzt21
+      type: integer
+  ids_tags:
+    type: array
+    x-stoplight:
+      id: ueitmz5ruuln8
+    items:
+      x-stoplight:
+        id: 89pmpt176ph1v
+      type: integer
+  crm_etapa:
+    type: integer
+    x-stoplight:
+      id: ft59maaildxup
+  crm_motivo:
+    type: integer
+    x-stoplight:
+      id: lvnsvltjyfcze
+  id_canal:
+    type: integer
+    x-stoplight:
+      id: 9zcnki70omhve
