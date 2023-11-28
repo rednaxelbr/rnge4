@@ -9,7 +9,7 @@ x-examples:
 properties:
   id:
     type: integer
-  registro:
+  id_registro:
     type: integer
     x-stoplight:
       id: pqnmimn3bngmp
@@ -22,3 +22,11 @@ properties:
     type: integer
   sigla:
     type: string
+  anotacao:
+    type: string
+    x-stoplight:
+      id: 1dv9jj134rj8k
+  url_mapa:
+    type: string
+    x-stoplight:
+      id: mggqhy05pjizd
