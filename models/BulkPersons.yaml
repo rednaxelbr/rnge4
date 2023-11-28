@@ -20,7 +20,7 @@ properties:
     type: array
     x-stoplight:
       id: xlo66yg7vhd2a
-    description: pessoa_categ_lista com segmento
+    description: '#/customercategories com filtro "somente_segmentos": true'
     items:
       x-stoplight:
         id: sivlz9x7uzt21
@@ -29,7 +29,7 @@ properties:
     type: array
     x-stoplight:
       id: ueitmz5ruuln8
-    description: pessoa_categ_lista sem segmento
+    description: '#/customercategories com filtro "ocultar_segmentos":true'
     items:
       x-stoplight:
         id: 89pmpt176ph1v
