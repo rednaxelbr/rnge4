@@ -18,7 +18,7 @@ tags:
   - name: Distribuição (distributions)
     description: Distribuição para filiais
   - name: Edição em Lote de Pessoas (bulkpersons)
-    description: Edição em Lote de Pessoas  
+    description: Edição em Lote de Pessoas
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Endereços de pessoas (addresses)
@@ -3083,6 +3083,8 @@ paths:
         | id_boleto | int64 | ID do Boleto | 
         | id_pix | int64 | ID do Pix | 
         | id_rastreamento | int64 | ID do Rastreamento | 
+        | id_vale | int64 | ID do Vale | 
+        | id_deal | int64 | ID da Oportunidade | 
         | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
         | tipo | string | Em conjunto com o filtro dias_alteracao, podendo ser tipo: RASTREAMENTO, PEDIDO, GRADE, BOLETO, PIX ou PESSOA  | 
       parameters:
