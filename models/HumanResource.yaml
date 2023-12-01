@@ -1,0 +1,37 @@
+description: Recursos Humanos
+x-stoplight:
+  id: 3cd0glzuvnzfy
+type: object
+x-examples:
+  example-1:
+    id: 17195
+    cod_produto: 282
+    codigo_sku: 282
+    ordem_foto: 1
+    url_foto: 'https://storage.googleapis.com/rednaxel-fotos/cdp/produto/282-1.JPG'
+    nome_usuario: PAPAFILA
+    data_hora: '2022-03-03 09:14:50'
+    primario: 282-1
+    secundario: 'UN '
+properties:
+  id:
+    type: integer
+    x-stoplight:
+      id: y9wbxdzx1pwmq
+    description: ID da Pessoa
+  nome_razao:
+    type: string
+    x-stoplight:
+      id: fex3ojfsl5yn2
+  data_nascimento:
+    type: string
+    x-stoplight:
+      id: behom3ng9chup
+  ids_usuarios:
+    type: array
+    x-stoplight:
+      id: zl2qhpt2650sc
+    items:
+      x-stoplight:
+        id: 7xdlpzknso1wy
+      type: integer
