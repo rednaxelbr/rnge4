@@ -71,6 +71,8 @@ tags:
     description: Cadastro de SKUs
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
+  - name: Recursos Humanos (humanresources)
+    description: Recursos Humanos (RH)
   - name: Serviços (services)
     description: Cadastro de Serviços para NFSe
   - name: Sku Reserva Prédio (skureservations)
@@ -1130,6 +1132,49 @@ paths:
       description: Exclui uma conta despesa.
       tags:
         - Conta despesa (expenseaccounts)
+  /humanresources:
+    get:
+      summary: Recursos Humanos
+      operationId: get-humanresources
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/HumanResource.yaml
+      description: |-
+        Listar as pessoas com o perfil de colaborador e ativas
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id  | integer | é o id da pessoa | 
+        | pesquisa | string | Filtra tanto pelo id como pelo nome razão da pessoa  | 
+        | pesq_user | string | Filtra tanto pelo id como pelo nome do usuário |
+        | todos | bool | Por padrão traz somente as pessoas com usuários |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      tags:
+        - Recursos Humanos (humanresources)
+      x-stoplight:
+        id: pnt2xurl5ytaw
+    parameters: []
+    delete:
+      summary: Inativa usuário
+      operationId: delete-humanresources
+      responses:
+        '200':
+          description: OK
+      x-stoplight:
+        id: 3bkv7jys6mcgd
+      description: Inativa usuário e remove perfil colaborador da pessoa
+      tags:
+        - Recursos Humanos (humanresources)
   /invoicetypes:
     get:
       summary: Tipos de Documentos Fiscais
