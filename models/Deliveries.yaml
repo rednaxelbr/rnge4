@@ -1,0 +1,126 @@
+type: object
+x-examples:
+  Example 1:
+    id: 1401445
+    numero_pedido: 1471486
+    tipo_oper: VENDAS
+    status: 710
+    sigla_status: NF EMITIDA
+    id_empresa: 11
+    sigla_loja: VTQ
+    id_pessoa: 994058005
+    nome_razao: Pyetro brum Ilha
+    id_entregador: 2144
+    address_id: 1215792
+    id_endereco: 348507005
+    endereco:
+      logradouro: Rua Felicíssimo de Azevedo
+      numero: 1400
+      complemento: APTO 205
+      bairro: São João
+      id_municipio: 4314902
+      nome_municipio: Porto Alegre
+      cep: '90540110'
+      uf_sigla: RS
+    data_entrega: '2024-03-04T00:00:00'
+    nome_turno: TARDE
+    info_entrega: {}
+    id_meio: 37
+    desc_meio: Entrega Expressa Loja
+    nome_entregador: FOLLOWME LOGISTICA
+    resumo_pagto: CRE
+    data_emissao: '2024-03-02'
+    tpdoc: V
+    num_nf: 8359
+    cartoes:
+      - id: 3603853
+        tpag: 3
+        sigla_forma: CRE
+        tpintegra: 1
+        valor: 67.97
+        id_pagto: 14349276
+description: Entrega de Pedidos
+required:
+  - numero_pedido
+  - tipo_oper
+properties:
+  id:
+    type: integer
+  numero_pedido:
+    type: integer
+  tipo_oper:
+    type: string
+  status:
+    type: integer
+  sigla_status:
+    type: string
+  id_empresa:
+    type: integer
+  sigla_loja:
+    type: string
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+  id_entregador:
+    type: integer
+  address_id:
+    type: integer
+  id_endereco:
+    type: integer
+  endereco:
+    type: object
+    properties:
+      logradouro:
+        type: string
+      numero:
+        type: integer
+      complemento:
+        type: string
+      bairro:
+        type: string
+      id_municipio:
+        type: integer
+      nome_municipio:
+        type: string
+      cep:
+        type: string
+      uf_sigla:
+        type: string
+  data_entrega:
+    type: string
+  nome_turno:
+    type: string
+  info_entrega:
+    type: object
+  id_meio:
+    type: integer
+  desc_meio:
+    type: string
+  nome_entregador:
+    type: string
+  resumo_pagto:
+    type: string
+  data_emissao:
+    type: string
+  tpdoc:
+    type: string
+  num_nf:
+    type: integer
+  cartoes:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        tpag:
+          type: integer
+        sigla_forma:
+          type: string
+        tpintegra:
+          type: integer
+        valor:
+          type: number
+        id_pagto:
+          type: integer
