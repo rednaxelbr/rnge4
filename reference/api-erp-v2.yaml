@@ -2651,6 +2651,7 @@ paths:
         | vetor_empresa | []int64 | Vetor de id_empresa com o objetivo de filtrar uma ou mais empresas |
         | vetor_status | []int64 | Vetor de Status do pedido, podendo ser mais de um status |
         | id_mesa | int64 | ID da mesa |
+        | ids_tags | []int64 | Tags dos Pedidos |
         | todos | bool | Traz também os pedidos cancelados |
       parameters:
         - $ref: '#/components/parameters/Filter'
