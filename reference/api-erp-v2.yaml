@@ -1272,6 +1272,7 @@ paths:
         | nome_usuario | string | Usuário do documento  |
         | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
         | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
+        | ids_tags | []int64 | Tags dos Pedidos |
 
         *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
       parameters:
