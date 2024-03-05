@@ -52,7 +52,7 @@ tags:
   - name: Pedidos (orders)
     description: Gestão de Pedidos
   - name: Pedidos de Entrega (deliveries)
-    description: Pedidos de Entrega  
+    description: Pedidos de Entrega
   - name: Pedidos por SKU (orderchecks)
     description: Separação/Conferência de Pedidos
   - name: Pedidos Venda (sales)
@@ -926,7 +926,7 @@ paths:
               $ref: ../models/DeliveryType.yaml
   /deliveries:
     get:
-      summary: Entregas de Pedido
+      summary: Lista de Entregas de Pedido
       tags:
         - Pedidos de Entrega (deliveries)
       description: Lista de pedidos de entrega
@@ -936,7 +936,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
         description: ''
       parameters:
         - $ref: '#/components/parameters/Filter'
@@ -958,42 +957,7 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
-              type: object
-              properties:
-                ids_empresas:
-                  type: array
-                  description: Lista de empresas destino
-                  items: {}
-                ids_categorias:
-                  type: string
-                id_fornec:
-                  type: integer
-                numero_pedido:
-                  type: integer
-                  description: Nº do pedido que contém os itens que serão enviados
-                tipo_distrib:
-                  type: string
-                  enum:
-                    - NORMAL
-                    - ABLOJA
-                    - REVFND
-                    - REVSNO
-                  description: 'Tipo de distribuição (padrão: NORMAL)'
-                curva_minima_geral:
-                  type: integer
-                  description: Somente produtos desta curva para cima serão enviados
-                calendario:
-                  type: boolean
-                gerar_pedidos:
-                  type: boolean
-                  description: 'Se TRUE, gera os pedidos após criar a distribuição'
-                codigo_sku:
-                  type: integer
-                  description: Código de um SKU para testes
-                predio:
-                  type: integer
-                  description: 'Prédio de origem (padrão: CD)'
+              $ref: ../models/Deliveries.yaml
           application/xml:
             schema:
               type: object
@@ -1009,8 +973,8 @@ paths:
       description: Cria um novo pedido de entrega
       responses:
         '200':
-          description: OK  
-    parameters: []      
+          description: OK
+    parameters: []
   /distributions:
     get:
       summary: Listando distribuições
