@@ -91,22 +91,37 @@ properties:
     type: string
   nome_turno:
     type: string
-  info_entrega:
-    type: object
   id_meio:
     type: integer
+    readOnly: true
+  info_entrega:
+    type: object
   desc_meio:
     type: string
+    readOnly: true
   nome_entregador:
     type: string
+    readOnly: true
   resumo_pagto:
     type: string
-  data_emissao:
-    type: string
+    readOnly: true
   tpdoc:
     type: string
+    readOnly: true
+  data_emissao:
+    type: string
+    readOnly: true
   num_nf:
     type: integer
+    readOnly: true
+  data_receb_pagto:
+    type: string
+    x-stoplight:
+      id: ycikh1coazizo
+  recebido:
+    type: boolean
+    x-stoplight:
+      id: 2wp68bmtk8ujk
   cartoes:
     type: array
     items:
@@ -124,3 +139,8 @@ properties:
           type: number
         id_pagto:
           type: integer
+          readOnly: true
+        nsu:
+          type: string
+          x-stoplight:
+            id: xm6mpi9l4abye
