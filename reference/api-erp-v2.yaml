@@ -929,7 +929,25 @@ paths:
       summary: Lista de Entregas de Pedido
       tags:
         - Pedidos de Entrega (deliveries)
-      description: Lista de pedidos de entrega
+      description: |
+        Lista de pedidos de entrega
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | id da delivery| 
+        | ids | []int64 | ids das deliveries | 
+        | numero_pedido | int64 | Número do Pedido | 
+        | pesquisa | string | Pesquisa pelo nome, id_pessoa, ou cpf/cnpj da pessoa | 
+        | id_pessoa| int64 | Pesquisa somente pelo ID da Pessoa | 
+        | dataini | string | Data Inicial | 
+        | datafim | string | Data Final | 
+        | ids_empresas | []int64 | Ids das empresas | 
+        | id_empresa | int64 | ID da empresa | 
+        | qualquer_operacao | bool | Qualquer Operação | 
+        | qualquer_status | bool | Qualquer Status | 
+        | exibir_recebidos | bool | Exibir também os recebidos | 
       operationId: get-deliveries
       requestBody:
         content:
