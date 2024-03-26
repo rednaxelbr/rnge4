@@ -1,0 +1,53 @@
+type: object
+properties:
+  id:
+    type: string
+  nome:
+    type: string
+  razao_social:
+    type: string
+  logo_empresa:
+    type: string
+  email:
+    type: string
+  quant_lojas:
+    type: integer
+  termos_uso:
+    type: boolean
+  cod_servico:
+    type: integer
+  mensalidade:
+    type: integer
+  tpag_preferido:
+    type: integer
+  dia_vencimento:
+    type: integer
+  cta_contab:
+    type: integer
+  nome_conta:
+    type: string
+  classificacao_conta:
+    type: string
+  id_pessoa_contador:
+    type: integer
+  nome_razao_contador:
+    type: string
+x-examples:
+  Example 1:
+    id: 7d2c5fe4-8f4a-4b65-81b5-e0223490a34f
+    nome: cdp
+    razao_social: Beller Comércio de Papéis Ltda
+    logo_empresa: 'https://storage.googleapis.com/rednaxel-fotos/cdp/logo/web.png'
+    email: patricia.oliveira@casadopapel.com.br
+    quant_lojas: 46
+    termos_uso: true
+    cod_servico: 21
+    mensalidade: 17311
+    tpag_preferido: 17
+    dia_vencimento: 10
+    cta_contab: 1545
+    nome_conta: (-) IMÓVEIS NÃO DESTINADOS A USO
+    classificacao_conta: 1.2.2.07.005
+    id_pessoa_contador: 46630001
+    nome_razao_contador: FABIANO OLIVEIRA FARIAS OLIVEIRA FARIAS
+description: Minha Conta
