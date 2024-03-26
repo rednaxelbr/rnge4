@@ -43,6 +43,8 @@ tags:
     description: Cadastro das marcas dos produtos
   - name: Meios de Entrega (deliverytypes)
     description: Cadastro dos meios de entrega
+  - name: Minha Conta (billings)
+    description: Minha Conta
   - name: Notas/Cupons Fiscais (invoices)
     description: Notas e Cupons Fiscais (NFe/NFCe)
   - name: Ordens de Compra (purchaseorders)
@@ -254,6 +256,37 @@ paths:
       tags:
         - Prédios de Estoque
     parameters: []
+  /billings:
+    parameters: []
+    get:
+      description: Minha Conta
+      operationId: get-billings
+      tags:
+        - Minha Conta (billings)
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Default
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Billings.yaml
+      summary: Listando minha conta
+    put:
+      summary: Atualizando minha conta
+      operationId: put-billings
+      tags:
+        - Minha Conta (billings)
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Billings.yaml
+      description: Atualiza minha conta
   '/buildings/{id}':
     parameters:
       - schema:
@@ -302,15 +335,6 @@ paths:
             schema:
               $ref: ../models/Predio-Estoque.yaml
         description: ''
-      tags:
-        - Prédios de Estoque
-    delete:
-      summary: Excluindo um prédio de estoque
-      operationId: delete-buildings-id
-      responses:
-        '200':
-          description: OK
-      description: Exclui um prédio de estoque.
       tags:
         - Prédios de Estoque
   /bulkpersons:
