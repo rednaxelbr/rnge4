@@ -1,0 +1,43 @@
+type: object
+x-stoplight:
+  id: 5268zrks0j900
+x-examples:
+  Example 1:
+    id: 5762
+    nome_marca: LUXCEL
+    marca_ativa: true
+    produtos: 555
+description: Experiment
+required:
+  - pagina
+  - nome
+  - email
+  - telefone
+  - aceite
+properties:
+  pagina:
+    type: integer
+    x-stoplight:
+      id: 6u87dj8gymho4
+    description: 1 - Etapa 1
+    writeOnly: true
+  nome:
+    type: string
+    x-stoplight:
+      id: 605i7kyebgh9w
+  email:
+    type: string
+    x-stoplight:
+      id: i9c2b7ubjs7zm
+  telefone:
+    type: string
+    x-stoplight:
+      id: pixawhup0fxju
+  aceite:
+    type: boolean
+    x-stoplight:
+      id: 7ane2xvgyh72z
+  id:
+    type: string
+    x-stoplight:
+      id: de6nzmhy1qae3

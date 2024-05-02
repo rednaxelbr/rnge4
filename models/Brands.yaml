@@ -5,6 +5,8 @@ x-examples:
     nome_marca: LUXCEL
     marca_ativa: true
     produtos: 555
+required:
+  - nome_marca
 properties:
   id:
     type: integer
@@ -14,5 +16,3 @@ properties:
     type: boolean
   produtos:
     type: integer
-required:
-  - nome_marca
