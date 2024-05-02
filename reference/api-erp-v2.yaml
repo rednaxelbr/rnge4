@@ -2644,6 +2644,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Prospects-2.yaml
       operationId: post-prospects
       x-stoplight:
         id: rbk0bmn3bzzus

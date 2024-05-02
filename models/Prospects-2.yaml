@@ -8,48 +8,79 @@ x-examples:
     marca_ativa: true
     produtos: 555
 description: Experiment
-required:
-  - pagina
-  - nome
-  - email
-  - telefone
-  - aceite
 properties:
-  pagina:
-    type: integer
-    x-stoplight:
-      id: ez5cl33kayk4s
-    description: 2 - etapa 2
-    writeOnly: true
-  nome:
-    type: string
-    x-stoplight:
-      id: q3z3hx2o9h2ez
-  email:
-    type: string
-    x-stoplight:
-      id: dw6vcmy0j3xcq
-  telefone:
-    type: string
-    x-stoplight:
-      id: u65msk0tn28ar
-  aceite:
-    type: boolean
-    x-stoplight:
-      id: ojk8ygqlqb5cv
-  cod_plano:
-    type: integer
-    x-stoplight:
-      id: wdrxta4j0scro
-  cnpj:
-    type: string
-    x-stoplight:
-      id: vlaz8y5308bsz
-  senha:
-    type: string
-    x-stoplight:
-      id: mxbhufcwgla6s
   id:
     type: string
     x-stoplight:
       id: pwf2oqrc5tk41
+    readOnly: true
+  nome_tenant:
+    type: string
+    x-stoplight:
+      id: t2nol8jpaq98h
+  nome:
+    type: string
+    x-stoplight:
+      id: q3z3hx2o9h2ez
+    description: resposta somente pela etapa/página 1
+    readOnly: true
+  email:
+    type: string
+    x-stoplight:
+      id: dw6vcmy0j3xcq
+    description: Após etapa/pagina 2 o email é oriundo da receitaws
+    readOnly: true
+  telefone:
+    type: string
+    x-stoplight:
+      id: u65msk0tn28ar
+    description: Após etapa 2 o telefone é oriundo da receitaws
+    readOnly: true
+  aceite:
+    type: boolean
+    x-stoplight:
+      id: ojk8ygqlqb5cv
+    description: resposta somente pela etapa/pagina 1
+    readOnly: true
+  razao_social:
+    type: string
+    x-stoplight:
+      id: 3tx4f5ojb61ph
+    description: Após etapa 2 a razão social é oriundo da receitaws
+  cod_plano:
+    type: integer
+    x-stoplight:
+      id: wdrxta4j0scro
+    readOnly: true
+  cnpj:
+    type: string
+    x-stoplight:
+      id: vlaz8y5308bsz
+    description: cnpj da oriundo da receitaws após etapa/página 2
+    readOnly: true
+  senha_rednaxel:
+    type: string
+    x-stoplight:
+      id: mxbhufcwgla6s
+    readOnly: true
+  chave:
+    type: string
+    x-stoplight:
+      id: 2kur9mvr4navp
+  cod_servico:
+    type: integer
+    x-stoplight:
+      id: eabw56mjjbmbj
+    description: resposta do campo cod_plano
+  id_pessoa:
+    type: integer
+    x-stoplight:
+      id: jov00td3pwrpe
+  ativo:
+    type: boolean
+    x-stoplight:
+      id: 2d33yuhzf13lt
+  dia_vencimento:
+    type: integer
+    x-stoplight:
+      id: gu6zr8xbfaaso
