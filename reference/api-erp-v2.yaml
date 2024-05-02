@@ -2651,7 +2651,13 @@ paths:
       operationId: post-prospects
       x-stoplight:
         id: rbk0bmn3bzzus
-      description: Cria uma nova prospecção
+      description: |
+        Cria uma nova prospecção.
+
+        Funciona por etapas (pagina): 
+
+         - Um post com a "pagina":1 com alguns campos obrigatórios 
+         - e após com "pagina": 2 com demais campos
       requestBody:
         content:
           application/json:
