@@ -73,6 +73,8 @@ tags:
     description: Cadastro de configuração de SKU x Empresa
   - name: Produtos (skus)
     description: Cadastro de SKUs
+  - name: Prospectos (prospects)
+    description: Cadastro de Prospecção
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
   - name: Recursos Humanos (humanresources)
@@ -2634,6 +2636,23 @@ paths:
                 $ref: ../models/PurchaseItem.yaml
       operationId: get-purchaseitems-id
       description: 'Consulta um item de uma NF. Se ele estiver mapeado, "codigo_sku" está presente. Se ele tiver desdobramentos, o array "desdobramento" estará preenchido.'
+  /prospects:
+    post:
+      summary: Cria uma nova Prospecção (Experimente)
+      tags:
+        - Prospectos (prospects)
+      responses:
+        '200':
+          description: OK
+      operationId: post-prospects
+      x-stoplight:
+        id: rbk0bmn3bzzus
+      description: Cria uma nova prospecção
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Prospects-1.yaml
   /receptions:
     get:
       summary: Listagem de RN

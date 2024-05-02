@@ -37,6 +37,18 @@ properties:
     type: boolean
     x-stoplight:
       id: 7ane2xvgyh72z
+  cod_plano:
+    type: integer
+    x-stoplight:
+      id: wdrxta4j0scro
+  cnpj:
+    type: string
+    x-stoplight:
+      id: vlaz8y5308bsz
+  senha:
+    type: string
+    x-stoplight:
+      id: mxbhufcwgla6s    
   id:
     type: string
     x-stoplight:
