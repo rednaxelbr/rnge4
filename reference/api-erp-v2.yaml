@@ -3985,6 +3985,61 @@ paths:
       x-stoplight:
         id: 9p5x8ui1xyj34
       description: Remove a etapa de um lead
+  /stockmovements:
+    post:
+      summary: Movimenta estoque em lote
+      tags:
+        - Estoque (skustocks)
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contador:
+                    type: integer
+                    x-stoplight:
+                      id: mp8s3xbp7h6sg
+                    description: Quantidade de endereços modificados
+      operationId: post-stockmovements
+      x-stoplight:
+        id: o79l0ty8zicb0
+      security:
+        - Token de acesso: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                Example 1:
+                  tipo: corredor
+                  id_predio: 5
+                  origem: A@
+                  destino: I#
+              required:
+                - tipo
+                - id_predio
+                - origem
+                - destino
+              properties:
+                tipo:
+                  type: string
+                  example: corredor
+                  description: Tipo de movimentação; use "corredor"
+                id_predio:
+                  type: integer
+                origem:
+                  type: string
+                  description: Setor/corredor de origem
+                  example: A@
+                destino:
+                  type: string
+                  description: Setor/tipo de destino
+                  example: G#
+      description: 'Movimenta estoque em lote, informando origem e destino.'
 components:
   schemas: {}
   parameters:
