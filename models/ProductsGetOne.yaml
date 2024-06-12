@@ -1,6 +1,4 @@
 type: object
-x-stoplight:
-  id: 4c5a4bb89a488
 x-examples:
   Example 1:
     id: 10887
@@ -136,17 +134,12 @@ x-examples:
 properties:
   id:
     type: integer
-    x-stoplight:
-      id: d5o4lt4gz1ze7
   sku_id:
     type: integer
     readOnly: true
-    x-stoplight:
-      id: jc8vxkfb6brqr
   tipo_item:
     type: integer
     description: |2-
-
        0 - Mercadoria para Revenda
        1 - Matéria-Prima
        2 - Embalagem
@@ -159,241 +152,123 @@ properties:
        9 - Serviços
        10 - Outros insumos
        99 - Outras
-    x-stoplight:
-      id: eshdfwaokm5j6
   ativo:
     type: boolean
-    x-stoplight:
-      id: b82tktpxg5700
   referencia:
     type: string
-    x-stoplight:
-      id: ln6enedc8ai50
   config_sku:
     type: object
-    x-stoplight:
-      id: 4xs1zecm60s2m
   custo_liquido:
     type: number
-    x-stoplight:
-      id: jhguxbnmcj0ge
   curva:
     type: integer
-    x-stoplight:
-      id: 745nxqzb9dclq
   icms_efetivo:
     type: integer
-    x-stoplight:
-      id: iuuvq6b0uuhj5
   vunit_compra:
     type: number
-    x-stoplight:
-      id: 3h7m76ib4yi20
   cmv:
     type: number
-    x-stoplight:
-      id: u84znprxa3eoq
   flags_sku:
     type: object
-    x-stoplight:
-      id: uyuciljab849n
   ids_tags:
     type: array
     items:
       type: integer
-      x-stoplight:
-        id: e2mcsx1bk8qy7
-    x-stoplight:
-      id: 5hx0h3egyct0t
   cmp_principal:
     type: number
-    x-stoplight:
-      id: 0sls7sadhddlc
   ptotal_padrao:
     type: number
-    x-stoplight:
-      id: 02ufqp1xymomk
   id_grade:
     type: integer
-    x-stoplight:
-      id: 9bac5v93udivn
   codigo_alfa:
     type: string
-    x-stoplight:
-      id: t91b2rc1aqu6m
   desc_basica:
     type: string
-    x-stoplight:
-      id: 89lif2ggj91dq
   grade_ativa:
     type: boolean
-    x-stoplight:
-      id: lkiurf0vfgv39
   orig:
     type: integer
-    x-stoplight:
-      id: t7u00khmzgp3w
   aliq_ipi:
     type: number
-    x-stoplight:
-      id: u5xzjvwjbe4dm
   pmva_st:
     type: integer
-    x-stoplight:
-      id: uawsc6qdu4zeq
   cod_ncm:
     type: string
-    x-stoplight:
-      id: j6n9j5qeey8g6
   cod_cest:
     type: string
-    x-stoplight:
-      id: kyir61fwjvgx3
   config_meta:
     type: object
     properties:
       taxonomia:
         type: string
-        x-stoplight:
-          id: 8ls5qj1an7m61
-    x-stoplight:
-      id: bkfnyd388p3e9
   cont_skus:
     type: integer
-    x-stoplight:
-      id: 7w6cw69dnirzc
   id_categoria:
     type: integer
-    x-stoplight:
-      id: hq80fq77viu7j
   desc_categoria:
     type: string
-    x-stoplight:
-      id: svq3vryw7ippy
   id_marca:
     type: integer
-    x-stoplight:
-      id: okukxk8ie5kzw
   nome_marca:
     type: string
-    x-stoplight:
-      id: m8nxajtdrwzjc
   id_classe:
     type: integer
-    x-stoplight:
-      id: 7finnn64zdoxh
   desc_trib:
     type: string
-    x-stoplight:
-      id: mvdgwqndpz46u
   id_agrup:
     type: integer
-    x-stoplight:
-      id: 5nni9jnu8s12p
   codigo_agrup:
     type: string
-    x-stoplight:
-      id: vcpk3dn6d4qss
   desc_agrupamento:
     type: string
-    x-stoplight:
-      id: 1lxhw8gnpt06p
   user_id:
     type: integer
-    x-stoplight:
-      id: p5205fn97om3b
   nome_usuario:
     type: string
-    x-stoplight:
-      id: tjoki6q0qkamc
   id_unidade:
     type: integer
-    x-stoplight:
-      id: eu02x1y3wa0ja
   ucom:
     type: string
-    x-stoplight:
-      id: j4iom3ato94f0
   prod_xprod:
     type: string
-    x-stoplight:
-      id: 7gbe6u599b26n
   margem_padrao:
     type: number
-    x-stoplight:
-      id: qgur3bslxmf8u
   preco_tabela:
     type: number
-    x-stoplight:
-      id: lcmkdxge3qj04
   embalagem_venda:
     type: boolean
-    x-stoplight:
-      id: da4ld1ae06ync
   data_cadastro:
     type: string
-    x-stoplight:
-      id: 0g6q32gtzb946
   nome_sku:
     type: string
-    x-stoplight:
-      id: omuqkrkb6skxn
   desc_curta:
     type: string
-    x-stoplight:
-      id: ylr4ldbxd8rel
   desc_longa:
     type: string
-    x-stoplight:
-      id: prrqkq24tesv0
   info_extra:
     type: object
     properties:
       exibir_website:
         type: boolean
-        x-stoplight:
-          id: gjnk6inhasomw
-    x-stoplight:
-      id: bijze5j3mh22i
   esmin_padrao:
     type: integer
-    x-stoplight:
-      id: 0n2xyt4inlir5
   ultima_compra:
     type: string
-    x-stoplight:
-      id: vaorb5iol2mee
   medidas:
     type: array
     items:
       type: object
       properties:
         mult_sku:
-          type:
-            - integer
-            - number
-          x-stoplight:
-            id: 48w041hg35onz
+          type: number
         peso_kg:
           type: number
-          x-stoplight:
-            id: up86pyow0lg5v
         largura_m:
           type: number
-          x-stoplight:
-            id: yglclhc0thu5m
         altura_m:
           type: number
-          x-stoplight:
-            id: lwg1tst3a8e64
         profundidade_m:
           type: number
-          x-stoplight:
-            id: k3kpc065wtfsv
-      x-stoplight:
-        id: ycph54x6zea88
-    x-stoplight:
-      id: c2i8bl3zsjnph
   fotos:
     type: array
     items:
@@ -401,43 +276,21 @@ properties:
       properties:
         id:
           type: integer
-          x-stoplight:
-            id: 7cp3xfqpyt5ao
         url_foto:
           type: string
-          x-stoplight:
-            id: rkgrlnvsqo9ow
         primario:
           type: string
-          x-stoplight:
-            id: 1csqrmqaq8zc9
         secundario:
           type: string
-          x-stoplight:
-            id: h8rup76y515nb
-      x-stoplight:
-        id: 9as170131c0z9
-    x-stoplight:
-      id: m8neje1i8cv2i
   url_foto_principal:
     type: string
-    x-stoplight:
-      id: 222tek315k7hz
   id_fornec:
     type: integer
-    x-stoplight:
-      id: 1og7l5yjzkk1v
   nome_fornec:
     type: string
-    x-stoplight:
-      id: 07eg2ubl5xd9w
   custos:
     type: boolean
-    x-stoplight:
-      id: gi6202z63fpjh
   embalagem_cross_docking:
     type: integer
     description: |
       Define qual código embalagem (cód. produto) irá receber/efetuar o cross-docking
-    x-stoplight:
-      id: yuyf8o5gr3qnv
