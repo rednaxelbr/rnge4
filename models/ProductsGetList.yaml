@@ -1,0 +1,225 @@
+type: array
+x-examples:
+  Example 1:
+    - id: 10887
+      sku_id: 18441
+      tipo_item: 1
+      ativo: true
+      referencia: CMX075CA4
+      config_sku: {}
+      custo_liquido: 14.7
+      curva: 12
+      icms_efetivo: 17
+      vunit_compra: 17.75
+      cmv: 16.692
+      flags_sku: {}
+      cmp_principal: 18.841
+      ptotal_padrao: 24.6775
+      id_grade: 4213740
+      codigo_alfa: '10887'
+      desc_basica: 'PAPEL A4 21CMX29,7CM 75G 500 FL CHAMEX BRANCO'
+      grade_ativa: true
+      orig: 5
+      aliq_ipi: 3.25
+      pmva_st: 25
+      cod_ncm: '48025610'
+      cod_cest: '1903100'
+      config_meta:
+        taxonomia: IMPRIMÍVEL > PAPEIS > PAPEL SULFITE IMPRIMIVEL > PAPEL SULFITE A4 075GR BRANCO 500FL
+      cont_skus: 1
+      id_categoria: 4273
+      desc_categoria: PAPEL SULFITE A4 075GR BRANCO 500FL
+      id_marca: 122
+      nome_marca: CHAMEX
+      id_classe: 10
+      desc_trib: TRIB. INTEGRAL
+      id_agrup: 14
+      codigo_agrup: I
+      desc_agrupamento: ICONE
+      user_id: 10334
+      nome_usuario: JARDEL
+      id_unidade: 22
+      ucom: PCT
+      prod_xprod: 'PAPEL A4 21CMX29,7CM 75G 500 FL CHAMEX BRANCO'
+      margem_padrao: 32.77
+      preco_tabela: 32.9
+      embalagem_venda: true
+      data_cadastro: '2002-05-31T00:00:00'
+      nome_sku: 'Papel A4 21cmx29,7cm 75g 500 Folhas Chamex Branco'
+      desc_curta: 'Pacote com 500 folhas de papel sulfite 75g branco, tamanho A4. A melhor solução para suas impressões, com garantia de qualidade profissional Chamex.'
+      desc_longa: |-
+        - Cor do Papel: Branco
+        - Gramatura: 75 g/m2 
+        - Formato: A4 (210mm x 297mm)
+        - Quantidade por pacote: 500 folhas
+
+        O melhor para uso PROFISSIONAL, o Chamex Office oferece a melhor solução para suas impressões, com garantia de qualidade profissional. Superfície resistente, corte perfeito e absorção equilibrada que permite o melhor deslizamento na impressora evitando desperdício de tinta.
+        O sulfite Chamex é produzido a partir de florestas 100% plantadas e renováveis e suas fibras são tratadas para obter o mais alto grau de brancura. Garante 99,99% não atolamento em impressoras.
+      info_extra:
+        exibir_website: true
+      esmin_padrao: 40
+      ultima_compra: '2024-06-07T00:00:00'
+      medidas:
+        - mult_sku: 1
+          peso_kg: 2.34
+          largura_m: 0.297
+          altura_m: 0.21
+          profundidade_m: 0.048
+        - mult_sku: 5
+          peso_kg: 11.5
+          largura_m: 0.32
+          altura_m: 0.227
+          profundidade_m: 0.24
+        - mult_sku: 10
+          peso_kg: 23.4
+          largura_m: 0.445
+          altura_m: 0.315
+          profundidade_m: 0.24
+        - mult_sku: 20
+          peso_kg: 46.8
+          largura_m: 0.445
+          altura_m: 0.315
+          profundidade_m: 0.5
+        - mult_sku: 50
+          peso_kg: 117
+          largura_m: 0.45
+          altura_m: 0.63
+          profundidade_m: 0.5
+        - mult_sku: 100
+          peso_kg: 230
+          largura_m: 1.07
+          altura_m: 1.07
+          profundidade_m: 1.6
+        - mult_sku: 427.4265
+          peso_kg: 983.081
+          largura_m: 1.07
+          altura_m: 1.07
+          profundidade_m: 1.6
+      id_fornec: 3278
+      nome_fornec: CHAMEX RS
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    sku_id:
+      type: integer
+    tipo_item:
+      type: integer
+    ativo:
+      type: boolean
+    referencia:
+      type: string
+    config_sku:
+      type: object
+    custo_liquido:
+      type: number
+    curva:
+      type: integer
+    icms_efetivo:
+      type: integer
+    vunit_compra:
+      type: number
+    cmv:
+      type: number
+    flags_sku:
+      type: object
+    cmp_principal:
+      type: number
+    ptotal_padrao:
+      type: number
+    id_grade:
+      type: integer
+    codigo_alfa:
+      type: string
+    desc_basica:
+      type: string
+    grade_ativa:
+      type: boolean
+    orig:
+      type: integer
+    aliq_ipi:
+      type: number
+    pmva_st:
+      type: integer
+    cod_ncm:
+      type: string
+    cod_cest:
+      type: string
+    config_meta:
+      type: object
+      properties:
+        taxonomia:
+          type: string
+    cont_skus:
+      type: integer
+    id_categoria:
+      type: integer
+    desc_categoria:
+      type: string
+    id_marca:
+      type: integer
+    nome_marca:
+      type: string
+    id_classe:
+      type: integer
+    desc_trib:
+      type: string
+    id_agrup:
+      type: integer
+    codigo_agrup:
+      type: string
+    desc_agrupamento:
+      type: string
+    user_id:
+      type: integer
+    nome_usuario:
+      type: string
+    id_unidade:
+      type: integer
+    ucom:
+      type: string
+    prod_xprod:
+      type: string
+    margem_padrao:
+      type: number
+    preco_tabela:
+      type: number
+    embalagem_venda:
+      type: boolean
+    data_cadastro:
+      type: string
+    nome_sku:
+      type: string
+    desc_curta:
+      type: string
+    desc_longa:
+      type: string
+    info_extra:
+      type: object
+      properties:
+        exibir_website:
+          type: boolean
+    esmin_padrao:
+      type: integer
+    ultima_compra:
+      type: string
+    medidas:
+      type: array
+      items:
+        type: object
+        properties:
+          mult_sku:
+            type: number
+          peso_kg:
+            type: number
+          largura_m:
+            type: number
+          altura_m:
+            type: number
+          profundidade_m:
+            type: number
+    id_fornec:
+      type: integer
+    nome_fornec:
+      type: string
