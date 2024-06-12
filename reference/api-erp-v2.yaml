@@ -4085,9 +4085,13 @@ components:
       required: false
       schema:
         type: array
-        default:
-          - id
-          - DESC
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            desc:
+              type: string   
       description: Ordenação
   securitySchemes:
     Usuário/Senha:
