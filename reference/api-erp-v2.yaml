@@ -2344,6 +2344,20 @@ paths:
         | id_empresa | int |  Ao filtrar o expo_sem_arroba é necessário informar o id_empresa | 
       tags:
         - Produtos (products)
+    put:
+      summary: Atualiza um produto
+      tags:
+        - Produtos (products)
+      responses:
+        '200':
+          description: OK
+      operationId: put-products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ProductsGetOne.yaml
+      description: Atualiza um produto
   '/purchasemappings/{id}':
     parameters:
       - schema:
