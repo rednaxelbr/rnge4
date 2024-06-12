@@ -2199,6 +2199,8 @@ paths:
         | numero_pedido | int64 | Produtos que estão nesse pedido | 
         | expo_sem_arroba | bool |  Filtra os produtos que não possuem endereço no A@ | 
         | id_empresa | int |  Ao filtrar o expo_sem_arroba é necessário informar o id_empresa | 
+        | referencia | string | Referência geralmente oriunda do fornecedor | 
+        | cross_docking | bool |  Traz somente os skus que possuem os produtos que foram definidos as embalagem como cross-docking | 
       tags:
         - Produtos (products)
     put:
