@@ -2414,6 +2414,8 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificadores único | 
         | chnfe | string | Chave de acesso com os 44 caracteres | 
         | numero | int64 | Número da NF | 
         | serie | int64 | Série da NF. Deve ser usado juntamente como o filtro "numero", explicado acima | 
