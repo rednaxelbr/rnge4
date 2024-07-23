@@ -2773,7 +2773,7 @@ paths:
         | numero_pedido | int64 | produtos que estão nesse pedido| 
         | barcode | int64 | código de barras (pode ser Produto ou Endereço de Estoque) | 
         | id_grade | int64 |  Código da grade de produto (variações) |
-        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
