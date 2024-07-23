@@ -2320,6 +2320,8 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificador único | 
         | codigo_legado | string | Código Legado de um sistema integrado ou migrado  | 
         | numero | int | Número da NF de Compra |
         | notas | string | Número das NF's de Compra separados por vírgula  | 
