@@ -2313,7 +2313,14 @@ paths:
                 items:
                   $ref: ../models/PurchaseOrder.yaml
       operationId: get-purchaseorders
-      description: Listagem de OC
+      description: |-
+        Listagem de OC
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
     post:
       summary: Cria uma nova OC
       operationId: post-purchaseorders
