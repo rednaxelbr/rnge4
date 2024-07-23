@@ -2385,7 +2385,43 @@ paths:
                 items:
                   $ref: ../models/Purchase.yaml
       operationId: get-purchases
-      description: Lista as NF de Compra
+      description: |-
+        Lista as NF de Compra
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | chnfe | string | Chave de acesso com os 44 caracteres | 
+        | numero | int64 | Número da NF | 
+        | serie | int64 | Série da NF. Deve ser usado juntamente como o filtro "numero", explicado acima | 
+        | vetor_numero | string | Vetor de números de NF | 
+        | cod_sku | int64 | Filtro por código SKU, ou seja, o produto base | 
+        | vetor_sku | string | Vetor de códigos de SKU | 
+        | dataini | string | Formato: YYYY/MM/DD, se não informar busca a data atual. Data emissão | 
+        | datafim | string | Formato: YYYY/MM/DD  | 
+        | ocultar_impostos_ok | bool | Oculta os registros onde os impostos não foram dados como "OK"  | 
+        | ocultar_precos_ok | bool | Oculta os registros onde os preços não foram dados como "OK"  | 
+        | pendente_leitura_num_serie | bool | Oculta os registros sem leitura do numero de série onde skus_ns > ns_lidos | 
+        | pendente_mapeamento | bool | Oculta os registros onde o mapeamento não ficou 100%  | 
+        | pendente_erp | bool | Oculta os registros pendente ERP. Usado em integração  | 
+        | pendente_validacao | bool | Oculta os registros pendente de validação  | 
+        | pendente_precificacao | bool | Oculta os registros pendente de precificação  | 
+        | pendente_cta_pagar | bool | Oculta os registros pendente de serem lançados no contas a pagar  | 
+        | inconsistentes | bool | Oculta os registros com inconsistências |
+        | sem_vinculo | bool | Oculta os registros sem vínculo com ordem de compra (OC)  | 
+        | id_empresa | int | ID da Empresa Destino|
+        | dest | string | Sigla Loja da Empresa Destino | 
+        | uf_emit | string | Estado (UF) das notas emitidas  | 
+        | idpessoa_fantasia_cpf_cnpj | string | Pode se filtrar pelo CPF ou CNPJ, pelo id_pessoa, nome do fornecedor, nome razao ou nome fantasia  | 
+        | id_pessoa | int64 | ID da Pessoa |
+        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | vetor_status | []int64 | Array de Status |
+        | todas | bool | Traz todos status, inclusive os status 202, 290 e 299  | 
+        | nf_acima_de_1000 | float64 | Traz todos os registros com total de valor NF acima de 1000 |
+        | sem_conf_mercad | bool | Traz os registros sem a confirmação de mercadoria |
+        | sem_conf_valores | bool | Traz os registros sem a confirmação de valores |
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       tags:
         - Entrada de NF (purchases)
     post:
