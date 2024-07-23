@@ -2320,6 +2320,19 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
+        | codigo_legado | string | Código Legado de um sistema integrado ou migrado  | 
+        | numero | int | Número da NF de Compra |
+        | notas | string | Número das NF's de Compra separados por vírgula  | 
+        | pendente_erp | bool | Oculta os registros pendente ERP. Usado em integração  | 
+        | atendidas | bool | Por padrão traz somente dos status diferente de 190-OC Atendidas. Ao ser verdadeiro traz todos | 
+        | todas | bool | Traz todos status, inclusive os status 199  | 
+        | minhas_ocs | bool | Traz as Ocs do usuário logado | 
+        | idpessoa_fantasia_cpf_cnpj | string | Pode se filtrar pelo CPF ou CNPJ, pelo id_pessoa, nome do fornecedor, nome razao ou nome fantasia  | 
+        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | nome_razao | string | Nome Razão | 
+        | vetor_status | []int64 | Array de Status |
+        | dias | int64 | Também utilizado como alterações efetuados dos último x dias, porém podendo filtrar mais campos |
+        | vetor_sku | string | Códigos de SKU's separados por vírgula |
         | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
     post:
       summary: Cria uma nova OC
