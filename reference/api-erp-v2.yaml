@@ -4014,6 +4014,14 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  '/loyaltycustomers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID da pessoa
     put:
       summary: Atualiza um Cliente Fidelidade
       tags:
@@ -4057,6 +4065,22 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Fidelidade Evento
+      description: Criar um novo ponto de fidelidade
+      tags:
+        - Pontos do Cliente (customerpoints)
+      responses:
+        '200':
+          description: OK
+      operationId: post-customerpoints
+      x-stoplight:
+        id: boaql2cfed8ub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/CustomerPoints.yaml
 components:
   schemas: {}
   parameters:
