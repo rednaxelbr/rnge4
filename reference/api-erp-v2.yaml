@@ -11,6 +11,8 @@ tags:
     description: Categorias de produtos
   - name: Clientes em Potencial (leads)
     description: Clientes em Potencial
+  - name: Clientes Fidelidade (loyaltycustomers)
+    description: Clientes Fidelidade    
   - name: Composição Sku (skuparts)
     description: Composição Sku
   - name: Conta despesa (expenseaccounts)
@@ -3977,7 +3979,8 @@ paths:
   /loyaltycustomers:
     get:
       summary: Listagem Fidelidade Cliente
-      tags: []
+      tags:
+        - Clientes Fidelidade (loyaltycustomers)
       responses:
         '200':
           description: OK
