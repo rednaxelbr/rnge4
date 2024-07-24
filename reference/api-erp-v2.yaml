@@ -12,7 +12,7 @@ tags:
   - name: Clientes em Potencial (leads)
     description: Clientes em Potencial
   - name: Clientes Fidelidade (loyaltycustomers)
-    description: Clientes Fidelidade    
+    description: Clientes Fidelidade
   - name: Composição Sku (skuparts)
     description: Composição Sku
   - name: Conta despesa (expenseaccounts)
@@ -4012,6 +4012,20 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+    put:
+      summary: Atualiza um Cliente Fidelidade
+      tags:
+        - Clientes Fidelidade (loyaltycustomers)
+      responses:
+        '200':
+          description: OK
+      operationId: put-loyaltycustomers-id
+      description: Atualiza um Cliente Fidelidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/LoyaltyCustomers.yaml
 components:
   schemas: {}
   parameters:
