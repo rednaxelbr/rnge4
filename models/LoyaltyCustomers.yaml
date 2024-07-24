@@ -1,0 +1,29 @@
+type: object
+description: Clientes da Fidelidade
+properties:
+  id:
+    type: integer
+  id_plano:
+    type: integer
+  nome_plano:
+    type: string
+  data_cadastro:
+    type: string
+  nome:
+    type: string
+  cpf_cnpj:
+    type: string
+  cliente_pj:
+    type: boolean
+  telefone:
+    type: string
+  id_pessoa:
+    type: integer
+  api_key:
+    type: string
+  email_cliente:
+    type: string
+  ativo:
+    type: boolean
+  id_chat:
+    type: integer
