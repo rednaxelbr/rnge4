@@ -3,27 +3,38 @@ description: Clientes da Fidelidade
 properties:
   id:
     type: integer
+    writeOnly: true
   id_plano:
     type: integer
+    readOnly: true
   nome_plano:
     type: string
+    readOnly: true
   data_cadastro:
     type: string
+    readOnly: true
   nome:
     type: string
+    readOnly: true
   cpf_cnpj:
     type: string
   cliente_pj:
     type: boolean
+    readOnly: true
   telefone:
     type: string
+    readOnly: true
   id_pessoa:
     type: integer
   api_key:
     type: string
+    readOnly: true
   email_cliente:
     type: string
+    readOnly: true
   ativo:
     type: boolean
+    readOnly: true
   id_chat:
     type: integer
+    readOnly: true

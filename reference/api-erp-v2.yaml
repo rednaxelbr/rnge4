@@ -3974,6 +3974,41 @@ paths:
                   description: Setor/tipo de destino
                   example: G#
       description: 'Movimenta estoque em lote, informando origem e destino.'
+  /loyaltycustomers:
+    get:
+      summary: Listagem Fidelidade Cliente
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/LoyaltyCustomers.yaml
+      operationId: get-loyaltycustomers
+      x-stoplight:
+        id: hbgy4xpvlq4jy
+      description: |-
+        Lista de clientes com fidelidade
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID da Fidelidade | 
+        | ids | []int64 | IDs da Fidelidade | 
+        | id_plano | int64 | ID do plano | 
+        | id_pessoa | int64 | ID da pessoa | 
+        | cpf_cnpj | int64 | CPF ou CNPJ | 
+        | pesquisa | string |Filtro tanto pelo nome razão, cpf ou cnpj ou id da pessoa | 
+        | data_cadastro | string | Dato do cadastro | 
+        | telefone | string | Telefone | 
+        | email | string | Email | 
+        | inativos | bool | Por padrão só traz os ativos | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   schemas: {}
   parameters:
