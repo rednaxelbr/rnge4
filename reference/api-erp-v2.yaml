@@ -65,6 +65,8 @@ tags:
     description: Categorias de Pessoas
   - name: Pessoas (persons)
     description: Cadastro de Pessoas
+  - name: Pontos do Cliente (customerpoints)
+    description: Pontos do Cliente  
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
@@ -4026,6 +4028,27 @@ paths:
           application/json:
             schema:
               $ref: ../models/LoyaltyCustomers.yaml
+  /customerpoints:
+    get:
+      summary: Listagem Ponto Cliente
+      description: |-
+        Pontos do Cliente
+      tags:
+        - Pontos do Cliente (customerpoints)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/CustomerPoints.yaml
+      operationId: get-customerpoints
+      x-stoplight:
+        id: ldx87pbj4and6
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'  
 components:
   schemas: {}
   parameters:

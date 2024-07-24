@@ -1,0 +1,37 @@
+type: object
+properties:
+  id:
+    type: integer
+  data_evento:
+    type: string
+  data_hora:
+    type: string
+  nome_plano:
+    type: string
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+  desc_evento:
+    type: string
+  pontos:
+    type: integer
+  cfg_evento:
+    type: object
+    properties:
+      gatilho:
+        type: object
+        properties:
+          id_dispositivo:
+            type: integer
+          resposta:
+            type: string
+          destino:
+            type: integer
+  tipo:
+    type: string
+  vnf:
+    type: number
+  chnfe:
+    type: string
+description: Pontos do Cliente
