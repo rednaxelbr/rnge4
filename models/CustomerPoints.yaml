@@ -1,37 +1,77 @@
 type: object
+x-stoplight:
+  id: 845ba8b45b4e9
+description: Pontos do Cliente
 properties:
   id:
     type: integer
+    x-stoplight:
+      id: qcsjju4vzqauc
   data_evento:
     type: string
+    x-stoplight:
+      id: r5itpj4vc1sxg
   data_hora:
     type: string
+    x-stoplight:
+      id: 3yqgp3wxm3yp9
   nome_plano:
     type: string
+    x-stoplight:
+      id: l7h7yp9jcodrx
+    readOnly: true
   id_pessoa:
     type: integer
+    x-stoplight:
+      id: o265chy12ce4i
   nome_razao:
     type: string
+    x-stoplight:
+      id: v3xdknuqei6r6
+    readOnly: true
   desc_evento:
     type: string
+    x-stoplight:
+      id: h0ftwg0k7pl5v
+    readOnly: true
   pontos:
     type: integer
+    x-stoplight:
+      id: ou31timfox83n
+    readOnly: true
   cfg_evento:
     type: object
+    x-stoplight:
+      id: 9xh3l9m3gcoxc
     properties:
       gatilho:
         type: object
+        x-stoplight:
+          id: 1o6vomzayqynx
         properties:
           id_dispositivo:
             type: integer
+            x-stoplight:
+              id: 5l2avasd4p8c6
           resposta:
             type: string
+            x-stoplight:
+              id: 0qu30zp8ge813
           destino:
             type: integer
+            x-stoplight:
+              id: 0hnzobuf2nrvg
   tipo:
     type: string
+    x-stoplight:
+      id: 4bs7tomlgdw06
+    readOnly: true
   vnf:
     type: number
+    x-stoplight:
+      id: dyy1kdlakrtin
+    readOnly: true
   chnfe:
     type: string
-description: Pontos do Cliente
+    x-stoplight:
+      id: gohyl0p5ixjee
