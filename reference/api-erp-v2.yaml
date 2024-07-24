@@ -66,7 +66,7 @@ tags:
   - name: Pessoas (persons)
     description: Cadastro de Pessoas
   - name: Pontos do Cliente (customerpoints)
-    description: Pontos do Cliente  
+    description: Pontos do Cliente
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
@@ -4031,8 +4031,16 @@ paths:
   /customerpoints:
     get:
       summary: Listagem Ponto Cliente
-      description: |-
-        Pontos do Cliente
+      description: |
+        Lista Pontos do Cliente
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID da Fidelidade | 
+        | ids | []int64 | IDs da Fidelidade | 
+        | id_pessoa | int64 | ID da pessoa. Filtro OBRIGATÓRIO | 
       tags:
         - Pontos do Cliente (customerpoints)
       responses:
@@ -4048,7 +4056,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'  
+        - $ref: '#/components/parameters/Sort'
 components:
   schemas: {}
   parameters:
