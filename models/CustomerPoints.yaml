@@ -75,3 +75,8 @@ properties:
     type: string
     x-stoplight:
       id: gohyl0p5ixjee
+  data_hora_ult_mod:
+    type: string
+    x-stoplight:
+      id: 8dllcbmxptxrz
+    description: 'é o rnx_timestamp, ou seja, ultima modificação desse registro'
