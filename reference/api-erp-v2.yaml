@@ -4048,7 +4048,8 @@ paths:
         | ------ | ------ | ------ |
         | id | int64 | ID da Fidelidade | 
         | ids | []int64 | IDs da Fidelidade | 
-        | id_pessoa | int64 | ID da pessoa. Filtro OBRIGATÓRIO | 
+        | id_pessoa | int64 | ID da pessoa. Filtro obrigatório ou dias_alteracao | 
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual |  
       tags:
         - Pontos do Cliente (customerpoints)
       responses:
