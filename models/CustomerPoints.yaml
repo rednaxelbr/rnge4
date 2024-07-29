@@ -15,6 +15,11 @@ properties:
     type: string
     x-stoplight:
       id: 3yqgp3wxm3yp9
+  data_hora_ult_mod:
+    type: string
+    x-stoplight:
+      id: 8dllcbmxptxrz
+    description: 'é o rnx_timestamp, ou seja, ultima modificação desse registro'
   nome_plano:
     type: string
     x-stoplight:
@@ -75,8 +80,4 @@ properties:
     type: string
     x-stoplight:
       id: gohyl0p5ixjee
-  data_hora_ult_mod:
-    type: string
-    x-stoplight:
-      id: 8dllcbmxptxrz
-    description: 'é o rnx_timestamp, ou seja, ultima modificação desse registro'
+  
