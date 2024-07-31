@@ -3582,7 +3582,18 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      description: Lista de Fornecedores
+      description: |+
+        Lista de Fornecedores
+
+        ## Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID da Fornecedor | 
+        | ids | []int64 | IDs dos Fornecedores | 
+        | pesquisa | string | Filtro tanto pelo nome razão, cpf ou cnpj ou id da pessoa | 
+        | inativos | string | Por padrão só traz fornecedores ativos | 
+
   '/suppliers/{id}':
     parameters:
       - schema:
