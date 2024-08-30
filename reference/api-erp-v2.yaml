@@ -2945,6 +2945,21 @@ paths:
         | ------ | ------ | ------ |
         | codigo_sku | int64 | código do Produto (SKU)| 
         | id_empresa | int64 | ID da empresa | 
+        | vetor_empresa | int64 | IDs das empresas | 
+        | numero_pedido | int64 | Pelo número do pedido pega os itens do sku | 
+        | capac_zerada | bool | Itens com capacidade zerada. Necessário filtro do id_empresa | 
+        | encalhado | bool | Traz os itens encalhados por empresa. Necessário filtro do id_empresa | 
+        | sem_expo | bool | Traz os itens sem exposição. Necessário filtro do id_empresa | 
+        | inativos | bool | Somente os itens inativos | 
+        | todos | bool | Traz todos os itens, mesmo os inativos | 
+        | lojas_fechadas | bool | Falso traz todas lojas abertas | 
+        | id_categoria | int64 | ID da Categoria | 
+        | categoria | string | Desc. Categoria | 
+        | id_nivel | int | Nivel da categori. Usado juntamente com o filtro do categoria | 
+        | nome_tag | string | Nome tag. Ex: Fora de Linha, Escolar, Liquidação, etc  (Tag Produto) | 
+        | ids_tags | []int64 | ids_tags do produto | 
+        | arroba_zerado | bool | A@ com estoque zerado | 
+        | somente_com_estoque_bz | bool | Somente com estoque nos endereços B-Z | 
         | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
       parameters:
         - in: query
@@ -3582,7 +3597,7 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-      description: |+
+      description: |
         Lista de Fornecedores
 
         ## Filtros disponíveis
@@ -3593,7 +3608,6 @@ paths:
         | ids | []int64 | IDs dos Fornecedores | 
         | pesquisa | string | Filtro tanto pelo nome razão, cpf ou cnpj ou id da pessoa | 
         | inativos | string | Por padrão só traz fornecedores ativos | 
-
   '/suppliers/{id}':
     parameters:
       - schema:
