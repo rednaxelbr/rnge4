@@ -1,0 +1,37 @@
+type: object
+x-examples:
+  Example 1:
+    id: 662776782
+    id_empresa: 1
+    nome_reduzido: VOLUNTARIOS
+    codigo_sku: 133
+    prod_xprod: MATRIZ ROXA HECTOGRAFICO STENCIL PARA 250 COPIAS PRINTERS
+    soma_pedidos: 150
+    numero_pedido: 1624428
+    distrib_id: 6581
+    refill_id: 142030
+properties:
+  id:
+    type: integer
+  id_empresa:
+    type: integer
+  nome_reduzido:
+    type: string
+  codigo_sku:
+    type: integer
+  prod_xprod:
+    type: string
+  soma_pedidos:
+    type: integer
+  numero_pedido:
+    type: integer
+  distrib_id:
+    type: integer
+  refill_id:
+    type: integer
+  status_ped:
+    type: integer
+    x-stoplight:
+      id: j2cp69add3n8c
+description: Trânsito SKU
+title: ''
