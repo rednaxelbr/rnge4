@@ -87,6 +87,8 @@ tags:
     description: Cadastro de Serviços para NFSe
   - name: Sku Reserva Prédio (skureservations)
     description: Lista dos Sku's Reserva Prédio
+  - name: Sku Trânsito (skutransits)
+    description: Lista dos Sku's em trânsito  
   - name: Status (status)
     description: Versão API
   - name: Timelines (timelines)
@@ -4107,6 +4109,38 @@ paths:
           application/json:
             schema:
               $ref: ../models/CustomerPoints.yaml
+  /skutransits:
+    get:
+      summary: Listagem de SKU em trânsito
+      description: |
+        Lista de SKU em trânsito
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID Trânsito | 
+        | codigo_sku | int64 | Código SKU | 
+        | id_empresa | int64 | ID da empresa | 
+        | numero_pedido | int64 | Itens do pedido | 
+        | distrib_id | int64 | Itens do pedido |  
+        | vetor_status | []int64 | Array de status do pedido |  
+      tags:
+        - Sku Trânsito (skutransits)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SkuTransits.yaml
+      operationId: get-skutransits
+      x-stoplight:
+        id: ldx87pbj4and6
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   schemas: {}
   parameters:
