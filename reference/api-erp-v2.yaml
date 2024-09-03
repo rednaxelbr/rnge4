@@ -88,7 +88,7 @@ tags:
   - name: Sku Reserva Prédio (skureservations)
     description: Lista dos Sku's Reserva Prédio
   - name: Sku Trânsito (skutransits)
-    description: Lista dos Sku's em trânsito  
+    description: Lista dos Sku's em trânsito
   - name: Status (status)
     description: Versão API
   - name: Timelines (timelines)
@@ -817,6 +817,52 @@ paths:
         in: path
         description: ID que representa a configuração do sku x empresa
         required: true
+  /customerpoints:
+    get:
+      summary: Listagem Ponto Cliente
+      description: |
+        Lista Pontos do Cliente
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID da Fidelidade | 
+        | ids | []int64 | IDs da Fidelidade | 
+        | id_pessoa | int64 | ID da pessoa. Filtro obrigatório ou dias_alteracao | 
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual |  
+      tags:
+        - Pontos do Cliente (customerpoints)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/CustomerPoints.yaml
+      operationId: get-customerpoints
+      x-stoplight:
+        id: ldx87pbj4and6
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Fidelidade Evento
+      description: Criar um novo ponto de fidelidade
+      tags:
+        - Pontos do Cliente (customerpoints)
+      responses:
+        '200':
+          description: OK
+      operationId: post-customerpoints
+      x-stoplight:
+        id: boaql2cfed8ub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/CustomerPoints.yaml
   /deals:
     post:
       summary: Criando CRM Oportunidade
@@ -4063,52 +4109,6 @@ paths:
           application/json:
             schema:
               $ref: ../models/LoyaltyCustomers.yaml
-  /customerpoints:
-    get:
-      summary: Listagem Ponto Cliente
-      description: |
-        Lista Pontos do Cliente
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id | int64 | ID da Fidelidade | 
-        | ids | []int64 | IDs da Fidelidade | 
-        | id_pessoa | int64 | ID da pessoa. Filtro obrigatório ou dias_alteracao | 
-        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual |  
-      tags:
-        - Pontos do Cliente (customerpoints)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/CustomerPoints.yaml
-      operationId: get-customerpoints
-      x-stoplight:
-        id: ldx87pbj4and6
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-    post:
-      summary: Fidelidade Evento
-      description: Criar um novo ponto de fidelidade
-      tags:
-        - Pontos do Cliente (customerpoints)
-      responses:
-        '200':
-          description: OK
-      operationId: post-customerpoints
-      x-stoplight:
-        id: boaql2cfed8ub
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/CustomerPoints.yaml
   /skutransits:
     get:
       summary: Listagem de SKU em trânsito
