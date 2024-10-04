@@ -3436,7 +3436,7 @@ paths:
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
         | id_estoque | int64 | ID do Estoque | 
-        | cod_sku | int64 | Códifo do Sku | 
+        | cod_sku | int64 | Código do Sku | 
         | id_predio | int64 | ID do Prédio | 
         | letras | string | Letras do Endereço do Estoque | 
         | tipo_virtual | string | Tipo Virtual | 
