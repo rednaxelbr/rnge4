@@ -3447,7 +3447,7 @@ paths:
         | itens_pedido | string | Lista o kardex dos itens constantes desse pedido. Ver quais endereços uma separação em andamento provavelmente vai usar (itens_pedido) | 
         | documento | string | Comentário importante de uma ação ocorrida no estoque. Ex: "RN 12345" | 
 
-        Observações: Possui filtros obrigatórios, podendo passar um ou outro, porém se passar o "dataini" igual ao "datafim" juntamente com o "documento" é possível também filtrar sem a necessidade por exemplo de passar o "cod_sku"
+        Observações: Possui filtros obrigatórios, podendo passar um ou outro, porém se passar o "dataini" igual ao "datafim" juntamente com o "documento" é possível também filtrar sem a necessidade, por exemplo, de passar o "cod_sku"
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
