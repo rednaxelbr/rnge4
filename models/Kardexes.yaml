@@ -1,0 +1,48 @@
+type: object
+x-examples:
+  Example 1:
+    id: 130304428
+    id_estoque: 2501000108874
+    end_letras: A@A-0887
+    codigo_sku: 10887
+    entrada: 2
+    saldo: 467
+    nome_usuario: JARDEL
+    id_predio: 5
+    documento: RN 43952
+    info_kardex: {}
+    data_hora: '2024-10-03T15:02:21-03:00'
+description: Histórico dos estoques
+properties:
+  id:
+    type: integer
+  id_estoque:
+    type: integer
+  end_letras:
+    type: string
+  codigo_sku:
+    type: integer
+  entrada:
+    type: integer
+  saldo:
+    type: integer
+  nome_usuario:
+    type: string
+  id_predio:
+    type: integer
+  documento:
+    type: string
+  data_hora:
+    type: string
+  tipo:
+    type: string
+    x-stoplight:
+      id: f45wv1zvhb97n
+  numero_pedido:
+    type: integer
+    x-stoplight:
+      id: hd3i3fzzq8u49
+  url_cupom:
+    type: string
+    x-stoplight:
+      id: 629l22iewkq54

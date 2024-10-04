@@ -29,6 +29,8 @@ tags:
     description: Entrada de NF de Compra
   - name: Estoque (skustocks)
     description: Controle de Estoque
+  - name: Kardexes (kardexes)
+    description: Histórico Estoque (kardex)
   - name: Formas de Quitação (paymentcodes)
     description: Cadastro das formas de quitação
   - name: Fornecedores (suppliers)
@@ -3420,6 +3422,47 @@ paths:
       description: Exclui um endereço de estoque. Ele precisa estar vazio (quantidade zerada) para poder ser excluído.
       tags:
         - Estoque (skustocks)
+  /kardexes:
+    get:
+      summary: Listando histórico do estoque
+      tags:
+        - Kardexes (kardexes)
+      operationId: get-kardexes
+      description: |-
+        Histórico do estoque
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_estoque | int64 | ID do Estoque | 
+        | cod_sku | int64 | Códifo do Sku | 
+        | id_predio | int64 | ID do Prédio | 
+        | letras | string | Letras do Endereço do Estoque | 
+        | tipo_virtual | string | Tipo Virtual | 
+        | id_categoria | int64 | ID Categoria | 
+        | dataini | string | Data Inicial | 
+        | datafim | string | Data Final | 
+        | numero_pedido | string | Movimentações dos itens do pedido. Ver quais endereços uma separação já feita efetivamente usou (numero_pedido) | 
+        | itens_pedido | string | Lista o kardex dos itens constantes desse pedido. Ver quais endereços uma separação em andamento provavelmente vai usar (itens_pedido) | 
+        | documento | string | Comentário importante de uma ação ocorrida no estoque. Ex: "RN 12345" | 
+
+        Observações: Possui filtros obrigatórios, podendo passar um ou outro, porém se passar o "dataini" igual ao "datafim" juntamente com o "documento" é possível também filtrar sem a necessidade por exemplo de passar o "cod_sku"
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Kardexes.yaml
+      x-stoplight:
+        id: kotgg18jpwmvh
   /skuparts:
     get:
       summary: Listando Composição SKU
