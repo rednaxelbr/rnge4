@@ -1,0 +1,52 @@
+type: object
+properties:
+  id:
+    type: integer
+  data_resumo:
+    type: string
+  id_predio:
+    type: integer
+  desc_predio:
+    type: string
+  codigo_sku:
+    type: integer
+  desc_sku:
+    type: string
+  quant_total:
+    type: integer
+  quant_setor_a:
+    type: integer
+  com_estoque:
+    type: boolean
+  info_resumo:
+    type: object
+    properties:
+      cmm:
+        type: number
+      cmv:
+        type: integer
+      cliq:
+        type: number
+      vcompra:
+        type: integer
+  data_hora:
+    type: string
+x-examples:
+  Example 1:
+    id: 1474280077
+    data_resumo: '2024-10-07'
+    id_predio: 52
+    desc_predio: NILO_PECANHA
+    codigo_sku: 696
+    desc_sku: ATILHO MAMUTH AMARELO N-18 1000G 1200 UN
+    quant_total: 1
+    quant_setor_a: 1
+    com_estoque: true
+    info_resumo:
+      cmm: 1.28
+      cmv: 15
+      cliq: 15.4893
+      vcompra: 15
+    data_hora: '2024-10-07T00:05:23-03:00'
+title: ''
+description: Posição de Estoque
