@@ -29,14 +29,14 @@ tags:
     description: Entrada de NF de Compra
   - name: Estoque (skustocks)
     description: Controle de Estoque
-  - name: Kardexes (kardexes)
-    description: Histórico Estoque (kardex)
   - name: Formas de Quitação (paymentcodes)
     description: Cadastro das formas de quitação
   - name: Fornecedores (suppliers)
     description: Cadastro de Fornecedores
   - name: Fotos de Produtos (productimages)
     description: Fotos de Produtos
+  - name: Kardexes (kardexes)
+    description: Histórico Estoque (kardex)  
   - name: Listas de Preços (pricelists)
     description: Listas de Preços
   - name: Login
@@ -69,6 +69,8 @@ tags:
     description: Cadastro de Pessoas
   - name: Pontos do Cliente (customerpoints)
     description: Pontos do Cliente
+  - name: Posição Estoque (stockdailysummaries)
+    description: Posição de estoque
   - name: Prédios de Estoque
     description: Cadastro dos prédios de estoque
   - name: Produtos (products)
@@ -3633,6 +3635,39 @@ paths:
           application/json:
             schema:
               $ref: ../models/SkuGrids.yaml
+  /stockdailysummaries:
+    get:
+      summary: Posição de estoque
+      tags:
+        - Posição Estoque (stockdailysummaries)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/StockDailySummaries.yaml
+      operationId: get-stockdailysummaries
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: |-
+        Lista de Posição de Estoque
+
+        ## Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | data_resumo | string | Data | 
+        | id_predio | int64 | ID do Prédio | 
+        | codigo_sku | int64 | Código Sku | 
+        | tipo_valor | string | Tipo Valor | 
+        | ocultar_estoque_zerado | bool | Traz somente os com estoque |
+      x-stoplight:
+        id: au9jxmogwiypc
   /stocksummaries:
     get:
       summary: Consulta estoque de SKU por prédio
