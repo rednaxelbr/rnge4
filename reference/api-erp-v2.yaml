@@ -2677,7 +2677,8 @@ paths:
         | status_max | int | Status Final  | 
         | numero_nf | int | Número NF | 
         | conferir | bool | Conferir. status (300 e 320) do usuário logado ou status = 310 | 
-        | inativos | bool | Por padrão traz somente os ativos, ou seja, status < 399 | 
+        | inativos | bool | Por padrão traz somente os ativos, ou seja, status < 399 |
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
     post:
       summary: Criar uma RN
       tags:
