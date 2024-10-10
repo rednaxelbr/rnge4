@@ -36,7 +36,7 @@ tags:
   - name: Fotos de Produtos (productimages)
     description: Fotos de Produtos
   - name: Kardexes (kardexes)
-    description: Histórico Estoque (kardex)  
+    description: Histórico Estoque (kardex)
   - name: Listas de Preços (pricelists)
     description: Listas de Preços
   - name: Login
@@ -4145,7 +4145,7 @@ paths:
       operationId: get-loyaltycustomers
       x-stoplight:
         id: hbgy4xpvlq4jy
-      description: |-
+      description: |
         Lista de clientes com fidelidade
 
         ### Filtros disponíveis
@@ -4162,6 +4162,7 @@ paths:
         | telefone | string | Telefone | 
         | email | string | Email | 
         | inativos | bool | Por padrão só traz os ativos | 
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
