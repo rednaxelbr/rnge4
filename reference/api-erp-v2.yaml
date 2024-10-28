@@ -4221,6 +4221,43 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  /purchasecosts:
+    get:
+      summary: Validação de Impostos
+      tags:
+        - Entrada de NF (purchases)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Purchase.yaml
+      operationId: get-purchasecosts
+      x-stoplight:
+        id: 5xgfnxphowc7f
+      description: Lista as NF de Compra para validação de impostos
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: numero
+          description: Nº da NF de Compra
+        - schema:
+            type: string
+          in: query
+          name: pesquisa
+          description: Nome do Emitente
+        - schema:
+            type: boolean
+          in: query
+          name: todas
+          description: 'Exibe status 290, 298 e 299'
+        - schema:
+            type: boolean
+          in: query
+          name: marcador_validacao
+          description: Somente NF pendentes de validação
 components:
   schemas: {}
   parameters:
