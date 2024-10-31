@@ -1,0 +1,94 @@
+title: Tag ICMS do XML
+x-stoplight:
+  id: lrrj8tefqsgh8
+type: object
+properties:
+  orig:
+    type: string
+    x-stoplight:
+      id: nwlpa5ftxzjoq
+  CST:
+    type: string
+    x-stoplight:
+      id: js6hakkhgkizo
+  modBC:
+    type: string
+    x-stoplight:
+      id: 1cp96v6st9ynb
+  pRedBC:
+    type: string
+    x-stoplight:
+      id: ri80bousrcluy
+  vBC:
+    type: string
+    x-stoplight:
+      id: 9mf3qsg06hijb
+  pICMS:
+    type: string
+    x-stoplight:
+      id: 40uhk5ukfkw26
+  vICMS:
+    type: string
+    x-stoplight:
+      id: zas7mjypxo3vb
+  vICMSOp:
+    type: string
+    x-stoplight:
+      id: ypsu8kaihy38s
+  vICMSDif:
+    type: string
+    x-stoplight:
+      id: sjwbn2tf2mo30
+  modBCST:
+    type: string
+    x-stoplight:
+      id: 0jjhuu8trbf93
+  pMVAST:
+    type: string
+    x-stoplight:
+      id: ovutqqw37oajs
+  pRedBCST:
+    type: string
+    x-stoplight:
+      id: wv23v45shb0tw
+  pICMSST:
+    type: string
+    x-stoplight:
+      id: swk2ep09fo1ev
+  vICMSST:
+    type: string
+    x-stoplight:
+      id: jo3vpilnwfzd5
+  vICMSSTRet:
+    type: string
+    x-stoplight:
+      id: t1nbxwrkzyok0
+  vBCSTRet:
+    type: string
+    x-stoplight:
+      id: 0rqrmh4eco2rb
+  pST:
+    type: string
+    x-stoplight:
+      id: d2cdgogs528wl
+  pRedBCEfet:
+    type: string
+    x-stoplight:
+      id: ygpaftc73a0l7
+  vBCEfet:
+    type: string
+    x-stoplight:
+      id: m1u55npzu4am1
+  pICMSEfet:
+    type: string
+    x-stoplight:
+      id: y6xhhr0c4m4px
+  vICMSEfet:
+    type: string
+    x-stoplight:
+      id: k7ojduifnyviz
+  vICMSSubstituto:
+    type: string
+    x-stoplight:
+      id: c6boalpik09f1
+description: Tag ICMS do JSON

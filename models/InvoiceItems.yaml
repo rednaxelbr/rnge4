@@ -21,6 +21,8 @@ x-examples:
     config_item:
       vmc: 1.86
       pmc: 37.31
+required:
+  - fiscdoc_id
 properties:
   fiscdoc_id:
     type: integer
@@ -121,5 +123,7 @@ properties:
     type: number
     x-stoplight:
       id: kqxzw2f6n93fs
-required:
-  - fiscdoc_id
+  icms:
+    $ref: ./TagIcms.yaml
+    x-stoplight:
+      id: puu0hoos3bw4e
