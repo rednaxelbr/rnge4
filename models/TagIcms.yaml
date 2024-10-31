@@ -1,4 +1,4 @@
-title: Tag ICMS do XML
+title: Tag ICMS
 x-stoplight:
   id: lrrj8tefqsgh8
 type: object
@@ -91,4 +91,4 @@ properties:
     type: string
     x-stoplight:
       id: c6boalpik09f1
-description: Tag ICMS do JSON
+description: ''
