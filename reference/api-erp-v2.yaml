@@ -3014,6 +3014,8 @@ paths:
         | arroba_zerado | bool | A@ com estoque zerado | 
         | somente_com_estoque_bz | bool | Somente com estoque nos endereços B-Z | 
         | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
+        | sku_ini | int64 | código Inicial do SKU. Geralmente usado na exportação para limite de 10.000 registros | 
+        | sku_fim | int64 | código Final do SKU. Geralmente usado na exportação para limite de 10.000 registros | 
       parameters:
         - in: query
           name: filter
