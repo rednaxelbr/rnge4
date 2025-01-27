@@ -1604,6 +1604,17 @@ paths:
         - `ids_empresas`: integer[]
         - `id_destino`: integer
         - `meus_pedidos`: boolean
+        - `cpf_cnpj`: integer
+        - `numero_pedido` integer
+        - `aplicativo` string
+        - `num_nf`: string
+        - `cancelados`: boolean
+        - `finalizados`: boolean
+        - `id_pessoa`: integer
+        - `id_categoriaa`: integer
+        - `status_min`: integer
+        - `status_max`: integer
+        - `etapas`: integer
         - `dias`: integer
         - `ids_tags`: integer[] . (Pode-se utilizar o filtro "dias" (referente nº de dias de alteração))
       parameters:
