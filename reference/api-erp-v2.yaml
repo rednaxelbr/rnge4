@@ -1605,6 +1605,7 @@ paths:
         - `id_destino`: integer
         - `meus_pedidos`: boolean
         - `dias`: integer
+        - `ids_tags`: integer[]
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
