@@ -1599,13 +1599,13 @@ paths:
       tags:
         - Pedidos (orders)
       summary: Listando pedidos
-      description: |-
+      description: |
         Lista de pedidos. Filtros:
         - `ids_empresas`: integer[]
         - `id_destino`: integer
         - `meus_pedidos`: boolean
         - `dias`: integer
-        - `ids_tags`: integer[]
+        - `ids_tags`: integer[] . (Pode-se utilizar o filtro "dias" (referente nº de dias de alteração))
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
