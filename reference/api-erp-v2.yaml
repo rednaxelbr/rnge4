@@ -1610,18 +1610,34 @@ paths:
         - `num_nf`: string
         - `cancelados`: boolean
         - `finalizados`: boolean
+        - `meus_pedidos`: boolean
+        - `entregas_meu_predio`: boolean
+        - `pendentes_entrega`: boolean
+        - `requer_liberacao`: boolean
+        - `reab_gondola`: boolean
         - `id_pessoa`: integer
         - `id_distrib`: integer
         - `id_refil`: integer
         - `id_romaneio`: integer
-        - `id_categoriaa`: integer
+        - `id_categoria`: integer
+        - `id_vendedoro`: integer
         - `id_canal`: integer
         - `status_min`: integer
         - `status_max`: integer
         - `id_externo`: integer
         - `vetor_id_externo`: []integer
-        - `num_recibo`: stringr
+        - `num_recibo`: string
+        - `nome_razao`: string
+        - `desc_tipo_ent`: string
+        - `chnfe_gerada`: string
         - `etapas`: integer
+        - `vetor_status`: []integer
+        - `dataini`: string
+        - `datafim`: string
+        - `transportadora`: string
+        - `mktplace_codigo`: string
+        - `vetor_operacao`: string
+        - `filtrar_por`: string
         - `dias`: integer
         - `ids_tags`: integer[] . (Pode-se utilizar o filtro "dias" (referente nº de dias de alteração))
       parameters:
