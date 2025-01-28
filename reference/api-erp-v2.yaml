@@ -1611,9 +1611,16 @@ paths:
         - `cancelados`: boolean
         - `finalizados`: boolean
         - `id_pessoa`: integer
+        - `id_distrib`: integer
+        - `id_refil`: integer
+        - `id_romaneio`: integer
         - `id_categoriaa`: integer
+        - `id_canal`: integer
         - `status_min`: integer
         - `status_max`: integer
+        - `id_externo`: integer
+        - `vetor_id_externo`: []integer
+        - `num_recibo`: stringr
         - `etapas`: integer
         - `dias`: integer
         - `ids_tags`: integer[] . (Pode-se utilizar o filtro "dias" (referente nº de dias de alteração))
