@@ -3262,7 +3262,7 @@ paths:
         | id_vale | int64 | ID do Vale | 
         | id_deal | int64 | ID da Oportunidade | 
         | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
-        | tipo | string | Em conjunto com o filtro dias_alteracao, podendo ser tipo: PEDIDO, RASTREAMENTO, OPORTUNIDADE, GRADE, BOLETO, PIX ou PESSOA  | 
+        | tipo | string | Em conjunto com o filtro dias_alteracao, podendo ser tipo: PEDIDO, RASTREAMENTO, OPORTUNIDADE, GRADE, BOLETO, PIX, COMPRA, ORDEMCOMPRA, LINK ou PESSOA  | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
