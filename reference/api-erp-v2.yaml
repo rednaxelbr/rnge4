@@ -2652,7 +2652,7 @@ paths:
         | datafim | string | Data Final | 
         | dias_alteracao | int | Ex: 0 = dados do dia, 1 = De ontem até hoje | 
 
-        Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório
+        Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório o filtro, caso contrário não traz os dado
   /prospects:
     post:
       summary: Cria uma nova Prospecção (Experimente)
