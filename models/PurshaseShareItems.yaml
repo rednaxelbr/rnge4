@@ -1,0 +1,117 @@
+type: object
+x-stoplight:
+  id: 49b6dde5fd068
+description: Rateio Parcelas de Compras (Com base no Contas Pagar)
+properties:
+  tipo:
+    type: string
+    x-stoplight:
+      id: 5pb56hbgwhowk
+  id:
+    type: integer
+    x-stoplight:
+      id: qocmnkt2pl4zj
+  cnpj_fornec_fk:
+    type: integer
+    x-stoplight:
+      id: ul67sthik2qfw
+  data_vencto:
+    type: date
+    x-stoplight:
+      id: xjm828796xm8v
+  id_forma:
+    type: integer
+    x-stoplight:
+      id: dala38ik8b4ba
+  sigla_forma:
+    type: string
+    x-stoplight:
+      id: n8p5qjb1z2pj2
+  desc_forma:
+    type: string
+    x-stoplight:
+      id: r0tidac9mh4c1
+  valor_parcela:
+    type: number
+    x-stoplight:
+      id: h4ltnos6vp27h
+  tpag:
+    type: integer
+    x-stoplight:
+      id: xiuqx1k91si1g
+  quitado:
+    type: boolean
+    x-stoplight:
+      id: qzba37t24vvyw
+  data_alteracao:
+    type: string
+    x-stoplight:
+      id: qjzl0uqc2f7oc
+  id_compra:
+    type: integer
+    x-stoplight:
+      id: pz2t28da0pl8z
+  id_fornec:
+    type: integer
+    x-stoplight:
+      id: txotmjza3pdgs
+  nome_fornec:
+    type: string
+    x-stoplight:
+      id: fojnmpm481jmi
+  id_pessoa:
+    type: integer
+    x-stoplight:
+      id: cb2y2cfdq7gzf
+  nome_emitente:
+    type: string
+    x-stoplight:
+      id: faey179v95q3g
+  data_emissao:
+    type: date
+    x-stoplight:
+      id: irl0g97icefsy
+  numero:
+    type: integer
+    x-stoplight:
+      id: zdqim2qrppu2h
+  comp_id:
+    type: integer
+    x-stoplight:
+      id: m61qvrqjykbhf
+  dest:
+    type: string
+    x-stoplight:
+      id: rnz6v4wi4ife8
+  total_vnf:
+    type: number
+    x-stoplight:
+      id: e9bjlb1w51vnv
+  tot_item:
+    type: number
+    x-stoplight:
+      id: gb8pl7de81qvo
+  codigo_sku:
+    type: integer
+    x-stoplight:
+      id: l26693mfonp73
+  quant_sku:
+    type: number
+    x-stoplight:
+      id: 3mzci3bhv17tt
+  qcom:
+    type: number
+    x-stoplight:
+      id: 7yh9x05xjpfir
+  cfop:
+    type: string
+    x-stoplight:
+      id: plque6kk5vakc
+  share_item:
+    type: number
+    x-stoplight:
+      id: awgz07pkycuzz
+  vlr_share:
+    type: number
+    x-stoplight:
+      id: w6euba4hjff5q

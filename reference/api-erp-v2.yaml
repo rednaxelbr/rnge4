@@ -2620,6 +2620,39 @@ paths:
                 $ref: ../models/PurchaseItem.yaml
       operationId: get-purchaseitems-id
       description: 'Consulta um item de uma NF. Se ele estiver mapeado, "codigo_sku" está presente. Se ele tiver desdobramentos, o array "desdobramento" estará preenchido.'
+  /purchaseshareitems:
+    get:
+      summary: Rateio de Verbas Compra
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PurchaseShareItems.yaml
+      operationId: get-purchaseshareitems
+      x-stoplight:
+        id: 4udtb3ctvrza0
+      description: |
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificadores único | 
+        | id_compra | int64 | ID da Compra | 
+        | numero | int | Número da NF | 
+        | id_fornec | int64 | ID do fornecedor | 
+        | codigo_sku | int64 | Código SKU | 
+        | descricao | int64 | Descrição do produto (xprod) | 
+        | dataini | string | Data Inicial | 
+        | datafim | string | Data Final | 
+        | dias_alteracao | int | Ex: 0 = dados do dia, 1 = De ontem até hoje | 
+
+        Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório
   /prospects:
     post:
       summary: Cria uma nova Prospecção (Experimente)
