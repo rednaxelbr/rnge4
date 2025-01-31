@@ -1,0 +1,59 @@
+type: object
+description: Rateio Parcelas de Compras (Com base no Contas Pagar)
+properties:
+  tipo:
+    type: string
+  id:
+    type: integer
+  cnpj_fornec_fk:
+    type: integer
+  data_vencto:
+    type: date
+  id_forma:
+    type: integer
+  sigla_forma:
+    type: string
+  desc_forma:
+    type: string
+  valor_parcela:
+    type: number
+  tpag:
+    type: integer
+  quitado:
+    type: boolean
+  data_alteracao:
+    type: string
+  id_compra:
+    type: integer
+  id_fornec:
+    type: integer
+  nome_fornec:
+    type: string
+  id_pessoa:
+    type: integer
+  nome_emitente:
+    type: string
+  data_emissao:
+    type: date
+  numero:
+    type: integer
+  comp_id:
+    type: integer
+  dest:
+    type: string
+  total_vnf:
+    type: number
+  tot_item:
+    type: number
+  codigo_sku:
+    type: integer
+  quant_sku:
+    type: number
+  qcom:
+    type: number
+  cfop:
+    type: string
+  share_item:
+    type: number
+  vlr_share:
+    type: number
