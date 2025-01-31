@@ -83,6 +83,8 @@ tags:
     description: Cadastro de SKUs
   - name: Prospectos (prospects)
     description: Cadastro de Prospecção
+  - name: Rateio de Compras (purchaseshareitems)
+    description: Rateio de Compras (Verba)
   - name: Recepção de Nota (receptions)
     description: Recepção de Nota (RN)
   - name: Recursos Humanos (humanresources)
@@ -2629,9 +2631,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ../models/PurchaseShareItems.yaml
+                $ref: ../models-/PurshaseShareItems.yaml
       operationId: get-purchaseshareitems
       x-stoplight:
         id: 4udtb3ctvrza0
@@ -2653,7 +2653,7 @@ paths:
 
         Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório o filtro, caso contrário não traz os dado
       tags:
-        - PurshaseShareItems (purchasesahreitems)
+        - Rateio de Compras (purchaseshareitems)
   /prospects:
     post:
       summary: Cria uma nova Prospecção (Experimente)
