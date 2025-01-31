@@ -1,6 +1,4 @@
 type: object
-x-stoplight:
-  id: 49b6dde5fd068
 description: Rateio Parcelas de Compras (Com base no Contas Pagar)
 x-examples: null
 properties:

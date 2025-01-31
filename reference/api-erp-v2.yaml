@@ -2625,16 +2625,16 @@ paths:
   /purchaseshareitems:
     get:
       summary: Rateio de Verbas Compra
+      tags:
+        - Rateio de Compras (purchaseshareitems)
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ../models-/PurshaseShareItems.yaml
+                $ref: ../models/PurshaseShareItems.yaml
       operationId: get-purchaseshareitems
-      x-stoplight:
-        id: 4udtb3ctvrza0
       description: |
         ### Filtros disponíveis
 
@@ -2652,8 +2652,6 @@ paths:
         | dias_alteracao | int | Ex: 0 = dados do dia, 1 = De ontem até hoje | 
 
         Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório o filtro, caso contrário não traz os dado
-      tags:
-        - Rateio de Compras (purchaseshareitems)
   /prospects:
     post:
       summary: Cria uma nova Prospecção (Experimente)
