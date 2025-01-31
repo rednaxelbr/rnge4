@@ -2652,6 +2652,8 @@ paths:
         | dataini | string | Data Inicial | 
         | datafim | string | Data Final | 
         | dias_alteracao | int | Ex: 0 = dados do dia, 1 = De ontem até hoje | 
+        | filtrar_por | string | Podendo selecionar por "data_alteracao" ou "data_vencimento" (padrão) | 
+
 
         Os campos id_compra e/ou id_fornec e/ou codigo_sku e/ou descricao é obrigatório o filtro, caso contrário não traz os dado
   /prospects:
