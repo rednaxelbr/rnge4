@@ -2633,7 +2633,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/PurshaseShareItems.yaml
+                type: array
+                items:
+                  $ref: ../models/PurchaseOrder.yaml
       operationId: get-purchaseshareitems
       description: |
         ### Filtros disponíveis

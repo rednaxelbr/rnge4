@@ -9,7 +9,7 @@ properties:
   cnpj_fornec_fk:
     type: integer
   data_vencto:
-    type: date
+    type: string
   id_forma:
     type: integer
   sigla_forma:
