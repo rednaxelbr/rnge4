@@ -3076,7 +3076,27 @@ paths:
           application/json:
             schema:
               $ref: ../models/SKU-Configs.yaml
-      description: 'Cria um SKUConfig '
+      description: |-
+        Cria um SKUConfig 
+
+        Passando o modo "Ajuste" é possível editar a capacidade do ZZ em massa.
+        Campo: Ajust
+        Parâmetros: lojas, capac_zz e expo_min
+
+        Exemplo: O Objetivo é alterar a capacidade do Z para 999999 de todos os SKU ativos com Expo das lojas 40, 21, 30, 43, 1 (VLT) e 47.
+        Caso não tenha a capacidade o sistema cria automaticamente.
+
+        curl -g -X POST 'https://rnge.com.br:8091/v2/skuconfigs' -d '{"ajuste":{"lojas": [40, 21, 30, 43, 1, 47], "capac_zz":999999, "expo_min":1}}' --user 10334:xxx | jq .
+        Tempo: 0:02:15
+        {
+          "contador": 1064,
+          "erros": 93,
+          "ult_erro": "pq: Acesso negado 3425 (Emp 30): SKU Configuração - Editar Capacidade ZZ"
+        }
+
+        Obs.: Quando apresentar erro, por exemplo por não ter acesso, é informado no 
+        campo "ult_erro", e caso ocorrer tudo certo, é informado a quantidade 
+        de registros alterados na coluna "contador"
       tags:
         - Produtos (skuconfigs)
     parameters: []
