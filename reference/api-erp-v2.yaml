@@ -3095,7 +3095,7 @@ paths:
         }
 
         Obs.: Quando apresentar erro, por exemplo por não ter acesso, é informado no 
-        campo "ult_erro", e caso ocorrer tudo certo, é informado a quantidade 
+        campo "ult_erro", e os que deram certo é informado a quantidade 
         de registros alterados na coluna "contador"
       tags:
         - Produtos (skuconfigs)
