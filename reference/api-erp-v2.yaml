@@ -189,7 +189,7 @@ paths:
         - Endereços de pessoas (addresses)
   /addresses:
     get:
-      summary: Listando endereços de uma pessoa
+      summary: Listando endereços de uma pessoa.
       tags:
         - Endereços de pessoas (addresses)
       responses:
