@@ -1,0 +1,37 @@
+title: ScmProjectionLogs
+x-stoplight:
+  id: j829mk8kugicu
+type: object
+description: SCM Log das Projeções
+properties:
+  id:
+    type: integer
+  codigo_sku:
+    type: integer
+  id_empresa:
+    type: integer
+  nova_sazo:
+    type: integer
+  nova_camp:
+    type: integer
+  nova_expo:
+    type: integer
+  novo_esmin:
+    type: integer
+  novo_cmmf_quantidade:
+    type: number
+  novo_cmmf_validade:
+    type: string
+  info_scmlog:
+    type: jsonb
+  comp_id:
+    type: integer
+  sku_id:
+    type: integer
+  nome_reduzido:
+    type: string
+  data_hora:
+    type: string
+  nome_usuario:
+    type: string
+
