@@ -6,7 +6,7 @@ servers:
     description: Produção
 tags:
   - name: Agrupamentos (skugroups)
-    description: Agrupamentos Comerciais.
+    description: Agrupamentos Comerciais
   - name: Categorias (categories)
     description: Categorias de produtos
   - name: Clientes em Potencial (leads)
