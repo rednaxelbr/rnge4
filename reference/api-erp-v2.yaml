@@ -89,6 +89,8 @@ tags:
     description: Recepção de Nota (RN)
   - name: Recursos Humanos (humanresources)
     description: Recursos Humanos (RH)
+  - name: SCM Log Projeções (scmprojectionlogs)
+    description: SCM Log das Projeções
   - name: Serviços (services)
     description: Cadastro de Serviços para NFSe
   - name: Sku Reserva Prédio (skureservations)
@@ -2865,6 +2867,39 @@ paths:
         in: path
         required: true
         description: Número do Pedido
+  /scmprojectionlogs:
+    get:
+      summary: SCM Log das Projeções
+      tags:
+        - SCM Log Projeções (scmprojectionlogs)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/ScmProjectionLogs.yaml
+      operationId: get-scmprojectionlogs
+      description: |
+        Logs das Projeções do SCM
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int | ID - Identificador Unico |
+        | ids | []int | Array de ID's - Identificador Unico |
+        | codigo_sku | int | Pesquisa pelo código do sku |
+        | id_empresa | int | ID da Empresa |
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
+        | data_ini | string | Data Inicial da última alteração |
+        | data_fim | string | Data Final da última alteração |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
   /services:
     get:
       summary: Listagem de serviços

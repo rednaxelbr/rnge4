@@ -23,7 +23,7 @@ properties:
   novo_cmmf_validade:
     type: string
   info_scmlog:
-    type: jsonb
+    type: string
   comp_id:
     type: integer
   sku_id:
