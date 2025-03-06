@@ -6,7 +6,7 @@ servers:
     description: Produção
 tags:
   - name: Agrupamentos (skugroups)
-    description: Agrupamentos Comerciais
+    description: Agrupamentos Comerciais.
   - name: Categorias (categories)
     description: Categorias de produtos
   - name: Clientes em Potencial (leads)
@@ -4271,7 +4271,7 @@ paths:
                 $ref: ../models/SkuTransits.yaml
       operationId: get-skutransits
       x-stoplight:
-        id: ldx87pbj4and6
+        id: j2zqlw5hhj0ri
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
