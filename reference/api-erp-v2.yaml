@@ -829,7 +829,7 @@ paths:
         required: true
   /customernotes:
     get:
-      summary: Anotações Cliente
+      summary: Listagem das Anotações Cliente
       description: |
         Anotações dos Clientes
 
@@ -858,7 +858,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
     post:
-      summary: Fidelidade Evento
+      summary: Criando Anotação Cliente
       description: Criar uma nova anotação no cliente
       tags:
         - Anotações de Clientes (customernotes)

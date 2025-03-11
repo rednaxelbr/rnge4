@@ -3,24 +3,31 @@ x-stoplight:
   id: bip999aaiirzh
 type: object
 description: Anotações dos Clientes
+required:
+  - id
+  - id_pessoa
+  - id_contato
+  - nome_contato
+  - texto_livre
 properties:
   id:
     type: integer
+    readOnly: true
   id_pessoa:
     type: integer
   data_hora:
     type: string
+    readOnly: true
   nome_usuario:
     type: string
+    readOnly: true
   id_contato:
     type: integer
   nome_contato:
     type: string
-  texto_livre:
-    type: string
   temperatura:
     type: string
-  texto_atividade:
+  texto_livre:
     type: string
   id_lead:
     type: integer
