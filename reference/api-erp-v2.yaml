@@ -7,6 +7,8 @@ servers:
 tags:
   - name: Agrupamentos (skugroups)
     description: Agrupamentos Comerciais
+  - name: Anotações de Clientes (customernotes)
+    description: Anotações de Clientes
   - name: Categorias (categories)
     description: Categorias de produtos
   - name: Clientes em Potencial (leads)
@@ -825,6 +827,52 @@ paths:
         in: path
         description: ID que representa a configuração do sku x empresa
         required: true
+  /customernotes:
+    get:
+      summary: Anotações Cliente
+      description: |
+        Anotações dos Clientes
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id_lead | int64 | ID do Lead | 
+        | id_pessoa | int64 | ID da pessoa | 
+        | texto_livre | string | Pesquisa no campo texto_atividade | 
+        | dias_alteracao | int | se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual |  
+      tags:
+        - Anotações de Clientes (customernotes)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/CustomerNotes.yaml
+      operationId: get-customernotes
+      x-stoplight:
+        id: ldx87pbj4and6
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    post:
+      summary: Fidelidade Evento
+      description: Criar uma nova anotação no cliente
+      tags:
+        - Anotações de Clientes (customernotes)
+      responses:
+        '200':
+          description: OK
+      operationId: post-customernotes
+      x-stoplight:
+        id: boaql2cfed8ub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/CustomerNotes.yaml
   /customerpoints:
     get:
       summary: Listagem Ponto Cliente
