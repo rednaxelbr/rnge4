@@ -25,9 +25,21 @@ properties:
     type: integer
   nome_contato:
     type: string
-  temperatura:
-    type: string
   texto_livre:
     type: string
   id_lead:
     type: integer
+  temperatura:
+    type: string
+    description: CRM
+  texto_atividade:
+    type: string
+    x-stoplight:
+      id: 10abuov9n83c0
+    description: CRM
+  dthr_tarefa:
+    type: string
+    x-stoplight:
+      id: pd3teejx6eiz3
+    description: |
+      CRM
