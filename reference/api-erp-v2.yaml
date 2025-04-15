@@ -2140,7 +2140,7 @@ paths:
       tags:
         - Vendedores (salespersons)
     get:
-      summary: Consulta os vendedores
+      summary: Consulta os Vendedores
       responses:
         '200':
           description: OK
