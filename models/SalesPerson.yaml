@@ -5,32 +5,47 @@ type: object
 description: SalesPerson
 x-tags:
   - SalesPerson
+required:
+  - id_canal
+  - id_pessoa
 properties:
   id:
     type: integer
-  salesper_id:
-    type: integer
+    readOnly: true
   id_canal:
     type: integer
-  caminho_canal:
-    type: string
   id_pessoa:
     type: integer
-  nome_vendedor:
-    type: string
+    description: cod_vendedor é o id_pessoa
   ativo:
     type: boolean
+  salesper_id:
+    type: integer
+    readOnly: true
+  caminho_canal:
+    type: string
+    readOnly: true
+  nome_vendedor:
+    type: string
+    readOnly: true
   clientes:
     type: integer
+    description: Qtd de clientes na carteira
+    readOnly: true
   id_carteira:
     type: integer
+    readOnly: true
   nome_carteira:
     type: string
+    readOnly: true
   user_id:
     type: integer
+    readOnly: true
   user_email:
     type: string
+    readOnly: true
   picture_url:
     type: string
+    readOnly: true
   config_vendedor:
     type: string
