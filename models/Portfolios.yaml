@@ -9,53 +9,93 @@ required:
 properties:
   id:
     type: integer
+    x-stoplight:
+      id: c4oe6chvfu4dj
   nome_carteira:
     type: string
+    x-stoplight:
+      id: kpvegl0iw4nyt
   id_vendedor:
     type: integer
+    x-stoplight:
+      id: cpih25cbydvv1
   id_pessoa:
     type: integer
+    x-stoplight:
+      id: u1unsgb6wufjk
   nome_vendedor:
     type: string
     readOnly: true
+    x-stoplight:
+      id: zsekdycj4pc0e
   nome_razao:
     type: string
     readOnly: true
+    x-stoplight:
+      id: hfp0dls7nkchm
   config_carteira:
     type: string
+    x-stoplight:
+      id: 9r2ra608h1f70
   clientes:
     type: integer
     readOnly: true
+    x-stoplight:
+      id: 9j78h5zp1xw12
   cart_ativa:
     type: boolean
+    x-stoplight:
+      id: w7tfyreccp8fl
   nome_usuario:
     type: string
+    x-stoplight:
+      id: 0sprtnilxmzxi
   pre_venda:
     type: boolean
+    x-stoplight:
+      id: ycy20sxtj601c
   prioridade:
     type: integer
     description: Campo obsoleto
+    x-stoplight:
+      id: 6xhhad2mc1ntn
   mesclar:
     type: boolean
     description: Mesclar carteira
     writeOnly: true
+    x-stoplight:
+      id: ad47x96enht65
   destino_mesclar:
     type: integer
     description: Usado juntamente com o campo mesclar
     writeOnly: true
+    x-stoplight:
+      id: jjcyew8lro2ln
   vend_ativo:
     type: boolean
     readOnly: true
+    x-stoplight:
+      id: msgjqc2rz2vua
   sit_vend:
     type: string
     readOnly: true
+    x-stoplight:
+      id: dxl5pzjqmw1yp
   id_canal:
     type: integer
     readOnly: true
+    x-stoplight:
+      id: 01d4s1ckfobru
   ciclagem_padrao:
     type: integer
+    x-stoplight:
+      id: rtk8xywkncdxf
   limpar_carteira:
     type: boolean
     writeOnly: true
+    x-stoplight:
+      id: cjb0vzk8popnp
   ids_tags:
     type: integer
+    x-stoplight:
+      id: 22gas41ds9juh
