@@ -9,6 +9,8 @@ tags:
     description: Agrupamentos Comerciais
   - name: Anotações de Clientes (customernotes)
     description: Anotações de Clientes
+  - name: Carteiras (portfolios)
+    description: Carteira de Clientes
   - name: Categorias (categories)
     description: Categorias de produtos
   - name: Clientes em Potencial (leads)
@@ -3006,6 +3008,60 @@ paths:
         id: oynghtgky966v
       tags:
         - Vendedores (salespersons)
+    parameters: []
+  /portfolios:
+    post:
+      summary: Grava Carteira
+      responses:
+        '200':
+          description: OK
+      operationId: post-portfolios
+      description: Cria uma carteira de cliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Carteira.yaml
+      x-stoplight:
+        id: edzzokp2n987g
+      tags:
+        - Carteiras (portfolios)
+    get:
+      summary: Consulta de Carteiras
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Carteira.yaml
+      operationId: get-portfolios
+      description: |-
+        Lista de carteiras
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificadores único | 
+        | id_vendedor | int64 | ID do Vendedor | 
+        | id_pessoa | int64 | ID da Pessoa | 
+        | id_canal | int64 | ID do Canal | 
+        | inativas | int64 | Por padrão traz somente os carteira ativas | 
+        | sem_cliente | bool | Traz as carteira sem clientes | 
+        | ids_tags | []int64 | Filtro pelo IDs Tags | 
+        | pesquisa | string | ID ou nome da carteira |
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      x-stoplight:
+        id: faicrm3lp1ex5
+      tags:
+        - Carteiras (portfolios)
     parameters: []
   /scmprojectionlogs:
     get:

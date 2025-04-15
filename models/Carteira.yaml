@@ -22,7 +22,7 @@ properties:
     type: string
     readOnly: true
   config_carteira:
-    type: jsonb
+    type: string
   clientes:
     type: integer
     readOnly: true
@@ -58,4 +58,4 @@ properties:
     type: boolean
     writeOnly: true
   ids_tags:
-    type: ARRAY
+    type: integer
