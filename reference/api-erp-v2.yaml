@@ -2958,6 +2958,45 @@ paths:
         in: path
         required: true
         description: Número do Pedido
+  '/portfolios/{id}':
+    put:
+      summary: Atualizando uma carteira
+      description: Atualiza um vendedor
+      operationId: put-portfolios-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Carteira.yaml
+      x-stoplight:
+        id: isw8jciyb0nm7
+      tags:
+        - Carteiras (portfolios)
+    get:
+      summary: Consultando uma carteira
+      description: Consulta uma carteira
+      operationId: get-portfolios-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Carteira.yaml
+      tags:
+        - Carteiras (portfolios)
+      x-stoplight:
+        id: 4s36h3pdriljh
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
   /salespersons:
     post:
       summary: Grava Vendedor
