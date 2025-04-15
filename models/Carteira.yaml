@@ -1,0 +1,47 @@
+title: Carteira
+x-stoplight:
+  id: qrqpjiovcen9b
+type: object
+properties:
+  id:
+    type: integer
+  nome_carteira:
+    type: string
+  id_vendedor:
+    type: integer
+  nome_vendedor:
+    type: string
+  nome_razao:
+    type: string
+  id_pessoa:
+    type: integer
+  config_carteira:
+    type: jsonb
+  clientes:
+    type: integer
+  cart_ativa:
+    type: boolean
+  nome_usuario:
+    type: string
+  prioridade:
+    type: integer
+  vend_ativo:
+    type: boolean
+  mesclar:
+    type: boolean
+  destino_mesclar:
+    type: integer
+  sit_vend:
+    type: string
+  id_canal:
+    type: integer
+  pre_venda:
+    type: boolean
+  ciclagem_padrao:
+    type: integer
+  limpar_carteira:
+    type: boolean
+  ids_tags:
+    type: ARRAY
+
+
