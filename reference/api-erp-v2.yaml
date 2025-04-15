@@ -2122,57 +2122,6 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
-  /salespersons:
-    post:
-      summary: Grava Vendedor
-      responses:
-        '200':
-          description: OK
-      operationId: post-salespersons
-      description: Cria um vendedor
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/SalesPerson.yaml
-      x-stoplight:
-        id: 0stqo5xyk0xlh
-      tags:
-        - Vendedores (salespersons)
-    get:
-      summary: Consulta os Vendedores
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/SalesPerson.yaml
-      operationId: get-salespersons
-      description: |
-        Lista de vendedores
-
-        ### Filtros disponíveis
-
-         Campo | Tipo | Descrição |
-        | ------ | ------ | ------ |
-        | id | int64 | Identificador único | 
-        | ids | []int64 | Array de identificadores único | 
-        | id_canal | int64 | ID do Canal | 
-        | inativos | int64 | Por padrão traz somente os vendedores ativos | 
-        | nome_vendedor | string | Filtro pelo nome do vendedor | 
-        | id_vendedor | int64 | Filtro pelo ID do Vendedor | 
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-      x-stoplight:
-        id: oynghtgky966v
-      tags:
-        - Vendedores (salespersons)
-    parameters: []
   '/pricelistarticles/{id}':
     parameters:
       - schema:
@@ -2968,6 +2917,96 @@ paths:
         in: path
         required: true
         description: Número do Pedido
+  '/salespersons/{id}':
+    put:
+      summary: Atualizando um vendedor
+      description: Atualiza um vendedor
+      operationId: put-salepersons-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/SalesPerson.yaml
+      x-stoplight:
+        id: 2tdqkfhevacxu
+      tags:
+        - Vendedores (salespersons)
+    get:
+      summary: Consultando um vendedor
+      description: Consulta um vendedor
+      operationId: get-salepersons-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SalesPerson.yaml
+      x-stoplight:
+        id: 83qrawis21gil
+      tags:
+        - Vendedores (salespersons)
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
+  /salespersons:
+    post:
+      summary: Grava Vendedor
+      responses:
+        '200':
+          description: OK
+      operationId: post-salespersons
+      description: Cria um vendedor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/SalesPerson.yaml
+      x-stoplight:
+        id: 0stqo5xyk0xlh
+      tags:
+        - Vendedores (salespersons)
+    get:
+      summary: Consulta os Vendedores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/SalesPerson.yaml
+      operationId: get-salespersons
+      description: |
+        Lista de vendedores
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificadores único | 
+        | id_canal | int64 | ID do Canal | 
+        | inativos | int64 | Por padrão traz somente os vendedores ativos | 
+        | nome_vendedor | string | Filtro pelo nome do vendedor | 
+        | id_vendedor | int64 | Filtro pelo ID do Vendedor | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      x-stoplight:
+        id: oynghtgky966v
+      tags:
+        - Vendedores (salespersons)
+    parameters: []
   /scmprojectionlogs:
     get:
       summary: SCM Log das Projeções
