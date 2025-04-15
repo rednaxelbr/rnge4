@@ -1,0 +1,36 @@
+title: SalesPerson
+x-stoplight:
+  id: m88o05oln452f
+type: object
+description: SalesPerson
+x-tags:
+  - SalesPerson
+properties:
+  id:
+    type: integer
+  salesper_id:
+    type: integer
+  id_canal:
+    type: integer
+  caminho_canal:
+    type: string
+  id_pessoa:
+    type: integer
+  nome_vendedor:
+    type: string
+  ativo:
+    type: boolean
+  clientes:
+    type: integer
+  id_carteira:
+    type: integer
+  nome_carteira:
+    type: string
+  user_id:
+    type: integer
+  user_email:
+    type: string
+  picture_url:
+    type: string
+  config_vendedor:
+    type: string
