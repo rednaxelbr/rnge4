@@ -139,7 +139,7 @@ properties:
     x-stoplight:
       id: ifoer6rbic321
   flags:
-    type: string
+    $ref: ./Flags.yaml
     x-stoplight:
       id: du3yc3d30e9iy
   ids_tags:
