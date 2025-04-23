@@ -2,6 +2,11 @@ title: transfers
 x-stoplight:
   id: xxra94kgjzfnq
 type: object
+required:
+  - id_empresa
+  - id_destino
+  - setor_ini
+  - setor_fim
 properties:
   id:
     type: integer
@@ -11,6 +16,7 @@ properties:
     type: string
     x-stoplight:
       id: lvjnne2okomag
+    readOnly: true
   order_id:
     type: integer
     x-stoplight:
@@ -23,14 +29,17 @@ properties:
     type: string
     x-stoplight:
       id: 89yw7ejdjn7pj
+    readOnly: true
   nome_origem:
     type: string
     x-stoplight:
       id: y1q78q4uo3w5p
+    readOnly: true
   id_pessoa:
     type: integer
     x-stoplight:
       id: 84zvaxealdntk
+    readOnly: true
   id_destino:
     type: integer
     x-stoplight:
@@ -39,6 +48,7 @@ properties:
     type: string
     x-stoplight:
       id: 908oxn4ezbsy0
+    readOnly: true
   status:
     type: integer
     x-stoplight:
@@ -51,6 +61,7 @@ properties:
     type: integer
     x-stoplight:
       id: 1c3vwb7mqir3l
+    readOnly: true
   user_id:
     type: integer
     x-stoplight:
@@ -59,34 +70,42 @@ properties:
     type: string
     x-stoplight:
       id: vyu06f6tspzt0
+    readOnly: true
   data_emissao:
     type: string
     x-stoplight:
       id: nkf5l0zd8gned
+    readOnly: true
   num_nf:
     type: integer
     x-stoplight:
       id: 9qzd7haezrbm9
+    readOnly: true
   chnfe:
     type: string
     x-stoplight:
       id: 5mctef9vgpfr8
+    readOnly: true
   modulo_wms:
     type: boolean
     x-stoplight:
       id: nlbaoef2n9362
+    readOnly: true
   recepcao_rapida:
     type: boolean
     x-stoplight:
       id: rgmupdwlspj9q
+    writeOnly: true
   setor_ini:
     type: string
     x-stoplight:
       id: hkfwapi0x6ubd
+    writeOnly: true
   setor_fim:
     type: string
     x-stoplight:
       id: 7ohsto6bwjkno
+    writeOnly: true
   id_container:
     type: integer
     x-stoplight:
@@ -96,7 +115,7 @@ properties:
     x-stoplight:
       id: qof7vkarwwldf
   entrega:
-    type: string
+    $ref: ./Deliveries.yaml
     x-stoplight:
       id: 3quh7da4v0zz3
   frete:

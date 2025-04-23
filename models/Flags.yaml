@@ -1,0 +1,140 @@
+title: Flags
+x-stoplight:
+  id: 5yvqw03uzy0wy
+type: object
+properties:
+  requer_separacao:
+    type: boolean
+    x-stoplight:
+      id: tth83b20jyq6i
+    description: Requer Separação
+  nao_separar:
+    type: boolean
+    x-stoplight:
+      id: lfsgsf13n9awm
+    description: Não separa e não confere
+  embalagem_presente:
+    type: boolean
+    x-stoplight:
+      id: bnr2gceyc4vt3
+    description: Embalagem para presente
+  doca_expedicao:
+    type: integer
+    x-stoplight:
+      id: x4bfcr0813bun
+    description: Doca de Expedição
+  limite_volume:
+    type: integer
+    x-stoplight:
+      id: ddf11wj8u4l4x
+    description: Limite (kg) por volume
+  data_emissao:
+    type: string
+    x-stoplight:
+      id: byfouwgg80iwv
+    description: Data da Emissão da NFe (retroativa)
+  incide_ipi:
+    type: boolean
+    x-stoplight:
+      id: yvzd3pniy79am
+    description: Incide IPI
+  versao_calculo:
+    type: integer
+    x-stoplight:
+      id: t69o049q4vaet
+    description: Versão do Cálculo (NFe)
+  cliente_retira:
+    type: boolean
+    x-stoplight:
+      id: sg3ou4jkgzh3j
+    description: Cliente Retira
+  cfop_manual:
+    type: integer
+    x-stoplight:
+      id: 3rt5om6xujhqg
+    description: CFOP Manual
+  especial:
+    type: boolean
+    x-stoplight:
+      id: dwicr7beoko5h
+    description: Pedido especial (customizado)
+  status_financ:
+    type: string
+    x-stoplight:
+      id: tuu94cqj1f2lu
+    description: 'Liberação Financeira (1=Aprovado, 2=Reprovado)'
+  limpar_flags:
+    type: string
+    x-stoplight:
+      id: kitswufx0i826
+    description: Lista de flags (CSV) que serão removidos
+  nat_oper:
+    type: string
+    x-stoplight:
+      id: ymo9muu17i87s
+    description: Customização da natureza de operação
+  motivo:
+    type: integer
+    x-stoplight:
+      id: zb2rtqffmk4ny
+    description: Motivo (propaga para todos os itens)
+  ignorar_estoque:
+    type: boolean
+    x-stoplight:
+      id: ksnhdzrze70mh
+    description: Não baixa estoque na emissão da NF
+  emissao_bloqueada:
+    type: boolean
+    x-stoplight:
+      id: gel201ict0vgn
+    description: Emissão de NFe bloqueada
+  urgente:
+    type: boolean
+    x-stoplight:
+      id: 6lmi3rrz4m900
+    description: Prioridade do pedido (urgente = true)
+  requer_liberacao:
+    type: boolean
+    x-stoplight:
+      id: 4k56b3s7e2rim
+    description: Requer Liberação de Crédito
+  troco_para:
+    type: integer
+    x-stoplight:
+      id: fvcn572bgc6i6
+    description: Troco para R$ (somente DINHEIRO)
+  usuario_legado:
+    type: string
+    x-stoplight:
+      id: dsehtyskt71ng
+    description: Usuário que criou o pedido no ERP Legado
+  requer_conferencia:
+    type: boolean
+    x-stoplight:
+      id: 4jcuj9teqm10o
+    description: ' Requer conferência antes de emitir a NF'
+  id_cartaz:
+    type: integer
+    x-stoplight:
+      id: fcsh9xvw7g8lg
+    description: ID do cartaz (somente pedidos tipo CARTAZ)
+  usar_utrib:
+    type: boolean
+    x-stoplight:
+      id: fo9vaox4qq4r0
+    description: Usar Unidade de Tributação
+  emitir_com_falta:
+    type: boolean
+    x-stoplight:
+      id: 02ervkbzkqwx5
+    description: Emite um pedido com itens em falta
+  setor_origem:
+    type: integer
+    x-stoplight:
+      id: 4xnj5te332yfb
+    description: tipo SUPRIMENTO
+  setor_destino:
+    type: integer
+    x-stoplight:
+      id: tcuus9ut2sim7
+    description: tipo SUPRIMENTO
