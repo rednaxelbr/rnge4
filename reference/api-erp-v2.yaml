@@ -4091,19 +4091,31 @@ paths:
         | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
         | etapa | int | Ex. Etapa 500, ou 600, 700 | 
         | id_empresa | int64 | ID da empresa | 
-        | id_container | int | ID do Container | 
+        | id_container | int | ID do container | 
         | vetor_empresa | []int64 | Filtrar por mais de uma empresa | 
         | vetor_status | []int | Filtrar por mais de um Status | 
         | todas | bool | Incluir também tranferências dos status 599, 699, 795 e 799 | 
         | vetor_pedidos | string | Filtro por mais de um pedido separados por vírgula | 
         | tipo_transf | string | Tipo de Transferência | 
-
-
       x-stoplight:
         id: 0rdd685mintxz
       tags:
         - Transferências (transfers)
     parameters: []
+    post:
+      summary: Criar nova Transferência
+      operationId: post-transfers
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Transferências (transfers)
+      description: Criar nova Transferência
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Transfers.yaml
   '/suppliers/{id}':
     parameters:
       - schema:
