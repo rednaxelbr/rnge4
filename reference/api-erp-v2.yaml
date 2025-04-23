@@ -4062,6 +4062,102 @@ paths:
         | ids | []int64 | IDs dos Fornecedores | 
         | pesquisa | string | Filtro tanto pelo nome razão, cpf ou cnpj ou id da pessoa | 
         | inativos | string | Por padrão só traz fornecedores ativos | 
+  '/suppliers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID do Fornecedor
+    get:
+      summary: Consulta um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Supplier.yaml
+      operationId: get-suppliers-id
+      description: Consulta um Fornecedor
+    put:
+      summary: Atualiza  um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: put-suppliers-id
+      description: Atualiza  um Fornecedor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Supplier.yaml
+    delete:
+      summary: Inativa um Fornecedor
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-suppliers-id
+      description: Inativa um Fornecedor
+  '/transfers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ID do Fornecedor
+    get:
+      summary: Consulta uma Transferência
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Transfers.yaml
+      operationId: get-transfers-id
+      description: Consulta uma Transferência
+      x-stoplight:
+        id: 4tc7getckackt
+      tags:
+        - Transferências (transfers)
+    put:
+      summary: Atualiza  uma Trânsferência
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: put-transfers-id
+      description: Atualiza uma Transferência
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Transfers.yaml
+      x-stoplight:
+        id: 645zsfod1okni
+    delete:
+      summary: Cancela uma Transferência
+      tags:
+        - Fornecedores (suppliers)
+      responses:
+        '200':
+          description: OK
+      operationId: delete-transfers-id
+      description: |-
+        Cancela uma Transferência. Objetivo é mudar o status para cancelado, onde:
+        Se status < 600 então 599, Senão 699.
+      x-stoplight:
+        id: i0sum2w0bxkh0
   /transfers:
     get:
       summary: Lista de Transferências
@@ -4116,50 +4212,6 @@ paths:
           application/json:
             schema:
               $ref: ../models/Transfers.yaml
-  '/suppliers/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-        description: ID do Fornecedor
-    get:
-      summary: Consulta um Fornecedor
-      tags:
-        - Fornecedores (suppliers)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Supplier.yaml
-      operationId: get-suppliers-id
-      description: Consulta um Fornecedor
-    put:
-      summary: Atualiza  um Fornecedor
-      tags:
-        - Fornecedores (suppliers)
-      responses:
-        '200':
-          description: OK
-      operationId: put-suppliers-id
-      description: Atualiza  um Fornecedor
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/Supplier.yaml
-    delete:
-      summary: Inativa um Fornecedor
-      tags:
-        - Fornecedores (suppliers)
-      responses:
-        '200':
-          description: OK
-      operationId: delete-suppliers-id
-      description: Inativa um Fornecedor
   /taxclasses:
     get:
       summary: Listando as classes fiscais
