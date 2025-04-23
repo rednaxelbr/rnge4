@@ -105,6 +105,8 @@ tags:
     description: Versão API
   - name: Timelines (timelines)
     description: Histórico dos registros
+  - name: Transferências (transfers)
+    description: Transferências
   - name: Transportadoras (carriers)
     description: Cadastro de Transportadoras/Entregadores
   - name: Tributária (Classe Fiscal)
@@ -4060,6 +4062,48 @@ paths:
         | ids | []int64 | IDs dos Fornecedores | 
         | pesquisa | string | Filtro tanto pelo nome razão, cpf ou cnpj ou id da pessoa | 
         | inativos | string | Por padrão só traz fornecedores ativos | 
+  /transfers:
+    get:
+      summary: Lista de Transferências
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Transfers.yaml
+      operationId: get-transfers
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      description: |
+        Lista de Transferências
+
+        ## Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID da Fornecedor | 
+        | ids | []int64 | IDs dos Fornecedores | 
+        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
+        | etapa | int | Ex. Etapa 500, ou 600, 700 | 
+        | id_empresa | int64 | ID da empresa | 
+        | id_container | int | ID do Container | 
+        | vetor_empresa | []int64 | Filtrar por mais de uma empresa | 
+        | vetor_status | []int | Filtrar por mais de um Status | 
+        | todas | bool | Incluir também tranferências dos status 599, 699, 795 e 799 | 
+        | vetor_pedidos | string | Filtro por mais de um pedido separados por vírgula | 
+        | tipo_transf | string | Tipo de Transferência | 
+
+
+      x-stoplight:
+        id: 0rdd685mintxz
+      tags:
+        - Transferências (transfers)
+    parameters: []
   '/suppliers/{id}':
     parameters:
       - schema:

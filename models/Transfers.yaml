@@ -1,0 +1,157 @@
+title: transfers
+x-stoplight:
+  id: xxra94kgjzfnq
+type: object
+properties:
+  id:
+    type: integer
+    x-stoplight:
+      id: tjy92jt9xhcqm
+  dthr_criacao:
+    type: string
+    x-stoplight:
+      id: lvjnne2okomag
+  order_id:
+    type: integer
+    x-stoplight:
+      id: yzjo71v6om1ew
+  id_empresa:
+    type: integer
+    x-stoplight:
+      id: sw10p2kz62v6j
+  sigla_loja:
+    type: string
+    x-stoplight:
+      id: 89yw7ejdjn7pj
+  nome_origem:
+    type: string
+    x-stoplight:
+      id: y1q78q4uo3w5p
+  id_pessoa:
+    type: integer
+    x-stoplight:
+      id: 84zvaxealdntk
+  id_destino:
+    type: integer
+    x-stoplight:
+      id: o97ybqvdhd6ta
+  sigla_destino:
+    type: string
+    x-stoplight:
+      id: 908oxn4ezbsy0
+  status:
+    type: integer
+    x-stoplight:
+      id: fzvirhyfkap30
+  sigla_status:
+    type: string
+    x-stoplight:
+      id: rgfjnbwt52yts
+  etapa:
+    type: integer
+    x-stoplight:
+      id: 1c3vwb7mqir3l
+  user_id:
+    type: integer
+    x-stoplight:
+      id: 4pnqpnf7eerhi
+  nome_usuario:
+    type: string
+    x-stoplight:
+      id: vyu06f6tspzt0
+  data_emissao:
+    type: string
+    x-stoplight:
+      id: nkf5l0zd8gned
+  num_nf:
+    type: integer
+    x-stoplight:
+      id: 9qzd7haezrbm9
+  chnfe:
+    type: string
+    x-stoplight:
+      id: 5mctef9vgpfr8
+  modulo_wms:
+    type: boolean
+    x-stoplight:
+      id: nlbaoef2n9362
+  recepcao_rapida:
+    type: boolean
+    x-stoplight:
+      id: rgmupdwlspj9q
+  setor_ini:
+    type: string
+    x-stoplight:
+      id: hkfwapi0x6ubd
+  setor_fim:
+    type: string
+    x-stoplight:
+      id: 7ohsto6bwjkno
+  id_container:
+    type: integer
+    x-stoplight:
+      id: il0a6vgq1a6fw
+  observacoes:
+    type: string
+    x-stoplight:
+      id: qof7vkarwwldf
+  entrega:
+    type: string
+    x-stoplight:
+      id: 3quh7da4v0zz3
+  frete:
+    type: number
+    x-stoplight:
+      id: z0ixtnhem011t
+  mod_frete:
+    type: string
+    x-stoplight:
+      id: 9ldlpu9fre4p3
+  seguro:
+    type: number
+    x-stoplight:
+      id: 7jnr1ldvxxwf2
+  outras:
+    type: number
+    x-stoplight:
+      id: d7bm0fpygswdn
+  ids_flags:
+    type: string
+    x-stoplight:
+      id: ifoer6rbic321
+  flags:
+    type: string
+    x-stoplight:
+      id: du3yc3d30e9iy
+  ids_tags:
+    type: string
+    x-stoplight:
+      id: p06do6w64jmbs
+  vdesc:
+    type: number
+    x-stoplight:
+      id: kar6a349l813n
+  qtd_vol:
+    type: integer
+    x-stoplight:
+      id: o4mytt51envlz
+  peso_total:
+    type: number
+    x-stoplight:
+      id: gmy18w8rj9osq
+  tipo_transf:
+    type: string
+    x-stoplight:
+      id: i4i5yxiezv2og
+  lista_cfop:
+    type: string
+    x-stoplight:
+      id: l4tappe8eeqlp
+  cnpj_dest:
+    type: integer
+    x-stoplight:
+      id: aekxw3556iksi
+  data_hora:
+    type: string
+    x-stoplight:
+      id: 7gh3kd98dap58
