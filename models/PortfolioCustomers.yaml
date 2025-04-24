@@ -1,0 +1,42 @@
+title: PortfolioCustomers
+x-stoplight:
+  id: 2bjvj2amcudop
+type: object
+properties:
+  id:
+    type: integer
+  id_carteira:
+    type: integer
+  nome_carteira:
+    type: string
+  id_vendedor:
+    type: integer
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+  email:
+    type: string
+  telefone:
+    type: string
+  favorita:
+    type: boolean
+  person_id:
+    type: integer
+  personid_vend:
+    type: integer
+  nome_vendedor:
+    type: string
+  mover:
+    type: boolean
+  id_etapa:
+    type: integer
+  nome_etapa:
+    type: string
+  user_id:
+    type: integer
+  nome_usuario:
+    type: string
+  data_hora:
+    type: string
+

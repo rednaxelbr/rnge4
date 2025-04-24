@@ -10,9 +10,11 @@ tags:
   - name: Anotações de Clientes (customernotes)
     description: Anotações de Clientes
   - name: Carteiras (portfolios)
-    description: Carteira de Clientes
+    description: Carteiras
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Clientes de Carteira (portfoliocustomers)
+    description: Clientes de Carteira  
   - name: Clientes em Potencial (leads)
     description: Clientes em Potencial
   - name: Clientes Fidelidade (loyaltycustomers)
@@ -3105,6 +3107,100 @@ paths:
         id: faicrm3lp1ex5
       tags:
         - Carteiras (portfolios)
+    parameters: []
+  '/portfoliocustomers/{id}':
+    put:
+      summary: Atualizando uma carteira
+      description: Atualiza um vendedor
+      operationId: put-portfoliocustomers-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PortfolioCustomers.yaml
+      x-stoplight:
+        id: isw8jciyb0nm7
+      tags:
+        - Clientes de Carteira (portfoliocustomers)
+    get:
+      summary: Consultando um cliente com carteira
+      description: Consulta um cliente com carteira
+      operationId: get-portfoliocustomers-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/PortfolioCustomers.yaml
+      tags:
+        - Clientes de Carteira (portfoliocustomers)
+      x-stoplight:
+        id: 4s36h3pdriljh
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Número do Pedido
+  /portfoliocustomers:
+    post:
+      summary: Grava Cliente de Carteira 
+      responses:
+        '200':
+          description: OK
+      operationId: post-portfoliocustomers
+      description: Cria uma carteira de cliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/PortfolioCustomers.yaml
+      x-stoplight:
+        id: edzzokp2n987g
+      tags:
+        - Clientes de Carteira (portfoliocustomers)
+    get:
+      summary: Consulta Clientes de Carteira
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PortfolioCustomers.yaml
+      operationId: get-portfoliocustomers
+      description: |-
+        Lista de carteiras
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | Identificador único | 
+        | ids | []int64 | Array de identificadores único | 
+        | id_vendedor | int64 | ID do Vendedor | 
+        | id_pessoa | int64 | ID da Pessoa | 
+        | id_canal | int64 | ID do Canal | 
+        | inativas | int64 | Por padrão traz somente os carteira ativas | 
+        | sem_cliente | bool | Traz as carteira sem clientes | 
+        | ids_tags | []int64 | Filtro pelo IDs Tags | 
+        | pesquisa | string | ID ou nome da carteira |
+        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+      x-stoplight:
+        id: faicrm3lp1ex5
+      tags:
+        - Clientes de Carteira (portfoliocustomers)
     parameters: []
   /scmprojectionlogs:
     get:
