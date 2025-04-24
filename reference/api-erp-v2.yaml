@@ -3002,6 +3002,7 @@ paths:
         | inativos | int64 | Por padrão traz somente os vendedores ativos | 
         | nome_vendedor | string | Filtro pelo nome do vendedor | 
         | id_vendedor | int64 | Filtro pelo ID do Vendedor | 
+        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
@@ -4184,7 +4185,6 @@ paths:
         | ------ | ------ | ------ |
         | id | int64 | ID da Fornecedor | 
         | ids | []int64 | IDs dos Fornecedores | 
-        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
         | etapa | int | Ex. Etapa 500, ou 600, 700 | 
         | id_empresa | int64 | ID da empresa | 
         | id_container | int | ID do container | 
@@ -4193,6 +4193,7 @@ paths:
         | todas | bool | Incluir também tranferências dos status 599, 699, 795 e 799 | 
         | vetor_pedidos | string | Filtro por mais de um pedido separados por vírgula | 
         | tipo_transf | string | Tipo de Transferência | 
+        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       x-stoplight:
         id: 0rdd685mintxz
       tags:
