@@ -3096,6 +3096,7 @@ paths:
         | sem_cliente | bool | Traz as carteira sem clientes | 
         | ids_tags | []int64 | Filtro pelo IDs Tags | 
         | pesquisa | string | ID ou nome da carteira |
+        | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
