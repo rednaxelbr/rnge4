@@ -2,6 +2,9 @@ title: PortfolioCustomers
 x-stoplight:
   id: 2bjvj2amcudop
 type: object
+required:
+  - id_carteira
+  - id_vendedor
 properties:
   id:
     type: integer
@@ -9,34 +12,45 @@ properties:
     type: integer
   nome_carteira:
     type: string
+    readOnly: true
   id_vendedor:
     type: integer
   id_pessoa:
     type: integer
   nome_razao:
     type: string
+    readOnly: true
   email:
     type: string
+    readOnly: true
   telefone:
     type: string
+    readOnly: true
   favorita:
     type: boolean
   person_id:
     type: integer
+    readOnly: true
   personid_vend:
     type: integer
+    readOnly: true
   nome_vendedor:
     type: string
+    readOnly: true
   mover:
     type: boolean
+    writeOnly: true
   id_etapa:
     type: integer
   nome_etapa:
     type: string
+    readOnly: true
   user_id:
     type: integer
+    readOnly: true
   nome_usuario:
     type: string
+    readOnly: true
   data_hora:
     type: string
-
+    readOnly: true
