@@ -49,3 +49,7 @@ properties:
     readOnly: true
   config_vendedor:
     type: string
+  ramal:
+    type: string
+    x-stoplight:
+      id: qjxcce44el8v9
