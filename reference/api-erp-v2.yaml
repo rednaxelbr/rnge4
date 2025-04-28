@@ -14,7 +14,7 @@ tags:
   - name: Categorias (categories)
     description: Categorias de produtos
   - name: Clientes de Carteira (portfoliocustomers)
-    description: Clientes de Carteira  
+    description: Clientes de Carteira
   - name: Clientes em Potencial (leads)
     description: Clientes em Potencial
   - name: Clientes Fidelidade (loyaltycustomers)
@@ -3005,6 +3005,7 @@ paths:
         | nome_vendedor | string | Filtro pelo nome do vendedor | 
         | id_vendedor | int64 | Filtro pelo ID do Vendedor | 
         | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
+        | ramal | string | Filtro pelo Ramal do Vendedor | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
@@ -3149,7 +3150,7 @@ paths:
         description: Número do Pedido
   /portfoliocustomers:
     post:
-      summary: Grava Cliente de Carteira 
+      summary: Grava Cliente de Carteira
       responses:
         '200':
           description: OK
