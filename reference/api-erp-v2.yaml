@@ -4535,7 +4535,33 @@ paths:
       operationId: get-leads
       x-stoplight:
         id: xmrg5bv33nkdo
-      description: Lista de Leads
+      description: |
+        Lista de Leads
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID do lead | 
+        | ids | []int64 | IDs dos leads | 
+        | id_pessoa | int64 | ID da pessoa do lead (contato) | 
+        | id_etapa | int64 | ID da Etapa | 
+        | status_code | int64 | Status | 
+        | codigo_alfa | string | Código Grade | 
+        | id_motivo | int64 | ID do Motivo | 
+        | id_vendedor | int64 | ID do Vendedor | 
+        | id_canal | int64 | ID do Canal | 
+        | id_carteira | int64 | ID da Carteira | 
+        | pesquisa | string | Pesquisa tanto por ID como descrição do Lead | 
+        | q | string | Também é uma pesquisa tanto por ID como descrição do Lead | 
+        | sem_vendedor | bool | Leads sem Vendedor associado | 
+        | fechados | bool | Fechados | 
+        | temperatura | string | Temperatura | 
+        | deletados | bool | Deletados | 
+        | com_tarefas | bool | Com tarefas | 
+        | id_tag | int64 | ID Tag | 
+        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
+        | todos | bool | Traz tanto registros incluindo status code 7,9 e deletados | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
