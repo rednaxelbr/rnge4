@@ -4560,7 +4560,7 @@ paths:
         | deletados | bool | Deletados | 
         | com_tarefas | bool | Com tarefas | 
         | id_tag | int64 | ID Tag | 
-        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro tipo é obrigatório | 
+        | dias_alteracao | int | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro dias_alteracao não verifica demais filtros | 
         | todos | bool | Traz tanto registros incluindo status code 7,9 e deletados | 
       parameters:
         - $ref: '#/components/parameters/Filter'
