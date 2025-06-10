@@ -115,6 +115,8 @@ tags:
     description: Cadastro das classes fiscais
   - name: Unidades de Medida (units)
     description: Unidades de Medida
+  - name: Vales (vouchers)
+    description: Vales  
   - name: Vendedores (salespersons)
     description: Vendedores
 info:
@@ -4816,6 +4818,53 @@ paths:
           in: query
           name: marcador_validacao
           description: Somente NF pendentes de validação
+  /vouchers:
+    get:
+      summary: Listagem de Vales
+      description: |
+        Lista de Vales
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID Voucher | 
+        | ids | []int64 | IDs dos vouchers |
+        | cpf_cnpj | int64 | CPF ou CNPJ | 
+        | chnfe | string | Chave de Acesso | 
+        | codigo | string | Código | 
+        | codigo_cartao | string | Código do Cartão | 
+        | inativos | bool | Por padrão traz somente os vales ativos | 
+        | situacao | string | Situação | 
+        | id_tipo | int64 | ID do Tipo | 
+        | pdv | bool | PDV | 
+        | id_empresa | int64 | ID da Empresa | 
+        | valor_vale | float64 | Pesquisa por valor de vale | 
+        | pesquisa | string | Pesquisa por código ou descrição | 
+        | vale_origem | string | Vale Origem | 
+        | devol_saida | bool | Devolução Saída | 
+        | tipo_vale | string | Tipo Vale | 
+        | data_criacao | string | Data Criação | 
+        | dataini | string | Data Inicial | 
+        | datafim | string | Data Final |
+        | filtrar_por | string | Filtrar por: dt_criacao |  
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. |         
+      tags:
+        - Vales (vouchers)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Vouchers.yaml
+      operationId: get-vouchers
+      x-stoplight:
+        id: j2zqlw5hhj0ri
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   schemas: {}
   parameters:

@@ -1,0 +1,98 @@
+title: Vouchers
+x-stoplight:
+  id: mu2g2qa1jxu0o
+type: object
+properties:
+  id:
+    type: integer
+  data_criacao:
+    type: string
+  codigo:
+    type: string
+  tipo_vale:
+    type: string
+  dt_criacao:
+    type: string
+  codigo_cartao:
+    type: string
+  id_cartao:
+    type: integer
+  id_pessoa:
+    type: integer
+  nome_razao:
+    type: string
+  cpf_cnpj:
+    type: integer
+  valor_vale:
+    type: number
+  tpdoc:
+    type: string
+  chnfe:
+    type: string
+  nome_reduzido:
+    type: string
+  nf_origem:
+    type: integer
+  ativo:
+    type: boolean
+  tpag:
+    type: integer
+  situacao:
+    type: string
+  numero_pedido:
+    type: integer
+  nome_usuario:
+    type: string
+  data_emissao:
+    type: string
+  num_ped_nf:
+    type: integer
+  id_origem:
+    type: integer
+  vale_origem:
+    type: string
+  digitar_codigo:
+    type: boolean
+  observacoes:
+    type: string
+  id_empresa:
+    type: integer
+  id_compra_devol:
+    type: integer
+  str_origem:
+    type: string
+  num_nf_compra:
+    type: integer
+  valido_ate:
+    type: string
+  percentual:
+    type: number
+  nf_desconto:
+    type: string
+  nf_consumiu:
+    type: string
+  chnfe_consumiu:
+    type: string
+  dtemi_consumiu:
+    type: string
+  quant_resgates:
+    type: integer
+  limite_resgate:
+    type: integer
+  token_id:
+    type: integer
+  sigla_loja:
+    type: string
+  data_quitacao:
+    type: string
+  ult_usuario:
+    type: string
+  quitacao_manual:
+    type: boolean
+  ids_tags:
+    type: integer
+  chnfe_desconto:
+    type: string
+  data_hora:
+    type: string
+
