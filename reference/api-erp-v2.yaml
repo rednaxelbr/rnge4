@@ -4859,8 +4859,6 @@ paths:
               schema:
                 $ref: ../models/Vouchers.yaml
       operationId: get-vouchers
-      x-stoplight:
-        id: j2zqlw5hhj0ri
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
