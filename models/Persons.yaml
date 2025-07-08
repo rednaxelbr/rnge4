@@ -1,5 +1,9 @@
 type: object
 description: Pessoas
+required:
+  - ativo
+  - pjuridica
+  - nome_razao
 properties:
   id:
     type: integer
@@ -30,40 +34,21 @@ properties:
     type: string
   id_telefone:
     type: integer
-  telefone:
-    type: string
   id_canal:
     type: integer
   desc_canal:
     type: string
     readOnly: true
-  logradouro:
-    type: string
-  numero:
-    type: integer
-  complemento:
-    type: string
-  bairro:
-    type: string
-  cep:
-    type: string
-  cmun:
-    type: integer
-  nome_municipio:
-    type: string
-  uf:
-    type: string
-  id_vendedor:
-    type: integer
-  categorias:
+  ids_categorias:
     type: array
     items:
-      type: object
-      properties:
-        id:
-          type: integer
-        nome:
-          type: string
+      type: integer
+  ids_tags:
+    type: array
+    items:
+      type: integer        
+  id_vendedor:
+    type: integer
   inconsistencias:
     type: array
     items:
@@ -89,6 +74,77 @@ properties:
     type: integer
     x-stoplight:
       id: 0uqjdu662t0tm
-required:
-  - ativo
-  - pjuridica
+  credito_loja:
+    type: boolean
+  id_geocode:
+    type: integer
+    readOnly: true
+  contador_sped:
+    type: boolean
+    readOnly: true
+  criado_por:
+    type: string
+    readOnly: true
+  id_setor:
+    type: integer
+  desc_setor:
+    type: string
+    readOnly: true
+  incidencia:
+    type: number
+    readOnly: true
+  nb_contacts:
+    type: integer
+    readOnly: true
+  nb_deals:
+    type: integer
+    readOnly: true
+  pre_venda:
+    type: boolean
+  id_carteira:
+    type: integer
+  nome_carteira:
+    type: string
+  quant_pedidos:
+    type: integer
+    readOnly: true
+  tipo_email:
+    type: array
+    x-stoplight:
+      id: 31xakz5u5bw4x
+    description: 'Email principal pode ser: 1=Pessoal e/ou 2=DANFE. '
+    items:
+      x-stoplight:
+        id: r2g0ukv2j2d85
+      type: integer    
+  place_id:
+    type: string
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
+    readOnly: true
+  latitude:
+    type: number
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
+    readOnly: true
+  longitude:
+    type: number
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
+    readOnly: true
+  data_ult_venda:
+    type: string
+    readOnly: true
+  acumulado:
+    type: number
+    description: vTotalNF das vendas dos últimos 12 meses.
+    readOnly: true

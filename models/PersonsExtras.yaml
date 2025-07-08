@@ -26,11 +26,29 @@ properties:
     description: Aparece somente no GetOne
     items:
       type: integer
-  ids_categorias:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: integer
+  type_id:
+    type: integer
+    description: Tipo de Telefone
+  telefone:
+    type: string 
+  address_id:
+    type: integer   
+  logradouro:
+    type: string
+  numero:
+    type: integer
+  complemento:
+    type: string
+  bairro:
+    type: string
+  cep:
+    type: string
+  cmun:
+    type: integer
+  nome_municipio:
+    type: string
+  uf:
+    type: string    
   telefones:
     type: array
     description: Aparece somente no GetOne
@@ -54,6 +72,8 @@ properties:
     description: Aparece somente no GetOne
     items:
       type: object
+      required:
+        - email
       properties:
         danfe:
           type: boolean
@@ -61,8 +81,6 @@ properties:
           type: string
         pessoal:
           type: boolean
-      required:
-        - email
   documentos:
     type: array
     description: Aparece somente no GetOne
@@ -108,15 +126,6 @@ properties:
     type: boolean
     description: '//--- se TRUE, permite editar observ_financeira'
     readOnly: true
-  tipo_email:
-    type: array
-    x-stoplight:
-      id: 31xakz5u5bw4x
-    description: 'Email principal pode ser: 1=Pessoal e/ou 2=DANFE. '
-    items:
-      x-stoplight:
-        id: r2g0ukv2j2d85
-      type: integer
   tipo_chave:
     type: string
     x-stoplight:
@@ -128,3 +137,32 @@ properties:
     type: string
     x-stoplight:
       id: e2g4wi5affy8p
+  mei:
+    type: bool    
+  demais_carteiras:
+    type: array
+    items:
+      x-stoplight:
+        id: 93ka0raaav8wi
+      type: integer
+  url_mapa:
+    type: string
+    description: 'Formado por format("https://www.google.com/maps/place/?q=place_id:%s", place_id)'
+  id_cc:
+    type: integer
+    description: Deal ID
+  lograd_complem:
+    type: string
+  nb_trans:
+    type: integer
+    description: incidencia + quant_pedidos
+    readOnly: true
+  cnae_princ:
+    type: string
+    maxLength: 8
+  outros_cnaes:
+    type: array
+    items:
+      x-stoplight:
+        id: zf8nus26do4gi
+      type: string
