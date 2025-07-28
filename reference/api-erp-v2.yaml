@@ -973,6 +973,8 @@ paths:
         | pesquisa | string |Filtro tanto pelo nome, id, cpf ou cnpj da pessoa | 
         | numero_pedido | int64 | Número Pedido |
         | contato_ativo | bool | Contato Ativo (Somente CC - Contato Comercial, um por cliente) |
+        | id_etapa | int64 | ID Etapa | 
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
