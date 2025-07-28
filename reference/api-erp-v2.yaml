@@ -2013,11 +2013,7 @@ paths:
         '200':
           description: OK
       description: Criação de uma nova Pessoa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/PersonsGetOne.yaml
+      
       tags:
         - Ordens de Compra (purchaseorders)
     parameters: []
@@ -2056,19 +2052,6 @@ paths:
                 $ref: ../models/PersonsGetOne.yaml
       operationId: get-persons-id
       description: Consulta uma Pessoa
-    delete:
-      summary: Deleta uma Pessoa
-      operationId: delete-persons-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/PersonsGetOne.yaml
-      description: Inativa uma Pessoa
-      tags:
-        - Pessoas (persons)
   /ping:
     get:
       summary: Verificando servidor

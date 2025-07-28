@@ -1,34 +1,6 @@
 type: object
-x-stoplight:
-  id: 0a5cffb7b2e74
 description: Pessoas Extras
 properties:
-  outras_info:
-    type: object
-    description: Aparece somente no GetOne
-    properties:
-      data_nasc:
-        type: string
-      cod_vendedor:
-        type: integer
-      credito_loja:
-        type: boolean
-      dias_ciclagem:
-        type: integer
-      isento_acrescimo:
-        type: boolean
-      semaforo_credito:
-        type: integer
-      mensagem_inconsistente:
-        type: string
-  ids_perfis:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: integer
-  type_id:
-    type: integer
-    description: Tipo de Telefone
   telefone:
     type: string 
   address_id:
@@ -49,54 +21,6 @@ properties:
     type: string
   uf:
     type: string    
-  telefones:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: object
-      properties:
-        id:
-          type: integer
-        tipo:
-          type: string
-        numero_telefone:
-          type: string
-          x-stoplight:
-            id: a8vk0db5fxxpz
-        type_id:
-          type: integer
-        observacoes:
-          type: string
-  emails:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: object
-      required:
-        - email
-      properties:
-        danfe:
-          type: boolean
-        email:
-          type: string
-        pessoal:
-          type: boolean
-  documentos:
-    type: array
-    description: Aparece somente no GetOne
-    items:
-      type: object
-      properties:
-        id:
-          type: integer
-        uf:
-          type: string
-        id_tipo:
-          type: string
-        observacoes:
-          type: string
-        num_documento:
-          type: string
   observ_padrao:
     type: string
   observ_financeira:
@@ -122,47 +46,16 @@ properties:
     type: boolean
     description: '//--- se TRUE, exibe observ_financeira'
     readOnly: true
-  financeiro_readonly:
-    type: boolean
-    description: '//--- se TRUE, permite editar observ_financeira'
-    readOnly: true
-  tipo_chave:
-    type: string
-    x-stoplight:
-      id: ehbs3ecpncjwr
-    minLength: 1
-    maxLength: 1
-    description: 'Tipo PIX: C=CPF/CNPJ, E=E-mail, T=Telefone, A=Aleatória'
   chave_pix:
     type: string
-    x-stoplight:
-      id: e2g4wi5affy8p
   mei:
-    type: bool    
-  demais_carteiras:
-    type: array
-    items:
-      x-stoplight:
-        id: 93ka0raaav8wi
-      type: integer
-  url_mapa:
-    type: string
-    description: 'Formado por format("https://www.google.com/maps/place/?q=place_id:%s", place_id)'
+    type: boolean    
   id_cc:
     type: integer
     description: Deal ID
   lograd_complem:
     type: string
-  nb_trans:
-    type: integer
-    description: incidencia + quant_pedidos
-    readOnly: true
-  cnae_princ:
-    type: string
-    maxLength: 8
   outros_cnaes:
     type: array
     items:
-      x-stoplight:
-        id: zf8nus26do4gi
       type: string
