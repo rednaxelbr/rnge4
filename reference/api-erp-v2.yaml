@@ -977,6 +977,12 @@ paths:
         | sdr_pre_venda | boolean | Pr_venda - Usar a carteira do cliente para determinar se aparece ou não | 
         | sem_pedido | boolean | Oportunidade sem Pedido | 
         | status_code | int64 | 1 = ABERTO, 3 = CONTATANDO, 5 = TRABALHANDO, 7 = NÃO QUALIFICADO, 9 = QUALIFICADO | 
+        | incluir_perdidas | boolean | Por padrão traz somente as não perdidas, cod_tipo_etapa_funil != 545  |
+        | vendedor_inativo | boolean | Por padrão traz somente vendedores ativos |
+        | cliente_inativo | boolean | Por padrão traz somente clientes ativos |
+        | arquivadas | boolean | Com data_aquivamento não nulo |
+        | id_usuario | int64 | Filtro por usuário |
+        | id_carteira | int64 | Filtro por ID Carteira |
         | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
