@@ -99,6 +99,7 @@ properties:
     type: bool
   tempo:
     type: string
+    description: ATRASADO, HOJE, AMANHÃ, SEMANA, DEPOIS
   desc_tipo:
     type: string  
   Stage:
