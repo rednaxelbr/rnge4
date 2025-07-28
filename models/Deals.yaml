@@ -22,6 +22,8 @@ properties:
   nome_etapa:
     type: string
     readOnly: true
+  status_code:
+    type: integer  
   id_pessoa:
     type: integer
   nome_razao:
@@ -91,6 +93,30 @@ properties:
     x-stoplight:
       id: q2t4fj4dw71bp
     description: carregado somente no getOne
+  nome_vendedor:
+    type: string 
+  hora_marcada:
+    type: bool
+  tempo:
+    type: string
+  desc_tipo:
+    type: string  
+  Stage:
+    type: string  
+  data_arquivamento:
+    type: string
+  desarquivar:
+    type: bool
+  id_carteira:
+    type: integer
+  nome_carteira:
+    type: string
+  id_pre_vendedor:
+    type: integer
+  nome_pre_vendedor:
+    type: string
+  icone_kanban:
+    type: string                      
 required:
   - id_etapa
   - id_pessoa
