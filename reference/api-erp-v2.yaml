@@ -975,6 +975,8 @@ paths:
         | contato_ativo | bool | Contato Ativo (Somente CC - Contato Comercial, um por cliente) |
         | id_etapa | int64 | ID Etapa | 
         | sdr_pre_venda | boolean | Pr_venda - Usar a carteira do cliente para determinar se aparece ou não | 
+        | sem_pedido | boolean | Oportunidade sem Pedido | 
+        | status_code | int64 | 1 = ABERTO, 3 = CONTATANDO, 5 = TRABALHANDO, 7 = NÃO QUALIFICADO, 9 = QUALIFICADO | 
         | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
         - $ref: '#/components/parameters/Filter'
