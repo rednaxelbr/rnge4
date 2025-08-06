@@ -57,6 +57,8 @@ tags:
     description: Minha Conta
   - name: Notas/Cupons Fiscais (invoices)
     description: Notas e Cupons Fiscais (NFe/NFCe)
+  - name: Oportunidades (deals)
+    description: Oportunidades Clientes
   - name: Ordens de Compra (purchaseorders)
     description: Gestão de Ordens de Compra
   - name: PDV
@@ -937,7 +939,7 @@ paths:
         '200':
           description: OK
       tags:
-        - Notas/Cupons Fiscais (invoices)
+        - Oportunidades (deals)
       parameters: []
       description: Criando uma CRM Oportunidade
       requestBody:
@@ -989,7 +991,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Notas/Cupons Fiscais (invoices)
+        - Oportunidades (deals)
       x-stoplight:
         id: n7feq4ttgoqg8
     parameters: []
@@ -1017,7 +1019,7 @@ paths:
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
       tags:
-        - Conta despesa (expenseaccounts)
+        - Oportunidades (deals)
       x-stoplight:
         id: t1m3n69a46rx8
     put:
@@ -1034,7 +1036,7 @@ paths:
               $ref: ../models/Deals.yaml
         description: ''
       tags:
-        - Conta despesa (expenseaccounts)
+        - Oportunidades (deals)
       x-stoplight:
         id: h5wgm2izn11f3
     delete:
@@ -1046,7 +1048,7 @@ paths:
           content: {}
       description: Exclui uma Oportunidade CRM
       tags:
-        - Conta despesa (expenseaccounts)
+        - Oportunidades (deals)
       x-stoplight:
         id: pusk1xugwmgoc
   /deliverytypes:
