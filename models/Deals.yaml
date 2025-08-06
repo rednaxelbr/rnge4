@@ -96,7 +96,7 @@ properties:
   nome_vendedor:
     type: string 
   hora_marcada:
-    type: bool
+    type: boolean
   tempo:
     type: string
     description: ATRASADO, HOJE, AMANHÃ, SEMANA, DEPOIS
@@ -107,7 +107,7 @@ properties:
   data_arquivamento:
     type: string
   desarquivar:
-    type: bool
+    type: boolean
   id_carteira:
     type: integer
   nome_carteira:
