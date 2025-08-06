@@ -1482,8 +1482,8 @@ paths:
         | chnfe | string | Chave de acesso com os 44 caracteres | 
         | id_pessoa | int64 | ID da Pessoa |
         | idpessoa_razao_cpf_cnpj | string | Filtro tanto pelo nome, id, cpf ou cnpj da pessoa |
-        | cnpj_emit | int64 | CNPJ do Emitente |
-        | cpf_cnpj | int64 | CPF ou CNPJ |
+        | cnpj_alfa | string | CNPJ do Emitente |
+        | cpf_cnpj | int64 | CPF |
         | numero_pedido | int64 | Número do pedido |
         | pdv | int64 | Número de série (pdv) |
         | id_romaneio | int64 | Número do Romaneio |
@@ -1499,6 +1499,11 @@ paths:
         | tipo | string | Tipo Doc (Ex: V (Venda), D (Devolução Cliente), F (Devolução para Fornecedor), X (Cancelada), T (Transferência)) |
         | dias_alteracao | integer | Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. Lembrar que o filtro modelo é obrigatório  |
         | ids_tags | []int64 | Tags dos Pedidos |
+        | fiscdoc_id | int64 | ID da NF |
+        | nfse | string | Nota de serviço |
+        | codigo_nfse | string | Código NFSe |
+        | id_abertura | int64 | ID da abertura do PDV |
+        | tipo_oper | string | Tipo da Operação |
 
         *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
       parameters:
