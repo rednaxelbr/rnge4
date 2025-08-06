@@ -1503,7 +1503,7 @@ paths:
         | nfse | string | Nota de serviço |
         | codigo_nfse | string | Código NFSe |
         | id_abertura | int64 | ID da abertura do PDV |
-        | tipo_oper | string | Tipo da Operação |
+        | tipo_oper | string | Tipo da Operação. EX: CONSUMO, DEVCLI, TRANSF, VENDAS, etc |
 
         *dataini - período acima de 60 dias pede a transação 3520- Cupons Notas 60 dias
       parameters:
