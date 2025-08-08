@@ -7,6 +7,8 @@ servers:
 tags:
   - name: Agrupamentos (skugroups)
     description: Agrupamentos Comerciais
+  - name: Anotacoes CMM (skuconfignotes)
+    description: Anotações (Encalhados/Zerados)
   - name: Anotações de Clientes (customernotes)
     description: Anotações de Clientes
   - name: Carteiras (portfolios)
@@ -2029,7 +2031,6 @@ paths:
         '200':
           description: OK
       description: Criação de uma nova Pessoa
-      
       tags:
         - Ordens de Compra (purchaseorders)
     parameters: []
@@ -3273,6 +3274,39 @@ paths:
           application/json:
             schema:
               $ref: ../models/Services.yaml
+  /skuconfignotes:
+    get:
+      summary: Anotações de manutenção Zerados e ou Encalhados
+      description: |
+        Lista das anotações da manutenção (Encalhados / Zerados)
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID Voucher | 
+        | ids | []int64 | IDs dos vouchers |
+        | id_empresa | int64 | ID da Empresa | 
+        | codigo_sku | int64 | Código SKU | 
+        | id_usuario | int64 | ID Usuário | 
+        | anotacao | string | Pesquisa pela Anotação | 
+        | dataini | string | Data Inicial | 
+        | datafim | string | Data Final |
+        | dias_alteracao | int | usado em integração. Ex: 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. |         
+      tags:
+        - Anotacoes CMM (skuconfignotes)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SkuConfigNotes.yaml
+      operationId: get-skuconfignotes
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
   /skus:
     get:
       summary: Listando produtos (SKUs)

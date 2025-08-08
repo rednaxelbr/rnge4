@@ -1,0 +1,28 @@
+title: SkuConfigNotes
+x-stoplight:
+  id: wpq3a2rw4vydh
+type: object
+properties:
+  id:
+    type: integer
+  user_id:
+    type: integer
+  nome_usuario:
+    type: string
+  sku_id:
+    type: integer
+  codigo_sku:
+    type: integer
+  comp_id:
+    type: integer
+  id_empresa:
+    type: integer
+  nome_reduzido:
+    type: string
+  sigla_loja:
+    type: string
+  texto_anotacao:
+    type: string
+  data_hora:
+    type: string
+
