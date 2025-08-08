@@ -3284,8 +3284,8 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | id | int64 | ID Voucher | 
-        | ids | []int64 | IDs dos vouchers |
+        | id | int64 | ID Anotação | 
+        | ids | []int64 | IDs das anotações |
         | id_empresa | int64 | ID da Empresa | 
         | codigo_sku | int64 | Código SKU | 
         | id_usuario | int64 | ID Usuário | 
