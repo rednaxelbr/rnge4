@@ -11,6 +11,8 @@ tags:
     description: Anotações (Encalhados/Zerados)
   - name: Anotações de Clientes (customernotes)
     description: Anotações de Clientes
+  - name: Baixar XML (filedownloads)
+    description: Baixar NF de fornecedor e/ou Nota XML emitido
   - name: Carteiras (portfolios)
     description: Carteiras
   - name: Categorias (categories)
@@ -1362,6 +1364,35 @@ paths:
       description: Exclui uma conta despesa.
       tags:
         - Conta despesa (expenseaccounts)
+  '/filedownloads/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Chave de acesso com os 44 dígitos
+    get:
+      summary: Download de um arquivo XML
+      tags:
+        - Baixar XML (filedownloads)
+      responses:
+        '200':
+          description: |-
+            XML
+            <nfeProc versao="4.00"
+            </infProt></protNFe></nfeProc>
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  xml:
+                    type: string
+                    x-stoplight:
+                      id: 2w6lmy6tp6gbp
+      operationId: get-filedownlods-id
+      description: Download de um arquivo XML - Fornecedor ou Nota emitida
   /humanresources:
     get:
       summary: Recursos Humanos
