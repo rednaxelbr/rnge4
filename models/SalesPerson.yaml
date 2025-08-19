@@ -28,10 +28,6 @@ properties:
   nome_vendedor:
     type: string
     readOnly: true
-  clientes:
-    type: integer
-    description: Qtd de clientes na carteira
-    readOnly: true
   id_carteira:
     type: integer
     readOnly: true
@@ -53,3 +49,22 @@ properties:
     type: string
     x-stoplight:
       id: qjxcce44el8v9
+  data_hora:
+    type: string
+    readOnly: true
+  pre_venda:
+    type: boolean
+    description: Se a carteira do vendedor com prioridade 1 é pre-venda
+  pre_vendedor:
+    type: boolean
+    description: Se o vendedor é pre_vendedor
+  clientes:
+    type: integer
+    description: Quant. de clientes na carteira
+    readOnly: true  
+  tarefas_hoje:
+    type: integer
+    description: Quant. de tarefas do vendedor    
+  oport_hoje:
+    type: integer
+    description: Quant. de oportunidades do vendedor    
