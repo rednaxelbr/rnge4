@@ -2977,7 +2977,28 @@ paths:
         - Vendedores (salespersons)
     get:
       summary: Consultando um vendedor
-      description: Consulta um vendedor
+      description: |
+        Consulta um vendedor
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | id | int64 | ID do vendedor |
+        | ids | []int64 | IDs dos vendedores |
+        | pesquisa | string | Pesquisa tanto por id_pessoa, Nome Razão ou CPF/CNPJ |
+        | id_externo | string | ID do pedido Externo |
+        | id_vendedor | int64 | ID do Vendedor |
+        | inativos | bool | Por padrão traz somentes os vendedores ativos |
+        | id_canal | int64 | ID do canal |
+        | nome_vendedor | string | Nome do Vendedor |
+        | salesper_id | int64 | ID do canal |
+        | sdr | bool | Filtro pre_venda verdadeir, igual ao filtro pre_venda |
+        | pre_venda | bool | Filtro pre_venda verdadeiro, igual ao filtro sdr |
+        | closer | bool | Filtro pre_venda negativo |
+        | pre_vendedor | bool | Filtro pre_vendedor |
+        | ramal | string | Filtro Ramal |
+        | dias_alteracao | int | usado em integração, se = 1 pega do dia atual, se = 2 pega do dia anterior e o atual | 
       operationId: get-salepersons-id
       responses:
         '200':
