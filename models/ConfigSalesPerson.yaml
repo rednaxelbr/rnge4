@@ -1,0 +1,9 @@
+title: ConfigSalesPerson
+x-stoplight:
+  id: cvo8s6pc7eu95
+type: object
+properties:
+  minutos_atend:
+    type: integer
+    x-stoplight:
+      id: suu3oear3wox2

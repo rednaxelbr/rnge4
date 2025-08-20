@@ -25,11 +25,11 @@ properties:
   caminho_canal:
     type: string
     readOnly: true
-  nome_vendedor:
-    type: string
-    readOnly: true
   id_carteira:
     type: integer
+    readOnly: true
+  nome_vendedor:
+    type: string
     readOnly: true
   nome_carteira:
     type: string
@@ -44,7 +44,7 @@ properties:
     type: string
     readOnly: true
   config_vendedor:
-    type: string
+    $ref: ./ConfigSalesPerson.yaml
   ramal:
     type: string
     x-stoplight:
@@ -61,10 +61,10 @@ properties:
   clientes:
     type: integer
     description: Quant. de clientes na carteira
-    readOnly: true  
+    readOnly: true
   tarefas_hoje:
     type: integer
-    description: Quant. de tarefas do vendedor    
+    description: Quant. de tarefas do vendedor
   oport_hoje:
     type: integer
-    description: Quant. de oportunidades do vendedor    
+    description: Quant. de oportunidades do vendedor
