@@ -2049,6 +2049,7 @@ paths:
         - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
         - `logradouro` (string) Rua/Avenida/etc do endereço
         - `credito_loja` (bool) Possuir crédito Loja
+        - `recuperacao` (bool) Cliente entrou em carteira de recuperação
       requestBody:
         content: {}
       parameters:
