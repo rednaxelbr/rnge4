@@ -46,7 +46,7 @@ properties:
   ids_tags:
     type: array
     items:
-      type: integer        
+      type: integer
   id_vendedor:
     type: integer
   inconsistencias:
@@ -116,7 +116,7 @@ properties:
     items:
       x-stoplight:
         id: r2g0ukv2j2d85
-      type: integer    
+      type: integer
   place_id:
     type: string
     description: |-
@@ -148,3 +148,18 @@ properties:
     type: number
     description: vTotalNF das vendas dos últimos 12 meses.
     readOnly: true
+  recup_inicio:
+    type: string
+    x-stoplight:
+      id: jdblt390evvpb
+    description: Data/hora de entrada em carteira pré-venda
+  dthr_recuperacao:
+    type: string
+    x-stoplight:
+      id: 0ej30b1nqepmd
+    description: Data/hora de saída de carteira pré-venda
+  id_sdr_recup:
+    type: integer
+    x-stoplight:
+      id: p9gxdhl54r0n3
+    description: ID (SalesPersonID) do SDR que fez a recuperação
