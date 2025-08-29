@@ -3222,20 +3222,20 @@ paths:
                   $ref: ../models/PortfolioCustomers.yaml
       operationId: get-portfoliocustomers
       description: |-
-        Lista de carteiras
+        Lista de carteiras. Requer pelo menos UM dos filtros marcados com * caso contrário retorna uma lista vazia.
 
         ### Filtros disponíveis
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | id | int64 | Identificador único | 
-        | ids | []int64 | Array de identificadores único | 
-        | id_vendedor | int64 | ID do Vendedor | 
-        | id_pessoa | int64 | ID da Pessoa | 
-        | id_carteira | int64 | ID da Carteira | 
+        | id* | int64 | Identificador único | 
+        | ids* | []int64 | Array de identificadores único | 
+        | id_vendedor* | int64 | ID do Vendedor | 
+        | id_pessoa* | int64 | ID da Pessoa | 
+        | id_carteira* | int64 | ID da Carteira | 
         | id_etapa | int64 | ID da Etapa | 
-        | carteira | string | Nome da Carteira ou nome_vendedor | 
-        | cliente | string | Nome do Cliente | 
+        | carteira* | string | Nome da Carteira ou nome_vendedor | 
+        | cliente* | string | Nome do Cliente | 
         | duplicados | bool | Mostra os clientes/pessoas duplicadas em mais de uma carteira, caso existir |
         | dias_alteracao | int64 | Ex. 1 busca alterações do dia atual, 2 do dia atual e do dia anterior. | 
       parameters:
