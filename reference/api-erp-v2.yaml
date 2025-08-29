@@ -3210,7 +3210,7 @@ paths:
       tags:
         - Clientes de Carteira (portfoliocustomers)
     get:
-      summary: Consulta Clientes de Carteira
+      summary: Listagem de Clientes em Carteiras
       responses:
         '200':
           description: OK
@@ -3222,7 +3222,7 @@ paths:
                   $ref: ../models/PortfolioCustomers.yaml
       operationId: get-portfoliocustomers
       description: |-
-        Lista de carteiras. Requer pelo menos UM dos filtros marcados com * caso contrário retorna uma lista vazia.
+        Listagem de clientes em carteiras. Requer pelo menos UM dos filtros marcados com * caso contrário retorna uma lista vazia.
 
         ### Filtros disponíveis
 
