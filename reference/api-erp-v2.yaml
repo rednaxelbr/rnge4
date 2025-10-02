@@ -17,6 +17,8 @@ tags:
     description: Carteiras
   - name: Categorias (categories)
     description: Categorias de produtos
+  - name: Certificados (certificates)
+    description: Certificados Digitais (A1)
   - name: Clientes de Carteira (portfoliocustomers)
     description: Clientes de Carteira
   - name: Clientes em Potencial (leads)
@@ -4938,6 +4940,16 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  /certificates:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Certificados (certificates)
+      responses: {}
+      operationId: get-certificates
+      x-stoplight:
+        id: urfs75p9q2oey
+      description: Certificados A1 (necessários para emissão de NFe/NFCe)
 components:
   schemas: {}
   parameters:
