@@ -1,0 +1,31 @@
+type: object
+properties:
+  id:
+    type: integer
+  cnpj_emit:
+    type: integer
+  cnpj_alfa:
+    type: string
+  serie_certificado:
+    type: string
+  data_validade:
+    type: string
+  nome_razao:
+    type: string
+  integ_api:
+    type: object
+    properties: {}
+  config_cert:
+    type: object
+    properties: {}
+x-examples:
+  Example 1:
+    id: 12345678
+    cnpj_emit: 12345678000119
+    cnpj_alfa: '12345678000119'
+    serie_certificado: '*'
+    data_validade: ''
+    nome_razao: EXEMPLO INDUSTRIA E COMERCIO LTDA
+    integ_api: {}
+    config_cert: {}
+description: Certificado Digital

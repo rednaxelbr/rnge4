@@ -4942,14 +4942,20 @@ paths:
         - $ref: '#/components/parameters/Sort'
   /certificates:
     get:
-      summary: Your GET endpoint
+      summary: Certificados
       tags:
         - Certificados (certificates)
-      responses: {}
+      responses:
+        '200':
+          description: ''
       operationId: get-certificates
       x-stoplight:
         id: urfs75p9q2oey
       description: Certificados A1 (necessários para emissão de NFe/NFCe)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
 components:
   schemas: {}
   parameters:
