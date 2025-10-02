@@ -733,18 +733,28 @@ paths:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
         - $ref: '#/components/parameters/Sort'
+  '/certificates/{id}':
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: id do certificado
     put:
-      summary: Upload de arquivo PFX
+      summary: Upload de PFX
       tags:
         - Certificados (certificates)
+      description: Upload de arquivo PFX (Certificado A1)
       responses:
         '200':
           description: OK
-      operationId: put-certificates
-      x-stoplight:
-        id: kfx0ylogbg2zf
-      parameters: []
-      description: 'Atualiza dados do certificado, incluindo o arquivo PFX'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Certificate.yaml
+      operationId: put-certificates-id
   '/companies/{id}':
     parameters:
       - schema:
