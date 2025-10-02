@@ -1,4 +1,15 @@
 type: object
+x-examples:
+  Example 1:
+    id: 12345678
+    cnpj_emit: 12345678000119
+    cnpj_alfa: '12345678000119'
+    serie_certificado: '*'
+    data_validade: ''
+    nome_razao: EXEMPLO INDUSTRIA E COMERCIO LTDA
+    integ_api: {}
+    config_cert: {}
+description: Certificado Digital
 properties:
   id:
     type: integer
@@ -14,18 +25,30 @@ properties:
     type: string
   integ_api:
     type: object
-    properties: {}
   config_cert:
     type: object
-    properties: {}
-x-examples:
-  Example 1:
-    id: 12345678
-    cnpj_emit: 12345678000119
-    cnpj_alfa: '12345678000119'
-    serie_certificado: '*'
-    data_validade: ''
-    nome_razao: EXEMPLO INDUSTRIA E COMERCIO LTDA
-    integ_api: {}
-    config_cert: {}
-description: Certificado Digital
+  files:
+    type: object
+    x-stoplight:
+      id: yoxt1ijndjdup
+    properties:
+      base64:
+        type: string
+        x-stoplight:
+          id: exwnayq6o9ltd
+        description: Arquivo PFX em formato base64
+      rawFile:
+        type: object
+        x-stoplight:
+          id: cyvqy6x1alxbp
+        properties:
+          path:
+            type: string
+            x-stoplight:
+              id: kdjju06g0mol2
+            description: Nome do arquivo (opcional)
+  senha_nova:
+    type: string
+    x-stoplight:
+      id: put2ggyyybrtk
+    description: 'Senha do certificado. Se for uma atualização de certificado e a senha for a mesma, pode estar em branco.'

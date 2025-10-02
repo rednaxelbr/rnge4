@@ -717,6 +717,34 @@ paths:
               $ref: ../models/Categoria.yaml
       tags:
         - Categorias (categories)
+  /certificates:
+    get:
+      summary: Listagem de certificados
+      tags:
+        - Certificados (certificates)
+      responses:
+        '200':
+          description: ''
+      operationId: get-certificates
+      x-stoplight:
+        id: urfs75p9q2oey
+      description: Certificados A1 (necessários para emissão de NFe/NFCe)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+    put:
+      summary: Upload de arquivo PFX
+      tags:
+        - Certificados (certificates)
+      responses:
+        '200':
+          description: OK
+      operationId: put-certificates
+      x-stoplight:
+        id: kfx0ylogbg2zf
+      parameters: []
+      description: 'Atualiza dados do certificado, incluindo o arquivo PFX'
   '/companies/{id}':
     parameters:
       - schema:
@@ -4936,22 +4964,6 @@ paths:
               schema:
                 $ref: ../models/Vouchers.yaml
       operationId: get-vouchers
-      parameters:
-        - $ref: '#/components/parameters/Filter'
-        - $ref: '#/components/parameters/Range'
-        - $ref: '#/components/parameters/Sort'
-  /certificates:
-    get:
-      summary: Certificados
-      tags:
-        - Certificados (certificates)
-      responses:
-        '200':
-          description: ''
-      operationId: get-certificates
-      x-stoplight:
-        id: urfs75p9q2oey
-      description: Certificados A1 (necessários para emissão de NFe/NFCe)
       parameters:
         - $ref: '#/components/parameters/Filter'
         - $ref: '#/components/parameters/Range'
