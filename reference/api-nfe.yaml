@@ -48,18 +48,15 @@ tags:
     description: Baixar NF de fornecedor e/ou Nota XML emitido
   - name: Certificados (certificates)
     description: Certificados Digitais (A1)
-  - name: Emissão de NFe/NFCe (nfes)
-    description: Emissão de NFe/NFCe
+  - name: Emissão NFCes (nfces)
+    description: Emissão de NFCe  
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Login na API (login)
     description: Login na API
   - name: Notas/Cupons Fiscais (invoices)
     description: Notas e Cupons Fiscais (NFe/NFCe)
-
 paths:
-
-
   /certificates:
     get:
       summary: Listagem de certificados
@@ -98,8 +95,6 @@ paths:
             schema:
               $ref: ../models/Certificate.yaml
       operationId: put-certificates-id
-
-
   '/companies/{id}':
     parameters:
       - schema:
@@ -136,8 +131,6 @@ paths:
       description: Atualiza uma empresa
       tags:
         - Empresas (companies)
-
-
   '/filedownloads/{id}':
     parameters:
       - schema:
@@ -167,8 +160,6 @@ paths:
                       id: 2w6lmy6tp6gbp
       operationId: get-filedownloads-id
       description: Download de um arquivo XML - Fornecedor ou Nota emitida
-
-
   /login:
     parameters: []
     post:
@@ -210,7 +201,7 @@ paths:
       security:
         - Usuário/Senha: []
       tags:
-        - Login
+        - Login na API (login)
       requestBody:
         content:
           application/json:
@@ -223,8 +214,6 @@ paths:
                 id_empresa:
                   description: ID da empresa onde será feito o login
                   type: integer
-
-
   /invoices:
     post:
       summary: Criando Nota/Cupom Fiscal
@@ -372,8 +361,24 @@ paths:
         - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: n5pjq9nvfqm51
-
-
+  /nfces:
+    post:
+      summary: Emitindo Cupom Fiscal
+      operationId: post-nfces
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Emissão NFCes (nfces)
+      parameters: []
+      description: 'Emitindo uma NFCe '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      x-stoplight:
+        id: 9p1kd1r88xgit
 components:
   schemas: {}
   parameters:
