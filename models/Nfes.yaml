@@ -1,4 +1,4 @@
-title: Nfces
+title: NFes
 x-stoplight:
   id: x7gb28ie7bhv4
 type: object
@@ -6,50 +6,80 @@ properties:
   modelo:
     type: integer
     description: Pode ser 65 (NFCe/Cupom) ou 55 (NFe)
+    x-stoplight:
+      id: qp3rxhfh3gp7k
   dados_cupom:
     type: object
     properties:
       dados:
-        type: object  
+        type: object
         properties:
           numero:
             type: string
             description: Número da NF
+            x-stoplight:
+              id: vd9owkfgvve1a
           serie:
-            type: integer 
+            type: integer
             description: Série da NF
-          itens:  
+            x-stoplight:
+              id: ilrs1tgxc1xm4
+          itens:
             type: array
             items:
               type: object
               description: Itens da NF
-              properties: 
+              properties:
                 cprod:
                   type: string
                   description: Código do Produto
+                  x-stoplight:
+                    id: vkhwew16bprjl
                 xprod:
                   type: string
                   description: Descrição do Produto
+                  x-stoplight:
+                    id: mrqgr0vyey85c
                 ucom:
                   type: string
                   description: Unidade Comercial. Ex. "PCT"
+                  x-stoplight:
+                    id: xxgq8ef04082a
                 qcom:
                   type: number
                   description: Quantidade
+                  x-stoplight:
+                    id: hju19ggwjio1w
                 vuncom:
                   type: number
                   description: Valor Unitário
+                  x-stoplight:
+                    id: dqlrc43mnrmh4
+              x-stoplight:
+                id: 6q75nasqnr7ms
+            x-stoplight:
+              id: z3sag5ezs64a0
           pagamentos:
             type: array
             description: Pagamentos da NF
             items:
               type: object
-              properties: 
+              properties:
                 tpag:
                   type: string
                   description: Cód. TPAG. EX. "1" - DINHEIRO
+                  x-stoplight:
+                    id: zgikayq31obwt
+              x-stoplight:
+                id: miu0fyqi61dav
+            x-stoplight:
+              id: mc40mgh0tax01
           emitente:
             type: string
             description: CNPJ com os 14 dígitos
-                       
-
+            x-stoplight:
+              id: r4o4u4qohwytq
+        x-stoplight:
+          id: cs7luj1f55mnj
+    x-stoplight:
+      id: 79bdypunslzj3

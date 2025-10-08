@@ -48,8 +48,8 @@ tags:
     description: Baixar NF de fornecedor e/ou Nota XML emitido
   - name: Certificados (certificates)
     description: Certificados Digitais (A1)
-  - name: Emissão NFCes (nfces)
-    description: Emissão de NFCe  
+  - name: Emissão de Notas Fiscais
+    description: Emissão de NFe ou NFCe
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Login na API (login)
@@ -363,20 +363,20 @@ paths:
         id: n5pjq9nvfqm51
   /nfces:
     post:
-      summary: Emitindo Cupom Fiscal
-      operationId: post-nfces
+      summary: Emitindo Nota Fiscal
+      operationId: post-nfes
       responses:
         '200':
           description: OK
       tags:
-        - Emissão NFCes (nfces)
+        - Emissão de Notas Fiscais
       parameters: []
-      description: 'Emitindo uma NFCe '
+      description: 'Emitindo uma Nota Fiscal'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/Nfces.yaml
+              $ref: ../models/Nfes.yaml
       x-stoplight:
         id: 9p1kd1r88xgit
 components:
