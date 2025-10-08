@@ -48,6 +48,8 @@ tags:
     description: Baixar NF de fornecedor e/ou Nota XML emitido
   - name: Certificados (certificates)
     description: Certificados Digitais (A1)
+  - name: Emissão de NFe/NFCe (nfes)
+    description: Emissão de NFe/NFCe
   - name: Empresas (companies)
     description: Cadastro de Empresas
   - name: Login
@@ -165,6 +167,62 @@ paths:
                       id: 2w6lmy6tp6gbp
       operationId: get-filedownloads-id
       description: Download de um arquivo XML - Fornecedor ou Nota emitida
+
+
+  /login:
+    parameters: []
+    post:
+      summary: Efetuando login
+      operationId: post-login
+      responses:
+        '200':
+          description: Os campos `user_id` e `token` devem ser usados nas chamadas seguintes.
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: ID do login
+                  user_id:
+                    type: number
+                    description: ID do Usuário
+                  token:
+                    type: string
+                    description: Token de acesso
+                  logo_color:
+                    type: string
+                    description: Cor de fundo (frontend)
+                  font_color:
+                    type: string
+                    description: Cor da letra (frontend)
+                  homologacao:
+                    type: boolean
+                    description: Servidor de homologação ou produção?
+                required:
+                  - user_id
+                  - token
+      parameters: []
+      description: |
+        Efetua o login com `usuario@tenant` e `senha` para obter UserID e Token. Se o `id_empresa` não for informado o login será feito na *empresa padrão* do usuário. 
+      security:
+        - Usuário/Senha: []
+      tags:
+        - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                end_ip:
+                  type: string
+                  description: IP interno para suporte
+                id_empresa:
+                  description: ID da empresa onde será feito o login
+                  type: integer
 
 
 components:
