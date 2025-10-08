@@ -52,8 +52,8 @@ tags:
     description: Emissão de NFe/NFCe
   - name: Empresas (companies)
     description: Cadastro de Empresas
-  - name: Login
-    description: Login
+  - name: Login na API (login)
+    description: Login na API
   - name: Notas/Cupons Fiscais (invoices)
     description: Notas e Cupons Fiscais (NFe/NFCe)
 
