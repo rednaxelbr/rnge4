@@ -1,0 +1,188 @@
+openapi: 3.0.0
+x-stoplight:
+  id: jwjqtzjp7hhvw
+info:
+  license:
+    name: Copyright (C) Rednaxel Informática
+    url: 'https://rednaxel.com'
+  description: |
+    Utilizamos o **Authorization** de duas formas:
+    - No `POST /login`, **Basic** com username = `usuario@tenant` e password = `senha`
+    - Nos demais recursos utilizar **Bearer** `token` (obtido no login)
+
+    ## Definições
+
+    **Tenant\:** Conta do cliente na Rednaxel. O tenant pode ter uma ou empresas que podem ser filiais (mesma raiz de CNPJ) ou não.
+
+    **Usuário\:** Cada usuário pertence a um tenant e tem um `user_id` global e um `nome_usuario` único dentro do tenant.
+
+    ## Padrões
+
+    Todos os GET usam os parâmetros "filter", "sort" e "range" da seguinte forma:
+
+     | Parâmetro  | Formato | URL Query                              | SQL equivalente       |
+     |------------|---------|----------------------------------------|-----------------------|
+     | filter     |  JSON   | GET v2/resources?filter={"store":34}   | ... WHERE store = 34  |
+     | sort       |  CSV    | GET v2/resources?sort=\["name","ASC"\] | ... ORDER BY name asc |
+     | range      |  CSV    | GET v2/resources?range=\[0,9\]         | ... OFFSET 0 LIMIT 10 |
+
+
+    Esta API utiliza o padrão REST e autenticação HTTP Bearer (RFC 6750) em todos os recursos, exceto no login, que usa AuthBasic (RFC 7617). O formato padrão de requisição e resposta é o JSON na maioria dos recursos; as exceções são os que trabalham com Notas Fiscais (XML) ou documentos para impressão (PDF). Cuidado com a paginação: quando o `range` não for informado a API utilizará o padrão [0,99].
+  version: 2.0.0
+  title: API do RNGE 4
+  termsOfService: 'https://rednaxel.com/termos-de-uso'
+  contact:
+    name: Suporte
+    email: suporte@rednaxel.com
+    url: 'https://suporte.rednaxel.com'
+  x-logo:
+    url: 'https://storage.googleapis.com/rednaxel-dados/rednaxel-264.png'
+    altText: Logo da Rednaxel
+servers:
+  - url: 'https://homolog.rnge.com.br/v2'
+    description: Homologação
+  - url: 'https://rnge.com.br/v2'
+    description: Produção
+tags:
+  - name: Baixar XML (filedownloads)
+    description: Baixar NF de fornecedor e/ou Nota XML emitido
+  - name: Certificados (certificates)
+    description: Certificados Digitais (A1)
+  - name: Empresas (companies)
+    description: Cadastro de Empresas
+  - name: Login
+    description: Login
+  - name: Notas/Cupons Fiscais (invoices)
+    description: Notas e Cupons Fiscais (NFe/NFCe)
+
+paths:
+
+
+  /certificates:
+    get:
+      summary: Listagem de certificados
+      tags:
+        - Certificados (certificates)
+      responses:
+        '200':
+          description: ''
+      operationId: get-certificates
+      x-stoplight:
+        id: urfs75p9q2oey
+      description: Certificados A1 (necessários para emissão de NFe/NFCe)
+      parameters:
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Sort'
+  '/certificates/{id}':
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: id do certificado
+    put:
+      summary: Upload de PFX
+      tags:
+        - Certificados (certificates)
+      description: Upload de arquivo PFX (Certificado A1)
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Certificate.yaml
+      operationId: put-certificates-id
+
+
+  '/companies/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id da empresa
+    get:
+      summary: Consulta uma empresa
+      tags:
+        - Empresas (companies)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Empresa.yaml
+      operationId: get-companies-id
+      description: Consulta uma empresa
+    put:
+      summary: Atualiza uma empresa
+      operationId: put-companies-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Empresa.yaml
+        description: ''
+      description: Atualiza uma empresa
+      tags:
+        - Empresas (companies)
+
+
+components:
+  schemas: {}
+  parameters:
+    Filter:
+      name: filter
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filtros
+    Range:
+      name: range
+      in: query
+      schema:
+        minItems: 1
+        maxItems: 2
+        items:
+          type: integer
+          format: int32
+        default: '[0,99]'
+        example: '[0,99]'
+      description: Paginação
+      explode: true
+      style: form
+      required: true
+    Sort:
+      name: sort
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            desc:
+              type: string
+      description: Ordenação
+  securitySchemes:
+    Usuário/Senha:
+      type: http
+      scheme: basic
+      description: 'Usuário, Conta(tenant) e senha, ex: admin@zezinho:zeus'
+    Token de acesso:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  - Token de acesso: []
