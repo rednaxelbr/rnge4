@@ -1,0 +1,29 @@
+title: TagImposto
+x-stoplight:
+  id: umuhlbo9ftzrk
+type: object
+properties:
+  ICMS:
+    $ref: ./TagIcms.yaml
+    x-stoplight:
+      id: lcjpuq6ct7upe
+  IPI:
+    $ref: ./TagIPI.yaml
+    x-stoplight:
+      id: ba2fh6jhgagho
+  PIS:
+    $ref: ./TagPIS.yaml
+    x-stoplight:
+      id: v0cu27xdp03vv
+  COFINS:
+    $ref: ./TagCofins.yaml
+    x-stoplight:
+      id: 05j7ssfhsqehy
+  IBSCBS:
+    $ref: ./TagIBSCBS.yaml
+    x-stoplight:
+      id: 6eg0u2q14g9w0
+  vTotTrib:
+    type: number
+    x-stoplight:
+      id: 6dpxo5fsscxj7

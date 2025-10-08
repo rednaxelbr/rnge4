@@ -110,6 +110,10 @@ properties:
                     Padrão 1, onde:
                     1: O valor do item compõe o total da NF-e
                     0: O valor do item não compõe o total da NF-e
+                imposto:
+                  $ref: ./TagImposto.yaml
+                  x-stoplight:
+                    id: kdqvegkiggoig
           pagamentos:
             type: array
             description: Pagamentos da NF
