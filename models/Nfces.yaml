@@ -16,6 +16,7 @@ properties:
             description: Número da NF
           serie:
             type: integer 
+            description: Série da NF
           itens:  
             type: array
             items:
@@ -38,6 +39,7 @@ properties:
                   description: Valor Unitário
           pagamentos:
             type: array
+            description: Série da NF
             items:
               type: object
               properties: 
