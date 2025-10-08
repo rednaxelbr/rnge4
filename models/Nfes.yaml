@@ -62,19 +62,35 @@ properties:
                 cean:
                   type: string
                   description: Código de Barras
+                ceantrib:
+                  type: string
+                  x-stoplight:
+                    id: 6ubf7asre3ulx
+                cfop:
+                  type: string
+                  x-stoplight:
+                    id: 5u3q3tj8mmouo
                 ncm:
                   type: string
                   description: Código NCM
-                ucom:
-                  type: string
-                  description: Unidade Comercial. Ex. "PCT"
-                  x-stoplight:
-                    id: xxgq8ef04082a
                 qcom:
                   type: number
                   description: Quantidade
                   x-stoplight:
                     id: hju19ggwjio1w
+                qtrib:
+                  type: number
+                  x-stoplight:
+                    id: mya15guhol1tm
+                ucom:
+                  type: string
+                  description: Unidade Comercial. Ex. "PCT"
+                  x-stoplight:
+                    id: xxgq8ef04082a
+                utrib:
+                  type: string
+                  x-stoplight:
+                    id: wb4yul4q5knf4
                 vuncom:
                   type: number
                   x-stoplight:
@@ -82,10 +98,18 @@ properties:
                   description: |-
                     Se omitido, pega do cadastro (se houver).
                     Caso o cprod não existir então é obrigatório a informação do vuncom (valor unitário)
-                cfop:
+                vuntrib:
+                  type: number
+                  x-stoplight:
+                    id: ezxk1qha0tt3u
+                indtot:
                   type: string
                   x-stoplight:
-                    id: 5u3q3tj8mmouo
+                    id: bahx0ocqm48fq
+                  description: |-
+                    Padrão 1, onde:
+                    1: O valor do item compõe o total da NF-e
+                    0: O valor do item não compõe o total da NF-e
           pagamentos:
             type: array
             description: Pagamentos da NF

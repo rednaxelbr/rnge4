@@ -1,0 +1,38 @@
+title: TagIcmsSN
+x-stoplight:
+  id: w06yi325ym84q
+type: object
+properties:
+  orig:
+    type: integer
+  CSOSN:
+    type: integer
+  pCredSN:
+    type: number
+  vCredICMSSN:
+    type: number
+  modBCST:
+    type: integer        
+  pMVAST:
+    type: number
+  pRedBCST:
+    type: number
+  vBCST:
+    type: number
+  pICMSST:
+    type: number        
+  vICMSST:
+    type: number  
+  vICMSSTRet:
+    type: number
+  vBCSTRet:
+    type: number  
+  pRedBCEfet:
+    type: number
+  vBCEfet:
+    type: number    
+  pICMSEfet:
+    type: number
+  vICMSEfet:
+    type: number
+  
