@@ -136,6 +136,37 @@ paths:
         - Empresas (companies)
 
 
+  '/filedownloads/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Chave de acesso com os 44 dígitos
+    get:
+      summary: Download de um arquivo XML
+      tags:
+        - Baixar XML (filedownloads)
+      responses:
+        '200':
+          description: |-
+            XML
+            <nfeProc versao="4.00"
+            </infProt></protNFe></nfeProc>
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  xml:
+                    type: string
+                    x-stoplight:
+                      id: 2w6lmy6tp6gbp
+      operationId: get-filedownloads-id
+      description: Download de um arquivo XML - Fornecedor ou Nota emitida
+
+
 components:
   schemas: {}
   parameters:
