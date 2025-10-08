@@ -25,6 +25,11 @@
     },
     {
       "type": "item",
+      "title": "API de NFe",
+      "uri": "reference/api-nfe.yaml"
+    },
+    {
+      "type": "item",
       "title": "API do RNGE 4",
       "uri": "reference/api-erp-v2.yaml"
     },
