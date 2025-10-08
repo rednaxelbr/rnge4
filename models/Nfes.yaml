@@ -20,7 +20,7 @@ properties:
             x-stoplight:
               id: vd9owkfgvve1a
           serie:
-            type: integer
+            type: string
             description: Série da NF
             x-stoplight:
               id: ilrs1tgxc1xm4
