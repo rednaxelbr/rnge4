@@ -1,0 +1,14 @@
+title: TagIPI
+x-stoplight:
+  id: kca81cdipj533
+type: object
+properties:
+  CST:
+    type: integer
+  vBC:
+    type: number
+  pIPI:
+    type: number
+  vIPI:
+    type: number      
+    
