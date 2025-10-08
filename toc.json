@@ -30,13 +30,13 @@
     },
     {
       "type": "item",
-      "title": "API do RNGE 4",
-      "uri": "reference/api-erp-v2.yaml"
+      "title": "API do app do Entregador",
+      "uri": "reference/api-entregador.yaml"
     },
     {
       "type": "item",
-      "title": "API do app do Entregador",
-      "uri": "reference/api-entregador.yaml"
+      "title": "API do RNGE 4",
+      "uri": "reference/api-erp-v2.yaml"
     }
   ]
 }
