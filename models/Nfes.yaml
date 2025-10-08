@@ -2,6 +2,9 @@ title: NFes
 x-stoplight:
   id: x7gb28ie7bhv4
 type: object
+required:
+  - modelo
+  - dados_cupom
 properties:
   modelo:
     type: integer
@@ -10,9 +13,18 @@ properties:
       id: qp3rxhfh3gp7k
   dados_cupom:
     type: object
+    x-stoplight:
+      id: 79bdypunslzj3
+    required:
+      - dados
     properties:
       dados:
         type: object
+        x-stoplight:
+          id: cs7luj1f55mnj
+        required:
+          - numero
+          - serie
         properties:
           numero:
             type: string
@@ -26,9 +38,16 @@ properties:
               id: ilrs1tgxc1xm4
           itens:
             type: array
+            x-stoplight:
+              id: z3sag5ezs64a0
             items:
               type: object
               description: Itens da NF
+              x-stoplight:
+                id: 6q75nasqnr7ms
+              required:
+                - cprod
+                - xprod
               properties:
                 cprod:
                   type: string
@@ -40,6 +59,12 @@ properties:
                   description: Descrição do Produto
                   x-stoplight:
                     id: mrqgr0vyey85c
+                cean:
+                  type: string
+                  description: Código de Barras
+                ncm:
+                  type: string
+                  description: Código NCM
                 ucom:
                   type: string
                   description: Unidade Comercial. Ex. "PCT"
@@ -52,34 +77,35 @@ properties:
                     id: hju19ggwjio1w
                 vuncom:
                   type: number
-                  description: Valor Unitário
                   x-stoplight:
                     id: dqlrc43mnrmh4
-              x-stoplight:
-                id: 6q75nasqnr7ms
-            x-stoplight:
-              id: z3sag5ezs64a0
+                  description: |-
+                    Se omitido, pega do cadastro (se houver).
+                    Caso o cprod não existir então é obrigatório a informação do vuncom (valor unitário)
+                cfop:
+                  type: string
+                  x-stoplight:
+                    id: 5u3q3tj8mmouo
           pagamentos:
             type: array
             description: Pagamentos da NF
+            x-stoplight:
+              id: mc40mgh0tax01
             items:
               type: object
+              x-stoplight:
+                id: miu0fyqi61dav
               properties:
                 tpag:
                   type: string
                   description: Cód. TPAG. EX. "1" - DINHEIRO
                   x-stoplight:
                     id: zgikayq31obwt
-              x-stoplight:
-                id: miu0fyqi61dav
-            x-stoplight:
-              id: mc40mgh0tax01
+                vpag:
+                  type: number
+                  description: Valor do pagamento
           emitente:
             type: string
             description: CNPJ com os 14 dígitos
             x-stoplight:
               id: r4o4u4qohwytq
-        x-stoplight:
-          id: cs7luj1f55mnj
-    x-stoplight:
-      id: 79bdypunslzj3
