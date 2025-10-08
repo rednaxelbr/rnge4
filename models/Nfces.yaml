@@ -39,12 +39,13 @@ properties:
                   description: Valor Unitário
           pagamentos:
             type: array
-            description: Série da NF
+            description: Pagamentos da NF
             items:
               type: object
               properties: 
                 tpag:
                   type: string
+                  description: Cód. TPAG. EX. "1" - DINHEIRO
           emitente:
             type: string
             description: CNPJ com os 14 dígitos
