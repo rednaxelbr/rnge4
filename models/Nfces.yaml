@@ -5,6 +5,7 @@ type: object
 properties:
   modelo:
     type: integer
+    description: Pode ser 65 (NFCe/Cupom) ou 55 (NFe)
   dados_cupom:
     type: object
     properties:
