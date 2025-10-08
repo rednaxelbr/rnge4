@@ -1,0 +1,50 @@
+title: Nfces
+x-stoplight:
+  id: x7gb28ie7bhv4
+type: object
+properties:
+  modelo:
+    type: integer
+  dados_cupom:
+    type: object
+    properties:
+      dados:
+        type: object  
+        properties:
+          numero:
+            type: string
+            description: Número da NF
+          serie:
+            type: integer 
+          itens:  
+            type: array
+            items:
+              type: object
+              properties: 
+                cprod:
+                  type: string
+                  description: Código do Produto
+                xprod:
+                  type: string
+                  description: Descrição do Produto
+                ucom:
+                  type: string
+                  description: Unidade Comercial. Ex. "PCT"
+                qcom:
+                  type: number
+                  description: Quantidade
+                vuncom:
+                  type: number
+                  description: Valor Unitário
+          pagamentos:
+            type: array
+            items:
+              type: object
+              properties: 
+                tpag:
+                  type: string
+          emitente:
+            type: string
+            description: CNPJ com os 14 dígitos
+                       
+
