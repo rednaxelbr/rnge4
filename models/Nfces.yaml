@@ -21,6 +21,7 @@ properties:
             type: array
             items:
               type: object
+              description: Itens da NF
               properties: 
                 cprod:
                   type: string
