@@ -1,0 +1,14 @@
+title: TagPIS
+x-stoplight:
+  id: 11ebgouwolegz
+type: object
+properties:
+  CST:
+    type: integer
+  vBC:
+    type: number
+  pPIS:
+    type: number
+  vPIS:
+    type: number    
+    
