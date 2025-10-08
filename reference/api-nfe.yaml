@@ -361,7 +361,7 @@ paths:
         - $ref: '#/components/parameters/Sort'
       x-stoplight:
         id: n5pjq9nvfqm51
-  /nfces:
+  /nfes:
     post:
       summary: Emitindo Nota Fiscal
       operationId: post-nfes
