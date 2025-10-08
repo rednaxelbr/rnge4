@@ -363,15 +363,15 @@ paths:
         id: n5pjq9nvfqm51
   /nfes:
     post:
-      summary: Emitindo Nota Fiscal
+      summary: Emitindo NFe/NFCe
       operationId: post-nfes
       responses:
         '200':
           description: OK
       tags:
-        - Emissão de Notas Fiscais
+        - Emissão de Notas Fiscais (NFe/NFCe)
       parameters: []
-      description: 'Emitindo uma Nota Fiscal'
+      description: 'Emitindo uma NFe/NFCe'
       requestBody:
         content:
           application/json:
