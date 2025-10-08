@@ -1,0 +1,60 @@
+title: TagIBSCBS
+x-stoplight:
+  id: fn14yl0knl405
+type: object
+properties:
+  CST:
+    type: integer
+  cClassTrib:
+    type: string
+  pCOFINS:
+    type: number
+  gIBSCBS:
+    type: object
+    properties:
+      vBC:
+        type: number
+      gIBSUF:
+        type: object
+        properties:
+          pIBSUF:
+            type: number  
+          gRed:
+            type: object
+            properties:
+              pRedAliq:
+                type: number
+              pAliqEfet:
+                type: number  
+          vIBSUF:
+            type: number
+      gIBSMun:
+        type: object
+        properties:
+          pIBSMun:
+            type: number  
+          gRed:
+            type: object
+            properties:
+              pRedAliq:
+                type: number
+              pAliqEfet:
+                type: number  
+          vIBSMun:
+            type: number 
+      vIBS:
+        type: number    
+      gCBS:
+        type: object
+        properties:
+          pCBS:
+            type: number  
+          gRed:
+            type: object
+            properties:
+              pRedAliq:
+                type: number
+              pAliqEfet:
+                type: number  
+          vCBS:
+            type: number
