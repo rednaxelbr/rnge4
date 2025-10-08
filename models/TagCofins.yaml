@@ -1,0 +1,13 @@
+title: TagCofins
+x-stoplight:
+  id: zhwuh5dvtudcx
+type: object
+properties:
+  CST:
+    type: integer
+  vBC:
+    type: number
+  pCOFINS:
+    type: number
+  vCOFINS:
+    type: number    
