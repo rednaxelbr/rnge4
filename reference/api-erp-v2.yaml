@@ -2081,15 +2081,20 @@ paths:
                   $ref: ../models/Persons.yaml
       operationId: get-persons
       description: |
-        Listagem de Pessoas. Principais filtros:
-        - `pesquisa` (string) Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail
-        - `nome_exato` (bool) Pesquisa exata da descrição em conjunto com o filtro "pesquisa"
-        - `inativos` (bool) Incluir na visualização as pessoas inativas
-        - `id_canal` (integer) id do canal
-        - `inconsistentes` (bool) usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido
-        - `logradouro` (string) Rua/Avenida/etc do endereço
-        - `credito_loja` (bool) Possuir crédito Loja
-        - `recuperacao` (bool) Cliente entrou em carteira de recuperação
+        Listagem de Pessoas.
+
+        ### Filtros disponíveis
+
+         Campo | Tipo | Descrição |
+        | ------ | ------ | ------ |
+        | pesquisa | string | Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail | 
+        | nome_exato | boolean | Pesquisa exata da descrição em conjunto com o filtro "pesquisa" |
+        | inativos | boolean | Incluir na visualização as pessoas inativas |
+        | id_canal | integer | ID do canal |
+        | inconsistentes | boolean | usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido |
+        | logradouro | string | Rua/Avenida/etc do endereço |
+        | credito_loja | boolean | Possuir crédito Loja |
+        | recuperacao | boolean | Cliente entrou em carteira de recuperação |
       requestBody:
         content: {}
       parameters:
