@@ -2087,36 +2087,35 @@ paths:
 
          Campo | Tipo | Descrição |
         | ------ | ------ | ------ |
-        | pesquisa | string | Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail | 
-        | nome_exato | boolean | Pesquisa exata da descrição em conjunto com o filtro "pesquisa" |
-        | inativos | boolean | Incluir na visualização as pessoas inativas |
-        | id_canal | integer | ID do canal |
-        | inconsistentes | boolean | usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido |
-        | logradouro | string | Rua/Avenida/etc do endereço |
-        | credito_loja | boolean | Possuir crédito Loja |
-        | recuperacao | boolean | Cliente entrou em carteira de recuperação |
-        | cpf_cnpj | int64 | CPF da Pessoa |
         | cnpj | string | CNPJ da Pessoa |
-        | email | string | Email da Pessoa |
-        | telefone | string | Telefone da Pessoa |
-        | dias_alteracao | int64 | Há quantos dias já foi alterado |
-        | dias_cadastro | int64 | Há quantos dias foi criado |
-        | ids_categorias | []int64 | Segmentos |
-        | id_categoria | []int64 | Um segmento |
-        | sem_segmentos | bool | Pessoas sem categorias (segmentos) |
-        | ids_tags | []int64 | Ids das Tags |
         | com_mapa | bool | Pessoas com mapa |
-        | fornecedor | bool | Se a pessoa é fornecedor |
+        | com_vendedor | bool | Pessoa que possui vendedor |
         | contador | bool | Se a pessoa é contadora (financeiro) possuindo o documento CRC |
         | contador_sped | bool | Somente uma pessoa por tenant pode ser contador SPED. Registro 0100 |
-        | id_vendedor | int64 | ID do vendedor |
-        | com_vendedor | bool | Pessoa que possui vendedor |
-        | id_setor | int64 | ID do Setor |
+        | credito_loja | boolean | Possuir crédito Loja |
+        | cpf_cnpj | int64 | CPF da Pessoa |
+        | dias_alteracao | int64 | Há quantos dias já foi alterado |
+        | dias_cadastro | int64 | Há quantos dias foi criado |
+        | email | string | Email da Pessoa |
+        | fornecedor | bool | Se a pessoa é fornecedor |
         | frequencia | int64 | Frequencia |
-        | lote | bool | Lote |
-        | recuperacao | bool | Se a pessoa é recuperação ( a nível de lead (CRM)) |
+        | id_canal | integer | ID do canal |
         | id_carteira | int64 | ID Carteira |
+        | id_categoria | []int64 | Um segmento |
+        | id_setor | int64 | ID do Setor |
+        | id_vendedor | int64 | ID do vendedor |
+        | ids_categorias | []int64 | Segmentos |
+        | ids_tags | []int64 | Ids das Tags |
+        | inativos | boolean | Incluir na visualização as pessoas inativas |
+        | inconsistentes | boolean | Usado nas integrações quando o cadastro está inconsistente. Ex. Email inválido |
+        | logradouro | string | Rua/Avenida/etc do endereço |
+        | lote | bool | Lote |
+        | nome_exato | boolean | Pesquisa exata da descrição em conjunto com o filtro "pesquisa" |
+        | pesquisa | string | Pesquisa tanto por ID/Nome/CPF/CNPJ/Telefone ou E-mail |
+        | recuperacao | bool | Se a pessoa é recuperação (a nível de lead (CRM)) |
         | sem_carteiras | bool | Sem carteiras |
+        | sem_segmentos | bool | Pessoas sem categorias (segmentos) |
+        | telefone | string | Telefone da Pessoa |
 
       requestBody:
         content: {}
