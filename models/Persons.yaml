@@ -5,40 +5,72 @@ required:
   - pjuridica
   - nome_razao
 properties:
-  id:
-    type: integer
+  acumulado:
+    type: number
+    description: vTotalNF das vendas dos últimos 12 meses.
     readOnly: true
   ativo:
     type: boolean
+  cnpj:
+    type: string
+  contador_sped:
+    type: boolean
+    readOnly: true
+  cpf:
+    type: string
+  criado_por:
+    type: string
+    readOnly: true
+  credito_loja:
+    type: boolean
+  crm_etapa:
+    type: integer
+    x-stoplight:
+      id: xp3ye4jmz6wul
+  crm_motivo:
+    type: integer
+    x-stoplight:
+      id: 0uqjdu662t0tm
   data_cadastro:
     type: string
     readOnly: true
-  pjuridica:
-    type: boolean
+  data_ult_venda:
+    type: string
     readOnly: true
-  cnpj:
-    type: string
-  cpf:
-    type: string
-  nome_razao:
-    type: string
-  nome_fantasia:
-    type: string
-  ind_iedest:
-    type: integer
-  iestadual:
-    type: string
-  imunicipal:
-    type: string
-  email:
-    type: string
-  id_telefone:
-    type: integer
-  id_canal:
-    type: integer
   desc_canal:
     type: string
     readOnly: true
+  desc_setor:
+    type: string
+    readOnly: true
+  dthr_recuperacao:
+    type: string
+    x-stoplight:
+      id: 0ej30b1nqepmd
+    description: Data/hora de saída de carteira pré-venda
+  email:
+    type: string
+  id:
+    type: integer
+    readOnly: true
+  id_canal:
+    type: integer
+  id_carteira:
+    type: integer
+  id_geocode:
+    type: integer
+    readOnly: true
+  id_sdr_recup:
+    type: integer
+    x-stoplight:
+      id: p9gxdhl54r0n3
+    description: ID (SalesPersonID) do SDR que fez a recuperação
+  id_setor:
+    type: integer
+  id_telefone:
+    type: integer
+  id_vendedor:
+    type: integer
   ids_categorias:
     type: array
     items:
@@ -47,7 +79,14 @@ properties:
     type: array
     items:
       type: integer
-  id_vendedor:
+  iestadual:
+    type: string
+  imunicipal:
+    type: string
+  incidencia:
+    type: number
+    readOnly: true
+  ind_iedest:
     type: integer
   inconsistencias:
     type: array
@@ -60,38 +99,27 @@ properties:
           type: string
           x-stoplight:
             id: r1388xic32qi7
+  latitude:
+    type: number
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
+    readOnly: true
   limpar_inconsistencias:
     type: boolean
     x-stoplight:
       id: onf0cwmg2wmuw
     description: somente PUT
     writeOnly: true
-  crm_etapa:
-    type: integer
-    x-stoplight:
-      id: xp3ye4jmz6wul
-  crm_motivo:
-    type: integer
-    x-stoplight:
-      id: 0uqjdu662t0tm
-  credito_loja:
-    type: boolean
-  id_geocode:
-    type: integer
-    readOnly: true
-  contador_sped:
-    type: boolean
-    readOnly: true
-  criado_por:
-    type: string
-    readOnly: true
-  id_setor:
-    type: integer
-  desc_setor:
-    type: string
-    readOnly: true
-  incidencia:
+  longitude:
     type: number
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
     readOnly: true
   nb_contacts:
     type: integer
@@ -99,15 +127,33 @@ properties:
   nb_deals:
     type: integer
     readOnly: true
-  pre_venda:
-    type: boolean
-  id_carteira:
-    type: integer
   nome_carteira:
     type: string
+  nome_fantasia:
+    type: string
+  nome_razao:
+    type: string
+  pjuridica:
+    type: boolean
+    readOnly: true
+  place_id:
+    type: string
+    description: |-
+      Usado em endereço URL como localização em mapas
+      Existem duas maneiras de localização:
+       - pelo /search/ (onde usa o latitude e longitude)
+       - pelo /place/?q=place_id:%s que usa o place_id
+    readOnly: true
+  pre_venda:
+    type: boolean
   quant_pedidos:
     type: integer
     readOnly: true
+  recup_inicio:
+    type: string
+    x-stoplight:
+      id: jdblt390evvpb
+    description: Data/hora de entrada em carteira pré-venda
   tipo_email:
     type: array
     x-stoplight:
@@ -117,49 +163,3 @@ properties:
       x-stoplight:
         id: r2g0ukv2j2d85
       type: integer
-  place_id:
-    type: string
-    description: |-
-      Usado em endereço URL como localização em mapas
-      Existem duas maneiras de localização:
-       - pelo /search/ (onde usa o latitude e longitude)
-       - pelo /place/?q=place_id:%s que usa o place_id
-    readOnly: true
-  latitude:
-    type: number
-    description: |-
-      Usado em endereço URL como localização em mapas
-      Existem duas maneiras de localização:
-       - pelo /search/ (onde usa o latitude e longitude)
-       - pelo /place/?q=place_id:%s que usa o place_id
-    readOnly: true
-  longitude:
-    type: number
-    description: |-
-      Usado em endereço URL como localização em mapas
-      Existem duas maneiras de localização:
-       - pelo /search/ (onde usa o latitude e longitude)
-       - pelo /place/?q=place_id:%s que usa o place_id
-    readOnly: true
-  data_ult_venda:
-    type: string
-    readOnly: true
-  acumulado:
-    type: number
-    description: vTotalNF das vendas dos últimos 12 meses.
-    readOnly: true
-  recup_inicio:
-    type: string
-    x-stoplight:
-      id: jdblt390evvpb
-    description: Data/hora de entrada em carteira pré-venda
-  dthr_recuperacao:
-    type: string
-    x-stoplight:
-      id: 0ej30b1nqepmd
-    description: Data/hora de saída de carteira pré-venda
-  id_sdr_recup:
-    type: integer
-    x-stoplight:
-      id: p9gxdhl54r0n3
-    description: ID (SalesPersonID) do SDR que fez a recuperação
