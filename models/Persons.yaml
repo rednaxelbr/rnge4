@@ -163,3 +163,5 @@ properties:
       x-stoplight:
         id: r2g0ukv2j2d85
       type: integer
+  tp_ente_gov:
+    type: integer
