@@ -2080,7 +2080,7 @@ paths:
                 items:
                   $ref: ../models/Persons.yaml
       operationId: get-persons
-      description: |
+      description: |+
         Listagem de Pessoas.
 
         ### Filtros disponíveis
@@ -2095,6 +2095,29 @@ paths:
         | logradouro | string | Rua/Avenida/etc do endereço |
         | credito_loja | boolean | Possuir crédito Loja |
         | recuperacao | boolean | Cliente entrou em carteira de recuperação |
+        | cpf_cnpj | int64 | CPF da Pessoa |
+        | cnpj | string | CNPJ da Pessoa |
+        | email | string | Email da Pessoa |
+        | telefone | string | Telefone da Pessoa |
+        | dias_alteracao | int64 | Há quantos dias já foi alterado |
+        | dias_cadastro | int64 | Há quantos dias foi criado |
+        | ids_categorias | []int64 | Segmentos |
+        | id_categoria | []int64 | Um segmento |
+        | sem_segmentos | bool | Pessoas sem categorias (segmentos) |
+        | ids_tags | []int64 | Ids das Tags |
+        | com_mapa | bool | Pessoas com mapa |
+        | fornecedor | bool | Se a pessoa é fornecedor |
+        | contador | bool | Se a pessoa é contadora (financeiro) possuindo o documento CRC |
+        | contador_sped | bool | Somente uma pessoa por tenant pode ser contador SPED. Registro 0100 |
+        | id_vendedor | int64 | ID do vendedor |
+        | com_vendedor | bool | Pessoa que possui vendedor |
+        | id_setor | int64 | ID do Setor |
+        | frequencia | int64 | Frequencia |
+        | lote | bool | Lote |
+        | recuperacao | bool | Se a pessoa é recuperação ( a nível de lead (CRM)) |
+        | id_carteira | int64 | ID Carteira |
+        | sem_carteiras | bool | Sem carteiras |
+
       requestBody:
         content: {}
       parameters:
